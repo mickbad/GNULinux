@@ -27,9 +27,11 @@
 if [ "$UID" -ne "0" ]
 then
     echo "Ce script doit se lancer avec les droits d'administrateur : sudo ./script.sh"
+    exit
     elif  [ "$DISTRIB_RELEASE" != "18.04" ]
     then
         echo "Désolé $SUDO_USER, ce script n'est conçu que pour la 18.04LTS alors que tu es actuellement sur la version $DISTRIB_RELEASE"
+        exit
         elif [ "$(which gnome-shell)" != "/usr/bin/gnome-shell" ]
         then
             echo "Bien que tu sois effectivement sur la 18.04 $SUDO_USER, ce script est conçu uniquement pour la version de base sous Gnome-Shell (pour l'instant) alors que tu utilises une variante."
