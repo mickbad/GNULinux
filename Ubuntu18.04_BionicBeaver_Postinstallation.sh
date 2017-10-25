@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.5 (alpha)
+# version 0.0.6 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -127,18 +127,42 @@ echo "[15] Qmmp, dans le style de Winamp"
 
 ## Mode avancé
 
-
-
-
-
-
-
-
-
-
-
-
-    
+# Extension  {a modifier.......}
+echo "*******************************************************"
+echo "A1/ Des extensions Gnome-Shell supplémentaires à installer ?"
+echo "*******************************************************"
+echo "[1] Non, ne pas ajouter de nouvelles extensions"
+echo "[2] AlternateTab : alternative au Alt+Tab issu du mode classique"
+echo "[4] Caffeine : permet en 1 clic de désactiver temporairement les mises en veilles"
+echo "[5] DashToDock : permet d'avoir + d'option pour les réglages du dock (dock Ubuntu basé dessus)"
+echo "[6] DashToPanel : un dock alternatif conçu pour remplacer le panel de Gnome (se place en bas ou en haut)"
+echo "[7] Disconnect Wifi : ajoute une option pour déconnecter/reconnecter rapidement le wifi"
+echo "[8] Gparte : permet de conserver du contenu copier/coller facilement accessible depuis le panel"
+echo "[9] Harddick Led : ajoute un aperçu de l'activité du disque dur"
+echo "[10] Hide Activities Button : simplement pour cacher le bouton 'Activités' situé en haut à gauche"
+echo "[11] Hide Top Bar : permet de cacher le panel en haut avec nombreux réglages possibles"
+echo "[12] Impatience : permet d'augmenter la vitesse d'affichage des animations de Gnome Shell"
+echo "[13] Log Out Button : ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action"
+echo "[14] Media Player Indicator : ajouter un indicateur pour le contrôle du lecteur multimédia"
+echo "[15] Move Clock : déplace l'horloge du milieu vers la droite"
+echo "[16] Multi monitors add on : ajoute au panel un icone pour gérer rapidement les écrans"
+echo "[19] Openweather : Pour avoir la météo directement sur votre bureau"
+echo "[21] Places status indicator : Permet d'ajouter un raccourci vers les dossiers utiles dans le panel"
+echo "[22] Removable drive menu : Raccourci pour démonter rapidement les clés usb/support externe"
+echo "[24] Screenshot windows sizer : Permettre le redimensionnement des fenêtres pour Gnome-Screenshot"
+echo "[25] Shortcuts : Permet d'afficher un popup avec la liste des raccourcis possibles"
+echo "[27] Suspend button : Ajout d'un bouton pour activer l'hibernation"
+echo "[28] Taskbar :..........."
+echo "[29] Tilix dropdown : ............"
+echo "[30] Top Icon Plus : ......."
+echo "[31] Taskbar :..........."
+echo "[32] Trash : ....."
+echo "[33] User themes : ..... "
+echo "[34] Window list : ....."
+echo "[35] Workspace indicator: ....."
+echo "[36] Redshift : ....."
+echo "[37] System-monitor: ....."
+echo "[38] Window Navigator : ....."
 
 ### Section installation automatisé
 
@@ -229,3 +253,16 @@ do
          ;;
     esac
 done
+
+
+### Les choses indispensables à faire
+
+# Utilitaires
+apt install net-tools gnome-tweak-tool -y
+
+# Suppression de l'icone Amazon
+#...........
+
+# Désactivation de l'affichage des messages d'erreurs à l'écran
+#...........
+
