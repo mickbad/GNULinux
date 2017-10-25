@@ -68,9 +68,37 @@ echo "*******************************************************"
 echo "[1] Aucune, rester avec la session Ubuntu par défaut (cad Gnome customizé + 2 extensions)"
 echo "[2] Ajouter la session 'Gnome Vanilla' (cad une session Gnome non-customizé et sans extension)"
 echo "[3] Ajouter la session 'Gnome Classique' (interface plus traditionnelle dans le style de Gnome 2 ou Mate)"
-echo "[4] Ajouter la session 'Unity' (l'ancienne interface d'Ubuntu utilisé avant la 17.10"
+echo "[4] Ajouter la session 'Unity' (l'ancienne interface d'Ubuntu utilisé avant la 17.10)"
 echo "*******************************************************"
 read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 2 3) : " choixSession
+clear
+
+# Question 3 : Navigateur web #évidemment des PPA ne sont pas encore actif pour la 18.04 actuellement !! ne pas tester !
+echo "*******************************************************"
+echo "3/ Quel(s) navigateur(s) voulez-vous ? (plusieurs choix possible)"
+echo "*******************************************************"
+echo "[1] Pas de navigateur supplémentaire, rester sur la version classique de Firefox (stable)"
+echo "[2] Firefox Béta (n+1 cad 1 version d'avance) => attention remplace la version stable !"
+echo "[3] Firefox Developper Edition => attention remplace la version stable !"
+echo "[4] Firefox ESR => fonctionne indépendamment de la version stable"
+echo "[5] Firefox Nightly [Attention instable !] => fonctionne indépendamment de la version stable"
+echo "[6] Chromium, la version libre/opensource de Chrome"
+echo "[7] Google Chrome, le navigateur propriétaire de Google"
+echo "[8] Gnome Web/Epiphany : le navigateur libre de la fondation Gnome"
+echo "[9] Midori, un navigateur libre & léger, utilisé notamment sur Elementary OS"
+echo "[10] Opera, un navigateur propriétaire relativement connu"
+echo "[11] PaleMoon, un navigateur libre & performant"
+echo "[12] Vivaldi, un navigateur propriétaire avec une interface sobre"
+echo "[13] Falkon/QupZilla, une alternative libre et légère utilisant Webkit"
+echo "[14] Tor Browser, pour naviguer dans l'anonymat avec le réseau tor (basé sur Firefox ESR)"
+echo "[15] Eolie, une autre alternative pour Gnome [Installation via FlatPak !]"
+echo "[16] Min, un navigateur minimaliste très léger"
+echo "[17] Rekonq, navigateur utilisant les technologies KDE (déconseillé sous Gnome)"
+echo "[18] NetSurf, basique mais très léger et performant"
+echo "[19] Dillo, navigateur capable de tourner sur des ordinosaures"
+echo "[20] Lynx : s'utilise 100% en ligne de commande, pratique depuis une console SSH"
+echo "*******************************************************"
+read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 11 20)" choixNavigateur
 clear
 
 
