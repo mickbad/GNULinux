@@ -75,7 +75,7 @@ clear
 
 # Question 3 : Navigateur web #évidemment des PPA ne sont pas encore actif pour la 18.04 actuellement !! ne pas tester !
 echo "*******************************************************"
-echo "3/ Quel(s) navigateur(s) voulez-vous ? (plusieurs choix possible)"
+echo "3/ Quel(s) navigateur(s) souhaites-tu ? (plusieurs choix possible)"
 echo "*******************************************************"
 echo "[1] Pas de navigateur supplémentaire, rester sur la version classique de Firefox (stable)"
 echo "[2] Firefox Béta (n+1 cad 1 version d'avance) => attention remplace la version stable !"
@@ -100,6 +100,29 @@ echo "[20] Lynx : s'utilise 100% en ligne de commande, pratique depuis une conso
 echo "*******************************************************"
 read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 11 20)" choixNavigateur
 clear
+
+# Multimédia
+echo "*******************************************************"
+echo "4/ Quel(s) logiciels(s) dans l'audiovisuel veux-tu ? (plusieurs choix possible)"
+echo "*******************************************************"
+echo "[1] Rien de particulier, rester avec Totem comme lecteur vidéo et Rhythmbox comme lecteur audio"
+echo "[2] VLC, le couteau suisse de la vidéo !"
+echo "[3] MPV, un lecteur léger/puissant capable de lire de nombreux formats mais moins complet que VLC"
+echo "[4] SmPlayer, lecteur basé sur mplayer avec une interface utilisant Qt"
+echo "[5] Gxine, lecteur vidéo minimaliste écrit en GTK+ basé sur le moteur Xine"
+echo "[6] DragonPlayer, un lecteur vidéo plutôt conçu pour l'environnement KDE"
+echo "[7] Banshee, un lecteur audio assez complet équivalent à Rhythmbox"
+echo "[8] Clementine, lecteur audio avec gestion des pochettes, genres musicaux..."
+echo "[9] QuodLibet, un lecteur audio très puissant"
+echo "[10] Audacious, lecteur complet avec beaucoup de plugins dispo"
+echo "[11] Guayadeque, lecteur audio avec une interface agréable"
+echo "[12] Gnome Musique, utilitaire de la fondation Gnome pour la gestion audio"
+echo "[13] Gmusicbrowser, lecteur avec interface très configurable"
+echo "[14] Musique, un lecteur épuré"
+echo "[15] Qmmp, dans le style de Winamp"
+#suite a venir..........
+
+
 
 
 ## Mode avancé
@@ -203,5 +226,6 @@ do
          ;;
          "20") #Lynx
             apt install lynx -y
+         ;;
     esac
 done
