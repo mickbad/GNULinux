@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.6 (alpha)
+# version 0.0.7 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -164,6 +164,21 @@ echo "[36] Redshift : ....."
 echo "[37] System-monitor: ....."
 echo "[38] Window Navigator : ....."
 
+
+echo "*******************************************************"
+echo "A2/ Des optimisations supplémentaires à activer ?"
+echo "*******************************************************"
+echo "[1] Non"
+echo "[2] Déporter répertoire snappy dans /home pour gagner de l'espace (utile si le /home est séparé et racine limité)"
+echo "[3] Swap : régler le swapiness à 5% (le swap sera utilisé uniquement si la ram est utilisé à plus de 95%)"
+echo "[4] Désactiver complètement le swap (utile si vous avez un SSD et 8 Go de ram ou +)"
+echo "[5] Activer TLP (pour Pc portable uniquement !)"
+echo "[6] Installer le microcode propriétaire Intel (pour cpu intel uniquement !)"
+echo "[7] Ajouter les polices d'écriture Microsoft"
+echo "[8] Ajouter un mode 'fraude' à Wayland (permet de lancer sous Wayland par ex Gparted via la commande : fraude gparted)"
+echo "[9] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
+echo "[10] Remettre le thème gris d'origine pour GDM (par défaut violet)"
+
 ### Section installation automatisé
 
 # Q2/ Installation des sessions demandées
@@ -255,14 +270,14 @@ do
 done
 
 
-### Les choses indispensables à faire
+### Les choses utiles recommandés
 
 # Utilitaires
-apt install net-tools gnome-tweak-tool -y
+apt install net-tools htop gnome-tweak-tool -y
 
 # Suppression de l'icone Amazon
-#...........
+apt remove ubuntu-web-launchers -y
 
 # Désactivation de l'affichage des messages d'erreurs à l'écran
-#...........
+echo "enabled=0" > /etc/default/apport
 
