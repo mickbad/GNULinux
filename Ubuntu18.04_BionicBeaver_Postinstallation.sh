@@ -57,7 +57,7 @@ do
 done
 
 echo "======================================================="
-echo "Précision : si vous validez directement par 'entrée' ou un choix non proposé, pour toutes les prochaines questions le script considèra que vous avez sélectionné le choix par défaut cad 1"
+echo "Précision : si vous validez directement par 'entrée' au clavier sans mettre de choix, le script considèra que vous avez sélectionné le choix par défaut cad 1 et ceci pour toutes les questions à venir"
 # Question 2 : Session 
 echo "*******************************************************"
 echo "2/ Quelle(s) session(s) supplémentaire(s) souhaites-tu installer ? (plusieurs choix possibles)"
