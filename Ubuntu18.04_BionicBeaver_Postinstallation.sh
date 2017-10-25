@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.3 (alpha)
+# version 0.0.4 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -40,6 +40,9 @@ then
                 echo "Ok, tu as correctement lancé le script, tu es bien sur Bionic avec Gnome-Shell, passons aux questions..."
 fi
 
+### Section interactive avec les questions
+
+## Mode normale
 # Question 1 : sélection du mode de lancement du script
 echo "*******************************************************"
 echo "1/ Mode de lancement du script : "
@@ -71,6 +74,42 @@ read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (
 clear
 
 
+## Mode avancé
+
+
+
+
+
+
+
+
+
+
+
 
     
+
+### Section installation automatisé
+
+# Q2/ Installation des sessions demandées
+for session in $choixSession
+do 
+    if [ "$session" = "2" ]
+    then 
+        apt install gnome-session -y #session vanilla        
+    fi
+    
+    if [ "$session" = "3" ]
+    then 
+        apt install gnome-shell-extensions -y #session classique  
+    fi
+
+    if [ "$session" = "4" ]
+    then 
+        apt install unity-session -y #session unity      
+    fi
+done
+
+
+
 
