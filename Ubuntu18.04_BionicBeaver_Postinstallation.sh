@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.4 (alpha)
+# version 0.0.5 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -138,6 +138,70 @@ do
     fi
 done
 
-
-
-
+# Q3/ Installation des navigateurs demandées
+for navigateur in $choixNavigateur
+do
+    case $navigateur in
+        "2") #firefox béta
+            add-apt-repository ppa:mozillateam/firefox-next -y
+            ;;
+         "3") #firefox aurora/dev
+            add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora -y
+            ;;
+         "4") #firefox esr
+            add-apt-repository ppa:jonathonf/firefox-esr -y
+            apt update ; apt install firefox-esr -y
+            ;;
+         "5") #firefox nightly
+            add-apt-repository ppa:ubuntu-mozilla-daily/ppa -y 
+            apt update ; apt install firefox-trunk -y
+            ;;
+         "6") #chromium
+            apt install chromium-browser -y    
+            ;;
+         "7") #chrome
+            wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+            sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+            apt update ; apt install google-chrome-stable -y
+         ;;
+         "8") #epiphany
+            apt install epiphany-browser -y
+         ;;
+         "9") #midori
+            add-apt-repository ppa:midori/ppa -y
+            apt update ; apt install midori -y
+         ;;
+         "10") #opera
+         #a ajouter.....
+         ;;
+         "11") #palemoon
+         #a ajouter.....
+         ;;
+         "12") #vivaldi
+         #a ajouter.....
+         ;;
+         "13") #Falkon/Qupzilla
+            apt install qupzilla -y
+         ;;
+         "14") #Tor browser
+            apt install torbrowser-launcher -y
+         ;;
+         "15") #Eolie
+         #a ajouter avec flatpak.....
+         ;;
+         "16") Min
+         #a ajouter.....
+         ;;
+         "17") #Rekonq
+         #a ajouter.....
+         ;;
+         "18") #Netsurf
+            apt install netsurf-gtk -y
+         ;;
+         "19") #Dillo
+            apt install dillo -y
+         ;;
+         "20") #Lynx
+            apt install lynx -y
+    esac
+done
