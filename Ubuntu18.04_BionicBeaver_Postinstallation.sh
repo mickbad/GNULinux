@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.7 (alpha)
+# version 0.0.8 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -101,6 +101,49 @@ echo "*******************************************************"
 read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 11 20)" choixNavigateur
 clear
 
+# Messagerie instantannée
+echo "*******************************************************"
+echo "/ Quel(s) logiciels(s) de messagerie instantannée(s)/tchat(s)/VoIP souhaites-tu ?"
+echo "*******************************************************"
+echo "[1] Pas de supplément"
+echo "[2] Empathy"
+echo "[3] Pidgin"
+echo "[4] Jitsi"
+echo "[5] Psi"
+echo "[6] Gajim"
+echo "[7] Skype"
+echo "[8] Ekiga"
+echo "[9] Linphone"
+echo "[10] Ring"
+echo "[11] Mumble"
+echo "[12] TeamSpeak"
+echo "[13] Discord"
+echo "[14] Tox"
+echo "[14] Viber"
+echo "[14] Telegram"
+echo "[15] xChat"
+echo "[16] Hexchat"
+
+# Download/Upload
+echo "*******************************************************"
+echo "/ Quel(s) logiciels(s) de téléchargement (y compris Torrent) souhaites-tu ?"
+echo "*******************************************************"
+echo "[1] Pas de supplément (Transmission installé de base)"
+echo "[2] FileZilla"
+echo "[3] Deluge"
+echo "[4] Rtorrent"
+echo "[5] qBittorrent"
+echo "[6] Utorrent"
+echo "[7] Bittorrent"
+echo "[8] Vuze (anciennement Azureus)"
+echo "[9] aMule (pour le réseau eDonkey2000, clone de Emule)"
+echo "[10] FrostWire (client multiplate-forme pour le réseau Gnutella)"
+echo "[11] Gtk-Gnutella (un autre client stable et léger avec pas mal d'option)"
+echo "[12] EiskaltDC++ (stable et en français, pour le réseau DirectConnect)"
+echo "[13] RetroShare (logiciel d'échange basé sur F2F et PGP sécurisé)"
+echo "[14] Calypso (client P3P anonyme et évolué)"
+
+
 # Multimédia
 echo "*******************************************************"
 echo "4/ Quel(s) logiciels(s) dans l'audiovisuel veux-tu ? (plusieurs choix possible)"
@@ -121,6 +164,78 @@ echo "[13] Gmusicbrowser, lecteur avec interface très configurable"
 echo "[14] Musique, un lecteur épuré"
 echo "[15] Qmmp, dans le style de Winamp"
 #suite a venir..........
+
+# Traitement/montage photo/video/audio
+echo "*******************************************************"
+echo "4/ Quel(s) logiciels(s) de montage photo/vidéo/son veux-tu ?"
+echo "*******************************************************"
+echo "[1] Aucun"
+echo "[[ Montage Photo ]]"
+echo "[2] Gimp"
+echo "[3] Krita"
+echo "[4] Pinta"
+echo "[5] Pixeluvo (propriétaire)"
+echo "[6] Phatch"
+echo "[7] Cinepaint"
+echo "[8] MyPaint"
+echo "[9] ImageMagick"
+echo "[10] Ufraw"
+echo "[11] Inkscape"
+echo "[12] sK1"
+echo "[13] Xfig"
+echo "[14] Darktable"
+echo "[[ Montage Vidéo ]]"
+echo "[15] KDEnLive"
+echo "[16] OpenShot"
+echo "[17] Pitivi"
+echo "[18] Lives"
+echo "[19] EKD"
+echo "[20] Shotcut"
+echo "[21] SlowMoVideo"
+echo "[22] Flowblade"
+echo "[23] Cinelerra"
+echo "[24] Natron"
+echo "[25] LightWorks"
+echo "[26] VLMC (montage vidéo de VideoLan, experimental !)"
+echo "[[ Traitement Sonore / MAO ]]"
+echo "[27] Gnome Sound Recorder"
+echo "[28] Audacity"
+echo "[29] MhWaveEdit"
+echo "[30] Flacon"
+echo "[31] Sound-Juicer"
+echo "[32] RipperX"
+echo "[33] Grip"
+echo "[34] LMMS"
+echo "[35] MiXX"
+echo "[36] Ardour"
+echo "[37] Rosegarden"
+echo "[[ Modélisation/Animation 3D/CAO ]]"
+echo "[38] Art Of Illusion"
+echo "[39] Blender"
+echo "[40] K-3D"
+echo "[41] MakeHuman"
+echo "[42] SweetHome 3D"
+echo "[43] LibreCAD"
+echo "[44] FreeCAD"
+# a séparer en 2 questions
+
+#suite a venir..........
+
+# Utilitaires
+echo "*******************************************************"
+echo "4/ Quel(s) utilitaire(s) veux-tu ?"
+echo "*******************************************************"
+echo "[1] Aucun"
+echo "[2] Kazam (capture vidéo de votre bureau)"
+echo "[3] SimpleScreenRecorder (autre alternative pour la capture vidéo)"
+echo "[4] OpenBroadcaster Software (Pour faire du live en streaming, adapté pour les gameurs)"
+
+#suite a venir..........
+
+
+
+
+
 
 
 
@@ -163,6 +278,28 @@ echo "[35] Workspace indicator: ....."
 echo "[36] Redshift : ....."
 echo "[37] System-monitor: ....."
 echo "[38] Window Navigator : ....."
+
+# Prog
+echo "*******************************************************"
+echo "A+1/ Pour la programmation/dev web (IDE)..."
+echo "*******************************************************"
+echo "[1] Pas de supplément (en dehors de Vim)"
+echo "[2] Gvim (interface graphique gtk pour Vim)"
+echo "[3] Emacs"
+echo "[4] Geany"
+echo "[5] PyCharm"
+echo "[6] Visual Studio Code"
+echo "[7] Atom"
+echo "[8] Brackets"
+echo "[9] Sublime Text"
+echo "[10] Code:Blocks"
+echo "[11] IntelliJ Idea"
+echo "[12] JEdit"
+echo "[13] Eclipse"
+echo "[14] Anjuta"
+echo "[15] Kdevelop"
+echo "[16] Android Studio"
+#..........
 
 
 echo "*******************************************************"
@@ -273,7 +410,7 @@ done
 ### Les choses utiles recommandés
 
 # Utilitaires
-apt install net-tools htop gnome-tweak-tool -y
+apt install net-tools vim htop gnome-tweak-tool -y
 
 # Suppression de l'icone Amazon
 apt remove ubuntu-web-launchers -y
