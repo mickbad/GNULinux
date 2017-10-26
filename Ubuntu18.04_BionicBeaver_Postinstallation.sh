@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.8 (alpha)
+# version 0.0.9 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -124,13 +124,15 @@ echo "[14] Telegram"
 echo "[15] Wire"
 echo "[16] xChat"
 echo "[17] Hexchat"
+read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 17)" choixMessagerie
+clear
 
 # Download/Upload
 echo "*******************************************************"
-echo "/ Quel(s) logiciels(s) de téléchargement (y compris Torrent) souhaites-tu ?"
+echo "/ Quel(s) logiciels(s) de téléchargement/copie souhaites-tu ?"
 echo "*******************************************************"
 echo "[1] Pas de supplément (Transmission installé de base)"
-echo "[2] FileZilla"
+echo "[2] FileZilla (transfert FTP ou SFTP)"
 echo "[3] Deluge"
 echo "[4] Rtorrent"
 echo "[5] qBittorrent"
@@ -143,13 +145,16 @@ echo "[11] Gtk-Gnutella (un autre client stable et léger avec pas mal d'option)
 echo "[12] EiskaltDC++ (stable et en français, pour le réseau DirectConnect)"
 echo "[13] RetroShare (logiciel d'échange basé sur F2F et PGP sécurisé)"
 echo "[14] Calypso (client P3P anonyme et évolué)"
+echo "[15] Grsync (une interface graphique pour l'outil rsync"
+echo "[16] SubDownloader (téléchargement de sous-titre)"
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15)" choixTelechargement
+clear
 
-
-# Multimédia
+# Lecture multimédia
 echo "*******************************************************"
-echo "4/ Quel(s) logiciels(s) dans l'audiovisuel veux-tu ? (plusieurs choix possible)"
+echo "4/ Quel(s) logiciels(s) de lecture audio/vidéo/son veux-tu ? (plusieurs choix possible)"
 echo "*******************************************************"
-echo "[1] Rien de particulier, rester avec Totem comme lecteur vidéo et Rhythmbox comme lecteur audio"
+echo "[1] Aucun, rester avec Totem comme lecteur vidéo et Rhythmbox comme lecteur audio"
 echo "[2] VLC, le couteau suisse de la vidéo !"
 echo "[3] MPV, un lecteur léger/puissant capable de lire de nombreux formats mais moins complet que VLC"
 echo "[4] SmPlayer, lecteur basé sur mplayer avec une interface utilisant Qt"
@@ -164,14 +169,39 @@ echo "[12] Gnome Musique, utilitaire de la fondation Gnome pour la gestion audio
 echo "[13] Gmusicbrowser, lecteur avec interface très configurable"
 echo "[14] Musique, un lecteur épuré"
 echo "[15] Qmmp, dans le style de Winamp"
-#suite a venir..........
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3)" choixMultimedia
+clear
 
 # Traitement/montage photo/video/audio
 echo "*******************************************************"
-echo "4/ Quel(s) logiciels(s) de montage photo/vidéo/son veux-tu ?"
+echo "4/ Souhaites-tu un logiciel de montage vidéo ?"
+echo "*******************************************************"
+echo "[1] Non merci (aucun n'est installé par défaut)"
+echo "[2] KDEnLive"
+echo "[3] OpenShot"
+echo "[4] Pitivi"
+echo "[5] Lives"
+echo "[6] EKD"
+echo "[7] Shotcut"
+echo "[8] SlowMoVideo"
+echo "[9] Flowblade"
+echo "[10] Cinelerra"
+echo "[11] Natron"
+echo "[12] LightWorks"
+echo "[13] VLMC (montage vidéo de VideoLan, experimental !)"
+echo "[14] Avidemux"
+echo "[15] Mencoder"
+echo "[16] MkvMerge (gui)"
+read -p "Répondre par le ou les chiffres correspondants (exemple : 1)" choixVideo
+clear
+
+
+
+# Traitement/montage photo/video/audio
+echo "*******************************************************"
+echo "4/ Quel(s) logiciels(s) de montage photo ou modélisation 3D ?"
 echo "*******************************************************"
 echo "[1] Aucun"
-echo "[[ Montage Photo ]]"
 echo "[2] Gimp"
 echo "[3] Krita"
 echo "[4] Pinta"
@@ -185,44 +215,35 @@ echo "[11] Inkscape"
 echo "[12] sK1"
 echo "[13] Xfig"
 echo "[14] Darktable"
-echo "[[ Montage Vidéo ]]"
-echo "[15] KDEnLive"
-echo "[16] OpenShot"
-echo "[17] Pitivi"
-echo "[18] Lives"
-echo "[19] EKD"
-echo "[20] Shotcut"
-echo "[21] SlowMoVideo"
-echo "[22] Flowblade"
-echo "[23] Cinelerra"
-echo "[24] Natron"
-echo "[25] LightWorks"
-echo "[26] VLMC (montage vidéo de VideoLan, experimental !)"
-echo "[[ Traitement Sonore / MAO ]]"
-echo "[27] Gnome Sound Recorder"
-echo "[28] Audacity"
-echo "[29] MhWaveEdit"
-echo "[30] Flacon"
-echo "[31] Sound-Juicer"
-echo "[32] RipperX"
-echo "[33] Grip"
-echo "[34] LMMS"
-echo "[35] MiXX"
-echo "[36] Ardour"
-echo "[37] Rosegarden"
-echo "[[ Modélisation/Animation 3D/CAO ]]"
-echo "[38] Art Of Illusion"
-echo "[39] Blender"
-echo "[40] K-3D"
-echo "[41] MakeHuman"
-echo "[42] SweetHome 3D"
-echo "[43] LibreCAD"
-echo "[44] FreeCAD"
-# a séparer en 2 questions
+echo "[15] Art Of Illusion"
+echo "[16] Blender"
+echo "[17] K-3D"
+echo "[18] SweetHome 3D"
+echo "[19] LibreCAD"
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4)" choixGraphisme
+clear
 
-#suite a venir..........
+# Traitement/montage photo/video/audio
+echo "*******************************************************"
+echo "4/ Quel(s) logiciels(s) pour l'encodage ou traitement audio ?"
+echo "*******************************************************"
+echo "[1] Aucun"
+echo "[2] Gnome Sound Recorder"
+echo "[3] Audacity"
+echo "[4] MhWaveEdit"
+echo "[5] Flacon"
+echo "[6] Sound-Juicer"
+echo "[7] RipperX"
+echo "[8] Grip"
+echo "[9] LMMS"
+echo "[10] MiXX"
+echo "[11] Ardour"
+echo "[12] Rosegarden"
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4)" choixAudio
+clear
 
-# Utilitaires
+
+# Utilitaires #(a compléter)
 echo "*******************************************************"
 echo "4/ Quel(s) utilitaire(s) veux-tu ?"
 echo "*******************************************************"
@@ -230,15 +251,31 @@ echo "[1] Aucun"
 echo "[2] Kazam (capture vidéo de votre bureau)"
 echo "[3] SimpleScreenRecorder (autre alternative pour la capture vidéo)"
 echo "[4] OpenBroadcaster Software (Pour faire du live en streaming, adapté pour les gameurs)"
+echo "[5] Glances"
+read -p "Répondre par le ou les chiffres correspondants (exemple : 1)" choixUtilitaire
+clear
 
-#suite a venir..........
-
-
-
-
-
-
-
+# Gaming
+echo "*******************************************************"
+echo "4/ Quel(s) jeux-vidéos (ou applis liés aux jeux) installer ?"
+echo "*******************************************************"
+echo "[1] Aucun, je ne suis pas un gameur"
+echo "[2] Steam (portail de jeux)"
+echo "[3] PlayOnLinux (permet de faire tourner des jeux Windows via Wine)"
+echo "[4] Wine (une sorte d'émulateur pour faire tourner des applis/jeux Windows)"
+echo "[5] Minecraft, un des plus célèbres jeux sandbox"
+echo "[6] Minetest, un clone de Minecraft mais opensource"
+echo "[7] OpenArena, un clone libre de Quake"
+echo "[8] 0ad: Empires Ascendant (jeu de stratégie en temps réeel RTS)"
+echo "[9] Ryzom (MMORPG sous licence AGPL)"
+echo "[10] FlightGear (simulateur de vol)"
+echo "[11] SuperTux (clone de Super Mario mais avec un pingouin)"
+echo "[12] SuperTuxKart (clone de Super Mario Kart)"
+echo "[13] Assault Cube (clone de Counter Strike)"
+echo "[14] World Of Padman (jeu de tir basé sur Quake 3 avec des graphismes amusant)"
+echo "[15] Second Life (métavers 3D sortie en 2003 sur le modèle f2p)"
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3)" choixGaming
+clear
 
 
 ## Mode avancé
@@ -270,7 +307,6 @@ echo "[25] Shortcuts : Permet d'afficher un popup avec la liste des raccourcis p
 echo "[27] Suspend button : Ajout d'un bouton pour activer l'hibernation"
 echo "[28] Taskbar :..........."
 echo "[29] Tilix dropdown : ............"
-echo "[30] Top Icon Plus : ......."
 echo "[31] Taskbar :..........."
 echo "[32] Trash : ....."
 echo "[33] User themes : ..... "
@@ -279,8 +315,10 @@ echo "[35] Workspace indicator: ....."
 echo "[36] Redshift : ....."
 echo "[37] System-monitor: ....."
 echo "[38] Window Navigator : ....."
+read -p "Répondre par le ou les chiffres correspondants (exemple : 1)" choixExtension
+clear
 
-# Prog
+# Prog #(liste a compléter !)
 echo "*******************************************************"
 echo "A+1/ Pour la programmation/dev web (IDE)..."
 echo "*******************************************************"
@@ -300,7 +338,23 @@ echo "[13] Eclipse"
 echo "[14] Anjuta"
 echo "[15] Kdevelop"
 echo "[16] Android Studio"
-#..........
+read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5)" choixIDE
+clear
+
+# Serveur #(liste a compléter !)
+echo "*******************************************************"
+echo "A+1/ Des fonctions serveurs à activer ?"
+echo "*******************************************************"
+echo "[1] Pas de service à activer"
+echo "[2] Serveur SSH (openssh-server)"
+echo "[3] Serveur LAMP (Apache + MariaDB + Php)"
+echo "[4] Serveur FTP avec ProFTPd"
+echo "[5] Serveur BDD PostgreSQL"
+echo "[6] Serveur BDD Oracle"
+read -p "Répondre par le ou les chiffres correspondants (exemple : 1)" choixServeur
+clear
+
+
 
 
 echo "*******************************************************"
@@ -316,6 +370,9 @@ echo "[7] Ajouter les polices d'écriture Microsoft"
 echo "[8] Ajouter un mode 'fraude' à Wayland (permet de lancer sous Wayland par ex Gparted via la commande : fraude gparted)"
 echo "[9] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
 echo "[10] Remettre le thème gris d'origine pour GDM (par défaut violet)"
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7)" choixOptimisation
+clear
+
 
 ### Section installation automatisé
 
