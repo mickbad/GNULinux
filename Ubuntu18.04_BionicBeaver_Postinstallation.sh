@@ -339,6 +339,7 @@ echo "[13] Eclipse"
 echo "[14] Anjuta"
 echo "[15] Kdevelop"
 echo "[16] Android Studio"
+echo "[17] Netbeans (EDI supportant plusieurs langage, surtout Java, avec de nombreux plugins)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5)" choixIDE
 clear
 
@@ -371,6 +372,8 @@ echo "[7] Ajouter les polices d'écriture Microsoft"
 echo "[8] Ajouter un mode 'fraude' à Wayland (permet de lancer sous Wayland par ex Gparted via la commande : fraude gparted)"
 echo "[9] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
 echo "[10] Remettre le thème gris d'origine pour GDM (par défaut violet)"
+echo "[11] Ajouter Oracle Java"
+echo "[12] Installer FlashPlayer pour Firefox (et pour Chromium si installé)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7)" choixOptimisation
 clear
 
