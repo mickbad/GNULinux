@@ -274,6 +274,7 @@ echo "[12] SuperTuxKart (clone de Super Mario Kart)"
 echo "[13] Assault Cube (clone de Counter Strike)"
 echo "[14] World Of Padman (jeu de tir basé sur Quake 3 avec des graphismes amusant)"
 echo "[15] Second Life (métavers 3D sortie en 2003 sur le modèle f2p)"
+echo "[16] Pack 'Gnome Games' comprenant une dizaine de jeux de Gnome"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3)" choixGaming
 clear
 
