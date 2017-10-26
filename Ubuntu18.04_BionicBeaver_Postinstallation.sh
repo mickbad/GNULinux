@@ -374,6 +374,8 @@ echo "[9] Désactiver l'userlist de GDM (utile en entreprise intégré à un dom
 echo "[10] Remettre le thème gris d'origine pour GDM (par défaut violet)"
 echo "[11] Ajouter Oracle Java"
 echo "[12] Installer FlashPlayer pour Firefox (et pour Chromium si installé)"
+echo "[13] Ajouter le support pour le système de fichier exFat de Microsoft"
+echo "[14] Ajouter le support pour le système de fichier HFS d'Apple"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7)" choixOptimisation
 clear
 
