@@ -121,8 +121,9 @@ echo "[13] Discord"
 echo "[14] Tox"
 echo "[14] Viber"
 echo "[14] Telegram"
-echo "[15] xChat"
-echo "[16] Hexchat"
+echo "[15] Wire"
+echo "[16] xChat"
+echo "[17] Hexchat"
 
 # Download/Upload
 echo "*******************************************************"
