@@ -147,6 +147,8 @@ echo "[13] RetroShare (logiciel d'échange basé sur F2F et PGP sécurisé)"
 echo "[14] Calypso (client P3P anonyme et évolué)"
 echo "[15] Grsync (une interface graphique pour l'outil rsync"
 echo "[16] SubDownloader (téléchargement de sous-titre)"
+echo "[17] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
+echo "[18] JDownloader (gestionnaire de téléchargement écrit en Java avec beaucoup d'option)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15)" choixTelechargement
 clear
 
