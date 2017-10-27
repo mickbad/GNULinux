@@ -103,7 +103,7 @@ clear
 
 # Messagerie instantannée
 echo "*******************************************************"
-echo "/ Quel(s) logiciels(s) de messagerie instantannée(s)/tchat(s)/VoIP souhaites-tu ?"
+echo "/ Quel(s) logiciels(s) de messagerie instantannée/tchat/VoIP/visio souhaites-tu ?"
 echo "*******************************************************"
 echo "[1] Pas de supplément"
 echo "[2] Empathy"
@@ -174,14 +174,16 @@ echo "[15] Qmmp, dans le style de Winamp"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3)" choixMultimedia
 clear
 
-# Traitement/montage photo/video/audio
+# Traitement/montage video
 echo "*******************************************************"
-echo "4/ Souhaites-tu un logiciel de montage vidéo ?"
+echo "4/ Souhaites-tu un logiciel de montage/encodage vidéo ?"
 echo "*******************************************************"
 echo "[1] Non merci (aucun n'est installé par défaut)"
+echo "[2] Handbrake (transcodage de n'importe quel fichier vidéo)"
+echo "[3] WinFF (encodage vidéo rapide dans différents formats)"
 echo "[2] KDEnLive"
 echo "[3] OpenShot"
-echo "[4] Pitivi"
+echo "[4] Pitivi" 
 echo "[5] Lives"
 echo "[6] EKD"
 echo "[7] Shotcut"
@@ -199,7 +201,7 @@ clear
 
 
 
-# Traitement/montage photo/video/audio
+# Traitement/montage photo & modélisation 3D
 echo "*******************************************************"
 echo "4/ Quel(s) logiciels(s) de montage photo ou modélisation 3D ?"
 echo "*******************************************************"
@@ -225,21 +227,24 @@ echo "[19] LibreCAD"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4)" choixGraphisme
 clear
 
-# Traitement/montage photo/video/audio
+# Traitement/encodage audio
 echo "*******************************************************"
 echo "4/ Quel(s) logiciels(s) pour l'encodage ou traitement audio ?"
 echo "*******************************************************"
 echo "[1] Aucun"
+echo "[2] SoundConverter (petit logiciel pour convertir des lots de fichiers audios)"
+echo "[3] Xcfa : X Convert File Audio (extraction cd audio, piste dvd, normalisation, création pochette)"
+echo "[4] Sound-Juicer"
+echo "[5] SoundKonverter (convertisseur audio utilisant les bilbiothèques Qt)"
 echo "[2] Gnome Sound Recorder"
 echo "[3] Audacity"
 echo "[4] MhWaveEdit"
 echo "[5] Flacon"
-echo "[6] Sound-Juicer"
 echo "[7] RipperX"
 echo "[8] Grip"
 echo "[9] LMMS"
 echo "[10] MiXX"
-echo "[11] Ardour"
+echo "[11] Ardour (station de travail audio numérique avec enregistrement multipiste et mixage : logiciel lourd !)"
 echo "[12] Rosegarden"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4)" choixAudio
 clear
@@ -323,10 +328,10 @@ clear
 
 # Prog #(liste a compléter !)
 echo "*******************************************************"
-echo "A+1/ Pour la programmation/dev web (IDE)..."
+echo "A+1/ Quel éditeur de texte ou logiciel de Dev (IDE) veux-tu ?"
 echo "*******************************************************"
-echo "[1] Pas de supplément (en dehors de Vim)"
-echo "[2] Gvim (interface graphique gtk pour Vim)"
+echo "[1] Pas de supplément (en dehors de Vim qui sera installé)"
+echo "[2] Gvim (interface graphique pour Vim)"
 echo "[3] Emacs"
 echo "[4] Geany"
 echo "[5] PyCharm"
@@ -342,6 +347,10 @@ echo "[14] Anjuta"
 echo "[15] Kdevelop"
 echo "[16] Android Studio"
 echo "[17] Netbeans (EDI supportant plusieurs langage, surtout Java, avec de nombreux plugins)"
+echo "[18] BlueFish (éditeur orienté développement web : HTML/PHP/CSS/...)"
+echo "[19] BlueGriffon (éditeur HTML/CSS avec aperçu du rendu en temps réel)"
+echo "[20] SciTE : Scintilla Text Editor (éditeur web avec une bonne coloration syntaxique)"
+
 read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5)" choixIDE
 clear
 
@@ -476,7 +485,7 @@ done
 ### Les choses utiles recommandés
 
 # Utilitaires
-apt install net-tools vim htop gnome-tweak-tool -y
+apt install net-tools vim htop gparted gnome-tweak-tool -y
 
 # Suppression de l'icone Amazon
 apt remove ubuntu-web-launchers -y
