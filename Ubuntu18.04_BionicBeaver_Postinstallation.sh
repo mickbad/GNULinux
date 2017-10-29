@@ -264,6 +264,8 @@ echo "[4] OpenBroadcaster Software (Pour faire du live en streaming, adapté pou
 echo "[5] Glances (afficher l'état des ressources systèmes en temps réel comme htop mais plus complet)"
 echo "[6] Brasero (logiciel de gravure de cd/dvd)" 
 echo "[7] Wine (une sorte d'émulateur pour faire tourner des applis/jeux conçu à la base pour Windows)"
+echo "[8] Ajouter Oracle Java (propriétaire)"
+echo "[9] Installer FlashPlayer (via le dépot partenaire)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1)" choixUtilitaire
 clear
 
@@ -329,32 +331,32 @@ echo "[38] WindowNavigator (Permettre la sélection au clavier des fenêtres/esp
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1)" choixExtension
 clear
 
-# Prog #(liste a compléter !)
+# Prog
 echo "*******************************************************"
 echo "A+1/ Quel éditeur de texte ou logiciel de Dev (IDE) veux-tu ?"
 echo "*******************************************************"
 echo "[1] Pas de supplément (en dehors de Vim qui sera installé)"
 echo "[2] Gvim (interface graphique pour Vim)"
-echo "[3] Emacs (le couteau suisse des éditeurs de texte, il fait tout ! mais il est complexe)"
-echo "[4] Geany"
-echo "[5] PyCharm"
-echo "[6] Visual Studio Code"
-echo "[7] Atom"
-echo "[8] Brackets"
-echo "[9] Sublime Text"
-echo "[10] Code:Blocks"
-echo "[11] IntelliJ Idea"
-echo "[12] JEdit"
-echo "[13] Eclipse"
-echo "[14] Anjuta"
-echo "[15] Kdevelop"
-echo "[16] Android Studio (environnement de développement pour développer des applis Android, basé sur IntelliJ Idea)"
+echo "[3] Emacs (le couteau suisse des éditeurs de texte, il fait tout mais il est complexe)"
+echo "[4] Geany (EDI rapide et simple utilisant GTK2 supportant de nombreux languages)"
+echo "[5] PyCharm (IDE spécialisé pour le language Python)"
+echo "[6] Visual Studio Code (Développé par Microsoft, sous licence libre MIT)"
+echo "[7] Atom (Éditeur sous licence libre qui supporte les plug-ins Node.js et implémente GitControl)"
+echo "[8] Brackets (Éditeur opensource d'Adobe pour le web design et dev web HTML, CSS, JavaScript...)"
+echo "[9] Sublime Text (Logiciel développé en C++ et Python prenant en charge 44 languages de prog)"
+echo "[10] Code:Blocks (IDE spécialisé pour le language C/C++)"
+echo "[11] IntelliJ Idea (IDE Java commercial de JetBrains, plutôt conçu pour Java)"
+echo "[12] JEdit (Éditeur libre, multiplateforme et très personnalisable)"
+echo "[13] Eclipse (Projet décliné en sous-projets de développement, extensible, universel et polyvalent)"
+echo "[14] Anjuta (IDE simple pour C/C++, Java, JavaScript, Python et Vala)"
+echo "[15] Kdevelop (IDE gérant de nombreux language conçu plutôt pour KDE)" #==> vérifier pertinence sous Gnome...
+echo "[16] Android Studio (IDE de Google spécialisé pour le développement d'application Android)"
 echo "[17] Netbeans (EDI supportant plusieurs langage, surtout Java, avec de nombreux plugins)"
 echo "[18] BlueFish (éditeur orienté développement web : HTML/PHP/CSS/...)"
 echo "[19] BlueGriffon (éditeur HTML/CSS avec aperçu du rendu en temps réel)"
 echo "[20] SciTE : Scintilla Text Editor (éditeur web avec une bonne coloration syntaxique)"
 
-read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5)" choixIDE
+read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5)" choixDev
 clear
 
 # Serveur #(liste a compléter !)
@@ -362,11 +364,11 @@ echo "*******************************************************"
 echo "A+1/ Des fonctions serveurs à activer ?"
 echo "*******************************************************"
 echo "[1] Pas de service à activer"
-echo "[2] Serveur SSH (openssh-server)"
-echo "[3] Serveur LAMP (Apache + MariaDB + Php)"
-echo "[4] Serveur FTP avec ProFTPd"
-echo "[5] Serveur BDD PostgreSQL"
-echo "[6] Serveur BDD Oracle"
+echo "[2] Serveur SSH (Pour contrôler votre PC à distance via SSH)"
+echo "[3] Serveur LAMP (Pour faire un serveur web avec votre PC : Apache + MariaDB + PHP)"
+echo "[4] Serveur FTP avec ProFTPd (Stockage de fichier sur votre machine via FTP)"
+echo "[5] Serveur BDD PostgreSQL (Pour installer une base de donnée PostgreSQL)"
+echo "[6] Serveur BDD Oracle (Pour créer une base Oracle sur votre machine)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1)" choixServeur
 clear
 
@@ -383,8 +385,6 @@ echo "[7] Ajouter les polices d'écriture Microsoft"
 echo "[8] Ajouter un mode 'fraude' à Wayland (permet de lancer sous Wayland par ex Gparted via la commande : fraude gparted)"
 echo "[9] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
 echo "[10] Remettre le thème gris d'origine pour GDM (par défaut violet)"
-echo "[11] Ajouter Oracle Java (propriétaire)"
-echo "[12] Installer FlashPlayer pour Firefox (et pour Chromium si installé)"
 echo "[13] Ajouter le support pour le système de fichier exFat de Microsoft"
 echo "[14] Ajouter le support pour le système de fichier HFS d'Apple"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7)" choixOptimisation
@@ -392,6 +392,26 @@ clear
 
 
 ### Section installation automatisé
+
+## Les choses utiles recommandés pour tous :
+
+# Activation du dépot partenaire 
+sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
+
+#Maj du système + nettoyage
+apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
+
+# Utilitaires 
+apt install net-tools vim htop gparted gnome-tweak-tool -y
+
+# Suppression de l'icone Amazon
+apt remove ubuntu-web-launchers -y
+
+# Désactivation de l'affichage des messages d'erreurs à l'écran
+echo "enabled=0" > /etc/default/apport
+
+
+## Installation suivant les choix de l'utilisateur :
 
 # Q2/ Installation des sessions demandées
 for session in $choixSession
@@ -481,15 +501,4 @@ do
     esac
 done
 
-
-### Les choses utiles recommandés
-
-# Utilitaires
-apt install net-tools vim htop gparted gnome-tweak-tool -y
-
-# Suppression de l'icone Amazon
-apt remove ubuntu-web-launchers -y
-
-# Désactivation de l'affichage des messages d'erreurs à l'écran
-echo "enabled=0" > /etc/default/apport
 
