@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.12 (alpha)
+# version 0.0.13 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -266,6 +266,8 @@ echo "[6] Brasero (logiciel de gravure de cd/dvd)"
 echo "[7] Wine (une sorte d'émulateur pour faire tourner des applis/jeux conçu à la base pour Windows)"
 echo "[8] Ajouter Oracle Java (propriétaire)"
 echo "[9] Installer FlashPlayer (via le dépot partenaire)"
+echo "[10] VirtualBox (virtualisation de système)"
+echo "[11] VMWare Workstation Player (version gratuite de VmWare Workstation mais pas libre)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
 clear
 
@@ -467,12 +469,17 @@ do
             apt update ; apt install midori -y
          ;;
          "10") #opera
-         #a ajouter.....
+            wget http://download1.operacdn.com/pub/opera/desktop/48.0.2685.52/linux/opera-stable_48.0.2685.52_amd64.deb
+            dpkg -i opera-stable_48.0.2685.52_amd64.deb
+            apt install -fy
          ;;
-         "11") #palemoon
-         #a ajouter, cf : https://software.opensuse.org/download.html?project=home:stevenpusser&package=palemoon
+         "11") #palemoon (si marche pas, faire avec le paquet deb)
+            sh -c "echo 'deb http://download.opensuse.org/repositories/home:/stevenpusser/xUbuntu_17.04/ /' > /etc/apt/sources.list.d/palemoon.list"
+            apt update ; apt install palemoon -y 
          ;;
          "12") #vivaldi x64
+            wget -nv https://download.opensuse.org/repositories/home:stevenpusser/xUbuntu_17.04/Release.key -O Release.key
+            apt-key add - < Release.key ; apt update
             wget https://downloads.vivaldi.com/stable/vivaldi-stable_1.12.955.42-1_amd64.deb
             dpkg -i vivaldi-stable_1.12.955.42-1_amd64.deb
          ;;
@@ -488,7 +495,9 @@ do
             flatpak install --from ./org.gnome.Eolie.flatpakref -y
          ;;
          "16") Min
-         # Installation difficile : voir si pertinent plus tard
+            wget https://github.com/minbrowser/min/releases/download/v1.6.3/Min_1.6.3_amd64.deb
+            dpkg -i Min_1.6.3_amd64.deb
+            apt install -fy
          ;;
          "17") #Rekonq
             apt install rekonq -y
@@ -502,6 +511,122 @@ do
          "20") #Lynx
             apt install lynx -y
          ;;
+    esac
+done
+
+# Q4/ Tchat/Messagerie instantannée/Télephonie
+for messagerie in $choixMessagerie
+do
+    case $messagerie in
+        "2") #empathy
+            apt install empathy -y
+            ;;
+        "3") #pidgin
+            apt install pidgin pidgin-plugin-pack -y
+            ;;
+        "4") #jitsi
+           
+            ;;
+        "5") #psi
+            apt install psi -y
+            ;;         
+        "6") #gajim
+            apt install gajim -y
+            ;;
+        "7") #skype
+            
+            ;;            
+        "8") #ekiga
+            apt install ekiga -y
+            ;;           
+        "9") #linphone
+            apt install linphone -y
+            ;;           
+        "10") #ring
+            apt install ring -y
+            ;;        
+        "11") #mumble
+            apt install mumble -y
+            ;;    
+        "12") #teamspeak
+            
+            ;;       
+        "13") #discord
+            
+            ;;                         
+        "14") #tox
+            apt install tox -y
+            ;;               
+        "15") #viber
+            
+            ;;               
+        "16") #telegram
+            
+            ;;              
+        "17") #wire
+            
+            ;;               
+        "18") #hexchat
+            apt install hexchat hexchat-plugins -y
+            ;;                        
+    esac
+done
+
+# Q5/ Download/Copie
+for download in $choixTelechargement
+do
+    case $download in
+        "2") #filezilla
+            apt install filezilla -y
+            ;;
+        "3") #Deluge
+            apt install deluge -y
+            ;;
+        "4") #Rtorrent
+            apt install rtorrent screen -y
+            ;;
+        "5") #qBittorrent
+            apt install qbittorrent -y
+            ;;         
+        "6") #µTorrent
+            
+            ;;
+        "7") #Bittorrent
+            apt install bittorrent -y
+            ;;            
+        "8") #Vuze
+           
+            ;;           
+        "9") #aMule
+            apt install amule -y
+            ;;           
+        "10") #FrostWire
+            
+            ;;        
+        "11") #Gtk-Gnutella
+            apt install gtk-gnutella -y
+            ;;    
+        "12") #EiskaltDC++
+            apt install eiskaltdcpp eiskaltdcpp-gtk3 -y
+            ;;       
+        "13") #RetroShare
+            
+            ;;                         
+        "14") #Calypso
+            
+            ;;               
+        "15") #Grsync
+            apt install grsync -y
+            ;;               
+        "16") #SubDownloader
+            apt install subdownloader -y
+            ;;              
+        "17") #Nicotine+ 
+            apt install nicotine -y
+            ;;               
+        "18") #JDownloader
+            
+            ;;                        
     esac
 done
 
