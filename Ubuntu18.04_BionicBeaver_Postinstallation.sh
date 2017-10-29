@@ -98,10 +98,10 @@ echo "[18] NetSurf (basique mais très léger et performant)"
 echo "[19] Dillo (navigateur capable de tourner sur des ordinosaures)"
 echo "[20] Lynx (navigateur 100% en ligne de commande, pratique depuis une console SSH)"
 echo "*******************************************************"
-read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 11 20)" choixNavigateur
+read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 11 20) : " choixNavigateur
 clear
 
-# Messagerie instantannée
+# Question 4 : Messagerie instantannée
 echo "*******************************************************"
 echo "4/ Quel(s) logiciels(s) de messagerie instantannée/tchat/VoIP/visio souhaites-tu ?"
 echo "*******************************************************"
@@ -123,12 +123,12 @@ echo "[15] Viber (logiciel de communication, surtout connue en application mobil
 echo "[16] Telegram (appli de messagerie basée sur le cloud avec du chiffrage)"
 echo "[17] Wire (un autre client de messagerie instantanée chiffré crée par Wire Swiss)"
 echo "[18] Hexchat (client IRC, fork de xchat)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 17)" choixMessagerie
+read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 17) : " choixMessagerie
 clear
 
-# Download/Upload
+# Question 5 : Download/Upload
 echo "*******************************************************"
-echo "/ Quel(s) logiciels(s) de téléchargement/copie souhaites-tu ?"
+echo "5/ Quel(s) logiciels(s) de téléchargement/copie souhaites-tu ?"
 echo "*******************************************************"
 echo "[1] Pas de supplément ('Transmission' installé de base)"
 echo "[2] FileZilla (logiciel très répendu utilisé pour les transferts FTP ou SFTP)"
@@ -148,12 +148,12 @@ echo "[15] Grsync (une interface graphique pour l'outil rsync"
 echo "[16] SubDownloader (téléchargement de sous-titre)"
 echo "[17] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
 echo "[18] JDownloader (gestionnaire de téléchargement écrit en Java avec beaucoup d'option)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15)" choixTelechargement
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15) : " choixTelechargement
 clear
 
-# Lecture multimédia
+# Question 6 : Lecture multimédia
 echo "*******************************************************"
-echo "4/ Quel(s) logiciels(s) de lecture audio/vidéo veux-tu ? (plusieurs choix possible)"
+echo "6/ Quel(s) logiciels(s) de lecture audio/vidéo veux-tu ? (plusieurs choix possible)"
 echo "*******************************************************"
 echo "[1] Aucun, rester avec les choix par défaut ('Totem' pour la vidéo, 'Rhythmbox' pour la musique)"
 echo "[2] VLC VideoLan (le couteau suisse de la vidéo, très complet !)"
@@ -172,12 +172,12 @@ echo "[14] Musique (un lecteur épuré)"
 echo "[15] Qmmp (dans le même style de Winamp pour les fans)"
 echo "[16] XMMS2 (un autre lecteur audio dans le style de Winamp, très complet)"
 echo "[17] Lollypop (lecture de musique adapté à Gnome avec des fonctions très avancées)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3)" choixMultimedia
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixMultimedia
 clear
 
-# Traitement/montage video
+# Question 7 : Traitement/montage video
 echo "*******************************************************"
-echo "4/ Souhaites-tu un logiciel de montage/encodage vidéo ?"
+echo "7/ Souhaites-tu un logiciel de montage/encodage vidéo ?"
 echo "*******************************************************"
 echo "[1] Non merci (aucun n'est installé par défaut)"
 echo "[2] Handbrake (transcodage de n'importe quel fichier vidéo)"
@@ -200,14 +200,14 @@ echo "[15] Mencoder (encodage de fichier vidéo, compatible avec de très nombre
 echo "[16] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
 echo "[17] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
 echo "[18] Jahshaka (Montage vidéo mais aussi effets spéciaux, post-prod en temps réel. Modulaire)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 1)" choixVideo
+read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
 clear
 
 
 
-# Traitement/montage photo & modélisation 3D
+# Question 8 : Traitement/montage photo & modélisation 3D
 echo "*******************************************************"
-echo "4/ Quel(s) logiciels(s) de montage photo ou modélisation 3D ?"
+echo "8/ Quel(s) logiciels(s) de montage photo ou modélisation 3D ?"
 echo "*******************************************************"
 echo "[1] Aucun (pas de logiciel par défaut)"
 echo "[2] Gimp (montage photo avancé, équivalent à 'Adobe Photoshop')"
@@ -227,12 +227,12 @@ echo "[15] Blender (suite libre de modélisation 3d, matériaux et textures, d'�
 echo "[16] K-3D (Animation et modélisation polygonale et modélisation par courbes)"
 echo "[17] SweetHome 3D (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
 echo "[18] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4)" choixGraphisme
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixGraphisme
 clear
 
-# Traitement/encodage audio
+# Question 9 : Traitement/encodage audio
 echo "*******************************************************"
-echo "4/ Quel(s) logiciels(s) pour l'encodage ou traitement audio ?"
+echo "9/ Quel(s) logiciels(s) pour l'encodage ou traitement audio ?"
 echo "*******************************************************"
 echo "[1] Aucun"
 echo "[2] SoundConverter (petit logiciel pour convertir des lots de fichiers audios)"
@@ -249,13 +249,13 @@ echo "[12] LMMS : Let's Make Music (station audio opensource crée par des music
 echo "[13] MiXX (logiciel pour Dj pour le mixage de musique)"
 echo "[14] Ardour (station de travail audio numérique avec enregistrement multipiste et mixage : logiciel lourd !)"
 echo "[15] Rosegarden (création musicale avec édition des partitions et peux s'interfacer avec des instruments)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4)" choixAudio
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixAudio
 clear
 
 
-# Utilitaires #(a compléter)
+# Question 10 : Utilitaires #(a compléter)
 echo "*******************************************************"
-echo "4/ Quel(s) utilitaire(s) supplémentaire(s) veux-tu ?"
+echo "10/ Quel(s) utilitaire(s) supplémentaire(s) veux-tu ?"
 echo "*******************************************************"
 echo "[1] Aucun"
 echo "[2] Kazam (capture vidéo de votre bureau)"
@@ -266,12 +266,12 @@ echo "[6] Brasero (logiciel de gravure de cd/dvd)"
 echo "[7] Wine (une sorte d'émulateur pour faire tourner des applis/jeux conçu à la base pour Windows)"
 echo "[8] Ajouter Oracle Java (propriétaire)"
 echo "[9] Installer FlashPlayer (via le dépot partenaire)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 1)" choixUtilitaire
+read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
 clear
 
-# Gaming
+# Question 11 : Gaming
 echo "*******************************************************"
-echo "4/ Quel(s) jeux-vidéos (ou applis liés aux jeux) installer ?"
+echo "11/ Quel(s) jeux-vidéos (ou applis liés aux jeux) installer ?"
 echo "*******************************************************"
 echo "[1] Aucun, je ne suis pas un gameur"
 echo "[2] Steam (portail de jeux connue, permet notamment d'installer Dota2, TF2, CS, TR...)"
@@ -288,15 +288,15 @@ echo "[12] Assault Cube (clone de Counter Strike)"
 echo "[13] World Of Padman (jeu de tir basé sur Quake 3 avec des graphismes amusant)"
 echo "[14] Second Life (métavers 3D sortie en 2003 sur le modèle f2p)"
 echo "[15] Gnome Games (Pack d'une dizaine de mini-jeux pour Gnome)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3)" choixGaming
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
 clear
 
 
 ## Mode avancé
 
-# Extension  {a modifier.......}
+# Question A12 : Extension  {a modifier.......}
 echo "*******************************************************"
-echo "A1/ Des extensions Gnome-Shell supplémentaires à installer ?"
+echo "A12/ Des extensions Gnome-Shell supplémentaires à installer ?"
 echo "*******************************************************"
 echo "[1] Non, ne pas ajouter de nouvelles extensions"
 echo "[2] AlternateTab (alternative au Alt+Tab issu du mode classique)"
@@ -328,12 +328,12 @@ echo "[35] Workspace indicator (Affiche dans le panel en haut dans quel espace d
 echo "[36] Redshift (Ajoute un raccourci pour basculer avec redshift dans le menu de l'utilisateur)"
 echo "[37] System-monitor (Moniteur de ressource visiblre directement depuis le bureau)"
 echo "[38] WindowNavigator (Permettre la sélection au clavier des fenêtres/espace de travail via la superposition)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 1)" choixExtension
+read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixExtension
 clear
 
-# Prog
+# Question A13 : Prog
 echo "*******************************************************"
-echo "A+1/ Quel éditeur de texte ou logiciel de Dev (IDE) veux-tu ?"
+echo "A13/ Quel éditeur de texte ou logiciel de Dev (IDE) veux-tu ?"
 echo "*******************************************************"
 echo "[1] Pas de supplément (en dehors de Vim qui sera installé)"
 echo "[2] Gvim (interface graphique pour Vim)"
@@ -356,12 +356,12 @@ echo "[18] BlueFish (éditeur orienté développement web : HTML/PHP/CSS/...)"
 echo "[19] BlueGriffon (éditeur HTML/CSS avec aperçu du rendu en temps réel)"
 echo "[20] SciTE : Scintilla Text Editor (éditeur web avec une bonne coloration syntaxique)"
 
-read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5)" choixDev
+read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5) : " choixDev
 clear
 
-# Serveur #(liste a compléter !)
+# Question A14 : Serveur 
 echo "*******************************************************"
-echo "A+1/ Des fonctions serveurs à activer ?"
+echo "A14/ Des fonctions serveurs à activer ?"
 echo "*******************************************************"
 echo "[1] Pas de service à activer"
 echo "[2] Serveur SSH (Pour contrôler votre PC à distance via SSH)"
@@ -369,11 +369,12 @@ echo "[3] Serveur LAMP (Pour faire un serveur web avec votre PC : Apache + Maria
 echo "[4] Serveur FTP avec ProFTPd (Stockage de fichier sur votre machine via FTP)"
 echo "[5] Serveur BDD PostgreSQL (Pour installer une base de donnée PostgreSQL)"
 echo "[6] Serveur BDD Oracle (Pour créer une base Oracle sur votre machine)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 1)" choixServeur
+read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixServeur
 clear
 
+# Question A15 : Optimisation
 echo "*******************************************************"
-echo "A2/ Des optimisations supplémentaires à activer ?"
+echo "A15/ Des optimisations supplémentaires à activer ?"
 echo "*******************************************************"
 echo "[1] Non"
 echo "[2] Déporter répertoire snappy dans /home pour gagner de l'espace (utile si le /home est séparé et racine limité)"
@@ -387,7 +388,7 @@ echo "[9] Désactiver l'userlist de GDM (utile en entreprise intégré à un dom
 echo "[10] Remettre le thème gris d'origine pour GDM (par défaut violet)"
 echo "[13] Ajouter le support pour le système de fichier exFat de Microsoft"
 echo "[14] Ajouter le support pour le système de fichier HFS d'Apple"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7)" choixOptimisation
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
 clear
 
 
@@ -502,3 +503,9 @@ do
 done
 
 
+echo "Pour prendre en compte tous les changements, il faut maintenant redémarrer !"
+read -p "Voulez-vous redémarrer immédiatement ? [o/n] " reboot
+if [ "$reboot" = "o" ] || [ "$reboot" = "O" ]
+then
+    reboot
+fi
