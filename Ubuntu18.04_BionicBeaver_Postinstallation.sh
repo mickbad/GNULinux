@@ -93,7 +93,7 @@ echo "[13] Falkon/QupZilla (une alternative libre et légère utilisant Webkit)"
 echo "[14] Tor Browser (pour naviguer dans l'anonymat avec le réseau tor : basé sur Firefox ESR)"
 echo "[15] Eolie (une autre alternative pour Gnome : l'installation se fera via FlatPak)"
 echo "[16] Min (un navigateur minimaliste et donc très léger)"
-echo "[17] Rekonq (navigateur utilisant les technologies KDE)" #===> vérifier utilité sous gnome
+echo "[17] Rekonq (Attention déconseillé sous Gnome : beaucoup de dépendance KDE !!!)" 
 echo "[18] NetSurf (basique mais très léger et performant)"
 echo "[19] Dillo (navigateur capable de tourner sur des ordinosaures)"
 echo "[20] Lynx (navigateur 100% en ligne de commande, pratique depuis une console SSH)"
@@ -470,10 +470,11 @@ do
          #a ajouter.....
          ;;
          "11") #palemoon
-         #a ajouter.....
+         #a ajouter, cf : https://software.opensuse.org/download.html?project=home:stevenpusser&package=palemoon
          ;;
-         "12") #vivaldi
-         #a ajouter.....
+         "12") #vivaldi x64
+            wget https://downloads.vivaldi.com/stable/vivaldi-stable_1.12.955.42-1_amd64.deb
+            dpkg -i vivaldi-stable_1.12.955.42-1_amd64.deb
          ;;
          "13") #Falkon/Qupzilla
             apt install qupzilla -y
@@ -481,14 +482,16 @@ do
          "14") #Tor browser
             apt install torbrowser-launcher -y
          ;;
-         "15") #Eolie
-         #a ajouter avec flatpak.....
+         "15") #Eolie via Flatpak
+            apt install flatpak -y
+            wget https://flathub.org/repo/appstream/org.gnome.Eolie.flatpakref
+            flatpak install --from ./org.gnome.Eolie.flatpakref -y
          ;;
          "16") Min
-         #a ajouter.....
+         # Installation difficile : voir si pertinent plus tard
          ;;
          "17") #Rekonq
-         #a ajouter.....
+            apt install rekonq -y
          ;;
          "18") #Netsurf
             apt install netsurf-gtk -y
