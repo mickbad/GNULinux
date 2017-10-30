@@ -812,6 +812,55 @@ do
     esac
 done
 
+# Q7/ Traitement audio
+for audio in $choixAudio
+do
+    case $audio in
+        "2") #SoundConverter
+            
+            ;;
+        "3") #Xcfa
+           
+            ;;
+        "4") #SoundJuicer
+            
+            ;;
+        "5") #SoundKonverter
+           
+            ;;
+        "6") #Gnome Sound Recorder
+            
+            ;;
+        "7") #Audacity
+            
+            ;;
+        "8") #MhWaveEdit
+            
+            ;;         
+        "9") #Flacon
+            
+            ;;
+        "10") #RipperX
+
+            ;;            
+        "11") #Grip
+            
+            ;;           
+        "12") #LMMS
+            
+            ;;           
+        "13") #MiXX
+            
+            ;;        
+        "14") #Ardour
+            
+            ;;    
+        "15") #Rosegarden
+    
+            ;;                                  
+    esac
+done
+
 echo "Pour prendre en compte tous les changements, il faut maintenant redémarrer !"
 read -p "Voulez-vous redémarrer immédiatement ? [o/n] " reboot
 if [ "$reboot" = "o" ] || [ "$reboot" = "O" ]
