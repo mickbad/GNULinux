@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.13 (alpha)
+# version 0.0.14 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -166,7 +166,7 @@ echo "[8] Clementine (lecteur audio avec gestion des pochettes, genres musicaux.
 echo "[9] QuodLibet (un lecteur audio très puissant avec liste de lecture basé sur les expressions rationnelles)"
 echo "[10] Audacious (lecteur complet pour les audiophiles avec beaucoup de plugins)"
 echo "[11] Guayadeque (lecteur audio et radio avec une interface agréable)"
-echo "[12] Gnome Musique (utilitaire de la fondation Gnome pour la gestion audio, assez basique)"
+echo "[12] Gnome Music (utilitaire de la fondation Gnome pour la gestion audio, assez basique)"
 echo "[13] Gmusicbrowser (lecteur avec une interface très configurable)"
 echo "[14] Musique (un lecteur épuré)"
 echo "[15] Qmmp (dans le même style de Winamp pour les fans)"
@@ -630,6 +630,61 @@ do
     esac
 done
 
+# Q6/ Lecture multimédia
+for multimedia in $choixMultimedia
+do
+    case $multimedia in
+        "2") #VLC
+            apt install vlc vlc-plugin-vlsub vlc-plugin-visualization -y
+            ;;
+        "3") #MPV (mpv ou gnome-mpv ???)
+            
+            ;;
+        "4") #SmPlayer
+            apt install smplayer smplayer-l10n smplayer-themes -y
+            ;;
+        "5") #gxine
+            apt install gxine  -y
+            ;;         
+        "6") #dragonplayer
+            apt install dragonplayer -y
+            ;;
+        "7") #Banshee + extensions
+            apt install banshee banshee-community-extensions -y
+            apt install banshee-extension-radiostationfetcher banshee-extension-duplicatesongdetector banshee-extension-appindicator banshee-extension-albumartwriter -y
+            ;;            
+        "8") #Clementine
+            apt install clementine -y
+            ;;           
+        "9") #QuodLibet
+            apt install quodlibet -y
+            ;;           
+        "10") #audacious
+            apt install audacious audacious-plugins -y
+            ;;        
+        "11") #Guayadeque
+            
+            ;;    
+        "12") #gnome music
+            apt install gnome-music -y
+            ;;       
+        "13") #gmusicbrowser
+            apt install gmusicbrowser -y
+            ;;                         
+        "14") #musique
+            apt install musique -y
+            ;;               
+        "15") #qmmp
+            apt install qmmp -y
+            ;;               
+        "16") #xmms2 + plugins
+            apt install xmms2 xmms2-plugin-all -y
+            ;;              
+        "17") #Lollypop 
+            
+            ;;                                    
+    esac
+done
 
 echo "Pour prendre en compte tous les changements, il faut maintenant redémarrer !"
 read -p "Voulez-vous redémarrer immédiatement ? [o/n] " reboot
