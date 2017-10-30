@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.15 (alpha)
+# version 0.0.16 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -686,7 +686,7 @@ do
     esac
 done
 
-# Q6/ Montage vidéo
+# Q7/ Montage vidéo
 for video in $choixVideo
 do
     case $video in
@@ -754,7 +754,7 @@ do
 done
 
 
-# Q7/ Montage photo/graphisme/3d
+# Q8/ Montage photo/graphisme/3d
 for graphisme in $choixGraphisme
 do
     case $graphisme in
@@ -812,7 +812,7 @@ do
     esac
 done
 
-# Q7/ Traitement audio
+# Q9/ Traitement audio
 for audio in $choixAudio
 do
     case $audio in
@@ -858,6 +858,92 @@ do
         "15") #Rosegarden
     
             ;;                                  
+    esac
+done
+
+# Q10/ Utilitaire
+for utilitaire in $choixUtilitaire
+do
+    case $utilitaire in
+        "2") #Kazam
+            
+            ;;
+        "3") #SimpleScreenRecorder
+           
+            ;;
+        "4") #OpenBroadcaster Software
+            
+            ;;
+        "5") #Glances
+           
+            ;;
+        "6") #Brasero
+            
+            ;;
+        "7") #Wine
+            
+            ;;
+        "8") #Oracle Java
+            
+            ;;         
+        "9") #FlashPlayer
+            
+            ;;
+        "10") #VirtualBox
+
+            ;;            
+        "11") #VMWare Workstation Player
+            
+            ;;                                           
+    esac
+done
+
+# Q11/ Jeux
+for gaming in $choixGaming
+do
+    case $gaming in
+        "2") #Steam
+            
+            ;;
+        "3") #PlayOnLinux
+           
+            ;;
+        "4") #Minecraft
+            
+            ;;
+        "5") #Minetest
+           
+            ;;
+        "6") #OpenArena
+            
+            ;;
+        "7") #0ad: Empires Ascendant
+            
+            ;;
+        "8") #Ryzom
+            
+            ;;         
+        "9") #FlightGear
+            
+            ;;
+        "10") #SuperTux
+
+            ;;            
+        "11") #SuperTuxKart
+            
+            ;;   
+        "12") #Assault Cube
+            
+            ;;         
+        "13") #World Of Padman
+            
+            ;;
+        "14") #Second Life
+
+            ;;            
+        "15") #Gnome Games
+            
+            ;;  
     esac
 done
 
