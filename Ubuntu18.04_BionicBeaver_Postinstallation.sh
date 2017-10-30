@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.14 (alpha)
+# version 0.0.15 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -183,23 +183,23 @@ echo "[1] Non merci (aucun n'est installé par défaut)"
 echo "[2] Handbrake (transcodage de n'importe quel fichier vidéo)"
 echo "[3] WinFF (encodage vidéo rapide dans différents formats)"
 echo "[4] Libav-tools (fork de FFmpeg, outil en CLI pour la conversion via : avconv)"
-echo "[2] KDEnLive (éditeur vidéo non-linéaire pour monter sons et images avec effets spéciaux)"
-echo "[3] OpenShot Video Editor (une autre alternative comme éditeur vidéo, libre et écrit en Python)"
-echo "[4] Pitivi (logiciel de montage basique avec une interface simple et intuitive)" 
-echo "[5] Lives (Dispose des fonctionnalités d'éditions vidéo/son classique, des filtres et multipiste"
-echo "[6] EKD (Opérations de post-prod sur les vidéos et images avec traitement par lot)"
-echo "[7] Shotcut (editeur et montage vidéo libre et multi-plateformes)"
-echo "[8] SlowMoVideo (Création de vidéos en slow-motion en opensource)"
-echo "[9] Flowblade (Logiciel de montage video multi-piste performant)"
-echo "[10] Cinelerra (montage non-linéaire sophistiqué, équivalent à Adobe première, Final Cut et Sony Vegas"
-echo "[11] Natron (programme de post-prod destiné au compositing et aux effets spéciaux)"
-echo "[12] LightWorks (Montage vidéo professionnel propriétaire)"
-echo "[13] VLMC (montage vidéo de VideoLan, experimental !)" #===> vérifier stablilité...
-echo "[14] Avidemux (c'est un peu l'équivalent de 'VirtualDub' sous Windows : coupe, filtre et ré-encodage)"
-echo "[15] Mencoder (encodage de fichier vidéo, compatible avec de très nombreux formats)"
-echo "[16] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
-echo "[17] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
-echo "[18] Jahshaka (Montage vidéo mais aussi effets spéciaux, post-prod en temps réel. Modulaire)"
+echo "[5] KDEnLive (éditeur vidéo non-linéaire pour monter sons et images avec effets spéciaux)"
+echo "[6] OpenShot Video Editor (une autre alternative comme éditeur vidéo, libre et écrit en Python)"
+echo "[7] Pitivi (logiciel de montage basique avec une interface simple et intuitive)" 
+echo "[8] Lives (Dispose des fonctionnalités d'éditions vidéo/son classique, des filtres et multipiste"
+echo "[9] EKD (Opérations de post-prod sur les vidéos et images avec traitement par lot)"
+echo "[10] Shotcut (editeur et montage vidéo libre et multi-plateformes)"
+echo "[11] SlowMoVideo (Création de vidéos en slow-motion en opensource)"
+echo "[12] Flowblade (Logiciel de montage video multi-piste performant)"
+echo "[13] Cinelerra (montage non-linéaire sophistiqué, équivalent à Adobe première, Final Cut et Sony Vegas"
+echo "[14] Natron (programme de post-prod destiné au compositing et aux effets spéciaux)"
+echo "[15] LightWorks (Montage vidéo professionnel propriétaire)"
+echo "[16] VLMC (montage vidéo de VideoLan, experimental !)" #===> vérifier stablilité...
+echo "[17] Avidemux (c'est un peu l'équivalent de 'VirtualDub' sous Windows : coupe, filtre et ré-encodage)"
+echo "[18] Mencoder (encodage de fichier vidéo, compatible avec de très nombreux formats)"
+echo "[19] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
+echo "[20] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
+echo "[21] Jahshaka (Montage vidéo mais aussi effets spéciaux, post-prod en temps réel. Modulaire)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
 clear
 
@@ -683,6 +683,132 @@ do
         "17") #Lollypop 
             
             ;;                                    
+    esac
+done
+
+# Q6/ Montage vidéo
+for video in $choixVideo
+do
+    case $video in
+        "2") #Handbrake
+            
+            ;;
+        "3") #WinFF
+           
+            ;;
+        "4") #Libav-tools
+            
+            ;;
+        "5") #KDEnLive
+           
+            ;;
+        "6") #OpenShot Video Editor
+            
+            ;;
+        "7") #Pitivi
+            
+            ;;
+        "8") #Lives
+            
+            ;;         
+        "9") #EKD
+            
+            ;;
+        "10") #Shotcut
+
+            ;;            
+        "11") #SlowMoVideo
+            
+            ;;           
+        "12") #Flowblade
+            
+            ;;           
+        "13") #Cinelerra
+            
+            ;;        
+        "14") #Natron
+            
+            ;;    
+        "15") #LightWorks
+    
+            ;;       
+        "16") #VLMC
+            
+            ;;                         
+        "17") #Avidemux
+            
+            ;;               
+        "18") #Mencoder
+            
+            ;;               
+        "19") #MMG MkvMergeGui
+            
+            ;;              
+        "20") #DeVeDe 
+            
+            ;;     
+        "21") #Jahshaka
+            
+            ;;               
+    esac
+done
+
+
+# Q7/ Montage photo/graphisme/3d
+for graphisme in $choixGraphisme
+do
+    case $graphisme in
+        "2") #Gimp
+            
+            ;;
+        "3") #Krita
+           
+            ;;
+        "4") #Pinta
+            
+            ;;
+        "5") #Pixeluvo
+           
+            ;;
+        "6") #Phatch
+            
+            ;;
+        "7") #Cinepaint
+            
+            ;;
+        "8") #MyPaint
+            
+            ;;         
+        "9") #ImageMagick
+            
+            ;;
+        "10") #Ufraw
+
+            ;;            
+        "11") #Inkscape
+            
+            ;;           
+        "12") #sK1
+            
+            ;;           
+        "13") #Darktable
+            
+            ;;        
+        "14") #Art Of Illusion
+            
+            ;;    
+        "15") #Blender
+    
+            ;;       
+        "16") #K-3D
+            
+            ;;                         
+        "17") #SweetHome 3D
+            
+            ;;               
+        "18") #LibreCAD
+            
+            ;;                           
     esac
 done
 
