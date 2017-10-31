@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.17 (alpha)
+# version 0.0.18 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -371,6 +371,7 @@ echo "[3] Serveur LAMP (Pour faire un serveur web avec votre PC : Apache + Maria
 echo "[4] Serveur FTP avec ProFTPd (Stockage de fichier sur votre machine via FTP)"
 echo "[5] Serveur BDD PostgreSQL (Pour installer une base de donnée PostgreSQL)"
 echo "[6] Serveur BDD Oracle (Pour créer une base Oracle sur votre machine)"
+echo "[7] Rétroportage PHP5 (Ancienne version de PHP rétroporté)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixServeur
 clear
 
@@ -388,8 +389,8 @@ echo "[7] Ajouter les polices d'écriture Microsoft"
 echo "[8] Ajouter un mode 'fraude' à Wayland (permet de lancer sous Wayland par ex Gparted via la commande : fraude gparted)"
 echo "[9] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
 echo "[10] Remettre le thème gris d'origine pour GDM (par défaut violet)"
-echo "[13] Ajouter le support pour le système de fichier exFat de Microsoft"
-echo "[14] Ajouter le support pour le système de fichier HFS d'Apple"
+echo "[11] Ajouter le support pour le système de fichier exFat de Microsoft"
+echo "[12] Ajouter le support pour le système de fichier HFS d'Apple"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
 clear
 
@@ -1049,6 +1050,74 @@ do
     esac
 done
 
+# A14/ Serveurs
+for srv in $choixServeur
+do
+    case $srv in
+        "2") #openssh-server
+            
+            ;;
+        "3") #apache+mariadb+php
+           
+            ;;
+        "4") #proftpd
+            
+            ;;
+        "5") #Postgresal
+           
+            ;;
+        "6") #Oracle
+            
+            ;;
+        "7") #Retroportage PHP5
+            
+            ;;
+    esac
+done
+
+
+# A15/ Optimisation/Réglage
+for srv in $choixServeur
+do
+    case $srv in
+        "2") #déportage snappy ds Home
+            
+            ;;
+        "3") #Swapiness 95%
+           
+            ;;
+        "4") #Désactiver swap
+            
+            ;;
+        "5") #Activer TLP + install Powertop
+           
+            ;;
+        "6") #Microcode Intel
+            
+            ;;
+        "7") #Police d'écriture Microsoft
+            
+            ;;
+        "8") #Mode fraude Wayland
+            
+            ;;
+        "9") #Désactiver userlist GDM
+            
+            ;;
+        "10") #théme gris GDM
+            
+            ;;
+        "11") #Support ExFat
+            
+            ;;
+        "12") #Support HFS
+            
+            ;;
+    esac
+done
+
+# Nettoyage/Purge
+apt install -fy ; apt autoremove --purge -y ; apt clean ; clear
 
 echo "Pour prendre en compte tous les changements, il faut maintenant redémarrer !"
 read -p "Voulez-vous redémarrer immédiatement ? [o/n] " reboot
