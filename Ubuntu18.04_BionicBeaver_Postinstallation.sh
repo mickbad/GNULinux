@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.16 (alpha)
+# version 0.0.17 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -946,6 +946,109 @@ do
             ;;  
     esac
 done
+
+
+# Mode avancé : ne pas oublier d'ajouter plus tard une condition => Si mode avancé alors...
+
+# A12/ Extensions
+for extension in $choixExtension
+do
+    case $extension in
+        "2") #
+            
+            ;;
+        "3") #
+           
+            ;;
+        "4") #
+            
+            ;;
+        "5") #
+           
+            ;;
+        "6") #
+            
+            ;;
+        "7") #
+            
+            ;;
+        "8") #
+            
+            ;;         
+        "9") #
+            
+            ;;
+        "10") #
+
+            ;;            
+        #.................                                       
+    esac
+done
+
+# A13/ Programmation/Dev
+for dev in $choixDev
+do
+    case $dev in
+        "2") #Gvim
+            
+            ;;
+        "3") #Emacs
+           
+            ;;
+        "4") #Geany
+            
+            ;;
+        "5") #PyCharm
+           
+            ;;
+        "6") #Visual Studio Code
+            
+            ;;
+        "7") #Atom
+            
+            ;;
+        "8") #Brackets
+            
+            ;;         
+        "9") #Sublime Text
+            
+            ;;
+        "10") #Code:Blocks
+
+            ;;           
+        "11") #IntelliJ Idea
+            
+            ;;
+        "12") #JEdit
+           
+            ;;
+        "13") #Eclipse
+            
+            ;;
+        "14") #Anjuta
+           
+            ;;
+        "15") #develop
+            
+            ;;
+        "16") #Android Studio
+            
+            ;;
+        "17") #Netbeans
+            
+            ;;         
+        "18") #BlueFish
+            
+            ;;
+        "19") #BlueGriffon
+
+            ;;         
+        "20") #SciTE
+
+            ;;  
+    esac
+done
+
 
 echo "Pour prendre en compte tous les changements, il faut maintenant redémarrer !"
 read -p "Voulez-vous redémarrer immédiatement ? [o/n] " reboot
