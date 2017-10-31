@@ -91,7 +91,7 @@ echo "[11] PaleMoon (un navigateur plutôt récent, libre & performant)"
 echo "[12] Vivaldi (un navigateur propriétaire avec une interface sobre assez particulière)"
 echo "[13] Falkon/QupZilla (une alternative libre et légère utilisant Webkit)"
 echo "[14] Tor Browser (pour naviguer dans l'anonymat avec le réseau tor : basé sur Firefox ESR)"
-echo "[15] Eolie (une autre alternative pour Gnome : l'installation se fera via FlatPak)"
+echo "[15] Eolie [Flatpak](une autre alternative pour Gnome)"
 echo "[16] Min (un navigateur minimaliste et donc très léger)"
 echo "[17] Rekonq (Attention déconseillé sous Gnome : beaucoup de dépendance KDE !!!)" 
 echo "[18] NetSurf (basique mais très léger et performant)"
@@ -117,7 +117,7 @@ echo "[9] Linphone (visioconférence utilisant le protocole SIP)"
 echo "[10] Ring (anciennement 'SFLphone', logiciel très performant pour la téléphonie IP)"
 echo "[11] Mumble (logiciel libre connue chez les gameurs pour les conversations audios à plusieurs)"
 echo "[12] TeamSpeak (une autre alternative à Mumble mais propriétaire, beaucoup utilisé aussi par les joueurs)"
-echo "[13] Discord (logiciel propriétaire multiplateforme pour communiquer à plusieurs pour les gameurs)"
+echo "[13] Discord [Snap] (logiciel propriétaire multiplateforme pour communiquer à plusieurs pour les gameurs)"
 echo "[14] Tox (une alternative opensource à Skype et sécurisé : P2P Chiffré sans serveur)"
 echo "[15] Viber (logiciel de communication, surtout connue en application mobile)"
 echo "[16] Telegram (appli de messagerie basée sur le cloud avec du chiffrage)"
@@ -137,7 +137,7 @@ echo "[4] Rtorrent (client BitTorrent en ligne de commande donc très léger)"
 echo "[5] qBittorrent (client BitTorrent léger développé en C++ avec Qt4)"
 echo "[6] µTorrent (client BitTorrent propriétaire assez connu sous Windows)"
 echo "[7] Bittorrent (client non-libre de base pour gérer les téléchargements Torrent)"
-echo "[8] Vuze alias Azureus (Plate-forme commerciale d'Azureus avec le protocole BitTorrent)"
+echo "[8] Vuze alias Azureus [Snap] (Plate-forme commerciale d'Azureus avec le protocole BitTorrent)"
 echo "[9] aMule (pour le réseau eDonkey2000, clone de Emule)"
 echo "[10] FrostWire (client multiplate-forme pour le réseau Gnutella)"
 echo "[11] Gtk-Gnutella (un autre client stable et léger avec pas mal d'option)"
@@ -157,7 +157,7 @@ echo "6/ Quel(s) logiciels(s) de lecture audio/vidéo veux-tu ? (plusieurs choix
 echo "*******************************************************"
 echo "[1] Aucun, rester avec les choix par défaut ('Totem' pour la vidéo, 'Rhythmbox' pour la musique)"
 echo "[2] VLC VideoLan (le couteau suisse de la vidéo, très complet !)"
-echo "[3] MPV (léger et puissant, capable de lire de nombreux formats)"
+echo "[3] Gnome MPV (léger et puissant, capable de lire de nombreux formats)"
 echo "[4] SmPlayer (lecteur basé sur mplayer avec une interface utilisant Qt)"
 echo "[5] Gxine (logiciel minimaliste écrit en GTK+ basé sur le moteur Xine"
 echo "[6] DragonPlayer (lecteur vidéo plutôt conçu pour l'environnement KDE)" #===> vérifier si il y a un intéret sous Gnome...
@@ -171,7 +171,7 @@ echo "[13] Gmusicbrowser (lecteur avec une interface très configurable)"
 echo "[14] Musique (un lecteur épuré)"
 echo "[15] Qmmp (dans le même style de Winamp pour les fans)"
 echo "[16] XMMS2 (un autre lecteur audio dans le style de Winamp, très complet)"
-echo "[17] Lollypop (lecture de musique adapté à Gnome avec des fonctions très avancées)"
+echo "[17] Lollypop [Flatpak] (lecture de musique adapté à Gnome avec des fonctions très avancées)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixMultimedia
 clear
 
@@ -290,6 +290,7 @@ echo "[12] Assault Cube (clone de Counter Strike)"
 echo "[13] World Of Padman (jeu de tir basé sur Quake 3 avec des graphismes amusant)"
 echo "[14] Second Life (métavers 3D sortie en 2003 sur le modèle f2p)"
 echo "[15] Gnome Games (Pack d'une dizaine de mini-jeux pour Gnome)"
+echo "[16] Albion Online [Flatpak] (MMORPG avec système de quête et donjons)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
 clear
 
@@ -441,18 +442,20 @@ done
 for navigateur in $choixNavigateur
 do
     case $navigateur in
-        "2") #firefox béta
-            add-apt-repository ppa:mozillateam/firefox-next -y
+        "2") #firefox béta 
+            add-apt-repository ppa:mozillateam/firefox-next -y #pas encore actif pour bionic
+            apt update ; apt upgrade -y
             ;;
-         "3") #firefox aurora/dev
-            add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora -y
+         "3") #firefox aurora/dev (existe aussi en flatpak)
+            add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora -y #pas encore actif pour bionic
+            apt update ; apt upgrade -y
             ;;
          "4") #firefox esr
-            add-apt-repository ppa:jonathonf/firefox-esr -y
+            add-apt-repository ppa:jonathonf/firefox-esr -y #pas encore actif pour bionic
             apt update ; apt install firefox-esr -y
             ;;
-         "5") #firefox nightly
-            add-apt-repository ppa:ubuntu-mozilla-daily/ppa -y 
+         "5") #firefox nightly (existe aussi en flatpak)
+            add-apt-repository ppa:ubuntu-mozilla-daily/ppa -y
             apt update ; apt install firefox-trunk -y
             ;;
          "6") #chromium
@@ -467,8 +470,9 @@ do
             apt install epiphany-browser -y
          ;;
          "9") #midori
-            add-apt-repository ppa:midori/ppa -y
-            apt update ; apt install midori -y
+            wget http://midori-browser.org/downloads/midori_0.5.11-0_amd64_.deb
+            dpkg -i midori_0.5.11-0_amd64_.deb
+            apt install -fy
          ;;
          "10") #opera
             wget http://download1.operacdn.com/pub/opera/desktop/48.0.2685.52/linux/opera-stable_48.0.2685.52_amd64.deb
@@ -493,8 +497,7 @@ do
          ;;
          "15") #Eolie via Flatpak
             apt install flatpak -y
-            wget https://flathub.org/repo/appstream/org.gnome.Eolie.flatpakref
-            flatpak install --from ./org.gnome.Eolie.flatpakref -y
+            flatpak install --from https://flathub.org/repo/appstream/org.gnome.Eolie.flatpakref -y
          ;;
          "16") Min
             wget https://github.com/minbrowser/min/releases/download/v1.6.3/Min_1.6.3_amd64.deb
@@ -527,7 +530,9 @@ do
             apt install pidgin pidgin-plugin-pack -y
             ;;
         "4") #jitsi
-           
+            wget -qO - https://download.jitsi.org/jitsi-key.gpg.key | apt-key add -   
+            sh -c "echo 'deb https://download.jitsi.org stable/' > /etc/apt/sources.list.d/jitsi-stable.list"   
+            apt update ; apt install jitsi -y   
             ;;
         "5") #psi
             apt install psi -y
@@ -536,7 +541,9 @@ do
             apt install gajim -y
             ;;
         "7") #skype
-            
+            wget https://repo.skype.com/latest/skypeforlinux-64.deb
+            dpkg -i skypeforlinux-64.deb
+            apt install -fy
             ;;            
         "8") #ekiga
             apt install ekiga -y
@@ -550,23 +557,31 @@ do
         "11") #mumble
             apt install mumble -y
             ;;    
-        "12") #teamspeak
-            
+        "12") #teamspeak (vérifier le fonctionnement, demande peut être intervention pour l'install)
+            wget http://dl.4players.de/ts/releases/3.1.6/TeamSpeak3-Client-linux_amd64-3.1.6.run
+            chmod +x TeamSpeak3-Client-linux_amd64-3.1.6.run
+            ./TeamSpeak3-Client-linux_amd64-3.1.6.run
             ;;       
-        "13") #discord
-            
+        "13") #discord (via snap)
+            snap install discord
             ;;                         
         "14") #tox
             apt install tox -y
             ;;               
         "15") #viber
-            
+            wget http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
+            dpkg -i viber.deb
+            apt install -fy
             ;;               
-        "16") #telegram
-            
+        "16") #telegram (ou via Snap, voir lequel est le plus pertinent)
+            add-apt-repository ppa:atareao/telegram -y
+            apt update ; apt install telegram -y
+            #snap install telegram-sergiusens
             ;;              
         "17") #wire
-            
+            apt-key adv --fetch-keys http://wire-app.wire.com/linux/releases.key
+            echo "deb https://wire-app.wire.com/linux/debian stable main" | tee /etc/apt/sources.list.d/wire-desktop.list
+            apt update ; apt install apt-transport-https wire-desktop -y
             ;;               
         "18") #hexchat
             apt install hexchat hexchat-plugins -y
@@ -591,19 +606,21 @@ do
             apt install qbittorrent -y
             ;;         
         "6") #µTorrent
-            
+            ##### abandonner l'idée...
             ;;
         "7") #Bittorrent
             apt install bittorrent -y
             ;;            
         "8") #Vuze
-           
+            snap install vuze-vs
             ;;           
         "9") #aMule
             apt install amule -y
             ;;           
         "10") #FrostWire
-            
+            wget https://netcologne.dl.sourceforge.net/project/frostwire/FrostWire%206.x/6.5.9-build-246/frostwire-6.5.9.all.deb
+            dpkg -i frostwire-6.5.9.all.deb
+            apt install -fy
             ;;        
         "11") #Gtk-Gnutella
             apt install gtk-gnutella -y
@@ -612,10 +629,13 @@ do
             apt install eiskaltdcpp eiskaltdcpp-gtk3 -y
             ;;       
         "13") #RetroShare
-            
+            add-apt-repository ppa:ppa:retroshare/stable -y
+            apt update ; apt install retroshare -y
             ;;                         
         "14") #Calypso
-            
+            wget https://netcologne.dl.sourceforge.net/project/calypso/kommute/0.24/kommute_0.24-2_i386.deb
+            dpkg -i kommute_0.24-2_i386.deb
+            apt install -fy
             ;;               
         "15") #Grsync
             apt install grsync -y
@@ -627,7 +647,8 @@ do
             apt install nicotine -y
             ;;               
         "18") #JDownloader
-            
+            add-apt-repository ppa:jd-team/jdownloader -y
+            apt update ; apt install jdownloader-installer -y
             ;;                        
     esac
 done
@@ -639,8 +660,8 @@ do
         "2") #VLC
             apt install vlc vlc-plugin-vlsub vlc-plugin-visualization -y
             ;;
-        "3") #MPV (mpv ou gnome-mpv ???)
-            
+        "3") #Gnome MPV
+            apt install gnome-mpv -y
             ;;
         "4") #SmPlayer
             apt install smplayer smplayer-l10n smplayer-themes -y
@@ -665,7 +686,8 @@ do
             apt install audacious audacious-plugins -y
             ;;        
         "11") #Guayadeque
-            
+            add-apt-repository ppa:anonbeat/guayadeque -y
+            apt update ; apt install guayadeque -y
             ;;    
         "12") #gnome music
             apt install gnome-music -y
@@ -683,7 +705,8 @@ do
             apt install xmms2 xmms2-plugin-all -y
             ;;              
         "17") #Lollypop 
-            
+            apt install flatpak -y
+            flatpak install --from https://flathub.org/repo/appstream/org.gnome.Lollypop.flatpakref -y
             ;;                                    
     esac
 done
@@ -919,8 +942,9 @@ do
         "6") #OpenArena
             apt install openarena -y
             ;;
-        "7") #0ad: Empires Ascendant
+        "7") #0ad: Empires Ascendant (ou via flatpak)
             apt install 0ad -y
+            #flatpak install --from https://flathub.org/repo/appstream/com.play0ad.zeroad.flatpakref
             ;;
         "8") #Ryzom
             
@@ -946,6 +970,14 @@ do
         "15") #Gnome Games (verifier si gg-app utile)
             apt install gnome-games gnome-games-app -y
             ;;  
+        "16") #Albion online
+            apt install flatpak -y
+            flatpak install --from https://flathub.org/repo/appstream/com.albiononline.AlbionOnline.flatpakref -y
+            
+            #Ajouterr :
+            #Battle for Wesnoth : flatpak install --from https://flathub.org/repo/appstream/org.wesnoth.Wesnoth.flatpakref
+            
+            
     esac
 done
 
