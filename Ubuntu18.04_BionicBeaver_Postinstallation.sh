@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.18 (alpha)
+# version 0.0.19 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -692,22 +692,22 @@ for video in $choixVideo
 do
     case $video in
         "2") #Handbrake
-            
+            apt install handbrake -y
             ;;
         "3") #WinFF
-           
+            apt install winff winff-doc winff-qt -y
             ;;
         "4") #Libav-tools
-            
+            apt install libav-tools -y
             ;;
         "5") #KDEnLive
-           
+            apt install kdenlive -y
             ;;
         "6") #OpenShot Video Editor
-            
+            apt install openshot openshot-doc -y
             ;;
         "7") #Pitivi
-            
+            apt install pitivi -y
             ;;
         "8") #Lives
             
@@ -722,7 +722,7 @@ do
             
             ;;           
         "12") #Flowblade
-            
+            apt install flowblade -y
             ;;           
         "13") #Cinelerra
             
@@ -740,13 +740,13 @@ do
             
             ;;               
         "18") #Mencoder
-            
+            apt install mencoder -y
             ;;               
         "19") #MMG MkvMergeGui
             
             ;;              
         "20") #DeVeDe 
-            
+            apt install devede -y
             ;;     
         "21") #Jahshaka
             
@@ -760,55 +760,55 @@ for graphisme in $choixGraphisme
 do
     case $graphisme in
         "2") #Gimp
-            
+            apt install gimp gimp-help-fr gimp-plugin-registry gimp-ufraw gimp-data-extras -y
             ;;
         "3") #Krita
-           
+            apt install krita krita-l10n -y
             ;;
         "4") #Pinta
-            
+            apt install pinta -y
             ;;
         "5") #Pixeluvo
            
             ;;
         "6") #Phatch
-            
+            apt install phatch phatch-cli -y
             ;;
         "7") #Cinepaint
             
             ;;
         "8") #MyPaint
-            
+            apt install mypaint mypaint-data-extras -y
             ;;         
         "9") #ImageMagick
             
             ;;
         "10") #Ufraw
-
+            apt install ufraw ufraw-batch -y
             ;;            
         "11") #Inkscape
-            
+            apt install inkscape -y
             ;;           
         "12") #sK1
             
             ;;           
         "13") #Darktable
-            
+            apt install darktable -y
             ;;        
         "14") #Art Of Illusion
             
             ;;    
         "15") #Blender
-    
+            apt install blender -y
             ;;       
         "16") #K-3D
-            
+            apt install k3d -y
             ;;                         
         "17") #SweetHome 3D
-            
+            apt install sweethome3d sweethome3d-furniture sweethome3d-furniture-nonfree -y
             ;;               
         "18") #LibreCAD
-            
+            apt install librecad -y
             ;;                           
     esac
 done
@@ -818,46 +818,46 @@ for audio in $choixAudio
 do
     case $audio in
         "2") #SoundConverter
-            
+            apt install soundconverter -y
             ;;
         "3") #Xcfa
            
             ;;
         "4") #SoundJuicer
-            
+            apt install sound-juicer -y
             ;;
         "5") #SoundKonverter
            
             ;;
         "6") #Gnome Sound Recorder
-            
+            apt install gnome-sound-recorder -y
             ;;
         "7") #Audacity
-            
+            apt install audacity -y
             ;;
         "8") #MhWaveEdit
-            
+            apt install mhwaveedit -y
             ;;         
         "9") #Flacon
             
             ;;
         "10") #RipperX
-
+            apt install ripperx -y
             ;;            
         "11") #Grip
             
             ;;           
         "12") #LMMS
-            
+            apt install lmms -y
             ;;           
         "13") #MiXX
-            
+            apt install mixx -y
             ;;        
         "14") #Ardour
-            
+            apt install ardour ardour-video-timeline -y
             ;;    
         "15") #Rosegarden
-    
+            apt install rosegarden -y
             ;;                                  
     esac
 done
@@ -867,19 +867,19 @@ for utilitaire in $choixUtilitaire
 do
     case $utilitaire in
         "2") #Kazam
-            
+            apt install kazam -y
             ;;
         "3") #SimpleScreenRecorder
-           
+            apt install simplescreenrecorder -y
             ;;
         "4") #OpenBroadcaster Software
             
             ;;
         "5") #Glances
-           
+            apt install glances -y
             ;;
         "6") #Brasero
-            
+            apt install brasero brasero-cdrkit nautilus-extension-brasero
             ;;
         "7") #Wine
             
@@ -887,11 +887,11 @@ do
         "8") #Oracle Java
             
             ;;         
-        "9") #FlashPlayer
-            
+        "9") #FlashPlayer (avec dépot partenaire)
+            apt install adobe-flashplugin -y
             ;;
         "10") #VirtualBox
-
+            apt install virtualbox virtualbox-ext-pack -y
             ;;            
         "11") #VMWare Workstation Player
             
@@ -904,37 +904,37 @@ for gaming in $choixGaming
 do
     case $gaming in
         "2") #Steam
-            
+            apt install steam -y
             ;;
         "3") #PlayOnLinux
-           
+            apt install playonlinux -y
             ;;
         "4") #Minecraft
             
             ;;
-        "5") #Minetest
-           
+        "5") #Minetest + mods (à tester)
+            apt install minetest minetest-mod-* -y
             ;;
         "6") #OpenArena
-            
+            apt install openarena -y
             ;;
         "7") #0ad: Empires Ascendant
-            
+            apt install 0ad -y
             ;;
         "8") #Ryzom
             
             ;;         
         "9") #FlightGear
-            
+            apt install flightgear -y
             ;;
         "10") #SuperTux
-
+            apt install supertux -y
             ;;            
         "11") #SuperTuxKart
-            
+            apt install supertuxkart -y
             ;;   
         "12") #Assault Cube
-            
+            apt install assaultcube -y
             ;;         
         "13") #World Of Padman
             
@@ -942,8 +942,8 @@ do
         "14") #Second Life
 
             ;;            
-        "15") #Gnome Games
-            
+        "15") #Gnome Games (verifier si gg-app utile)
+            apt install gnome-games gnome-games-app -y
             ;;  
     esac
 done
@@ -994,9 +994,9 @@ do
             
             ;;
         "3") #Emacs
-           
+            apt install emacs -y
             ;;
-        "4") #Geany
+        "4") #Geany (verifier les extensions)
             
             ;;
         "5") #PyCharm
@@ -1015,19 +1015,19 @@ do
             
             ;;
         "10") #Code:Blocks
-
+            apt install codeblocks codeblocks-contrib -y
             ;;           
         "11") #IntelliJ Idea
             
             ;;
         "12") #JEdit
-           
+            apt instakk jedit -y
             ;;
         "13") #Eclipse
             
             ;;
         "14") #Anjuta
-           
+            apt install anjuta anjuta-extras -y
             ;;
         "15") #develop
             
@@ -1039,13 +1039,13 @@ do
             
             ;;         
         "18") #BlueFish
-            
+            apt install bluefish bluefish-plugins -y
             ;;
         "19") #BlueGriffon
 
             ;;         
         "20") #SciTE
-
+            apt install scite -y
             ;;  
     esac
 done
@@ -1055,15 +1055,15 @@ for srv in $choixServeur
 do
     case $srv in
         "2") #openssh-server
-            
+            apt install openssh-server -y
             ;;
         "3") #apache+mariadb+php
-           
-            ;;
-        "4") #proftpd
             
             ;;
-        "5") #Postgresal
+        "4") #proftpd
+            apt install proftpd gadmin-proftpd -y
+            ;;
+        "5") #Postgresql
            
             ;;
         "6") #Oracle
