@@ -330,6 +330,7 @@ echo "[35] Workspace indicator (Affiche dans le panel en haut dans quel espace d
 echo "[36] Redshift (Ajoute un raccourci pour basculer avec redshift dans le menu de l'utilisateur)"
 echo "[37] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
 echo "[38] WindowNavigator (Permettre la sélection au clavier des fenêtres/espace de travail via la superposition)"
+echo "[39] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixExtension
 clear
 
