@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.19 (alpha)
+# version 0.0.20 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -38,6 +38,11 @@ then
             exit
             else
                 echo "Ok, tu as correctement lancé le script, tu es bien sur Bionic avec Gnome-Shell, passons aux questions..."
+                echo "NB : Si pour un logiciel tu vois indiqué... :"
+                echo "[Snap] => signifie que le paquet s'installera de manière isolé avec Snappy (snap install...)"
+                echo "[Flatpak] => signifie que le paquet s'installera avec Flatpak, une autre alternative à Snappy"
+                echo "[Appimage] => paquet AppImage téléchargé, pour l'utiliser il faudra le lancer manuellement (pas de raccourci)"
+                echo "Si rien de précisé en encadré => installation classique depuis les dépots officiel si c'est possible sinon PPA"
 fi
 
 ### Section interactive avec les questions
@@ -188,14 +193,14 @@ echo "[6] OpenShot Video Editor (une autre alternative comme éditeur vidéo, li
 echo "[7] Pitivi (logiciel de montage basique avec une interface simple et intuitive)" 
 echo "[8] Lives (Dispose des fonctionnalités d'éditions vidéo/son classique, des filtres et multipiste"
 echo "[9] EKD (Opérations de post-prod sur les vidéos et images avec traitement par lot)"
-echo "[10] Shotcut (editeur et montage vidéo libre et multi-plateformes)"
+echo "[10] Shotcut [Snap] (editeur et montage vidéo libre et multi-plateformes)"
 echo "[11] SlowMoVideo (Création de vidéos en slow-motion en opensource)"
 echo "[12] Flowblade (Logiciel de montage video multi-piste performant)"
 echo "[13] Cinelerra (montage non-linéaire sophistiqué, équivalent à Adobe première, Final Cut et Sony Vegas"
 echo "[14] Natron (programme de post-prod destiné au compositing et aux effets spéciaux)"
 echo "[15] LightWorks (Montage vidéo professionnel propriétaire)"
 echo "[16] VLMC (montage vidéo de VideoLan, experimental !)" #===> vérifier stablilité...
-echo "[17] Avidemux (c'est un peu l'équivalent de 'VirtualDub' sous Windows : coupe, filtre et ré-encodage)"
+echo "[17] Avidemux [Appimage](Équivalent de 'VirtualDub' sous Windows : coupe, filtre et ré-encodage)"
 echo "[18] Mencoder (encodage de fichier vidéo, compatible avec de très nombreux formats)"
 echo "[19] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
 echo "[20] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
@@ -606,7 +611,7 @@ do
             apt install qbittorrent -y
             ;;         
         "6") #µTorrent
-            ##### abandonner l'idée...
+            ##### abandonner l'idée car serveur torrent...
             ;;
         "7") #Bittorrent
             apt install bittorrent -y
@@ -734,46 +739,58 @@ do
             apt install pitivi -y
             ;;
         "8") #Lives
-            
+            apt install lives -y
             ;;         
-        "9") #EKD
-            
+        "9") #EKD  # Abandonné ???? vérifier si çá fonctionne car vieux paquet sinon le retirer
+            wget https://ayera.dl.sourceforge.net/project/ekd/ekd/3.1.0/GNU-Linux/ekd_3.1.0-1ubuntu1_all.deb
+            dpkg -i ekd_3.1.0-1ubuntu1_all.deb
+            apt install -fy
             ;;
-        "10") #Shotcut
-
+        "10") #Shotcut via snap (possible aussi en ppa)
+            snap install shotcut
             ;;            
         "11") #SlowMoVideo
-            
+            add-apt-repository ppa:ubuntuhandbook1/slowmovideo -y
+            apt update ; apt install slowmovideo -y
             ;;           
         "12") #Flowblade
             apt install flowblade -y
             ;;           
-        "13") #Cinelerra
-            
+        "13") #Cinelerra  #vérifier stabilité !!!
+            add-apt-repository ppa:cinelerra-ppa/ppa -y
+            apt update ; apt install cinelerra-cv -y
             ;;        
-        "14") #Natron
-            
+        "14") #Natron  (si marche pas, s'inscrire sur le site pour voir méthode d'install http://natron.fr/download/?os=Linux)
+            wget http://www.deb-multimedia.org/pool/main/n/natron-dmo/natron_2.3.2-dmo1_amd64.deb
+            dpkg -i natron_2.3.2-dmo1_amd64.deb
+            apt install -fy
             ;;    
         "15") #LightWorks
-    
+            wget https://downloads.lwks.com/v14/lwks-14.0.0-amd64.deb
+            dpkg -i lwks-14.0.0-amd64.deb
+            apt install -fy
             ;;       
-        "16") #VLMC
-            
+        "16") #VLMC (vérifier stabilité !)
+            add-apt-repository ppa:webupd8team/vlmc -y
+            apt update ; apt install vlmc -y
             ;;                         
-        "17") #Avidemux
-            
+        "17") #Avidemux (AppImage)
+            wget https://www.fosshub.com/Avidemux.html/avidemux_2.7.0.appImage
+            chmod +x avidemux_2.7.0.appImage
             ;;               
         "18") #Mencoder
             apt install mencoder -y
             ;;               
         "19") #MMG MkvMergeGui
-            
+            apt install mkvtoolnix mkvtoolnix-gui -y
             ;;              
         "20") #DeVeDe 
             apt install devede -y
             ;;     
-        "21") #Jahshaka
-            
+        "21") #Jahshaka (a mon avis marche pas, a tester)
+            apt install libfuse2:i386 -y 
+            wget https://netix.dl.sourceforge.net/project/portable/Jahshaka%202.0
+            chmod +x Jahshaka*
             ;;               
     esac
 done
@@ -793,19 +810,23 @@ do
             apt install pinta -y
             ;;
         "5") #Pixeluvo
-           
+            wget http://www.pixeluvo.com/downloads/pixeluvo_1.6.0-2_amd64.deb
+            dpkg -i pixeluvo_1.6.0-2_amd64.deb
+            apt install -fy
             ;;
         "6") #Phatch
             apt install phatch phatch-cli -y
             ;;
-        "7") #Cinepaint
-            
+        "7") #Cinepaint (risque de ne pas fonctionner sinon compilation)
+            wget http://www.deb-multimedia.org/pool/main/c/cinepaint-dmo/cinepaint_1.0.4-dmo5_amd64.deb
+            dpkg -i cinepaint_1.0.4-dmo5_amd64.deb
+            apt install -fy
             ;;
         "8") #MyPaint
             apt install mypaint mypaint-data-extras -y
             ;;         
-        "9") #ImageMagick
-            
+        "9") #ImageMagick  (déja présent par défaut ?? a vérifier)
+            apt install imagemagick -y
             ;;
         "10") #Ufraw
             apt install ufraw ufraw-batch -y
@@ -813,14 +834,17 @@ do
         "11") #Inkscape
             apt install inkscape -y
             ;;           
-        "12") #sK1
-            
+        "12") #sK1 (si marche pas tester PPA : http://www.webupd8.org/2009/09/sk1-ubuntu-repository-vector-graphics.html)
+            wget http://downloads.sk1project.net/sk1/2.0rc2/python-sk1-2.0rc2_0ubuntu1_16.10_amd64.deb
+            dpkg -i python-sk1-2.0rc2_0ubuntu1_16.10_amd64.deb
+            apt install -fy
             ;;           
         "13") #Darktable
             apt install darktable -y
             ;;        
         "14") #Art Of Illusion
-            
+            add-apt-repository ppa:altair-ibn-la-ahad/artofillusion -y
+            apt update ; apt install artofillusion -y
             ;;    
         "15") #Blender
             apt install blender -y
@@ -845,13 +869,15 @@ do
             apt install soundconverter -y
             ;;
         "3") #Xcfa
-           
+            apt install xcfa -y
             ;;
         "4") #SoundJuicer
             apt install sound-juicer -y
             ;;
-        "5") #SoundKonverter
-           
+        "5") #SoundKonverter (risque de ne pas marcher sinon retirer)
+            wget http://archive.ubuntu.com/ubuntu/pool/universe/s/soundkonverter/soundkonverter_2.2.2-1_amd64.deb
+            dpkg -i soundkonverter_2.2.2-1_amd64.deb
+            apt install -fy
             ;;
         "6") #Gnome Sound Recorder
             apt install gnome-sound-recorder -y
@@ -863,13 +889,14 @@ do
             apt install mhwaveedit -y
             ;;         
         "9") #Flacon
-            
+            add-apt-repository -y ppa:flacon/ppa
+            apt update ; apt install flacon -y
             ;;
         "10") #RipperX
             apt install ripperx -y
             ;;            
         "11") #Grip
-            
+            apt install grip -y
             ;;           
         "12") #LMMS
             apt install lmms -y
