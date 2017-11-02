@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.21 (alpha)
+# version 0.0.22 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -388,17 +388,18 @@ echo "A15/ Des optimisations supplémentaires à activer ?"
 echo "*******************************************************"
 echo "[1] Non"
 echo "[2] Déporter répertoire snappy dans /home pour gagner de l'espace (utile si le /home est séparé et racine limité)"
-echo "[3] Swap : régler le swapiness à 5% (le swap sera utilisé uniquement si la ram est utilisé à plus de 95%)"
+echo "[3] Optimisation Swap : swapiness à 5% + cache_pressure à 50 (swap utilisé uniquement si + de 95% de ram utilisé)"
 echo "[4] Désactiver complètement le swap (utile si vous avez un SSD et 8 Go de ram ou +)"
 echo "[5] Activer TLP + installer 'Powertop'(économie d'energie pour les pc portable)"
 echo "[6] Installer le microcode propriétaire Intel (pour cpu intel uniquement !)"
 echo "[7] Ajouter les polices d'écriture Microsoft"
-echo "[8] Ajouter un mode 'fraude' à Wayland (permet de lancer sous Wayland par ex Gparted via la commande : fraude gparted)"
+echo "[8] Ajouter une commande 'fraude' pour Wayland (pour pouvoir lancer des applis comme Gparted. Exemple : fraude gparted)"
 echo "[9] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
-echo "[10] Remettre le thème gris d'origine pour GDM (par défaut violet)"
+echo "[10] Remettre le thème gris pour GDM (par défaut violet) : Attention, installe la session Vanilla en dépendance !"
 echo "[11] Ajouter le support pour le système de fichier exFat de Microsoft"
 echo "[12] Ajouter le support pour le système de fichier HFS d'Apple"
 echo "[13] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
+echo "[14] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
 clear
 
@@ -1163,14 +1164,20 @@ do
             mv /snap /home/ #déplacement du répertoire snap dans le home (donc devient /home/snap)
             ln -s /home/snap /snap #création d'un lien symbolique pour l'emplacement d'origine
             ;;
-        "3") #Swapiness 95%
-           
+        "3") #Swapiness 95% +cache pressure 50
+            echo vm.swappiness=5 | tee /etc/sysctl.d/99-swappiness.conf
+            vm.vfs_cache_pressure=50 | tee -a /etc/sysctl.d/99-swappiness.conf
+            sysctl -p /etc/sysctl.d/99-swappiness.conf
             ;;
         "4") #Désactiver swap
-            
+            swapoff /swapfile #désactive l'utilisation du fichier swap
+            rm /swapfile #supprime le fichier swap qui n'est plus utile
+            sed -i -e '/.swapfile*/d' /etc/fstab #ligne swap retiré de fstab
             ;;
         "5") #Activer TLP + install Powertop
-           
+            apt install tlp powertop -y
+            systemctl enable tlp
+            systemctl emable tlp-sleep
             ;;
         "6") #Microcode Intel
             apt install intel-microcode -y
@@ -1178,8 +1185,12 @@ do
         "7") #Police d'écriture Microsoft
             echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | /usr/bin/debconf-set-selections | apt install ttf-mscorefonts-installer -y
             ;;
-        "8") #Mode fraude Wayland
-            
+        "8") #Mode fraude Wayland (proposé par Christophe C sur Ubuntu-fr.org)  #pas encore testé
+            echo "#FONCTION POUR CONTOURNER WAYLAND
+            fraude(){ 
+                xhost + && sudo $1 && xhost -
+                }" >> /home/$SUDO_USER/.bashrc
+            source /home/$SUDO_USER/.bashrc
             ;;
         "9") #Désactiver userlist GDM
             echo "user-db:user
@@ -1191,8 +1202,10 @@ do
             disable-user-list=true" > /etc/dconf/db/gdm.d/00-login-screen
             dconf update
             ;;
-        "10") #théme gris GDM
-            
+        "10") #théme gris GDM (changement effectif seulement si la session vanilla est installé)
+            apt install gnome-session -y # session vanilla nécessaire pour le changement du thème
+            mv /usr/share/gnome-shell/theme/ubuntu.css /usr/share/gnome-shell/theme/ubuntu_old.css
+            mv /usr/share/gnome-shell/theme/gnome-shell.css /usr/share/gnome-shell/theme/ubuntu.css
             ;;
         "11") #Support ExFat
             apt install exfat-utils exfat-fuse -y    
@@ -1203,6 +1216,10 @@ do
         "13") #Nouvelle commande raccourci Maj totale
             echo "alias maj='apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean ; snap refresh ; flatpak update -y'" >> /home/$SUDO_USER/.bashrc
             source /home/$SUDO_USER/.bashrc
+        "14") #Grub réduction temps d'attente + suppression test ram dans grub
+            sed -ri 's/GRUB_TIMEOUT=10/GRUB_TIMEOUT=2/g' /etc/default/grub
+            mkdir /boot/old ; mv /boot/memtest86* /boot/old/
+            update-grub
             ;;
     esac
 done
