@@ -139,7 +139,7 @@ echo "[1] Pas de supplément ('Transmission' installé de base)"
 echo "[2] FileZilla (logiciel très répendu utilisé pour les transferts FTP ou SFTP)"
 echo "[3] Deluge (client BitTorrent basé sur Python et GTK+)"
 echo "[4] Rtorrent (client BitTorrent en ligne de commande donc très léger)"
-echo "[5] qBittorrent (client BitTorrent léger développé en C++ avec Qt4)"
+echo "[5] qBittorrent (client BitTorrent léger développé en C++ avec Qt)"
 echo "[6] µTorrent (client BitTorrent propriétaire assez connu sous Windows)"
 echo "[7] Bittorrent (client non-libre de base pour gérer les téléchargements Torrent)"
 echo "[8] Vuze alias Azureus [Snap] (Plate-forme commerciale d'Azureus avec le protocole BitTorrent)"
@@ -283,7 +283,7 @@ echo "*******************************************************"
 echo "[1] Aucun, je ne suis pas un gameur"
 echo "[2] Steam (plateforme de distribution de jeux. Permet notamment d'installer Dota2, TF2, CS, TR...)"
 echo "[3] PlayOnLinux (permet de faire tourner des jeux Windows via Wine avec des réglages pré-établis)"
-echo "[4] Minecraft (un des plus célèbres jeux sandbox, jeu propriétaire et payant)"
+echo "[4] Minecraft [Snap] (un des plus célèbres jeux sandbox, jeu propriétaire et payant)"
 echo "[5] Minetest (un clone de Minecraft mais libre/opensource et totalement gratuit)"
 echo "[6] OpenArena (un clone libre du célèbre jeu 'Quake')"
 echo "[7] 0ad: Empires Ascendant (jeu de stratégie en temps réel RTS)"
@@ -349,12 +349,12 @@ echo "[2] Gvim (interface graphique pour Vim)"
 echo "[3] Emacs (le couteau suisse des éditeurs de texte, il fait tout mais il est complexe)"
 echo "[4] Geany (EDI rapide et simple utilisant GTK2 supportant de nombreux languages)"
 echo "[5] PyCharm [Snap] (IDE spécialisé pour le language Python)"
-echo "[6] Visual Studio Code (Développé par Microsoft, sous licence libre MIT)"
-echo "[7] Atom (Éditeur sous licence libre qui supporte les plug-ins Node.js et implémente GitControl)"
-echo "[8] Brackets (Éditeur opensource d'Adobe pour le web design et dev web HTML, CSS, JavaScript...)"
+echo "[6] Visual Studio Code [Snap] (Développé par Microsoft, sous licence libre MIT)"
+echo "[7] Atom [Snap] (Éditeur sous licence libre qui supporte les plug-ins Node.js et implémente GitControl)"
+echo "[8] Brackets [Snap] (Éditeur opensource d'Adobe pour le web design et dev web HTML, CSS, JavaScript...)"
 echo "[9] Sublime Text (Logiciel développé en C++ et Python prenant en charge 44 languages de prog)"
 echo "[10] Code:Blocks (IDE spécialisé pour le language C/C++)"
-echo "[11] IntelliJ Idea (IDE Java commercial de JetBrains, plutôt conçu pour Java)"
+echo "[11] IntelliJ Idea [Snap] (IDE Java commercial de JetBrains, plutôt conçu pour Java)"
 echo "[12] JEdit (Éditeur libre, multiplateforme et très personnalisable)"
 echo "[13] Eclipse (Projet décliné en sous-projets de développement, extensible, universel et polyvalent)"
 echo "[14] Anjuta (IDE simple pour C/C++, Java, JavaScript, Python et Vala)"
@@ -411,7 +411,7 @@ clear
 sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 
 #Maj du système + nettoyage
-apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean ; snap refresh
+apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
 
 # Indispensable / utile
 apt install net-tools vim htop gparted gnome-tweak-tool openjdk-8-jre flatpak -y
@@ -1156,9 +1156,9 @@ done
 
 
 # A15/ Optimisation/Réglage
-for srv in $choixServeur
+for optimisation in $choixOptimisation
 do
-    case $srv in
+    case $optimisation in
         "2") #déportage snappy ds Home
             mv /snap /home/ #déplacement du répertoire snap dans le home (donc devient /home/snap)
             ln -s /home/snap /snap #création d'un lien symbolique pour l'emplacement d'origine
