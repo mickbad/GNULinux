@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.20 (alpha)
+# version 0.0.21 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -348,7 +348,7 @@ echo "[1] Aucun (en dehors de Gedit présent de base et Vim qui sera installé c
 echo "[2] Gvim (interface graphique pour Vim)"
 echo "[3] Emacs (le couteau suisse des éditeurs de texte, il fait tout mais il est complexe)"
 echo "[4] Geany (EDI rapide et simple utilisant GTK2 supportant de nombreux languages)"
-echo "[5] PyCharm (IDE spécialisé pour le language Python)"
+echo "[5] PyCharm [Snap] (IDE spécialisé pour le language Python)"
 echo "[6] Visual Studio Code (Développé par Microsoft, sous licence libre MIT)"
 echo "[7] Atom (Éditeur sous licence libre qui supporte les plug-ins Node.js et implémente GitControl)"
 echo "[8] Brackets (Éditeur opensource d'Adobe pour le web design et dev web HTML, CSS, JavaScript...)"
@@ -398,6 +398,7 @@ echo "[9] Désactiver l'userlist de GDM (utile en entreprise intégré à un dom
 echo "[10] Remettre le thème gris d'origine pour GDM (par défaut violet)"
 echo "[11] Ajouter le support pour le système de fichier exFat de Microsoft"
 echo "[12] Ajouter le support pour le système de fichier HFS d'Apple"
+echo "[13] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
 clear
 
@@ -410,10 +411,10 @@ clear
 sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 
 #Maj du système + nettoyage
-apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
+apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean ; snap refresh
 
-# Utilitaires 
-apt install net-tools vim htop gparted gnome-tweak-tool -y
+# Indispensable / utile
+apt install net-tools vim htop gparted gnome-tweak-tool openjdk-8-jre flatpak -y
 
 # Suppression de l'icone Amazon
 apt remove ubuntu-web-launchers -y
@@ -501,7 +502,6 @@ do
             apt install torbrowser-launcher -y
          ;;
          "15") #Eolie via Flatpak
-            apt install flatpak -y
             flatpak install --from https://flathub.org/repo/appstream/org.gnome.Eolie.flatpakref -y
          ;;
          "16") Min
@@ -710,7 +710,6 @@ do
             apt install xmms2 xmms2-plugin-all -y
             ;;              
         "17") #Lollypop 
-            apt install flatpak -y
             flatpak install --from https://flathub.org/repo/appstream/org.gnome.Lollypop.flatpakref -y
             ;;                                    
     esac
@@ -913,7 +912,7 @@ do
     esac
 done
 
-# Q10/ Utilitaire
+# Q10/ Utilitaire et divers
 for utilitaire in $choixUtilitaire
 do
     case $utilitaire in
@@ -964,8 +963,8 @@ do
         "3") #PlayOnLinux
             apt install playonlinux -y
             ;;
-        "4") #Minecraft
-            
+        "4") #Minecraft  (a tester si c'est ok sinon choisir autre méthode d'install)
+            snap install minecraft-nsg
             ;;
         "5") #Minetest + mods (à tester)
             apt install minetest minetest-mod-* -y
@@ -977,7 +976,7 @@ do
             apt install 0ad -y
             #flatpak install --from https://flathub.org/repo/appstream/com.play0ad.zeroad.flatpakref
             ;;
-        "8") #Ryzom
+        "8") #Ryzom #apparemment dispo sur Steam, a tester si ok retirer de la liste ici
             
             ;;         
         "9") #FlightGear
@@ -993,16 +992,19 @@ do
             apt install assaultcube -y
             ;;         
         "13") #World Of Padman
-            
+            wget https://netix.dl.sourceforge.net/project/worldofpadman/wop-1.5.x-to-1.6-patch-unified.zip
+            unzip wop-1.5.x-to-1.6-patch-unified.zip
             ;;
-        "14") #Second Life
-
+        "14") #Second Life (a mon avis ne marchera pas, a tester)
+            wget http://download.cloud.secondlife.com/Viewer_5/Second_Life_5_0_8_329115_i686.tar.bz2
+            tar jxvf Second_Life_5_0_8_329115_i686.tar.bz2
+            chmod +x ./Second_Life_5_0_8_329115_i686/install.sh
+            ./Second_Life_5_0_8_329115_i686/install.sh
             ;;            
         "15") #Gnome Games (verifier si gg-app utile)
             apt install gnome-games gnome-games-app -y
             ;;  
         "16") #Albion online
-            apt install flatpak -y
             flatpak install --from https://flathub.org/repo/appstream/com.albiononline.AlbionOnline.flatpakref -y
             
             #Ajouterr :
@@ -1015,7 +1017,7 @@ done
 
 # Mode avancé : ne pas oublier d'ajouter plus tard une condition => Si mode avancé alors...
 
-# A12/ Extensions
+# A12/ Extensions (a completer plus tard)
 for extension in $choixExtension
 do
     case $extension in
@@ -1055,58 +1057,67 @@ for dev in $choixDev
 do
     case $dev in
         "2") #Gvim
-            
+            apt install vim-gtk3 -y
             ;;
         "3") #Emacs
             apt install emacs -y
             ;;
         "4") #Geany (verifier les extensions)
-            
+            apt install geany geany-plugin-* -y
             ;;
         "5") #PyCharm
-           
+            snap install pycharm-community
             ;;
         "6") #Visual Studio Code
-            
+            snap install vscode --classic
             ;;
         "7") #Atom
-            
+            snap install atom --classic
             ;;
         "8") #Brackets
-            
+            snap install brackets --classic
             ;;         
         "9") #Sublime Text
-            
+            wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
+            apt install apt-transport-https -y
+            echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
+            apt update ; apt install sublime-text -y
             ;;
         "10") #Code:Blocks
             apt install codeblocks codeblocks-contrib -y
             ;;           
         "11") #IntelliJ Idea
-            
+            snap install intellij-idea-community --classic 
             ;;
         "12") #JEdit
             apt instakk jedit -y
             ;;
         "13") #Eclipse
-            
+            wget http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/oomph/epp/oxygen/R/eclipse-inst-linux64.tar.gz
+            tar xvfz eclipse-inst-linux64.tar.gz
+            chmod +x ./eclipse-installer/eclipse-inst
+            ./eclipse-installer/eclipse-inst
             ;;
         "14") #Anjuta
             apt install anjuta anjuta-extras -y
             ;;
         "15") #develop
-            
+            #????
             ;;
         "16") #Android Studio
-            
+            add-apt-repository ppa:paolorotolo/android-studio -y
+            apt update ; apt install android-studio -y
             ;;
         "17") #Netbeans
-            
+            apt install netbeans -y
             ;;         
         "18") #BlueFish
             apt install bluefish bluefish-plugins -y
             ;;
         "19") #BlueGriffon
-
+            wget http://ftp.heanet.ie/pub/www.getdeb.net/getdeb/ubuntu/pool/apps/b/bluegriffon/bluegriffon_1.7.2-1~getdeb2~raring_amd64.deb
+            dpkg -i bluegriffon_1.7.2-1~getdeb2~raring_amd64.deb
+            apt install -fy
             ;;         
         "20") #SciTE
             apt install scite -y
@@ -1122,19 +1133,23 @@ do
             apt install openssh-server -y
             ;;
         "3") #apache+mariadb+php
-            
+            apt install apache2 php mariadb-server libapache2-mod-php php-mysql -y
             ;;
         "4") #proftpd
             apt install proftpd gadmin-proftpd -y
             ;;
         "5") #Postgresql
-           
+            apt install postgresql -y
             ;;
         "6") #Oracle
-            
+            wget http://oss.oracle.com/el4/RPM-GPG-KEY-oracle  -O- | apt-key add -
+            echo "deb http://oss.oracle.com/debian unstable main non-free" > /etc/apt/sources.list.d/oracle-db.list
+            apt update ; apt install oracle-xe-universal oracle-xe-client -y
             ;;
         "7") #Retroportage PHP5
-            
+            apt install python-software-properties -y
+            add-apt-repository ppa:ondrej/php -y
+            apt update ; apt install php5.6 -y
             ;;
     esac
 done
@@ -1145,7 +1160,8 @@ for srv in $choixServeur
 do
     case $srv in
         "2") #déportage snappy ds Home
-            
+            mv /snap /home/ #déplacement du répertoire snap dans le home (donc devient /home/snap)
+            ln -s /home/snap /snap #création d'un lien symbolique pour l'emplacement d'origine
             ;;
         "3") #Swapiness 95%
            
@@ -1157,25 +1173,36 @@ do
            
             ;;
         "6") #Microcode Intel
-            
+            apt install intel-microcode -y
             ;;
         "7") #Police d'écriture Microsoft
-            
+            echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | /usr/bin/debconf-set-selections | apt install ttf-mscorefonts-installer -y
             ;;
         "8") #Mode fraude Wayland
             
             ;;
         "9") #Désactiver userlist GDM
-            
+            echo "user-db:user
+            system-db:gdm
+            file-db:/usr/share/gdm/greeter-dconf-defaults" > /etc/dconf/profile/gdm
+            mkdir /etc/dconf/db/gdm.d
+            echo "[org/gnome/login-screen]
+            # Do not show the user list
+            disable-user-list=true" > /etc/dconf/db/gdm.d/00-login-screen
+            dconf update
             ;;
         "10") #théme gris GDM
             
             ;;
         "11") #Support ExFat
-            
+            apt install exfat-utils exfat-fuse -y    
             ;;
         "12") #Support HFS
-            
+            apt install hfsprogs hfsutils hfsplus -y
+            ;;
+        "13") #Nouvelle commande raccourci Maj totale
+            echo "alias maj='apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean ; snap refresh ; flatpak update -y'" >> /home/$SUDO_USER/.bashrc
+            source /home/$SUDO_USER/.bashrc
             ;;
     esac
 done
