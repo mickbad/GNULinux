@@ -924,7 +924,8 @@ do
             apt install simplescreenrecorder -y
             ;;
         "4") #OpenBroadcaster Software
-            
+            add-apt-repository ppa:obsproject/obs-studio -y
+            apt update ; apt install ffmpeg obs-studio -y
             ;;
         "5") #Glances
             apt install glances -y
@@ -932,11 +933,12 @@ do
         "6") #Brasero
             apt install brasero brasero-cdrkit nautilus-extension-brasero
             ;;
-        "7") #Wine
-            
+        "7") #Wine 
+            apt install wine-stable -y
             ;;
-        "8") #Oracle Java
-            
+        "8") #Oracle Java (d'ici la sortie, passera peut être en v9)
+            add-apt-repository ppa:/webupd8team/java -y
+            apt update ; apt install oracle-java8-installer -y
             ;;         
         "9") #FlashPlayer (avec dépot partenaire)
             apt install adobe-flashplugin -y
@@ -945,7 +947,9 @@ do
             apt install virtualbox virtualbox-ext-pack -y
             ;;            
         "11") #VMWare Workstation Player
-            
+            wget https://download3.vmware.com/software/player/file/VMware-Player-12.5.7-5813279.x86_64.bundle?HashKey=cfce2a8b4444fd32692e9b4d2a251cf9&params=%7B%22sourcefilesize%22%3A%22128.01+MB%22%2C%22dlgcode%22%3A%22PLAYER-1257%22%2C%22languagecode%22%3A%22fr%22%2C%22source%22%3A%22DOWNLOADS%22%2C%22downloadtype%22%3A%22manual%22%2C%22eula%22%3A%22N%22%2C%22downloaduuid%22%3A%22f24b51a3-09d3-48e6-85ef-652c4ccc06e2%22%2C%22purchased%22%3A%22N%22%2C%22dlgtype%22%3A%22Product+Binaries%22%2C%22productversion%22%3A%2212.5.7%22%2C%22productfamily%22%3A%22VMware+Workstation+Player%22%7D&AuthKey=1509617319_6e970e8422684aa4c4219db17d0ab115
+            chmod +x VMware-Player-12.5.7-5813279.x86_64.bundle
+            ./VMware-Player-12.5.7-5813279.x86_64.bundle
             ;;                                           
     esac
 done
