@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.22 (alpha)
+# version 0.0.23 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -128,6 +128,7 @@ echo "[15] Viber (logiciel de communication, surtout connue en application mobil
 echo "[16] Telegram (appli de messagerie basée sur le cloud avec du chiffrage)"
 echo "[17] Wire (un autre client de messagerie instantanée chiffré crée par Wire Swiss)"
 echo "[18] Hexchat (client IRC, fork de xchat)"
+echo "[19] Signal (Messagerie instantannée crypté recommandé par Edward Snowden)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 17) : " choixMessagerie
 clear
 
@@ -177,6 +178,8 @@ echo "[14] Musique (un lecteur épuré)"
 echo "[15] Qmmp (dans le même style de Winamp pour les fans)"
 echo "[16] XMMS2 (un autre lecteur audio dans le style de Winamp, très complet)"
 echo "[17] Lollypop [Flatpak] (lecture de musique adapté à Gnome avec des fonctions très avancées)"
+echo "[18] Spotify [Flatpak] (Permet d'accéder gratuitement et légalement à de la musique en ligne)"
+echo "[19] MuseScore [Flatpak] (l'éditeur de partitions de musique le plus utilisé au monde !)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixMultimedia
 clear
 
@@ -232,6 +235,7 @@ echo "[15] Blender (suite libre de modélisation 3d, matériaux et textures, d'�
 echo "[16] K-3D (Animation et modélisation polygonale et modélisation par courbes)"
 echo "[17] SweetHome 3D (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
 echo "[18] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
+echo "[19] Shutter (pour effectuer des captures d'écran, et de leur appliquer des modifications diverses)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixGraphisme
 clear
 
@@ -273,6 +277,9 @@ echo "[8] Ajouter Oracle Java (propriétaire)"
 echo "[9] Installer FlashPlayer (via le dépot partenaire)"
 echo "[10] VirtualBox (virtualisation de système)"
 echo "[11] VMWare Workstation Player (version gratuite de VmWare Workstation mais pas libre)"
+echo "[12] Bleachbit (permet de libérer de l'espace en effaçant les fichiers inutiles et temporaires du système)"
+echo "[13] KeePassX 2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
+echo "[14] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
 clear
 
@@ -415,7 +422,10 @@ sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
 
 # Indispensable / utile
-apt install net-tools vim htop gparted gnome-tweak-tool openjdk-8-jre flatpak -y
+apt install net-tools vim htop gparted gnome-tweak-tool openjdk-8-jre flatpak hardinfo ppa-purge numlockx gedit-plugins -y
+
+# Codecs utiles
+apt install ubuntu-restricted-extras x264 x265 -y
 
 # Suppression de l'icone Amazon
 apt remove ubuntu-web-launchers -y
@@ -441,7 +451,7 @@ do
 
     if [ "$session" = "4" ]
     then 
-        apt install unity-session -y #session unity      
+        apt install unity-session unity-tweak-tool -y #session unity      
     fi
 done
 
@@ -591,7 +601,12 @@ do
             ;;               
         "18") #hexchat
             apt install hexchat hexchat-plugins -y
-            ;;                        
+            ;; 
+        "19") #signal
+            curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+            echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | tee -a /etc/apt/sources.list.d/signal-xenial.list
+            apt update ; apt install signal-desktop -y
+            ;;       
     esac
 done
 
@@ -712,7 +727,13 @@ do
             ;;              
         "17") #Lollypop 
             flatpak install --from https://flathub.org/repo/appstream/org.gnome.Lollypop.flatpakref -y
-            ;;                                    
+            ;;             
+        "18") #Spotify (via flatpak)
+            flatpak install --from https://flathub.org/repo/appstream/com.spotify.Client.flatpakref -y
+            ;;     
+        "19") #MuseScore (via flatpak)
+            flatpak install --from https://flathub.org/repo/appstream/org.musescore.MuseScore.flatpakref -y
+            ;;               
     esac
 done
 
@@ -857,7 +878,10 @@ do
             ;;               
         "18") #LibreCAD
             apt install librecad -y
-            ;;                           
+            ;;        
+        "19") #Shutter
+            apt install shutter -y
+            ;;              
     esac
 done
 
@@ -950,7 +974,18 @@ do
             wget https://download3.vmware.com/software/player/file/VMware-Player-12.5.7-5813279.x86_64.bundle?HashKey=cfce2a8b4444fd32692e9b4d2a251cf9&params=%7B%22sourcefilesize%22%3A%22128.01+MB%22%2C%22dlgcode%22%3A%22PLAYER-1257%22%2C%22languagecode%22%3A%22fr%22%2C%22source%22%3A%22DOWNLOADS%22%2C%22downloadtype%22%3A%22manual%22%2C%22eula%22%3A%22N%22%2C%22downloaduuid%22%3A%22f24b51a3-09d3-48e6-85ef-652c4ccc06e2%22%2C%22purchased%22%3A%22N%22%2C%22dlgtype%22%3A%22Product+Binaries%22%2C%22productversion%22%3A%2212.5.7%22%2C%22productfamily%22%3A%22VMware+Workstation+Player%22%7D&AuthKey=1509617319_6e970e8422684aa4c4219db17d0ab115
             chmod +x VMware-Player-12.5.7-5813279.x86_64.bundle
             ./VMware-Player-12.5.7-5813279.x86_64.bundle
-            ;;                                           
+            ;;  
+        "12") #Bleachbit
+            apt install bleachbit -y
+            ;;        
+        "13") #KeepassX2 (voir aussi KeePass et KeePassXC)
+            apt install keepassx2 -y
+            ;; 
+        "14") #Teamviewer
+            wget https://dl.tvcdn.de/download/version_12x/teamviewer_12.0.85001_i386.deb
+            dpkg -i teamviewer_12.0.85001_i386.deb
+            apt install -fy
+            ;;               
     esac
 done
 
@@ -1064,7 +1099,7 @@ do
             apt install emacs -y
             ;;
         "4") #Geany (verifier les extensions)
-            apt install geany geany-plugin-* -y
+            apt install geany geany-plugins geany-plugin-* -y
             ;;
         "5") #PyCharm
             snap install pycharm-community
