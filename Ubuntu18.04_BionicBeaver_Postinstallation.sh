@@ -1188,7 +1188,7 @@ do
         "8") #Mode fraude Wayland (proposé par Christophe C sur Ubuntu-fr.org)  #pas encore testé
             echo "#FONCTION POUR CONTOURNER WAYLAND
             fraude(){ 
-                xhost + && sudo $1 && xhost -
+                xhost + && sudo \$1 && xhost -
                 }" >> /home/$SUDO_USER/.bashrc
             source /home/$SUDO_USER/.bashrc
             ;;
