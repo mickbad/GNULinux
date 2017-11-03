@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.23 (alpha)
+# version 0.0.24 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -129,6 +129,7 @@ echo "[16] Telegram (appli de messagerie basée sur le cloud avec du chiffrage)"
 echo "[17] Wire (un autre client de messagerie instantanée chiffré crée par Wire Swiss)"
 echo "[18] Hexchat (client IRC, fork de xchat)"
 echo "[19] Signal (Messagerie instantannée crypté recommandé par Edward Snowden)"
+echo "[20] Polari (client IRC pour Gnome)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 17) : " choixMessagerie
 clear
 
@@ -180,6 +181,9 @@ echo "[16] XMMS2 (un autre lecteur audio dans le style de Winamp, très complet)
 echo "[17] Lollypop [Flatpak] (lecture de musique adapté à Gnome avec des fonctions très avancées)"
 echo "[18] Spotify [Flatpak] (Permet d'accéder gratuitement et légalement à de la musique en ligne)"
 echo "[19] MuseScore [Flatpak] (l'éditeur de partitions de musique le plus utilisé au monde !)"
+echo "[20] Gnome Twitch (pour visionner les flux vidéo du site Twitch depuis votre bureau sans utiliser de navigateur)"
+echo "[21] GRadio [Snap] (Application Gnome pour écouter la radio, plus de 1 000 référencés rien qu'en France !)"
+
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixMultimedia
 clear
 
@@ -208,6 +212,7 @@ echo "[18] Mencoder (encodage de fichier vidéo, compatible avec de très nombre
 echo "[19] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
 echo "[20] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
 echo "[21] Jahshaka (Montage vidéo mais aussi effets spéciaux, post-prod en temps réel. Modulaire)"
+echo "[22] Peek [Snap] (Outil de création de Gif animé à partir d'une capture vidéo d'une zone de l'écran)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
 clear
 
@@ -241,7 +246,7 @@ clear
 
 # Question 9 : Traitement/encodage audio
 echo "*******************************************************"
-echo "9/ Quel(s) logiciels(s) pour l'encodage ou traitement audio ?"
+echo "9/ Quel(s) logiciels(s) pour l'encodage/réglage ou traitement audio ?"
 echo "*******************************************************"
 echo "[1] Aucun"
 echo "[2] SoundConverter (petit logiciel pour convertir des lots de fichiers audios)"
@@ -258,9 +263,24 @@ echo "[12] LMMS : Let's Make Music (station audio opensource crée par des music
 echo "[13] MiXX (logiciel pour Dj pour le mixage de musique)"
 echo "[14] Ardour (station de travail audio numérique avec enregistrement multipiste et mixage : logiciel lourd !)"
 echo "[15] Rosegarden (création musicale avec édition des partitions et peux s'interfacer avec des instruments)"
+echo "[16] Pavucontrol (outil graphique de contrôle des volumes audio entrée/sortie pour Pulseaudio)"
+echo "[17] Lame (outil d'encodage en CLI pour le format MP3,par ex pour convertir un Wav en Mp3)"
+echo "[18] PulseEffects [Flatpak] (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
+
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixAudio
 clear
 
+# Question 9.1 : Bureautique
+echo "*******************************************************"
+echo "9.1/ Quel(s) logiciel(s) de bureautique ?"
+echo "*******************************************************"
+echo "[1] Aucun supplément (LibreOffice par défaut + Evince pour les PDF)"
+echo "[2] Marp (Permet de créer une présentation rapide en s’affranchissant des outils bureautiques lourds)"
+echo "[3] Compléter LibreOffice : ajout du module 'Base' + des extensions utiles (templates, modèles de documents, clipboard...)"
+echo "[4] PdfMod (logiciel permettant diverses modifications sur vos PDF)"
+echo "[5] Scenari (famille d'applications d'édition avancées de chaînes éditoriales)"
+read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
+clear
 
 # Question 10 : Utilitaires #(a compléter)
 echo "*******************************************************"
@@ -280,6 +300,10 @@ echo "[11] VMWare Workstation Player (version gratuite de VmWare Workstation mai
 echo "[12] Bleachbit (permet de libérer de l'espace en effaçant les fichiers inutiles et temporaires du système)"
 echo "[13] KeePassX 2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
 echo "[14] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
+echo "[15] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)"
+echo "[16] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
+echo "[17] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
+
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
 clear
 
@@ -303,6 +327,9 @@ echo "[13] World Of Padman (jeu de tir basé sur Quake 3 avec des graphismes amu
 echo "[14] Second Life (métavers 3D sortie en 2003 sur le modèle f2p)"
 echo "[15] Gnome Games (Pack d'une dizaine de mini-jeux pour Gnome)"
 echo "[16] Albion Online [Flatpak] (MMORPG avec système de quête et donjons)"
+echo "[17] Megaglest (RTS 3d dans un monde fantastique avec 2 factions qui s'affrontent : la magie et la technologie)"
+echo "[18] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
+echo "[19] Battle for Wesnoth [Flatpak] (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
 clear
 
@@ -407,6 +434,7 @@ echo "[11] Ajouter le support pour le système de fichier exFat de Microsoft"
 echo "[12] Ajouter le support pour le système de fichier HFS d'Apple"
 echo "[13] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
 echo "[14] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
+echo "[15] Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
 clear
 
@@ -421,11 +449,14 @@ sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 #Maj du système + nettoyage
 apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
 
-# Indispensable / utile
-apt install net-tools vim htop gparted gnome-tweak-tool openjdk-8-jre flatpak hardinfo ppa-purge numlockx gedit-plugins -y
+# Utile pour Gnome
+apt install dconf-editor gnome-tweak-tool gedit-plugins nautilus-image-converter -y
+
+# Autres outils utiles
+apt install net-tools vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx -y
 
 # Codecs utiles
-apt install ubuntu-restricted-extras x264 x265 -y
+apt install ubuntu-restricted-extras x264 x265 libavcodec-extra -y
 
 # Suppression de l'icone Amazon
 apt remove ubuntu-web-launchers -y
@@ -606,7 +637,11 @@ do
             curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
             echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | tee -a /etc/apt/sources.list.d/signal-xenial.list
             apt update ; apt install signal-desktop -y
-            ;;       
+            ;; 
+            
+        "20") #Polari
+            apt install polari -y
+            ;;      
     esac
 done
 
@@ -733,7 +768,13 @@ do
             ;;     
         "19") #MuseScore (via flatpak)
             flatpak install --from https://flathub.org/repo/appstream/org.musescore.MuseScore.flatpakref -y
-            ;;               
+            ;;         
+        "20") #Gnome Twitch
+            apt install gnome-twitch -y
+            ;;         
+        "21") #Gradio
+            snap install gradio
+            ;;                 
     esac
 done
 
@@ -812,7 +853,10 @@ do
             apt install libfuse2:i386 -y 
             wget https://netix.dl.sourceforge.net/project/portable/Jahshaka%202.0
             chmod +x Jahshaka*
-            ;;               
+            ;;             
+        "22") #Peek
+            snap install peek
+            ;;  
     esac
 done
 
@@ -933,7 +977,37 @@ do
             ;;    
         "15") #Rosegarden
             apt install rosegarden -y
-            ;;                                  
+            ;;           
+        "16") #Pavucontrol
+            apt install pavucontrol -y
+            ;;   
+        "17") #lame
+            apt install lame -y
+            ;;   
+        "18") #PulseEffects
+            flatpak install --from https://flathub.org/repo/appstream/com.github.wwmm.pulseeffects.flatpakref -y
+            ;;   
+    esac
+done
+
+# Q9/ Bureautique
+for bureautique in $choixBureautique
+do
+    case $bureautique in
+        "2") #Marp (a vérifier)
+            wget https://github-production-release-asset-2e65be.s3.amazonaws.com/59939691/c7ce7c0c-5769-11e7-87d0-3900a81c0345?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20171103%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20171103T104517Z&X-Amz-Expires=300&X-Amz-Signature=3208d33a5f8318058d6cd959c91c18dac13c0615f0ac2b0be2400b3be6e4ac8d&X-Amz-SignedHeaders=host&actor_id=33062503&response-content-disposition=attachment%3B%20filename%3D0.0.11-Marp-linux-x64.tar.gz&response-content-type=application%2Foctet-stream
+            tar zxvf 0.0.11-Marp-linux-x64.tar.gz
+            chmod +x ./0.0.11-Marp-linux-x64/Marp
+            ;;
+        "3") #Complément LibreOffice (a faire plus tard)
+           
+            ;;
+        "4") #PDFMod
+            apt install pdfmod -y 
+            ;;
+        "5") #Scenari (a faire plus tard)
+            
+            ;;
     esac
 done
 
@@ -985,7 +1059,16 @@ do
             wget https://dl.tvcdn.de/download/version_12x/teamviewer_12.0.85001_i386.deb
             dpkg -i teamviewer_12.0.85001_i386.deb
             apt install -fy
-            ;;               
+            ;;   
+        "15") #Cheese
+            apt install cheese -y
+            ;; 
+        "16") #Corebird
+            flatpak install --from https://flathub.org/repo/appstream/org.baedert.corebird.flatpakref -y
+            ;;   
+        "16") #Gnome Recipes
+            apt install gnome-recipes -y
+            ;;   
     esac
 done
 
@@ -1042,11 +1125,15 @@ do
             ;;  
         "16") #Albion online
             flatpak install --from https://flathub.org/repo/appstream/com.albiononline.AlbionOnline.flatpakref -y
+ 
+        "17") #Megaglest
+            apt install megaglest -y
             
-            #Ajouterr :
-            #Battle for Wesnoth : flatpak install --from https://flathub.org/repo/appstream/org.wesnoth.Wesnoth.flatpakref
-            
-            
+        "18") #Pingus
+            apt install pingus -y            
+ 
+        "19") #Battle for Wesnoth
+            flatpak install --from https://flathub.org/repo/appstream/org.wesnoth.Wesnoth.flatpakref -y      
     esac
 done
 
@@ -1255,6 +1342,9 @@ do
             sed -ri 's/GRUB_TIMEOUT=10/GRUB_TIMEOUT=2/g' /etc/default/grub
             mkdir /boot/old ; mv /boot/memtest86* /boot/old/
             update-grub
+            ;;
+        "15") #Lecture DVD Commerciaux (vérifier si suffisant)
+            apt install libdvdcss2 -y
             ;;
     esac
 done
