@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.24 (alpha)
+# version 0.0.25 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -276,10 +276,28 @@ echo "9.1/ Quel(s) logiciel(s) de bureautique ?"
 echo "*******************************************************"
 echo "[1] Aucun supplément (LibreOffice par défaut + Evince pour les PDF)"
 echo "[2] Marp (Permet de créer une présentation rapide en s’affranchissant des outils bureautiques lourds)"
-echo "[3] Compléter LibreOffice : ajout du module 'Base' + des extensions utiles (templates, modèles de documents, clipboard...)"
+echo "[3] Supplément LibreOffice : ajout du module 'Base' + des extensions utiles (templates, modèles de documents, clipboard...)"
 echo "[4] PdfMod (logiciel permettant diverses modifications sur vos PDF)"
-echo "[5] Scenari (famille d'applications d'édition avancées de chaînes éditoriales)"
+echo "[5] Scenari (scenarichaine + opale : famille d'applications d'édition avancées de chaînes éditoriales)"
+echo "[6] Freeplane (création de cartes heuristiques (Mind Map) avec des diagrammes représentant les connexions sémantiques)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
+clear
+
+# Question 9.2 : Science et éducation (voir pour Scratch2 + Celestia ?)
+echo "*******************************************************"
+echo "9.2/ Des logiciels de science ou pour l'éducation ?"
+echo "*******************************************************"
+echo "[1] Pas d'ajout"
+echo "[2] Google Earth (globe terrestre de Google pour explorer la planète)"
+echo "[3] [GEO] Extension OooHg pour LibreOffice (ajoute 1600 cartes de géographie)"
+echo "[4] [SCIENCE] SciLab (Logiciel scientifique pour le calcul numérique pour des applications scientifiques"
+echo "[5] [MATH] GeoGebra (géométrie dynamique pour manipuler des objets avec un ensemble de fonctions algébriques)"
+echo "[6] [MATH] Algobox (Logiciel libre d'aide à l'élaboration/exécution d'algorithmes en mathématique)"
+echo "[7] [MATH] CaRMetal (Logiciel libre de géométrie dynamique, créé à partir du moteur de C.a.R.)"
+echo "[8] [ASTRO] Stellarium (Planétarium avec l'affichage du ciel réaliste en 3D avec simulation d'un téléscope)"
+echo "[9] [ASTRO] SkyChart (Cartographie céleste très complet avec un catalogue riche)"
+echo "[10] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
+read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
 clear
 
 # Question 10 : Utilitaires #(a compléter)
@@ -990,7 +1008,7 @@ do
     esac
 done
 
-# Q9/ Bureautique
+# Q9.1/ Bureautique
 for bureautique in $choixBureautique
 do
     case $bureautique in
@@ -999,15 +1017,54 @@ do
             tar zxvf 0.0.11-Marp-linux-x64.tar.gz
             chmod +x ./0.0.11-Marp-linux-x64/Marp
             ;;
-        "3") #Complément LibreOffice (a faire plus tard)
-           
+        "3") #Complément LibreOffice
+            apt install libreoffice libreoffice-style-oxygen libreoffice-style-human libreoffice-style-sifrm libreoffice-wiki-publisher -y
+            apt install libreoffice-dmaths libreoffice-templates openclipart-libreoffice libreoffice-nlpsolver -y
             ;;
         "4") #PDFMod
             apt install pdfmod -y 
             ;;
-        "5") #Scenari (a faire plus tard)
-            
+        "5") #Scenari (a tester plus tard) #remplacer xenial par bionic plus tard (par encore actif pour 18.04)
+            wget -O- https://download.scenari.org/deb/scenari.asc | apt-key add -
+            echo "deb https://download.scenari.org/deb xenial main" | tee -a /etc/apt/sources.list.d/scenari.list
+            apt update ; apt install scenarichain4.2.fr-fr opale3.6.fr-fr -y
             ;;
+    esac
+done
+
+# Q9.2/ Science
+for science in $choixScience
+do
+    case $science in
+        "2") #Google Earth
+            wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb
+            dpkg -i google-earth-pro-stable_current_amd64.deb
+            apt install -fy
+            ;;
+        "3") #extension LO oooHG
+            apt install ooohg -y
+            ;;
+        "4") #Scilab
+            apt install scilab -y
+            ;;
+        "5") #Geogebra
+            apt install geogebra -y
+            ;;
+        "6") #Algobox
+            apt install algobox -y
+            ;;
+        "7") #Carmetal
+            apt install carmetal -y
+            ;;
+        "8") #Stellarium
+            apt install stellarium -y
+            ;;            
+        "9") #Skychart
+            ## a ajouter plus tard
+            ;;
+        "10") #Avogadro
+            apt install avogadro -y
+            ;;   
     esac
 done
 
