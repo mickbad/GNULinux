@@ -124,7 +124,7 @@ echo "[11] Mumble (logiciel libre connue chez les gameurs pour les conversations
 echo "[12] TeamSpeak (une autre alternative à Mumble mais propriétaire, beaucoup utilisé aussi par les joueurs)"
 echo "[13] Discord [Snap] (logiciel propriétaire multiplateforme pour communiquer à plusieurs pour les gameurs)"
 echo "[14] Tox (une alternative opensource à Skype et sécurisé : P2P Chiffré sans serveur)"
-echo "[15] Viber (logiciel de communication, surtout connue en application mobile)"
+echo "[15] Viber [Flatpak] (logiciel de communication, surtout connue en application mobile)"
 echo "[16] Telegram (appli de messagerie basée sur le cloud avec du chiffrage)"
 echo "[17] Wire (un autre client de messagerie instantanée chiffré crée par Wire Swiss)"
 echo "[18] Hexchat (client IRC, fork de xchat)"
@@ -296,6 +296,7 @@ echo "[7] [MATH] CaRMetal (Logiciel libre de géométrie dynamique, créé à pa
 echo "[8] [ASTRO] Stellarium (Planétarium avec l'affichage du ciel réaliste en 3D avec simulation d'un téléscope)"
 echo "[9] [ASTRO] SkyChart (Cartographie céleste très complet avec un catalogue riche)"
 echo "[10] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
+echo "[11] [TECHNO] Scratch (langage de prog visuel libre et OpenSource, créé par le MIT, à vocation éducative et ludique)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
 clear
 
@@ -320,6 +321,7 @@ echo "[14] TeamViewer (logiciel propriétaire de télémaintenance disposant de 
 echo "[15] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)"
 echo "[16] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
 echo "[17] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
+echo "[18] Gufw (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
 
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
 clear
@@ -346,6 +348,7 @@ echo "[15] Albion Online [Flatpak] (MMORPG avec système de quête et donjons)"
 echo "[16] Megaglest (RTS 3d dans un monde fantastique avec 2 factions qui s'affrontent : la magie et la technologie)"
 echo "[17] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
 echo "[18] Battle for Wesnoth [Flatpak] (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
+echo "[19] RunScape [Flatpak] (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
 clear
 
@@ -469,7 +472,7 @@ apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
 apt install dconf-editor gnome-tweak-tool gedit-plugins nautilus-image-converter -y
 
 # Autres outils utiles
-apt install net-tools vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx -y
+apt install net-tools vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar -y
 
 # Codecs utiles
 apt install ubuntu-restricted-extras x264 x265 libavcodec-extra -y
@@ -632,9 +635,7 @@ do
             apt install tox -y
             ;;               
         "15") #viber
-            wget http://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
-            dpkg -i viber.deb
-            apt install -fy
+            flatpak install --from https://flathub.org/repo/appstream/com.viber.Viber.flatpakref -y
             ;;               
         "16") #telegram (ou via Snap, voir lequel est le plus pertinent)
             add-apt-repository ppa:atareao/telegram -y
