@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.25 (alpha)
+# version 0.0.26 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -142,19 +142,18 @@ echo "[2] FileZilla (logiciel très répendu utilisé pour les transferts FTP ou
 echo "[3] Deluge (client BitTorrent basé sur Python et GTK+)"
 echo "[4] Rtorrent (client BitTorrent en ligne de commande donc très léger)"
 echo "[5] qBittorrent (client BitTorrent léger développé en C++ avec Qt)"
-echo "[6] µTorrent (client BitTorrent propriétaire assez connu sous Windows)"
-echo "[7] Bittorrent (client non-libre de base pour gérer les téléchargements Torrent)"
-echo "[8] Vuze alias Azureus [Snap] (Plate-forme commerciale d'Azureus avec le protocole BitTorrent)"
-echo "[9] aMule (pour le réseau eDonkey2000, clone de Emule)"
-echo "[10] FrostWire (client multiplate-forme pour le réseau Gnutella)"
-echo "[11] Gtk-Gnutella (un autre client stable et léger avec pas mal d'option)"
-echo "[12] EiskaltDC++ (stable et en français, pour le réseau DirectConnect)"
-echo "[13] RetroShare (logiciel d'échange basé sur F2F et PGP sécurisé)"
-echo "[14] Calypso (client P3P anonyme et évolué)"
-echo "[15] Grsync (une interface graphique pour l'outil rsync"
-echo "[16] SubDownloader (téléchargement de sous-titre)"
-echo "[17] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
-echo "[18] JDownloader (gestionnaire de téléchargement écrit en Java avec beaucoup d'option)"
+echo "[6] Bittorrent (client non-libre de base pour gérer les téléchargements Torrent)"
+echo "[7] Vuze alias Azureus [Snap] (Plate-forme commerciale d'Azureus avec le protocole BitTorrent)"
+echo "[8] aMule (pour le réseau eDonkey2000, clone de Emule)"
+echo "[9] FrostWire (client multiplate-forme pour le réseau Gnutella)"
+echo "[10] Gtk-Gnutella (un autre client stable et léger avec pas mal d'option)"
+echo "[11] EiskaltDC++ (stable et en français, pour le réseau DirectConnect)"
+echo "[12] RetroShare (logiciel d'échange basé sur F2F et PGP sécurisé)"
+echo "[13] Calypso (client P3P anonyme et évolué)"
+echo "[14] Grsync (une interface graphique pour l'outil rsync"
+echo "[15] SubDownloader (téléchargement de sous-titre)"
+echo "[16] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
+echo "[17] JDownloader (gestionnaire de téléchargement écrit en Java avec beaucoup d'option)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15) : " choixTelechargement
 clear
 
@@ -332,25 +331,23 @@ echo "*******************************************************"
 echo "[1] Aucun, je ne suis pas un gameur"
 echo "[2] Steam (plateforme de distribution de jeux. Permet notamment d'installer Dota2, TF2, CS, TR...)"
 echo "[3] PlayOnLinux (permet de faire tourner des jeux Windows via Wine avec des réglages pré-établis)"
-echo "[4] Minecraft [Snap] (un des plus célèbres jeux sandbox, jeu propriétaire et payant)"
+echo "[4] Minecraft (un des plus célèbres jeux sandbox, jeu propriétaire et payant)"
 echo "[5] Minetest (un clone de Minecraft mais libre/opensource et totalement gratuit)"
 echo "[6] OpenArena (un clone libre du célèbre jeu 'Quake')"
 echo "[7] 0ad: Empires Ascendant (jeu de stratégie en temps réel RTS)"
-echo "[8] Ryzom (MMORPG sous licence AGPL)"
-echo "[9] FlightGear (simulateur de vol)"
-echo "[10] SuperTux (clone de Super Mario mais avec un pingouin)"
-echo "[11] SuperTuxKart (clone de Super Mario Kart)"
-echo "[12] Assault Cube (clone de Counter Strike)"
-echo "[13] World Of Padman (jeu de tir basé sur Quake 3 avec des graphismes amusant)"
-echo "[14] Second Life (métavers 3D sortie en 2003 sur le modèle f2p)"
-echo "[15] Gnome Games (Pack d'une dizaine de mini-jeux pour Gnome)"
-echo "[16] Albion Online [Flatpak] (MMORPG avec système de quête et donjons)"
-echo "[17] Megaglest (RTS 3d dans un monde fantastique avec 2 factions qui s'affrontent : la magie et la technologie)"
-echo "[18] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
-echo "[19] Battle for Wesnoth [Flatpak] (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
+echo "[8] FlightGear (simulateur de vol)"
+echo "[9] SuperTux (clone de Super Mario mais avec un pingouin)"
+echo "[10] SuperTuxKart (clone de Super Mario Kart)"
+echo "[11] Assault Cube (clone de Counter Strike)"
+echo "[12] World Of Padman (jeu de tir basé sur Quake 3 avec des graphismes amusant)"
+echo "[13] Second Life (métavers 3D sortie en 2003 sur le modèle f2p)"
+echo "[14] Gnome Games (Pack d'une dizaine de mini-jeux pour Gnome)"
+echo "[15] Albion Online [Flatpak] (MMORPG avec système de quête et donjons)"
+echo "[16] Megaglest (RTS 3d dans un monde fantastique avec 2 factions qui s'affrontent : la magie et la technologie)"
+echo "[17] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
+echo "[18] Battle for Wesnoth [Flatpak] (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
 clear
-
 
 ## Mode avancé
 
@@ -453,6 +450,7 @@ echo "[12] Ajouter le support pour le système de fichier HFS d'Apple"
 echo "[13] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
 echo "[14] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
 echo "[15] Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
+echo "[16] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
 clear
 
@@ -679,48 +677,45 @@ do
         "5") #qBittorrent
             apt install qbittorrent -y
             ;;         
-        "6") #µTorrent
-            ##### abandonner l'idée car serveur torrent...
-            ;;
-        "7") #Bittorrent
+        "6) #Bittorrent
             apt install bittorrent -y
             ;;            
-        "8") #Vuze
+        "7") #Vuze
             snap install vuze-vs
             ;;           
-        "9") #aMule
+        "8") #aMule
             apt install amule -y
             ;;           
-        "10") #FrostWire
+        "9") #FrostWire
             wget https://netcologne.dl.sourceforge.net/project/frostwire/FrostWire%206.x/6.5.9-build-246/frostwire-6.5.9.all.deb
             dpkg -i frostwire-6.5.9.all.deb
             apt install -fy
             ;;        
-        "11") #Gtk-Gnutella
+        "10") #Gtk-Gnutella
             apt install gtk-gnutella -y
             ;;    
-        "12") #EiskaltDC++
+        "11") #EiskaltDC++
             apt install eiskaltdcpp eiskaltdcpp-gtk3 -y
             ;;       
-        "13") #RetroShare
+        "12") #RetroShare
             add-apt-repository ppa:ppa:retroshare/stable -y
             apt update ; apt install retroshare -y
             ;;                         
-        "14") #Calypso
+        "13") #Calypso
             wget https://netcologne.dl.sourceforge.net/project/calypso/kommute/0.24/kommute_0.24-2_i386.deb
             dpkg -i kommute_0.24-2_i386.deb
             apt install -fy
             ;;               
-        "15") #Grsync
+        "14") #Grsync
             apt install grsync -y
             ;;               
-        "16") #SubDownloader
+        "15") #SubDownloader
             apt install subdownloader -y
             ;;              
-        "17") #Nicotine+ 
+        "16") #Nicotine+ 
             apt install nicotine -y
             ;;               
-        "18") #JDownloader
+        "17") #JDownloader
             add-apt-repository ppa:jd-team/jdownloader -y
             apt update ; apt install jdownloader-installer -y
             ;;                        
@@ -1060,7 +1055,9 @@ do
             apt install stellarium -y
             ;;            
         "9") #Skychart
-            ## a ajouter plus tard
+            wget https://vorboss.dl.sourceforge.net/project/skychart/1-software/version_4.0/skychart_4.0-3575b_amd64.deb
+            dpkg -i skychart_4.0-3575b_amd64.deb
+            apt install -fy
             ;;
         "10") #Avogadro
             apt install avogadro -y
@@ -1140,7 +1137,9 @@ do
             apt install playonlinux -y
             ;;
         "4") #Minecraft  (a tester si c'est ok sinon choisir autre méthode d'install)
-            snap install minecraft-nsg
+            wget http://packages.linuxmint.com/pool/import/m/minecraft-installer/minecraft-installer_0.1+r12~ubuntu16.04.1_amd64.deb
+            dpkg -i minecraft-installer_0.1+r12~ubuntu16.04.1_amd64.deb
+            apt install -fy
             ;;
         "5") #Minetest + mods (à tester)
             apt install minetest minetest-mod-* -y
@@ -1151,51 +1150,49 @@ do
         "7") #0ad: Empires Ascendant (ou via flatpak)
             apt install 0ad -y
             #flatpak install --from https://flathub.org/repo/appstream/com.play0ad.zeroad.flatpakref
-            ;;
-        "8") #Ryzom #apparemment dispo sur Steam, a tester si ok retirer de la liste ici
-            
-            ;;         
-        "9") #FlightGear
+            ;;     
+        "8") #FlightGear
             apt install flightgear -y
             ;;
-        "10") #SuperTux
+        "9") #SuperTux
             apt install supertux -y
             ;;            
-        "11") #SuperTuxKart
+        "10") #SuperTuxKart
             apt install supertuxkart -y
             ;;   
-        "12") #Assault Cube
+        "11") #Assault Cube
             apt install assaultcube -y
             ;;         
-        "13") #World Of Padman
+        "12") #World Of Padman
             wget https://netix.dl.sourceforge.net/project/worldofpadman/wop-1.5.x-to-1.6-patch-unified.zip
             unzip wop-1.5.x-to-1.6-patch-unified.zip
             ;;
-        "14") #Second Life (a mon avis ne marchera pas, a tester)
+        "13") #Second Life (a mon avis ne marchera pas, a tester)
             wget http://download.cloud.secondlife.com/Viewer_5/Second_Life_5_0_8_329115_i686.tar.bz2
             tar jxvf Second_Life_5_0_8_329115_i686.tar.bz2
             chmod +x ./Second_Life_5_0_8_329115_i686/install.sh
             ./Second_Life_5_0_8_329115_i686/install.sh
             ;;            
-        "15") #Gnome Games (verifier si gg-app utile)
+        "14") #Gnome Games (verifier si gg-app utile)
             apt install gnome-games gnome-games-app -y
             ;;  
-        "16") #Albion online
+        "15") #Albion online
             flatpak install --from https://flathub.org/repo/appstream/com.albiononline.AlbionOnline.flatpakref -y
- 
-        "17") #Megaglest
+            ;;
+        "16") #Megaglest
             apt install megaglest -y
-            
-        "18") #Pingus
+            ;;
+        "17") #Pingus
             apt install pingus -y            
- 
-        "19") #Battle for Wesnoth
-            flatpak install --from https://flathub.org/repo/appstream/org.wesnoth.Wesnoth.flatpakref -y      
+            ;;
+        "18") #Battle for Wesnoth
+            flatpak install --from https://flathub.org/repo/appstream/org.wesnoth.Wesnoth.flatpakref -y   
+            ;;
     esac
 done
 
-
 # Mode avancé : ne pas oublier d'ajouter plus tard une condition => Si mode avancé alors...
+if [ "$choixMode" = "2" ] ; then
 
 # A12/ Extensions (a completer plus tard)
 for extension in $choixExtension
@@ -1403,8 +1400,12 @@ do
         "15") #Lecture DVD Commerciaux (vérifier si suffisant)
             apt install libdvdcss2 -y
             ;;
+        "16") #Nvidia Bumblebee pour techno optimus
+            # complexe, créer un script spécialement pour ça plus tard puis le récupérer/lancer depuis ici
+            ;;    
     esac
 done
+fi
 
 # Nettoyage/Purge
 apt install -fy ; apt autoremove --purge -y ; apt clean ; clear
