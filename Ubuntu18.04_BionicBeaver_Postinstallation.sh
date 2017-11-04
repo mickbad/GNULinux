@@ -279,6 +279,7 @@ echo "[3] Supplément LibreOffice : ajout du module 'Base' + des extensions util
 echo "[4] PdfMod (logiciel permettant diverses modifications sur vos PDF)"
 echo "[5] Scenari (scenarichaine + opale : famille d'applications d'édition avancées de chaînes éditoriales)"
 echo "[6] Freeplane (création de cartes heuristiques (Mind Map) avec des diagrammes représentant les connexions sémantiques)"
+echo "[7] FeedReader [Flatpak] (agrégateur RSS moderne pour consulter vos fils d'informations RSS)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
 clear
 
