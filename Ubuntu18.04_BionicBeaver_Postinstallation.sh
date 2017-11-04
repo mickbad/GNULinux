@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.26 (alpha)
+# version 0.0.27 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -108,7 +108,7 @@ clear
 
 # Question 4 : Messagerie instantannée
 echo "*******************************************************"
-echo "4/ Quel(s) logiciels(s) de messagerie instantannée/tchat/VoIP/visio souhaites-tu ?"
+echo "4/ Quel(s) logiciels(s) de courrier ou messagerie instantannée/tchat/VoIP/visio souhaites-tu ?"
 echo "*******************************************************"
 echo "[1] Pas de supplément (rien d'installé par défaut !)"
 echo "[2] Empathy (messagerie instantanné adapté à Gnome, multi-protocole)"
@@ -130,6 +130,7 @@ echo "[17] Wire (un autre client de messagerie instantanée chiffré crée par W
 echo "[18] Hexchat (client IRC, fork de xchat)"
 echo "[19] Signal (Messagerie instantannée crypté recommandé par Edward Snowden)"
 echo "[20] Polari (client IRC pour Gnome)"
+echo "[21] Geary (alternative à Thunderbird et bien intégré pour Gnome, notamment utilisé dans Elementary OS)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 17) : " choixMessagerie
 clear
 
@@ -154,6 +155,7 @@ echo "[14] Grsync (une interface graphique pour l'outil rsync"
 echo "[15] SubDownloader (téléchargement de sous-titre)"
 echo "[16] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
 echo "[17] JDownloader (gestionnaire de téléchargement écrit en Java avec beaucoup d'option)"
+echo "[18] Gydl [Flatpak] (permet de télécharger des vidéos Youtube ou juste la piste audio)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15) : " choixTelechargement
 clear
 
@@ -215,8 +217,6 @@ echo "[22] Peek [Snap] (Outil de création de Gif animé à partir d'une capture
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
 clear
 
-
-
 # Question 8 : Traitement/montage photo & modélisation 3D
 echo "*******************************************************"
 echo "8/ Quel(s) logiciels(s) de montage photo ou modélisation 3D ?"
@@ -240,6 +240,7 @@ echo "[16] K-3D (Animation et modélisation polygonale et modélisation par cour
 echo "[17] SweetHome 3D (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
 echo "[18] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
 echo "[19] Shutter (pour effectuer des captures d'écran, et de leur appliquer des modifications diverses)"
+echo "[20] Frogr (Utile pour ceux qui utilisent le service web 'Flickr')"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixGraphisme
 clear
 
@@ -354,6 +355,7 @@ read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " cho
 clear
 
 ## Mode avancé
+if [ "$choixMode" = "2" ] ; then
 
 # Question A12 : Extension  {a modifier.......}
 echo "*******************************************************"
@@ -393,6 +395,24 @@ echo "[39] Top Icons Plus (Permet d'afficher un icone de notification pour les a
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixExtension
 clear
 
+# Question A12.1 : Customization
+echo "*******************************************************"
+echo "A12.1/ Sélectionnez ce qui vous intéresses en terme de customization (thèmes, icones supplémentaire...) :"
+echo "*******************************************************"
+echo "[1] Pas d'ajout"
+echo "[2] Pack de thème GTK à succès : Arc + Numix + United Gnome Darker + Gnome OS X + Silicon"
+echo "[3] Pack2 avec encore d'autres thèmes : Adapta + Minwaita Vanilla + Plano + Greybird/Blackbird/Bluebird + PopGTK"
+echo "[4] Pack3 de thème : albatross, Yuyo, human, gilouche"
+echo "[5] Remettre le thème gris pour GDM (par défaut violet) : Attention ! ajoute la session Vanilla en dépendance !"
+echo "[6] Pack d'icone 1 : Numix, Breathe, Breeze, Elementary, Brave + supplément extra icone Gnome"
+echo "[7] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
+echo "[8] Pack d'icone 3 : Human, Moblin, Oxygen, Fuenza, Suede, Yasis"
+# rajouter plus tard theme curseur
+read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
+clear
+
+            ;;    
+            
 # Question A13 : Prog
 echo "*******************************************************"
 echo "A13/ Quel éditeur de texte ou logiciel de Dev (IDE) veux-tu ?"
@@ -448,16 +468,15 @@ echo "[6] Installer le microcode propriétaire Intel (pour cpu intel uniquement 
 echo "[7] Ajouter les polices d'écriture Microsoft"
 echo "[8] Ajouter une commande 'fraude' pour Wayland (pour pouvoir lancer des applis comme Gparted. Exemple : fraude gparted)"
 echo "[9] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
-echo "[10] Remettre le thème gris pour GDM (par défaut violet) : Attention, installe la session Vanilla en dépendance !"
-echo "[11] Ajouter le support pour le système de fichier exFat de Microsoft"
-echo "[12] Ajouter le support pour le système de fichier HFS d'Apple"
-echo "[13] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
-echo "[14] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
-echo "[15] Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
-echo "[16] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
+echo "[10] Ajouter le support pour le système de fichier exFat de Microsoft"
+echo "[11] Ajouter le support pour le système de fichier HFS d'Apple"
+echo "[12] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
+echo "[13] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
+echo "[14] Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
+echo "[15] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
 clear
-
+fi
 
 ### Section installation automatisé
 
@@ -470,7 +489,7 @@ sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
 
 # Utile pour Gnome
-apt install dconf-editor gnome-tweak-tool gedit-plugins nautilus-image-converter -y
+apt install dconf-editor gnome-tweak-tool gedit-plugins nautilus-image-converter gnome-themes-standard -y
 
 # Autres outils utiles
 apt install net-tools vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar -y
@@ -655,11 +674,13 @@ do
             curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
             echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | tee -a /etc/apt/sources.list.d/signal-xenial.list
             apt update ; apt install signal-desktop -y
-            ;; 
-            
+            ;;           
         "20") #Polari
             apt install polari -y
-            ;;      
+            ;;   
+        "21") #Geary
+            apt install geary -y
+            ;;                 
     esac
 done
 
@@ -720,7 +741,10 @@ do
         "17") #JDownloader
             add-apt-repository ppa:jd-team/jdownloader -y
             apt update ; apt install jdownloader-installer -y
-            ;;                        
+            ;;       
+        "18") #Gydl
+            flatpak install --from https://flathub.org/repo/appstream/com.github.JannikHv.Gydl.flatpakref -y
+            ;;   
     esac
 done
 
@@ -940,7 +964,10 @@ do
             ;;        
         "19") #Shutter
             apt install shutter -y
-            ;;              
+            ;;    
+        "20") #Frogr
+            apt install frogr -y
+            ;;    
     esac
 done
 
@@ -1026,8 +1053,16 @@ do
             echo "deb https://download.scenari.org/deb xenial main" | tee -a /etc/apt/sources.list.d/scenari.list
             apt update ; apt install scenarichain4.2.fr-fr opale3.6.fr-fr -y
             ;;
+        "6") #Freeplane
+            apt install freeplane -y
+            ;;
+        "7") #Feedreader
+            flatpak install --from https://flathub.org/repo/appstream/org.gnome.FeedReader.flatpakref -y
+            ;;
     esac
 done
+
+
 
 # Q9.2/ Science
 for science in $choixScience
@@ -1063,6 +1098,9 @@ do
             ;;
         "10") #Avogadro
             apt install avogadro -y
+            ;;
+        "11") #Scratch
+            # A voir plus tard pour l'install...
             ;;   
     esac
 done
@@ -1124,6 +1162,9 @@ do
             ;;   
         "16") #Gnome Recipes
             apt install gnome-recipes -y
+            ;;   
+        "16") #Gufw
+            apt install gufw -y
             ;;   
     esac
 done
@@ -1190,11 +1231,13 @@ do
         "18") #Battle for Wesnoth
             flatpak install --from https://flathub.org/repo/appstream/org.wesnoth.Wesnoth.flatpakref -y   
             ;;
+        "19") #Runscape
+            flatpak install --from https://flathub.org/repo/appstream/com.jagex.RuneScape.flatpakref -y   
+            ;;
     esac
 done
 
 # Mode avancé : ne pas oublier d'ajouter plus tard une condition => Si mode avancé alors...
-if [ "$choixMode" = "2" ] ; then
 
 # A12/ Extensions (a completer plus tard)
 for extension in $choixExtension
@@ -1228,6 +1271,39 @@ do
 
             ;;            
         #.................                                       
+    esac
+done
+
+# A12.1/ Extensions (a completer plus tard)
+for custom in $choixCustom
+do
+    case $custom in
+        "2") #pack theme gtk 1
+            apt install arc-thene numix-blue-gtk-theme numix-gtk-theme silicon-theme -y
+            #a ajouter a la suite : united gnome darker + gnomeosx
+            ;;
+        "3") #pack theme gtk 2
+            apt-add-repository ppa:tista/adapta -y ; apt update ; apt install adapta-gtk-theme -y
+            apt install blackbird-gtk-theme bluebird-gtk-theme greybird-gtk-theme -y
+            #ajouter a la suite : minwaita vanilla + plano + Popgtk
+            ;;
+        "4") #pack theme gtk 3
+            apt install albatross-gtk-theme yuyo-gtk-theme human-theme gnome-theme-gilouche
+            ;;
+        "5") #théme gris GDM (changement effectif seulement si la session vanilla est installé)
+            apt install gnome-session -y # session vanilla nécessaire pour le changement du thème
+            mv /usr/share/gnome-shell/theme/ubuntu.css /usr/share/gnome-shell/theme/ubuntu_old.css
+            mv /usr/share/gnome-shell/theme/gnome-shell.css /usr/share/gnome-shell/theme/ubuntu.css
+            ;;
+        "6") #pack icone 1
+            apt install numix-icon-theme breathe-icon-theme breeze-icon-theme elementary-icon-theme gnome-brave-icon-theme gnome-icon-theme-extras -y
+            ;;        
+        "7") #pack icone 2
+            apt install gnome-dust-icon-theme gnome-humility-icon-theme gnome-icon-theme-garton gnome-icon-theme-gperfection2 gnome-icon-theme-nuovo -y
+            ;;  
+        "8") #pack icone 3
+            apt install human-icon-theme moblin-icon-theme oxygen-icon-theme fuenza-icon-theme gnome-icon-theme-suede gnome-icon-theme-yasis -y
+            ;;               
     esac
 done
 
@@ -1380,34 +1456,28 @@ do
             disable-user-list=true" > /etc/dconf/db/gdm.d/00-login-screen
             dconf update
             ;;
-        "10") #théme gris GDM (changement effectif seulement si la session vanilla est installé)
-            apt install gnome-session -y # session vanilla nécessaire pour le changement du thème
-            mv /usr/share/gnome-shell/theme/ubuntu.css /usr/share/gnome-shell/theme/ubuntu_old.css
-            mv /usr/share/gnome-shell/theme/gnome-shell.css /usr/share/gnome-shell/theme/ubuntu.css
-            ;;
-        "11") #Support ExFat
+        "10") #Support ExFat
             apt install exfat-utils exfat-fuse -y    
             ;;
-        "12") #Support HFS
+        "11") #Support HFS
             apt install hfsprogs hfsutils hfsplus -y
             ;;
-        "13") #Nouvelle commande raccourci Maj totale
+        "12") #Nouvelle commande raccourci Maj totale
             echo "alias maj='apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean ; snap refresh ; flatpak update -y'" >> /home/$SUDO_USER/.bashrc
             source /home/$SUDO_USER/.bashrc
-        "14") #Grub réduction temps d'attente + suppression test ram dans grub
+        "13") #Grub réduction temps d'attente + suppression test ram dans grub
             sed -ri 's/GRUB_TIMEOUT=10/GRUB_TIMEOUT=2/g' /etc/default/grub
             mkdir /boot/old ; mv /boot/memtest86* /boot/old/
             update-grub
             ;;
-        "15") #Lecture DVD Commerciaux (vérifier si suffisant)
+        "14") #Lecture DVD Commerciaux (vérifier si suffisant)
             apt install libdvdcss2 -y
             ;;
-        "16") #Nvidia Bumblebee pour techno optimus
+        "15") #Nvidia Bumblebee pour techno optimus
             # complexe, créer un script spécialement pour ça plus tard puis le récupérer/lancer depuis ici
             ;;    
     esac
 done
-fi
 
 # Nettoyage/Purge
 apt install -fy ; apt autoremove --purge -y ; apt clean ; clear
