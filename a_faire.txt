@@ -29,6 +29,7 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Ajouter K3B ? https://doc.ubuntu-fr.org/k3b
 - Ajouter choix MolotovTV cf https://www.molotov.tv/download
 - Ajouter Stacer ? : http://www.omgubuntu.co.uk/2017/08/stacer-ubuntu-system-cleaner
+- Ajouter extension de Roschan ? : https://extensions.gnome.org/extension/1217/appfolders-manager/
 
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
