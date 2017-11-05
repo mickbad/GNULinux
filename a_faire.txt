@@ -11,6 +11,9 @@
 - Supprimer les extensions : Screenshot windows sizer + Tilix dropdown + Redshift
 - Ajouter un mode Novice ou tout est automatique (pas de question) pour les débutants
 - Dans le mode avancé, ajouter des sections dédiés à Snappy, FlatPak et AppImage
+- Pour lecture Blu-ray : https://doc.ubuntu-fr.org/blu-ray#lire_les_blu-ray_avec_vlc
+- Proposer Nuvola Player ? cf http://www.omgubuntu.co.uk/2012/04/rdio-pandora-support-added-to-nuvola-player
+- Proposer MellowPlayer ? cf https://colinduquesnoy.github.io/MellowPlayer/
 
 - Logiciel à installer pour mode novice :
 Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a vérifier si là par défaut), 
@@ -19,9 +22,20 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Gnome Twitch à déplacer ds une autre catégorie ?
 - Pour section Jeu, voir si on peux inclure paquet gnome-games-app (instable selon Roschan)
 - Customization : ajouter thème Vertex (gtk) + pack d'icone Obsidian
+- Install Laptop-mode-tools ? cf#2 : https://forum.ubuntu-fr.org/viewtopic.php?id=2016748
+- AppImages : créer /opt/appimage et les déplacer dedans + chmod+x ? ajouter lanceur ?
+- Ajouter l'appli Slack ds les choix : https://slack.com/intl/fr-fr/downloads/linux
+- Ajouter Audex ds les choix (bien selon certains utilisateurs) : https://doc.ubuntu-fr.org/audex
+- Ajouter K3B ? https://doc.ubuntu-fr.org/k3b
+- Ajouter choix MolotovTV cf https://www.molotov.tv/download
 
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
+
+- Liste des AppImages :
+https://github.com/AppImage/AppImageKit/wiki/AppImages
+https://www.linux-appimages.org/
+
 - Modif de fond d'écran, exemple#5 : https://forum.ubuntu-fr.org/viewtopic.php?id=2016424
 - Activer coin actif pour GS : gsettings set org.gnome.shell enable-hot-corners true
 - Machine peux exécuter GS ? : 
@@ -86,3 +100,10 @@ Alternatively, a number of tools are available to automate the process:
 For setting the XML file as the default background, see GNOME#Lock screen and background. 
 
 Activation HiDPI : gsettings set org.gnome.desktop.interface scaling-factor 2
+
+- Si besoin de désactiver Wayland au démarrage de GDM :
+/etc/gdm3/custom.conf en dé-commentant la ligne:
+#WaylandEnable=false  
+qui devriendra
+WaylandEnable=false  
+
