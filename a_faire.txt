@@ -28,6 +28,7 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Ajouter Audex ds les choix (bien selon certains utilisateurs) : https://doc.ubuntu-fr.org/audex
 - Ajouter K3B ? https://doc.ubuntu-fr.org/k3b
 - Ajouter choix MolotovTV cf https://www.molotov.tv/download
+- Ajouter Stacer ? : http://www.omgubuntu.co.uk/2017/08/stacer-ubuntu-system-cleaner
 
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
