@@ -35,6 +35,8 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Voir intérêt entre extension méteo openweather et appli natif gnome-weather (1 des 2 ou proposer les 2 ?)
 - Ajouter ds section extension, l'extension pour navigateur : https://github.com/GNOME/chrome-gnome-shell
 - Ajouter Gnome Enfs Manager (ou autre logiciel de cryptage)
+- Ajouté une section Sécurité ?
+
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
 
