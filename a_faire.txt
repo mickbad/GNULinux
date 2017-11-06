@@ -33,6 +33,7 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Ajouter mBlock + scratch + (eventuellement fork libre 'Phratch' cf http://www.phratch.com/)  dans "éducation" ?
 - Algoid ? http://www.algoid.net/download_EN.php?mobile=false
 - Voir intérêt entre extension méteo openweather et appli natif gnome-weather (1 des 2 ou proposer les 2 ?)
+- Ajouter ds section extension, l'extension pour navigateur : https://github.com/GNOME/chrome-gnome-shell
 
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
