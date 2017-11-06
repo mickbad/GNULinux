@@ -31,6 +31,7 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Ajouter Stacer ? : http://www.omgubuntu.co.uk/2017/08/stacer-ubuntu-system-cleaner
 - Ajouter extension de Roschan ? : https://extensions.gnome.org/extension/1217/appfolders-manager/
 - Ajouter mBlock + scratch + (eventuellement fork libre 'Phratch' cf http://www.phratch.com/)  dans "éducation" ?
+- Algoid ? http://www.algoid.net/download_EN.php?mobile=false
 - Voir intérêt entre extension méteo openweather et appli natif gnome-weather (1 des 2 ou proposer les 2 ?)
 
 ==========================================================================================
