@@ -270,11 +270,11 @@ echo "[18] PulseEffects [Flatpak] (interface puissante GTK pour faire pleins de 
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixAudio
 clear
 
-# Question 9.1 : Bureautique
+# Question 9.1 : Bureautique et Mail
 echo "*******************************************************"
-echo "9.1/ Quel(s) logiciel(s) lié(s) à la bureautique ?"
+echo "9.1/ Quel(s) logiciel(s) lié(s) à la bureautique/courrier souhaitez-vous ?"
 echo "*******************************************************"
-echo "[1] Aucun supplément (LibreOffice par défaut + Evince pour les PDF)"
+echo "[1] Aucun supplément (par défaut : Evince pour pdf, LibreOffice en bureautique, Thunderbird pour les mails)"
 echo "[2] Marp (Permet de créer une présentation rapide en s’affranchissant des outils bureautiques lourds)"
 echo "[3] Supplément LibreOffice : ajout du module 'Base' + des extensions utiles (templates, modèles de documents, clipboard...)"
 echo "[4] PdfMod (logiciel permettant diverses modifications sur vos PDF)"
