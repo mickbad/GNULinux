@@ -372,7 +372,7 @@ echo "[9] Impatience (permet d'augmenter la vitesse d'affichage des animations d
 echo "[10] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
 echo "[11] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
 echo "[12] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
-echo "[13] Openweather (Pour avoir la météo directement sur votre bureau)"
+echo "[13] Weather (Pour avoir la météo directement sur votre bureau)"
 echo "[14] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
 echo "[15] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
 echo "[16] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
@@ -1233,36 +1233,86 @@ done
 for extension in $choixExtension
 do
     case $extension in
-        "2") #
-            
+        "2") #Chrome Gnome Shell (extension navigateur web)
+            apt install chrome-gnome-shell -y
             ;;
-        "3") #
-           
+        "3") #AlternateTab
+            #a faire plus tard, cf => https://extensions.gnome.org/extension/15/alternatetab/
             ;;
-        "4") #
-            
+        "4") #Caffeine
+            apt install gnome-shell-extension-caffeine -y
             ;;
-        "5") #
-           
+        "5") #DashToDOck
+            #a faire plus tard, cf => https://extensions.gnome.org/extension/307/dash-to-dock/
             ;;
-        "6") #
-            
+        "6") #DashToPanel
+            apt install gnome-shell-extension-dash-to-panel -y
             ;;
-        "7") #
-            
+        "7") #Clipboard Indicator
+            #a faire plus tard, cf => https://extensions.gnome.org/extension/779/clipboard-indicator/
             ;;
-        "8") #
-            
+        "8") #Hide Top bar
+            #a faire plus tard, cf => https://extensions.gnome.org/extension/545/hide-top-bar/
             ;;         
-        "9") #
-            
+        "9") #Impatience
+            apt install gnome-shell-extension-impatience -y
             ;;
-        "10") #
-
-            ;;            
-        #.................                                       
+        "10") #Logout button
+            apt install gnome-shell-extension-log-out-button -y
+            ;; 
+        "11") #Media Player Indicator
+            apt install gnome-shell-extension-mediaplayer -y
+            ;;
+        "12") #Multi monitors
+            apt install gnome-shell-extension-multi-monitors -y
+            ;;
+        "13") #Weather
+            apt install gnome-shell-extension-weather -y
+            ;;
+        "14") #Places status indicator
+            #a faire plus tard, cf => https://extensions.gnome.org/extension/8/places-status-indicator/
+            ;;
+        "15") #Removable drive menu
+            #a faire plus tard, cf => https://extensions.gnome.org/extension/7/removable-drive-menu/
+            ;;
+        "16") #Shortcuts
+            apt install gnome-shell-extension-shortcuts -y
+            ;;
+        "17") #Suspend button
+            apt install gnome-shell-extension-suspend-button -y
+            ;;         
+        "18") #Taskbar
+            apt install gnome-shell-extension-taskbar -y
+            ;;
+        "19") #Trash
+            apt install gnome-shell-extension-trash -y
+            ;;
+        "20") #User themes
+            #a faire plus tard, cf => https://extensions.gnome.org/extension/19/user-themes/
+            ;;   
+        "21") #Window list
+            #a faire plus tard, cf => https://extensions.gnome.org/extension/602/window-list/
+            ;;
+        "22") #Workspace indicator
+            #a faire plus tard, cf => https://extensions.gnome.org/extension/21/workspace-indicator/
+            ;;
+        "23") #System-monitor
+            apt install gnome-shell-extension-system-monitor -y
+            ;;         
+        "24") #Top Icon Plus
+            apt install gnome-shell-extension-top-icons-plus -y
+            ;;
+        "25") #Unite
+            #a faire plus tard, cf => https://extensions.gnome.org/extension/1287/unite/
+            ;;
+        "26") #AppFolders Management
+            #a faire plus tard, cf => https://extensions.gnome.org/extension/1217/appfolders-manager/
+            ;;    
     esac
 done
+
+echo "[25] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
+echo "[26] AppFolders Management (Permet de classer les applis dans des dossiers)
 
 # A12.1/ Extensions (a completer plus tard)
 for custom in $choixCustom
