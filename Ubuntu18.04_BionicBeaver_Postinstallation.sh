@@ -130,7 +130,6 @@ echo "[17] Wire (un autre client de messagerie instantanée chiffré crée par W
 echo "[18] Hexchat (client IRC, fork de xchat)"
 echo "[19] Signal (Messagerie instantannée crypté recommandé par Edward Snowden)"
 echo "[20] Polari (client IRC pour Gnome)"
-echo "[21] Geary (alternative à Thunderbird et bien intégré pour Gnome, notamment utilisé dans Elementary OS)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 17) : " choixMessagerie
 clear
 
@@ -161,7 +160,7 @@ clear
 
 # Question 6 : Lecture multimédia
 echo "*******************************************************"
-echo "6/ Quel(s) logiciels(s) de lecture audio/vidéo voulez-vous ?"
+echo "6/ Quel(s) logiciels(s) de lecture audio/vidéo (ou de stream) voulez-vous ?"
 echo "*******************************************************"
 echo "[1] Aucun, rester avec les choix par défaut ('Totem' pour la vidéo, 'Rhythmbox' pour la musique)"
 echo "[2] VLC VideoLan (le couteau suisse de la vidéo, très complet !)"
@@ -184,7 +183,7 @@ echo "[18] Spotify [Flatpak] (Permet d'accéder gratuitement et légalement à d
 echo "[19] MuseScore [Flatpak] (l'éditeur de partitions de musique le plus utilisé au monde !)"
 echo "[20] Gnome Twitch (pour visionner les flux vidéo du site Twitch depuis votre bureau sans utiliser de navigateur)"
 echo "[21] GRadio [Snap] (Application Gnome pour écouter la radio, plus de 1 000 référencés rien qu'en France !)"
-
+echo "[22] Molotov.TV [Appimage] (Service français de distribution de chaînes de TV)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixMultimedia
 clear
 
@@ -272,7 +271,7 @@ clear
 
 # Question 9.1 : Bureautique et Mail
 echo "*******************************************************"
-echo "9.1/ Quel(s) logiciel(s) lié(s) à la bureautique/courrier souhaitez-vous ?"
+echo "9.1/ Quel(s) logiciel(s) de bureautique/courrier souhaitez-vous ?"
 echo "*******************************************************"
 echo "[1] Aucun supplément (par défaut : Evince pour pdf, LibreOffice en bureautique, Thunderbird pour les mails)"
 echo "[2] Marp (Permet de créer une présentation rapide en s’affranchissant des outils bureautiques lourds)"
@@ -281,6 +280,8 @@ echo "[4] PdfMod (logiciel permettant diverses modifications sur vos PDF)"
 echo "[5] Scenari (scenarichaine + opale : famille d'applications d'édition avancées de chaînes éditoriales)"
 echo "[6] Freeplane (création de cartes heuristiques (Mind Map) avec des diagrammes représentant les connexions sémantiques)"
 echo "[7] FeedReader [Flatpak] (agrégateur RSS moderne pour consulter vos fils d'informations RSS)"
+echo "[8] Geary (logiciel de messagerie, alternative à Thunderbird et bien intégré à Gnome)"
+echo "[9] Gnome Evolution (logiciel de type groupware et courrielleur, facile à utiliser)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
 clear
 
@@ -324,6 +325,7 @@ echo "[15] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)
 echo "[16] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
 echo "[17] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
 echo "[18] Gufw (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
+echo "[19] Gnome Enfs Manager (coffre-fort pour vos fichiers/dossiers)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
 clear
 
@@ -464,6 +466,7 @@ echo "[12] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un
 echo "[13] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
 echo "[14] Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
 echo "[15] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
+echo "[16] Support imprimantes HP (hplip + sane + hplip-gui)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
 clear
 fi
@@ -667,10 +670,7 @@ do
             ;;           
         "20") #Polari
             apt install polari -y
-            ;;   
-        "21") #Geary
-            apt install geary -y
-            ;;                 
+            ;;                
     esac
 done
 
@@ -803,7 +803,11 @@ do
             ;;         
         "21") #Gradio
             snap install gradio
-            ;;                 
+            ;;    
+        "22") #Molotov.tv (appimage)
+            wget https://desktop-auto-upgrade.s3.amazonaws.com/linux/1.8.0/molotov
+            chmod +x molotov
+            ;;                
     esac
 done
 
@@ -1049,10 +1053,14 @@ do
         "7") #Feedreader
             flatpak install --from https://flathub.org/repo/appstream/org.gnome.FeedReader.flatpakref -y
             ;;
+        "8") #Geary
+            apt install geary -y
+            ;;        
+        "9") #Gnome Evolution
+            apt install evolution -y
+            ;;                 
     esac
 done
-
-
 
 # Q9.2/ Science
 for science in $choixScience
@@ -1150,12 +1158,16 @@ do
         "16") #Corebird
             flatpak install --from https://flathub.org/repo/appstream/org.baedert.corebird.flatpakref -y
             ;;   
-        "16") #Gnome Recipes
+        "17") #Gnome Recipes
             apt install gnome-recipes -y
             ;;   
-        "16") #Gufw
+        "18") #Gufw
             apt install gufw -y
-            ;;   
+            ;;  
+        "19") #Gnome Encfs Manager
+            add-apt-repository ppa:gencfsm/ppa -y
+            apt update ; apt install gnome-encfs-manager -y
+            ;; 
     esac
 done
 
@@ -1449,7 +1461,6 @@ do
     esac
 done
 
-
 # A15/ Optimisation/Réglage
 for optimisation in $choixOptimisation
 do
@@ -1515,7 +1526,10 @@ do
             ;;
         "15") #Nvidia Bumblebee pour techno optimus
             # complexe, créer un script spécialement pour ça plus tard puis le récupérer/lancer depuis ici
-            ;;    
+            ;;   
+        "16") #Support imprimante HP
+            apt install hplip hplip-doc hplip-gui sane sane-utils -y
+            ;;   
     esac
 done
 
