@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.28 (alpha)
+# version 0.0.29 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -130,6 +130,7 @@ echo "[17] Wire (un autre client de messagerie instantanée chiffré crée par W
 echo "[18] Hexchat (client IRC, fork de xchat)"
 echo "[19] Signal (Messagerie instantannée crypté recommandé par Edward Snowden)"
 echo "[20] Polari (client IRC pour Gnome)"
+echo "[21] Slack [Flatpak] (plate-forme de communication collaborative propriétaire avec gestion de projets)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 17) : " choixMessagerie
 clear
 
@@ -184,6 +185,7 @@ echo "[19] MuseScore [Flatpak] (l'éditeur de partitions de musique le plus util
 echo "[20] Gnome Twitch (pour visionner les flux vidéo du site Twitch depuis votre bureau sans utiliser de navigateur)"
 echo "[21] GRadio [Snap] (Application Gnome pour écouter la radio, plus de 1 000 référencés rien qu'en France !)"
 echo "[22] Molotov.TV [Appimage] (Service français de distribution de chaînes de TV)"
+echo "[23] Nuvola Player [Flatpak] (Environnement d'exécution pour les services de streaming de musique sur le Web)" 
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixMultimedia
 clear
 
@@ -300,6 +302,9 @@ echo "[8] [ASTRO] Stellarium (Planétarium avec l'affichage du ciel réaliste en
 echo "[9] [ASTRO] SkyChart (Cartographie céleste très complet avec un catalogue riche)"
 echo "[10] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
 echo "[11] [TECHNO] Scratch (langage de prog visuel libre et OpenSource, créé par le MIT, à vocation éducative et ludique)"
+echo "[12] [TECHNO] mBlock (environnement de programmation par blocs basé sur Scratch 2, permet le pilotage d'Arduino"
+echo "[13] [TECHNO] Phratch (fork de Scratch, 100% libre, sans besoin de Flash ni d'Adobe Air)"
+echo "[14] [TECHNO] Récupérer Algoid [.jar] (Language de programmation éducatif)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
 clear
 
@@ -482,7 +487,7 @@ sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
 
 # Utile pour Gnome
-apt install dconf-editor gnome-tweak-tool gedit-plugins nautilus-image-converter gnome-themes-standard -y
+apt install dconf-editor gnome-tweak-tool gedit-plugins nautilus-image-converter gnome-themes-standard gnome-weather -y
 
 # Autres outils utiles
 apt install net-tools vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar -y
@@ -670,7 +675,10 @@ do
             ;;           
         "20") #Polari
             apt install polari -y
-            ;;                
+            ;;
+        "21") #Slack (flatpak)
+            flatpak install --from https://flathub.org/repo/appstream/com.slack.Slack.flatpakref -y
+            ;;     
     esac
 done
 
@@ -807,7 +815,10 @@ do
         "22") #Molotov.tv (appimage)
             wget https://desktop-auto-upgrade.s3.amazonaws.com/linux/1.8.0/molotov
             chmod +x molotov
-            ;;                
+            ;; 
+        "22") #Nuvola Player (Flatpak)
+            flatpak install --from https://nuvola.tiliado.eu/eu.tiliado.Nuvola.flatpakref -y
+            ;;   
     esac
 done
 
@@ -1100,6 +1111,20 @@ do
         "11") #Scratch
             # A voir plus tard pour l'install...
             ;;   
+        "12") #mBlock
+            wget https://mblockdev.blob.core.chinacloudapi.cn/mblock-src/mBlock.deb
+            dpkg -i mBlock.deb
+            apt install -fy
+            ;;
+        "13") #Phratch (a vérifier)
+            wget http://phratch.com/download/Phratch4.1-linux.zip
+            unzip Phratch4.1-linux.zip
+            chmod +x ./Phratch4.1-linux/phratch
+            ;;  
+        "14") #AlgoIDE (a vérifier)
+            wget http://www.algoid.net/downloads/AlgoIDE-release.jar
+            chmod +x AlgoIDE-release.jar
+            ;;             
     esac
 done
 
@@ -1466,8 +1491,8 @@ for optimisation in $choixOptimisation
 do
     case $optimisation in
         "2") #déportage snappy ds Home
-            mv /snap /home/ #déplacement du répertoire snap dans le home (donc devient /home/snap)
-            ln -s /home/snap /snap #création d'un lien symbolique pour l'emplacement d'origine
+            mv /snap /home/
+            ln -s /home/snap /snap
             ;;
         "3") #Swapiness 95% +cache pressure 50
             echo vm.swappiness=5 | tee /etc/sysctl.d/99-swappiness.conf
