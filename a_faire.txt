@@ -4,11 +4,11 @@
 - voir pour modif réglage mise en veille ?
 - Modifier page d'acceuil par défaut de Firefox par Qwant ?
 - Ajouter choix si imprimante HP (hplip + sane)
-- Utiliser vouvoiement et non tutoiement
-- Extension "Clipboard Indicator" plutôt que GPaste 
-- Ajouter extension pour afficher bureau, exemple Show Desktop Button (https://extensions.gnome.org/extension/1194/show-desktop-button/)
-- Ajouter extension Unite : https://extensions.gnome.org/extension/1287/unite/
-- Supprimer les extensions : Screenshot windows sizer + Tilix dropdown + Redshift
+[FAIT] Utiliser vouvoiement et non tutoiement
+[FAIT] - Extension "Clipboard Indicator" plutôt que GPaste 
+[REJETE] - Ajouter extension pour afficher bureau, exemple Show Desktop Button (https://extensions.gnome.org/extension/1194/show-desktop-button/) {Obsolète pour l'instant, pas pour 3.26}
+[FAIT] Ajouter extension Unite : https://extensions.gnome.org/extension/1287/unite/
+[FAIT] Supprimer les extensions : Screenshot windows sizer + Tilix dropdown + Redshift
 - Ajouter un mode Novice ou tout est automatique (pas de question) pour les débutants
 - Dans le mode avancé, ajouter des sections dédiés à Snappy, FlatPak et AppImage
 - Pour lecture Blu-ray : https://doc.ubuntu-fr.org/blu-ray#lire_les_blu-ray_avec_vlc
@@ -29,14 +29,14 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Ajouter K3B ? https://doc.ubuntu-fr.org/k3b
 - Ajouter choix MolotovTV cf https://www.molotov.tv/download
 - Ajouter Stacer ? : http://www.omgubuntu.co.uk/2017/08/stacer-ubuntu-system-cleaner
-- Ajouter extension de Roschan ? : https://extensions.gnome.org/extension/1217/appfolders-manager/
+[FAIT] Ajouter extension de Roschan : https://extensions.gnome.org/extension/1217/appfolders-manager/
 - Ajouter mBlock + scratch + (eventuellement fork libre 'Phratch' cf http://www.phratch.com/)  dans "éducation" ?
 - Algoid ? http://www.algoid.net/download_EN.php?mobile=false
 - Voir intérêt entre extension méteo openweather et appli natif gnome-weather (1 des 2 ou proposer les 2 ?)
-- Ajouter ds section extension, l'extension pour navigateur : https://github.com/GNOME/chrome-gnome-shell
+[FAIT] Ajouter ds section extension, l'extension pour navigateur : https://github.com/GNOME/chrome-gnome-shell
 - Ajouter Gnome Enfs Manager (ou autre logiciel de cryptage)
 - Ajouté une section Sécurité ?
-
+- Ajouter curseur partie customization
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
 
