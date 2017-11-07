@@ -1,12 +1,12 @@
-- Modifier Section Bureautique par "Bureautique et Mail"
-- Déplacer "Geary" dans la partie bureautique/mail
-- Ajouter "Evolution" dans cette partie
+[FAIT] Modifier Section Bureautique par "Bureautique et Mail"
+[FAIT] Déplacer "Geary" dans la partie bureautique/mail
+[FAIT] Ajouter "Evolution" dans cette partie
 - voir pour modif réglage mise en veille ?
 - Modifier page d'acceuil par défaut de Firefox par Qwant ?
-- Ajouter choix si imprimante HP (hplip + sane)
+[FAIT] Ajouter choix si imprimante HP (hplip + sane)
 [FAIT] Utiliser vouvoiement et non tutoiement
-[FAIT] - Extension "Clipboard Indicator" plutôt que GPaste 
-[REJETE] - Ajouter extension pour afficher bureau, exemple Show Desktop Button (https://extensions.gnome.org/extension/1194/show-desktop-button/) {Obsolète pour l'instant, pas pour 3.26}
+[FAIT] Extension "Clipboard Indicator" plutôt que GPaste 
+[REJETE] Ajouter extension pour afficher bureau, exemple Show Desktop Button (https://extensions.gnome.org/extension/1194/show-desktop-button/) {Obsolète pour l'instant, pas pour 3.26}
 [FAIT] Ajouter extension Unite : https://extensions.gnome.org/extension/1287/unite/
 [FAIT] Supprimer les extensions : Screenshot windows sizer + Tilix dropdown + Redshift
 - Ajouter un mode Novice ou tout est automatique (pas de question) pour les débutants
@@ -18,23 +18,23 @@
 - Logiciel à installer pour mode novice :
 Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a vérifier si là par défaut), 
 
-- Section audio : préciser si "Musique" est Gnome musique (si oui à préciser sinon ajouter gnome musique en +)
-- Gnome Twitch à déplacer ds une autre catégorie ?
-- Pour section Jeu, voir si on peux inclure paquet gnome-games-app (instable selon Roschan)
+[ERREUR] Section audio : préciser si "Musique" est Gnome musique (si oui à préciser sinon ajouter gnome musique en +) {mauvais commentaire rapporté, c'était déjà précisé}
+[MODIF] Gnome Twitch à déplacer ds une autre catégorie ? {pas déplacé mais question modifié pour préciser que cela concerne les streams}
+[INUTILE] Pour section Jeu, voir si on peux inclure paquet gnome-games-app (instable selon Roschan) {pas d'intérêt}
 - Customization : ajouter thème Vertex (gtk) + pack d'icone Obsidian
 - Install Laptop-mode-tools ? cf#2 : https://forum.ubuntu-fr.org/viewtopic.php?id=2016748
 - AppImages : créer /opt/appimage et les déplacer dedans + chmod+x ? ajouter lanceur ?
 - Ajouter l'appli Slack ds les choix : https://slack.com/intl/fr-fr/downloads/linux
 - Ajouter Audex ds les choix (bien selon certains utilisateurs) : https://doc.ubuntu-fr.org/audex
-- Ajouter K3B ? https://doc.ubuntu-fr.org/k3b
-- Ajouter choix MolotovTV cf https://www.molotov.tv/download
+[REJET] Ajouter K3B ? https://doc.ubuntu-fr.org/k3b {trop de dépendance KDE !}
+[FAIT] Ajouter choix MolotovTV cf https://www.molotov.tv/download
 - Ajouter Stacer ? : http://www.omgubuntu.co.uk/2017/08/stacer-ubuntu-system-cleaner
 [FAIT] Ajouter extension de Roschan : https://extensions.gnome.org/extension/1217/appfolders-manager/
 - Ajouter mBlock + scratch + (eventuellement fork libre 'Phratch' cf http://www.phratch.com/)  dans "éducation" ?
 - Algoid ? http://www.algoid.net/download_EN.php?mobile=false
 - Voir intérêt entre extension méteo openweather et appli natif gnome-weather (1 des 2 ou proposer les 2 ?)
 [FAIT] Ajouter ds section extension, l'extension pour navigateur : https://github.com/GNOME/chrome-gnome-shell
-- Ajouter Gnome Enfs Manager (ou autre logiciel de cryptage)
+[FAIT] Ajouter Gnome Enfs Manager (ou autre logiciel de cryptage)
 - Ajouté une section Sécurité ?
 - Ajouter curseur partie customization
 ==========================================================================================
