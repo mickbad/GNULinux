@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.27 (alpha)
+# version 0.0.28 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -30,19 +30,19 @@ then
     exit
     elif  [ "$DISTRIB_RELEASE" != "18.04" ]
     then
-        echo "Désolé $SUDO_USER, ce script n'est conçu que pour la 18.04LTS alors que tu es actuellement sur la version $DISTRIB_RELEASE"
+        echo "Désolé $SUDO_USER, ce script n'est conçu que pour la 18.04LTS alors que vous êtes actuellement sur la version $DISTRIB_RELEASE"
         exit
         elif [ "$(which gnome-shell)" != "/usr/bin/gnome-shell" ]
         then
-            echo "Bien que tu sois effectivement sur la 18.04 $SUDO_USER, ce script est conçu uniquement pour la version de base sous Gnome-Shell (pour l'instant) alors que tu utilises une variante."
+            echo "Bien que vous soyez effectivement sur la 18.04 $SUDO_USER, ce script est conçu uniquement pour la version de base sous Gnome-Shell (pour l'instant) alors que vous utilisez une variante."
             exit
             else
-                echo "Ok, tu as correctement lancé le script, tu es bien sur Bionic avec Gnome-Shell, passons aux questions..."
-                echo "NB : Si pour un logiciel tu vois indiqué... :"
-                echo "[Snap] => signifie que le paquet s'installera de manière isolé avec Snappy (snap install...)"
-                echo "[Flatpak] => signifie que le paquet s'installera avec Flatpak, une autre alternative à Snappy"
-                echo "[Appimage] => paquet AppImage téléchargé, pour l'utiliser il faudra le lancer manuellement (pas de raccourci)"
-                echo "Si rien de précisé en encadré => installation classique depuis les dépots officiel si c'est possible sinon PPA"
+                echo "Ok, vous avez correctement lancé le script, vous êtes bien sur Bionic avec Gnome-Shell, passons aux questions..."
+                echo "Légende : "
+                echo "[Snap] => Le paquet s'installera de manière isolé avec Snappy (snap install...)"
+                echo "[Flatpak] => Le paquet s'installera avec Flatpak, une autre alternative à Snappy"
+                echo "[Appimage] => Paquet AppImage téléchargé, pour l'utiliser il faudra le lancer manuellement (pas de raccourci)"
+                echo "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible sinon PPA"
 fi
 
 ### Section interactive avec les questions
@@ -60,15 +60,15 @@ clear
 
 while [ "$choixMode" != "1" ] && [ "$choixMode" != "2" ]
 do
-    read -p "Désolé, je ne comprend pas ta réponse, c'est soit 1 soit 2, merci de refaire ton choix : " choixMode
+    read -p "Désolé, je ne comprend pas votre réponse, c'est soit 1 soit 2, merci de refaire un choix : " choixMode
     clear
 done
 
 echo "======================================================="
-echo "Précision : si tu valides directement par 'entrée' au clavier sans mettre de choix, le script considèra que tu as sélectionné le choix par défaut cad 1 et ceci pour toutes les questions à venir"
+echo "Précision : si vous validez directement par 'entrée' au clavier sans mettre de choix, le script considèra que vous avez sélectionné le choix par défaut cad 1 et ceci pour toutes les questions à venir"
 # Question 2 : Session 
 echo "*******************************************************"
-echo "2/ Quelle(s) session(s) supplémentaire(s) souhaites-tu installer ? (plusieurs choix possibles)"
+echo "2/ Quelle(s) session(s) supplémentaire(s) souhaitez-vous installer ? (plusieurs choix possibles)"
 echo "*******************************************************"
 echo "[1] Aucune, rester avec la session Ubuntu par défaut (cad Gnome customizé + 2 extensions)"
 echo "[2] Ajouter la session 'Gnome Vanilla' (cad une session Gnome non-customizé et sans extension)"
@@ -78,9 +78,9 @@ echo "*******************************************************"
 read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 2 3) : " choixSession
 clear
 
-# Question 3 : Navigateur web #évidemment des PPA ne sont pas encore actif pour la 18.04 actuellement !! ne pas tester !
+# Question 3 : Navigateur web 
 echo "*******************************************************"
-echo "3/ Quel(s) navigateur(s) souhaites-tu ? (plusieurs choix possible)"
+echo "3/ Quel(s) navigateur(s) vous intéresses ? (plusieurs choix possibles)"
 echo "*******************************************************"
 echo "[1] Pas de navigateur supplémentaire : rester sur la version classique de Firefox (stable)"
 echo "[2] Firefox Béta (n+1 cad 1 version d'avance : attention remplace la version stable !)"
@@ -108,9 +108,9 @@ clear
 
 # Question 4 : Messagerie instantannée
 echo "*******************************************************"
-echo "4/ Quel(s) logiciels(s) de courrier ou messagerie instantannée/tchat/VoIP/visio souhaites-tu ?"
+echo "4/ Quel(s) logiciels(s) de courrier ou messagerie instantannée/tchat/VoIP/visio souhaitez-vous ?"
 echo "*******************************************************"
-echo "[1] Pas de supplément (rien d'installé par défaut !)"
+echo "[1] Aucun"
 echo "[2] Empathy (messagerie instantanné adapté à Gnome, multi-protocole)"
 echo "[3] Pidgin (une alternative à Empathy avec l'avantage d'être multi-plateforme)"
 echo "[4] Jitsi (anciennement 'SIP Communicator' surtout orienté VoIP)"
@@ -136,7 +136,7 @@ clear
 
 # Question 5 : Download/Upload
 echo "*******************************************************"
-echo "5/ Quel(s) logiciels(s) de téléchargement/copie souhaites-tu ?"
+echo "5/ Quel(s) logiciels(s) de téléchargement/copie voulez-vous ?"
 echo "*******************************************************"
 echo "[1] Pas de supplément ('Transmission' installé de base)"
 echo "[2] FileZilla (logiciel très répendu utilisé pour les transferts FTP ou SFTP)"
@@ -161,7 +161,7 @@ clear
 
 # Question 6 : Lecture multimédia
 echo "*******************************************************"
-echo "6/ Quel(s) logiciels(s) de lecture audio/vidéo veux-tu ? (plusieurs choix possible)"
+echo "6/ Quel(s) logiciels(s) de lecture audio/vidéo voulez-vous ?"
 echo "*******************************************************"
 echo "[1] Aucun, rester avec les choix par défaut ('Totem' pour la vidéo, 'Rhythmbox' pour la musique)"
 echo "[2] VLC VideoLan (le couteau suisse de la vidéo, très complet !)"
@@ -190,7 +190,7 @@ clear
 
 # Question 7 : Traitement/montage video
 echo "*******************************************************"
-echo "7/ Souhaites-tu un logiciel de montage/encodage vidéo ?"
+echo "7/ Souhaitez-vous un logiciel de montage/encodage vidéo ?"
 echo "*******************************************************"
 echo "[1] Non merci (aucun n'est installé par défaut)"
 echo "[2] Handbrake (transcodage de n'importe quel fichier vidéo)"
@@ -272,7 +272,7 @@ clear
 
 # Question 9.1 : Bureautique
 echo "*******************************************************"
-echo "9.1/ Quel(s) logiciel(s) de bureautique ?"
+echo "9.1/ Quel(s) logiciel(s) lié(s) à la bureautique ?"
 echo "*******************************************************"
 echo "[1] Aucun supplément (LibreOffice par défaut + Evince pour les PDF)"
 echo "[2] Marp (Permet de créer une présentation rapide en s’affranchissant des outils bureautiques lourds)"
@@ -302,9 +302,9 @@ echo "[11] [TECHNO] Scratch (langage de prog visuel libre et OpenSource, créé 
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
 clear
 
-# Question 10 : Utilitaires #(a compléter)
+# Question 10 : Utilitaires 
 echo "*******************************************************"
-echo "10/ Quel(s) utilitaire(s) supplémentaire(s) veux-tu ?"
+echo "10/ Quel(s) utilitaire(s) supplémentaire(s) voulez-vous ?"
 echo "*******************************************************"
 echo "[1] Aucun"
 echo "[2] Kazam (capture vidéo de votre bureau)"
@@ -324,7 +324,6 @@ echo "[15] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)
 echo "[16] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
 echo "[17] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
 echo "[18] Gufw (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
-
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
 clear
 
@@ -357,47 +356,42 @@ clear
 ## Mode avancé
 if [ "$choixMode" = "2" ] ; then
 
-# Question A12 : Extension  {a modifier.......}
+# Question A12 : Extension 
 echo "*******************************************************"
-echo "A12/ Des extensions Gnome-Shell supplémentaires à installer ?"
+echo "A12/ Des extensions pour navigateur ou gnome-shell à installer ?"
 echo "*******************************************************"
 echo "[1] Non, ne pas ajouter de nouvelles extensions"
-echo "[2] AlternateTab (alternative au Alt+Tab issu du mode classique)"
+echo "[2] Chrome Gnome Shell (extension pour les navigateurs : permet d'installer une extension Gnome depuis le site web)
+echo "[3] AlternateTab (alternative au Alt+Tab issu du mode classique)"
 echo "[4] Caffeine (permet en 1 clic de désactiver temporairement les mises en veilles)"
 echo "[5] DashToDock (permet + d'option pour les réglages du dock, celui d'Ubuntu étant basé dessus)"
 echo "[6] DashToPanel (un dock alternatif conçu pour remplacer le panel de Gnome, se place en bas ou en haut)"
-echo "[7] Disconnect Wifi (ajoute une option pour déconnecter/reconnecter rapidement le wifi)"
-echo "[8] Gparte (permet de conserver du contenu copier/coller facilement accessible depuis le panel)"
-echo "[9] Harddick Led (ajoute un aperçu de l'activité du disque dur)"
-echo "[10] Hide Activities Button (simplement pour cacher le bouton 'Activités' situé en haut à gauche)"
-echo "[11] Hide Top Bar (permet de cacher le panel en haut avec nombreux réglages possibles)"
-echo "[12] Impatience (permet d'augmenter la vitesse d'affichage des animations de Gnome Shell)"
-echo "[13] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
-echo "[14] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
-echo "[15] Move Clock (déplace l'horloge du milieu vers la droite)"
-echo "[16] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
-echo "[19] Openweather (Pour avoir la météo directement sur votre bureau)"
-echo "[21] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
-echo "[22] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
-echo "[24] Screenshot windows sizer (Permettre le redimensionnement des fenêtres pour Gnome-Screenshot)"
-echo "[25] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
-echo "[27] Suspend button (Ajout d'un bouton pour activer l'hibernation)"
-echo "[28] Taskbar (Permet d'ajouter des raccourics d'applis directement sur le panel en haut)"
-echo "[29] Tilix dropdown (pour lancer Tilix en mode Quake. Ajoute un raccourci clavier avec F10)"
-echo "[32] Trash (Ajoute un raccourci vers la corbeille dans le panel en haut)"
-echo "[33] User themes (Pour charger des thèmes pour Gnome Shell à partir du répertoire de l'utilisateur)"
-echo "[34] Window list (Affiche la liste des fênêtres en bas du bureau, comme à l'époque sous Gnome 2)"
-echo "[35] Workspace indicator (Affiche dans le panel en haut dans quel espace de travail vous êtes)"
-echo "[36] Redshift (Ajoute un raccourci pour basculer avec redshift dans le menu de l'utilisateur)"
-echo "[37] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
-echo "[38] WindowNavigator (Permettre la sélection au clavier des fenêtres/espace de travail via la superposition)"
-echo "[39] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
+echo "[7] Clipboard Indicator (permet de conserver du contenu copier/coller facilement accessible depuis le panel)"
+echo "[8] Hide Top Bar (permet de cacher le panel en haut avec nombreux réglages possibles)"
+echo "[9] Impatience (permet d'augmenter la vitesse d'affichage des animations de Gnome Shell)"
+echo "[10] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
+echo "[11] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
+echo "[12] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
+echo "[13] Openweather (Pour avoir la météo directement sur votre bureau)"
+echo "[14] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
+echo "[15] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
+echo "[16] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
+echo "[17] Suspend button (Ajout d'un bouton pour activer l'hibernation)"
+echo "[18] Taskbar (Permet d'ajouter des raccourcis d'applis directement sur le panel en haut)"
+echo "[19] Trash (Ajoute un raccourci vers la corbeille dans le panel en haut)"
+echo "[20] User themes (Pour charger des thèmes pour Gnome Shell à partir du répertoire de l'utilisateur)"
+echo "[21] Window list (Affiche la liste des fênêtres en bas du bureau, comme à l'époque sous Gnome 2)"
+echo "[22] Workspace indicator (Affiche dans le panel en haut dans quel espace de travail vous êtes)"
+echo "[23] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
+echo "[24] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
+echo "[25] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
+echo "[26] AppFolders Management (Permet de classer les applis dans des dossiers)
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixExtension
 clear
 
 # Question A12.1 : Customization
 echo "*******************************************************"
-echo "A12.1/ Sélectionnez ce qui vous intéresses en terme de customization (thèmes, icones supplémentaire...) :"
+echo "A12.1/ Sélectionnez ce qui vous intéresses en terme de customization :"
 echo "*******************************************************"
 echo "[1] Pas d'ajout"
 echo "[2] Pack de thème GTK à succès : Arc + Numix + United Gnome Darker + Gnome OS X + Silicon"
@@ -407,17 +401,14 @@ echo "[5] Remettre le thème gris pour GDM (par défaut violet) : Attention ! aj
 echo "[6] Pack d'icone 1 : Numix, Breathe, Breeze, Elementary, Brave + supplément extra icone Gnome"
 echo "[7] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
 echo "[8] Pack d'icone 3 : Human, Moblin, Oxygen, Fuenza, Suede, Yasis"
-# rajouter plus tard theme curseur
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
 clear
 
-            ;;    
-            
 # Question A13 : Prog
 echo "*******************************************************"
-echo "A13/ Quel éditeur de texte ou logiciel de Dev (IDE) veux-tu ?"
+echo "A13/ Quel éditeur de texte ou logiciel de Dev (IDE) voulez-vous ?"
 echo "*******************************************************"
-echo "[1] Aucun (en dehors de Gedit présent de base et Vim qui sera installé car indispensable)"
+echo "[1] Aucun (en dehors de Vim et Gedit)"
 echo "[2] Gvim (interface graphique pour Vim)"
 echo "[3] Emacs (le couteau suisse des éditeurs de texte, il fait tout mais il est complexe)"
 echo "[4] Geany (EDI rapide et simple utilisant GTK2 supportant de nombreux languages)"
@@ -437,7 +428,6 @@ echo "[17] Netbeans (EDI supportant plusieurs langage, surtout Java, avec de nom
 echo "[18] BlueFish (éditeur orienté développement web : HTML/PHP/CSS/...)"
 echo "[19] BlueGriffon (éditeur HTML/CSS avec aperçu du rendu en temps réel)"
 echo "[20] SciTE : Scintilla Text Editor (éditeur web avec une bonne coloration syntaxique)"
-
 read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5) : " choixDev
 clear
 
