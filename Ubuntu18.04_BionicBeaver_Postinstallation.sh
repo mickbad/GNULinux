@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.29 (alpha)
+# version 0.0.30 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -271,9 +271,9 @@ echo "[18] PulseEffects [Flatpak] (interface puissante GTK pour faire pleins de 
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixAudio
 clear
 
-# Question 9.1 : Bureautique et Mail
+# Question 10 : Bureautique et Mail
 echo "*******************************************************"
-echo "9.1/ Quel(s) logiciel(s) de bureautique/courrier souhaitez-vous ?"
+echo "10/ Quel(s) logiciel(s) de bureautique/courrier souhaitez-vous ?"
 echo "*******************************************************"
 echo "[1] Aucun supplément (par défaut : Evince pour pdf, LibreOffice en bureautique, Thunderbird pour les mails)"
 echo "[2] Marp (Permet de créer une présentation rapide en s’affranchissant des outils bureautiques lourds)"
@@ -287,9 +287,9 @@ echo "[9] Gnome Evolution (logiciel de type groupware et courrielleur, facile à
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
 clear
 
-# Question 9.2 : Science et éducation (voir pour Scratch2 + Celestia ?)
+# Question 11 : Science et éducation (voir pour Scratch2 + Celestia ?)
 echo "*******************************************************"
-echo "9.2/ Des logiciels de science ou pour l'éducation ?"
+echo "11/ Des logiciels de science ou pour l'éducation ?"
 echo "*******************************************************"
 echo "[1] Pas d'ajout"
 echo "[2] Google Earth (globe terrestre de Google pour explorer la planète)"
@@ -308,9 +308,9 @@ echo "[14] [TECHNO] Récupérer Algoid [.jar] (Language de programmation éducat
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
 clear
 
-# Question 10 : Utilitaires 
+# Question 12 : Utilitaires 
 echo "*******************************************************"
-echo "10/ Quel(s) utilitaire(s) supplémentaire(s) voulez-vous ?"
+echo "12/ Quel(s) utilitaire(s) supplémentaire(s) voulez-vous ?"
 echo "*******************************************************"
 echo "[1] Aucun"
 echo "[2] Kazam (capture vidéo de votre bureau)"
@@ -331,12 +331,13 @@ echo "[16] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitte
 echo "[17] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
 echo "[18] Gufw (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
 echo "[19] Gnome Enfs Manager (coffre-fort pour vos fichiers/dossiers)"
+echo "[20] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Wireshark + Nmap)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
 clear
 
-# Question 11 : Gaming
+# Question 13 : Gaming
 echo "*******************************************************"
-echo "11/ Quel(s) jeux-vidéos (ou applis liés aux jeux) installer ?"
+echo "13/ Quel(s) jeux-vidéos (ou applis liés aux jeux) installer ?"
 echo "*******************************************************"
 echo "[1] Aucun, je ne suis pas un gameur"
 echo "[2] Steam (plateforme de distribution de jeux. Permet notamment d'installer Dota2, TF2, CS, TR...)"
@@ -363,9 +364,9 @@ clear
 ## Mode avancé
 if [ "$choixMode" = "2" ] ; then
 
-# Question A12 : Extension 
+# Question 14 : Extension 
 echo "*******************************************************"
-echo "A12/ Des extensions pour navigateur ou gnome-shell à installer ?"
+echo "14/ Des extensions pour navigateur ou gnome-shell à installer ? [mode avancé]"
 echo "*******************************************************"
 echo "[1] Non, ne pas ajouter de nouvelles extensions"
 echo "[2] Chrome Gnome Shell (extension pour les navigateurs : permet d'installer une extension Gnome depuis le site web)
@@ -396,9 +397,9 @@ echo "[26] AppFolders Management (Permet de classer les applis dans des dossiers
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixExtension
 clear
 
-# Question A12.1 : Customization
+# Question 15 : Customization
 echo "*******************************************************"
-echo "A12.1/ Sélectionnez ce qui vous intéresses en terme de customization :"
+echo "15/ Sélectionnez ce qui vous intéresses en terme de customization [mode avancé]"
 echo "*******************************************************"
 echo "[1] Pas d'ajout"
 echo "[2] Pack de thème GTK à succès : Arc + Numix + United Gnome Darker + Gnome OS X + Silicon"
@@ -408,12 +409,13 @@ echo "[5] Remettre le thème gris pour GDM (par défaut violet) : Attention ! aj
 echo "[6] Pack d'icone 1 : Numix, Breathe, Breeze, Elementary, Brave + supplément extra icone Gnome"
 echo "[7] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
 echo "[8] Pack d'icone 3 : Human, Moblin, Oxygen, Fuenza, Suede, Yasis"
+echo "[9] Pack de curseur : Breeze + Moblin + Oxygen/Oxygen-extra"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
 clear
 
-# Question A13 : Prog
+# Question 16 : Prog
 echo "*******************************************************"
-echo "A13/ Quel éditeur de texte ou logiciel de Dev (IDE) voulez-vous ?"
+echo "16/ Quel éditeur de texte ou logiciel de Dev (IDE) voulez-vous ? [mode avancé]"
 echo "*******************************************************"
 echo "[1] Aucun (en dehors de Vim et Gedit)"
 echo "[2] Gvim (interface graphique pour Vim)"
@@ -438,9 +440,9 @@ echo "[20] SciTE : Scintilla Text Editor (éditeur web avec une bonne coloration
 read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5) : " choixDev
 clear
 
-# Question A14 : Serveur 
+# Question 17 : Serveur 
 echo "*******************************************************"
-echo "A14/ Des fonctions serveurs à activer ?"
+echo "17/ Des fonctions serveurs à activer ? [mode avancé]"
 echo "*******************************************************"
 echo "[1] Pas de service à activer"
 echo "[2] Serveur SSH (Pour contrôler votre PC à distance via SSH)"
@@ -452,9 +454,9 @@ echo "[7] Rétroportage PHP5 (Ancienne version de PHP rétroporté)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixServeur
 clear
 
-# Question A15 : Optimisation
+# Question 18 : Optimisation
 echo "*******************************************************"
-echo "A15/ Des optimisations supplémentaires à activer ?"
+echo "18/ Des optimisations supplémentaires à activer ? [mode avancé]"
 echo "*******************************************************"
 echo "[1] Non"
 echo "[2] Déporter répertoire snappy dans /home pour gagner de l'espace (utile si le /home est séparé et racine limité)"
@@ -904,7 +906,6 @@ do
     esac
 done
 
-
 # Q8/ Montage photo/graphisme/3d
 for graphisme in $choixGraphisme
 do
@@ -1037,7 +1038,7 @@ do
     esac
 done
 
-# Q9.1/ Bureautique
+# Q10/ Bureautique
 for bureautique in $choixBureautique
 do
     case $bureautique in
@@ -1073,7 +1074,7 @@ do
     esac
 done
 
-# Q9.2/ Science
+# Q11/ Science
 for science in $choixScience
 do
     case $science in
@@ -1128,7 +1129,7 @@ do
     esac
 done
 
-# Q10/ Utilitaire et divers
+# Q12/ Utilitaire et divers
 for utilitaire in $choixUtilitaire
 do
     case $utilitaire in
@@ -1193,10 +1194,14 @@ do
             add-apt-repository ppa:gencfsm/ppa -y
             apt update ; apt install gnome-encfs-manager -y
             ;; 
+        "20") #Pack cyber-sécurité
+            apt install aircrack-ng wireshark nmap -y
+            snap install john-the-ripper
+            ;;             
     esac
 done
 
-# Q11/ Jeux
+# Q13/ Jeux
 for gaming in $choixGaming
 do
     case $gaming in
@@ -1266,7 +1271,7 @@ done
 
 # Mode avancé : ne pas oublier d'ajouter plus tard une condition => Si mode avancé alors...
 
-# A12/ Extensions (a completer plus tard)
+# 14/ Extensions (a completer plus tard)
 for extension in $choixExtension
 do
     case $extension in
@@ -1351,7 +1356,7 @@ done
 echo "[25] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
 echo "[26] AppFolders Management (Permet de classer les applis dans des dossiers)
 
-# A12.1/ Extensions (a completer plus tard)
+# Q15/ Customization
 for custom in $choixCustom
 do
     case $custom in
@@ -1380,11 +1385,14 @@ do
             ;;  
         "8") #pack icone 3
             apt install human-icon-theme moblin-icon-theme oxygen-icon-theme fuenza-icon-theme gnome-icon-theme-suede gnome-icon-theme-yasis -y
-            ;;               
+            ;;   
+        "9") #pack curseur
+            apt install breeze-cursor-theme moblin-cursor-theme oxygen-cursor-theme oxygen-cursor-theme-extra -y
+            ;;      
     esac
 done
 
-# A13/ Programmation/Dev
+# Q16/ Programmation/Dev
 for dev in $choixDev
 do
     case $dev in
@@ -1457,7 +1465,7 @@ do
     esac
 done
 
-# A14/ Serveurs
+# Q17/ Serveurs
 for srv in $choixServeur
 do
     case $srv in
@@ -1486,7 +1494,7 @@ do
     esac
 done
 
-# A15/ Optimisation/Réglage
+# Q18/ Optimisation/Réglage
 for optimisation in $choixOptimisation
 do
     case $optimisation in
