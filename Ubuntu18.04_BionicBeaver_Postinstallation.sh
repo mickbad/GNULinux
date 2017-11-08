@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.31 (alpha)
+# version 0.0.32 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -276,14 +276,22 @@ echo "*******************************************************"
 echo "10/ Quel(s) logiciel(s) de bureautique/courrier souhaitez-vous ?"
 echo "*******************************************************"
 echo "[1] Aucun supplément (par défaut : Evince pour pdf, LibreOffice en bureautique, Thunderbird pour les mails)"
-echo "[2] Marp (Permet de créer une présentation rapide en s’affranchissant des outils bureautiques lourds)"
-echo "[3] Supplément LibreOffice : ajout du module 'Base' + des extensions utiles (templates, modèles de documents, clipboard...)"
-echo "[4] PdfMod (logiciel permettant diverses modifications sur vos PDF)"
-echo "[5] Scenari (scenarichaine + opale : famille d'applications d'édition avancées de chaînes éditoriales)"
-echo "[6] Freeplane (création de cartes heuristiques (Mind Map) avec des diagrammes représentant les connexions sémantiques)"
-echo "[7] FeedReader [Flatpak] (agrégateur RSS moderne pour consulter vos fils d'informations RSS)"
-echo "[8] Geary (logiciel de messagerie, alternative à Thunderbird et bien intégré à Gnome)"
-echo "[9] Gnome Evolution (logiciel de type groupware et courrielleur, facile à utiliser)"
+echo "[2] Supplément LibreOffice : ajout du module 'Base' + des extensions utiles (templates, modèles de documents, clipboard...)"
+echo "[3] Ajouter les polices d'écriture Microsoft (permet d'écrire en police Arial, Comic Sans, Microsoft Sans Serif...)"
+echo "[4] Marp (Permet de créer une présentation rapide en s’affranchissant des outils bureautiques lourds)"
+echo "[5] PdfMod (logiciel permettant diverses modifications sur vos PDF)"
+echo "[6] Scenari (scenarichaine + opale : famille d'applications d'édition avancées de chaînes éditoriales)"
+echo "[7] Freeplane (création de cartes heuristiques (Mind Map) avec des diagrammes représentant les connexions sémantiques)"
+echo "[8] FeedReader [Flatpak] (agrégateur RSS moderne pour consulter vos fils d'informations RSS)"
+echo "[9] Geary (logiciel de messagerie, alternative à Thunderbird et bien intégré à Gnome)"
+echo "[10] Gnome Evolution (logiciel de type groupware et courrielleur, facile à utiliser)"
+echo "[11] WPSOffice (Clone de Microsoft Office, propriétaire aussi)"
+echo "[12] OnlyOffice (bureautique avec des outils de collaboration et gestion de documents)"
+echo "[13] Gnome Office (pack contenant Abiword, Gnumeric, Dia, Planner, Glabels, Glom, Tomboy et Gnucash)"
+echo "[14] Apache OpenOffice (Déconseillé ! préviligiez LibreOffice qui est installé par défaut)"
+echo "[15] OOo4Kids (Suite bureautique spécialement simplifié pour les enfants)"
+echo "[16] Wordgrinder (Traitement de texte léger. Formats OpenDocument, HTML import and export)"
+echo "[17] LaTex (langage de description de document très utile pour les documents formatés de manière logique)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
 clear
 
@@ -464,16 +472,15 @@ echo "[3] Optimisation Swap : swapiness à 5% + cache_pressure à 50 (swap utili
 echo "[4] Désactiver complètement le swap (utile si vous avez un SSD et 8 Go de ram ou +)"
 echo "[5] Activer TLP avec Powertop et Laptop-mode-tools (économie d'energie pour pc portable)"
 echo "[6] Installer le microcode propriétaire Intel (pour cpu intel uniquement !)"
-echo "[7] Ajouter les polices d'écriture Microsoft"
-echo "[8] Ajouter une commande 'fraude' pour Wayland (pour pouvoir lancer des applis comme Gparted. Exemple : fraude gparted)"
-echo "[9] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
-echo "[10] Ajouter le support pour le système de fichier exFat de Microsoft"
-echo "[11] Ajouter le support pour le système de fichier HFS d'Apple"
-echo "[12] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
-echo "[13] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
-echo "[14] Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
-echo "[15] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
-echo "[16] Support imprimantes HP (hplip + sane + hplip-gui)"
+echo "[7] Ajouter une commande 'fraude' pour Wayland (pour pouvoir lancer des applis comme Gparted. Exemple : fraude gparted)"
+echo "[8] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
+echo "[9] Ajouter le support pour le système de fichier exFat de Microsoft"
+echo "[10] Ajouter le support pour le système de fichier HFS d'Apple"
+echo "[11] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
+echo "[12] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
+echo "[13] Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
+echo "[14] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
+echo "[15] Support imprimantes HP (hplip + sane + hplip-gui)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
 clear
 fi
