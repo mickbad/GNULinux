@@ -460,7 +460,7 @@ echo "[1] Non"
 echo "[2] Déporter répertoire snappy dans /home pour gagner de l'espace (utile si le /home est séparé et racine limité)"
 echo "[3] Optimisation Swap : swapiness à 5% + cache_pressure à 50 (swap utilisé uniquement si + de 95% de ram utilisé)"
 echo "[4] Désactiver complètement le swap (utile si vous avez un SSD et 8 Go de ram ou +)"
-echo "[5] Activer TLP + installer 'Powertop'(économie d'energie pour les pc portable)"
+echo "[5] Activer TLP avec Powertop et Laptop-mode-tools (économie d'energie pour pc portable)"
 echo "[6] Installer le microcode propriétaire Intel (pour cpu intel uniquement !)"
 echo "[7] Ajouter les polices d'écriture Microsoft"
 echo "[8] Ajouter une commande 'fraude' pour Wayland (pour pouvoir lancer des applis comme Gparted. Exemple : fraude gparted)"
@@ -1505,7 +1505,7 @@ do
             sed -i -e '/.swapfile*/d' /etc/fstab #ligne swap retiré de fstab
             ;;
         "5") #Activer TLP + install Powertop
-            apt install tlp powertop -y
+            apt install tlp powertop laptop-mode-tools -y
             systemctl enable tlp
             systemctl emable tlp-sleep
             ;;
