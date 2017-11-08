@@ -11,7 +11,7 @@
 [FAIT] Supprimer les extensions : Screenshot windows sizer + Tilix dropdown + Redshift
 - Ajouter un mode Novice ou tout est automatique (pas de question) pour les débutants
 - Dans le mode avancé, ajouter des sections dédiés à Snappy, FlatPak et AppImage
-- Pour lecture Blu-ray : https://doc.ubuntu-fr.org/blu-ray#lire_les_blu-ray_avec_vlc
+[ANNULE] Pour lecture Blu-ray : https://doc.ubuntu-fr.org/blu-ray#lire_les_blu-ray_avec_vlc {pas demandé}
 [FAIT] Proposer Nuvola Player cf http://www.omgubuntu.co.uk/2012/04/rdio-pandora-support-added-to-nuvola-player
 [REFUSE] Proposer MellowPlayer ? cf https://colinduquesnoy.github.io/MellowPlayer/ {doublons en terme de fonctionnalité}
 
@@ -22,7 +22,7 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 [MODIF] Gnome Twitch à déplacer ds une autre catégorie ? {pas déplacé mais question modifié pour préciser que cela concerne les streams}
 [INUTILE] Pour section Jeu, voir si on peux inclure paquet gnome-games-app (instable selon Roschan) {pas d'intérêt}
 - Customization : ajouter thème Vertex (gtk) + pack d'icone Obsidian
-- Install Laptop-mode-tools ? cf#2 : https://forum.ubuntu-fr.org/viewtopic.php?id=2016748
+[FAIT] Install Laptop-mode-tools ? cf#2 : https://forum.ubuntu-fr.org/viewtopic.php?id=2016748 {ajouté ds la fonction prévu pour éco d'énergie}
 - AppImages : créer /opt/appimage et les déplacer dedans + chmod+x ? ajouter lanceur ?
 [FAIT]Ajouter l'appli Slack ds les choix : https://slack.com/intl/fr-fr/downloads/linux
 [ANNULE] Ajouter Audex ds les choix (bien selon certains utilisateurs) : https://doc.ubuntu-fr.org/audex {pas d'intéret}
@@ -35,8 +35,10 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 [MODIF] Voir intérêt entre extension méteo openweather et appli natif gnome-weather (1 des 2 ou proposer les 2 ?) {les 2, gnome weather par défaut et extension en proposition}
 [FAIT] Ajouter ds section extension, l'extension pour navigateur : https://github.com/GNOME/chrome-gnome-shell
 [FAIT] Ajouter Gnome Enfs Manager (ou autre logiciel de cryptage)
-- Ajouté une section Sécurité ?
-- Ajouter curseur partie customization
+[MODIFIE] Ajouté une section Sécurité ? {pas de section sécurité mais un pack de logiciel de sécurité en proposition}
+[FAIT] Ajouter curseur partie customization
+
+
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
 
