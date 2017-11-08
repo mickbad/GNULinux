@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.30 (alpha)
+# version 0.0.31 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -1042,35 +1042,68 @@ done
 for bureautique in $choixBureautique
 do
     case $bureautique in
-        "2") #Marp (a vérifier)
+        "2") #Complément LibreOffice
+            apt install libreoffice libreoffice-style-oxygen libreoffice-style-human libreoffice-style-sifrm libreoffice-wiki-publisher -y
+            apt install libreoffice-dmaths libreoffice-templates openclipart-libreoffice libreoffice-nlpsolver -y
+            ;;
+        "3") #Police d'écriture Microsoft
+            echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | /usr/bin/debconf-set-selections | apt install ttf-mscorefonts-installer -y
+            ;;
+        "4") #Marp
             wget https://github-production-release-asset-2e65be.s3.amazonaws.com/59939691/c7ce7c0c-5769-11e7-87d0-3900a81c0345?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20171103%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20171103T104517Z&X-Amz-Expires=300&X-Amz-Signature=3208d33a5f8318058d6cd959c91c18dac13c0615f0ac2b0be2400b3be6e4ac8d&X-Amz-SignedHeaders=host&actor_id=33062503&response-content-disposition=attachment%3B%20filename%3D0.0.11-Marp-linux-x64.tar.gz&response-content-type=application%2Foctet-stream
             tar zxvf 0.0.11-Marp-linux-x64.tar.gz
             chmod +x ./0.0.11-Marp-linux-x64/Marp
             ;;
-        "3") #Complément LibreOffice
-            apt install libreoffice libreoffice-style-oxygen libreoffice-style-human libreoffice-style-sifrm libreoffice-wiki-publisher -y
-            apt install libreoffice-dmaths libreoffice-templates openclipart-libreoffice libreoffice-nlpsolver -y
-            ;;
-        "4") #PDFMod
+        "5") #PDFMod
             apt install pdfmod -y 
             ;;
-        "5") #Scenari (a tester plus tard) #remplacer xenial par bionic plus tard (par encore actif pour 18.04)
+        "6") #Scenari (a tester plus tard) #remplacer xenial par bionic plus tard (par encore actif pour 18.04)
             wget -O- https://download.scenari.org/deb/scenari.asc | apt-key add -
             echo "deb https://download.scenari.org/deb xenial main" | tee -a /etc/apt/sources.list.d/scenari.list
             apt update ; apt install scenarichain4.2.fr-fr opale3.6.fr-fr -y
             ;;
-        "6") #Freeplane
+        "7") #Freeplane
             apt install freeplane -y
             ;;
-        "7") #Feedreader
+        "8") #Feedreader
             flatpak install --from https://flathub.org/repo/appstream/org.gnome.FeedReader.flatpakref -y
             ;;
-        "8") #Geary
+        "9") #Geary
             apt install geary -y
             ;;        
-        "9") #Gnome Evolution
+        "10") #Gnome Evolution
             apt install evolution -y
-            ;;                 
+            ;; 
+        "11") #WPS Office
+            wget http://kdl1.cache.wps.com/ksodl/download/linux/a21//wps-office_10.1.0.5707~a21_amd64.deb
+            dpkg -i wps-office_10.1.0.5707~a21_amd64.deb
+            apt install -fy
+            ;; 
+        "12") #OnlyOffice
+            wget http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
+            dpkg -i onlyoffice-desktopeditors_amd64.deb
+            apt install -fy
+            ;; 
+        "13") #Gnome Office
+            apt install abiword gnumeric dia planner glabels glom tomboy gnucash -y
+            ;; 
+        "14") #Apache OpenOffice
+            wget https://freefr.dl.sourceforge.net/project/openofficeorg.mirror/4.1.4/binaries/fr/Apache_OpenOffice_4.1.4_Linux_x86_install-deb_fr.tar.gz
+            tar zxvf Apache_OpenOffice_4.1.4_Linux_x86_install-deb_fr.tar.gz
+            dpkg -i ./fr/DEBS/*.deb ; dpkg -i ./fr/DEBS/desktop-integration/open*.deb
+            apt install -fy
+            ;; 
+        "15") #OOo4Kids
+            wget https://downloads.sourceforge.net/project/educooo/OOo4Kids/Linux/deb/dists/testing/main/binary-amd64/ooo4kids-fr_1.3-1_amd64.deb
+            dpkg -i ooo4kids-fr_1.3-1_amd64.deb
+            apt install -fy
+            ;;            
+        "16") #Wordgrinder
+            apt install wordgrinder -y
+            ;;            
+        "17") #Latex
+            apt install texlive texlive-lang-french texlife-latex-extra -y
+            ;;                          
     esac
 done
 
@@ -1520,17 +1553,14 @@ do
         "6") #Microcode Intel
             apt install intel-microcode -y
             ;;
-        "7") #Police d'écriture Microsoft
-            echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | /usr/bin/debconf-set-selections | apt install ttf-mscorefonts-installer -y
-            ;;
-        "8") #Mode fraude Wayland (proposé par Christophe C sur Ubuntu-fr.org)  #pas encore testé
+        "7") #Mode fraude Wayland (proposé par Christophe C sur Ubuntu-fr.org)  #pas encore testé
             echo "#FONCTION POUR CONTOURNER WAYLAND
             fraude(){ 
                 xhost + && sudo \$1 && xhost -
                 }" >> /home/$SUDO_USER/.bashrc
             source /home/$SUDO_USER/.bashrc
             ;;
-        "9") #Désactiver userlist GDM
+        "8") #Désactiver userlist GDM
             echo "user-db:user
             system-db:gdm
             file-db:/usr/share/gdm/greeter-dconf-defaults" > /etc/dconf/profile/gdm
@@ -1540,27 +1570,27 @@ do
             disable-user-list=true" > /etc/dconf/db/gdm.d/00-login-screen
             dconf update
             ;;
-        "10") #Support ExFat
+        "9") #Support ExFat
             apt install exfat-utils exfat-fuse -y    
             ;;
-        "11") #Support HFS
+        "10") #Support HFS
             apt install hfsprogs hfsutils hfsplus -y
             ;;
-        "12") #Nouvelle commande raccourci Maj totale
+        "11") #Nouvelle commande raccourci Maj totale
             echo "alias maj='apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean ; snap refresh ; flatpak update -y'" >> /home/$SUDO_USER/.bashrc
             source /home/$SUDO_USER/.bashrc
-        "13") #Grub réduction temps d'attente + suppression test ram dans grub
+        "12") #Grub réduction temps d'attente + suppression test ram dans grub
             sed -ri 's/GRUB_TIMEOUT=10/GRUB_TIMEOUT=2/g' /etc/default/grub
             mkdir /boot/old ; mv /boot/memtest86* /boot/old/
             update-grub
             ;;
-        "14") #Lecture DVD Commerciaux (vérifier si suffisant)
+        "13") #Lecture DVD Commerciaux (vérifier si suffisant)
             apt install libdvdcss2 -y
             ;;
-        "15") #Nvidia Bumblebee pour techno optimus
+        "14") #Nvidia Bumblebee pour techno optimus
             # complexe, créer un script spécialement pour ça plus tard puis le récupérer/lancer depuis ici
             ;;   
-        "16") #Support imprimante HP
+        "15") #Support imprimante HP
             apt install hplip hplip-doc hplip-gui sane sane-utils -y
             ;;   
     esac
