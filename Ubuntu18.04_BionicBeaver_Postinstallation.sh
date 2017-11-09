@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.32 (alpha)
+# version 0.0.33 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -83,10 +83,10 @@ echo "*******************************************************"
 echo "3/ Quel(s) navigateur(s) vous intéresses ? (plusieurs choix possibles)"
 echo "*******************************************************"
 echo "[1] Pas de navigateur supplémentaire : rester sur la version classique de Firefox (stable)"
-echo "[2] Firefox Béta (n+1 cad 1 version d'avance : attention remplace la version stable !)"
-echo "[3] Firefox Developper Edition (n+2 avec outil dev : attention remplace la version stable !)"
-echo "[4] Firefox ESR (pour les entreprises/organisations : fonctionne indépendamment de la version stable)" #===> pas encore de ppa pour la 18.04
-echo "[5] Firefox Nightly (Attention instable ! mais fonctionne indépendamment de la version stable)" #===> vérifier pertincence...
+echo "[2] Firefox Béta (n+1 : 1 version d'avance, remplace la version classique)"
+echo "[3] Firefox Developer Edition [Flatpak] (n+2 et inclue des outils pour les devs)"
+echo "[4] Firefox ESR (version plutôt orienté entreprise/organisation)"
+echo "[5] Firefox Nightly [Flatpak] (toute dernière build construite, parfois n+3, potentiellement instable !)"
 echo "[6] Chromium (la version libre/opensource de Chrome)"
 echo "[7] Google Chrome (le célèbre navigateur de Google mais il est propriétaire !)"
 echo "[8] Gnome Web/Epiphany (navigateur de la fondation Gnome s'intégrant bien avec cet environnement)"
@@ -537,20 +537,18 @@ for navigateur in $choixNavigateur
 do
     case $navigateur in
         "2") #firefox béta 
-            add-apt-repository ppa:mozillateam/firefox-next -y #pas encore actif pour bionic
+            add-apt-repository ppa:mozillateam/firefox-next -y 
             apt update ; apt upgrade -y
             ;;
-         "3") #firefox aurora/dev (existe aussi en flatpak)
-            add-apt-repository ppa:ubuntu-mozilla-daily/firefox-aurora -y #pas encore actif pour bionic
-            apt update ; apt upgrade -y
+         "3") #firefox developper edition 
+            flatpak install --from https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxDevEdition.flatpakref -y
             ;;
          "4") #firefox esr
-            add-apt-repository ppa:jonathonf/firefox-esr -y #pas encore actif pour bionic
+            add-apt-repository ppa:mozillateam/ppa -y 
             apt update ; apt install firefox-esr -y
             ;;
-         "5") #firefox nightly (existe aussi en flatpak)
-            add-apt-repository ppa:ubuntu-mozilla-daily/ppa -y
-            apt update ; apt install firefox-trunk -y
+         "5") #firefox nightly
+            flatpak install --from https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxNightly.flatpakref -y
             ;;
          "6") #chromium
             apt install chromium-browser -y    
