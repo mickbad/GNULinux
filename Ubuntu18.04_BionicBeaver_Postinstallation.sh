@@ -21,6 +21,10 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 
+# Legende
+# <!!> : problème actuellement avec le dépot lors d'un rafraichissement avec apt update
+# <i!> : demande intervention de la part de l'utilisateur (install pas entièrement automatisé)
+# <l!> : lien précis de la version pour l'installation, peux potentiellement poser problème sur le long terme si le lien change
 
 # Contrôle de la configuration système (script correctement lancé + version 18.04 + gnome-shell présent)
 . /etc/lsb-release
@@ -88,11 +92,11 @@ echo "[3] Firefox Developer Edition [Flatpak] (n+2 et inclue des outils pour les
 echo "[4] Firefox ESR (version plutôt orienté entreprise/organisation)"
 echo "[5] Firefox Nightly [Flatpak] (toute dernière build construite, parfois n+3, potentiellement instable !)"
 echo "[6] Chromium (la version libre/opensource de Chrome)"
-echo "[7] Google Chrome (le célèbre navigateur de Google mais il est propriétaire !)"
+echo "[7] Google Chrome <!!> (le célèbre navigateur de Google mais il est propriétaire !)"
 echo "[8] Gnome Web/Epiphany (navigateur de la fondation Gnome s'intégrant bien avec cet environnement)"
 echo "[9] Midori (libre & léger, utilisé notamment par défaut sur la distribution 'Elementary OS')"
-echo "[10] Opera (un navigateur propriétaire relativement connu)"
-echo "[11] PaleMoon (un navigateur plutôt récent, libre & performant)"
+echo "[10] Opera <i!> (un navigateur propriétaire relativement connu)"
+echo "[11] PaleMoon <l!> (un navigateur plutôt récent, libre & performant)"
 echo "[12] Vivaldi (un navigateur propriétaire avec une interface sobre assez particulière)"
 echo "[13] Falkon/QupZilla (une alternative libre et légère utilisant Webkit)"
 echo "[14] Tor Browser (pour naviguer dans l'anonymat avec le réseau tor : basé sur Firefox ESR)"
@@ -557,23 +561,25 @@ do
             wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
             sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
             apt update ; apt install google-chrome-stable -y
-         ;;
+            ;;
          "8") #epiphany
             apt install epiphany-browser -y
-         ;;
+            ;;
          "9") #midori
             wget http://midori-browser.org/downloads/midori_0.5.11-0_amd64_.deb
             dpkg -i midori_0.5.11-0_amd64_.deb
             apt install -fy
+            ;;
+         "10") #opera 
+            wget -q http://deb.opera.com/archive.key -O- | apt-key add -
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 517590D9A8492E35
+            echo "deb https://deb.opera.com/opera/ stable non-free" | tee -a /etc/apt/sources.list.d/opera-stable.list
+            apt update ; apt install opera-stable -y
          ;;
-         "10") #opera
-            wget http://download1.operacdn.com/pub/opera/desktop/48.0.2685.52/linux/opera-stable_48.0.2685.52_amd64.deb
-            dpkg -i opera-stable_48.0.2685.52_amd64.deb
-            apt install -fy
-         ;;
-         "11") #palemoon (si marche pas, faire avec le paquet deb)
-            sh -c "echo 'deb http://download.opensuse.org/repositories/home:/stevenpusser/xUbuntu_17.04/ /' > /etc/apt/sources.list.d/palemoon.list"
-            apt update ; apt install palemoon -y 
+         "11") #palemoon 
+            wget http://download.opensuse.org/repositories/home:/stevenpusser/xUbuntu_17.04/amd64/palemoon_27.6.0~repack-1_amd64.deb
+            dpkg -i palemoon_27.6.0~repack-1_amd64.deb
+            apt install -fy 
          ;;
          "12") #vivaldi x64
             wget -nv https://download.opensuse.org/repositories/home:stevenpusser/xUbuntu_17.04/Release.key -O Release.key
