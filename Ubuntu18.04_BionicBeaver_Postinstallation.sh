@@ -25,6 +25,7 @@
 # <!!> : problème actuellement avec le dépot lors d'un rafraichissement avec apt update
 # <i!> : demande intervention de la part de l'utilisateur (install pas entièrement automatisé)
 # <l!> : lien précis de la version pour l'installation, peux potentiellement poser problème sur le long terme si le lien change
+# <d!> : attention, beaucoup de dépendance Kde !
 
 # Contrôle de la configuration système (script correctement lancé + version 18.04 + gnome-shell présent)
 . /etc/lsb-release
@@ -101,8 +102,8 @@ echo "[12] Vivaldi (un navigateur propriétaire avec une interface sobre assez p
 echo "[13] Falkon/QupZilla (une alternative libre et légère utilisant Webkit)"
 echo "[14] Tor Browser (pour naviguer dans l'anonymat avec le réseau tor : basé sur Firefox ESR)"
 echo "[15] Eolie [Flatpak](une autre alternative pour Gnome)"
-echo "[16] Min (un navigateur minimaliste et donc très léger)"
-echo "[17] Rekonq (Attention déconseillé sous Gnome : beaucoup de dépendance KDE !!!)" 
+echo "[16] Min <l!> (un navigateur minimaliste et donc très léger)"
+echo "[17] Rekonq <d!> (Navigateur de Kde, déconseillé sous Gnome !)" 
 echo "[18] NetSurf (basique mais très léger et performant)"
 echo "[19] Dillo (navigateur capable de tourner sur des ordinosaures)"
 echo "[20] Lynx (navigateur 100% en ligne de commande, pratique depuis une console SSH)"
@@ -575,18 +576,17 @@ do
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 517590D9A8492E35
             echo "deb https://deb.opera.com/opera/ stable non-free" | tee -a /etc/apt/sources.list.d/opera-stable.list
             apt update ; apt install opera-stable -y
-         ;;
+            ;;
          "11") #palemoon 
             wget http://download.opensuse.org/repositories/home:/stevenpusser/xUbuntu_17.04/amd64/palemoon_27.6.0~repack-1_amd64.deb
             dpkg -i palemoon_27.6.0~repack-1_amd64.deb
             apt install -fy 
-         ;;
+            ;;
          "12") #vivaldi x64
-            wget -nv https://download.opensuse.org/repositories/home:stevenpusser/xUbuntu_17.04/Release.key -O Release.key
-            apt-key add - < Release.key ; apt update
-            wget https://downloads.vivaldi.com/stable/vivaldi-stable_1.12.955.42-1_amd64.deb
-            dpkg -i vivaldi-stable_1.12.955.42-1_amd64.deb
-         ;;
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2CC26F777B8B44A1
+            echo "deb http://repo.vivaldi.com/stable/deb/ stable main" >> /etc/apt/sources.list.d/vivaldi-stable.list
+            apt update ; apt install vivaldi-stable -y
+            ;;
          "13") #Falkon/Qupzilla
             apt install qupzilla -y
          ;;
