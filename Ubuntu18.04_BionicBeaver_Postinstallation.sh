@@ -715,7 +715,7 @@ do
         "5") #qBittorrent
             apt install qbittorrent -y
             ;;         
-        "6) #Bittorrent
+        "6") #Bittorrent
             apt install bittorrent -y
             ;;            
         "7") #Vuze
@@ -1592,6 +1592,7 @@ do
         "11") #Nouvelle commande raccourci Maj totale
             echo "alias maj='apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean ; snap refresh ; flatpak update -y'" >> /home/$SUDO_USER/.bashrc
             source /home/$SUDO_USER/.bashrc
+            ;;
         "12") #Grub réduction temps d'attente + suppression test ram dans grub
             sed -ri 's/GRUB_TIMEOUT=10/GRUB_TIMEOUT=2/g' /etc/default/grub
             mkdir /boot/old ; mv /boot/memtest86* /boot/old/
