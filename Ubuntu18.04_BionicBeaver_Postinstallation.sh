@@ -286,7 +286,7 @@ echo "[2] Supplément LibreOffice : ajout du module 'Base' + des extensions util
 echo "[3] a_modifier..."
 echo "[4] Marp (Permet de créer une présentation rapide en s’affranchissant des outils bureautiques lourds)"
 echo "[5] PdfMod (logiciel permettant diverses modifications sur vos PDF)"
-echo "[6] Scenari (scenarichaine + opale : famille d'applications d'édition avancées de chaînes éditoriales)"
+echo "[6] (scenarichaine + opale : famille d'applications d'édition avancées de chaînes éditoriales)"
 echo "[7] Freeplane (création de cartes heuristiques (Mind Map) avec des diagrammes représentant les connexions sémantiques)"
 echo "[8] FeedReader [Flatpak] (agrégateur RSS moderne pour consulter vos fils d'informations RSS)"
 echo "[9] Geary (logiciel de messagerie, alternative à Thunderbird et bien intégré à Gnome)"
@@ -1073,7 +1073,7 @@ do
             apt install pdfmod -y 
             ;;
         "6") #Scenari (dépot pas encore actif pour 18.04)
-            echo "deb https://download.scenari.org/deb xenial main" | tee -a /etc/apt/sources.list.d/scenari.list 
+            echo "deb https://download.scenari.org/deb xenial main" > /etc/apt/sources.list.d/scenari.list 
             wget -O- https://download.scenari.org/deb/scenari.asc | apt-key add -   
             apt update
             apt install scenarichain4.2.fr-fr opale3.6.fr-fr -y
