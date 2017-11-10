@@ -1402,9 +1402,6 @@ do
     esac
 done
 
-echo "[25] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
-echo "[26] AppFolders Management (Permet de classer les applis dans des dossiers)
-
 # Q15/ Customization
 for custom in $choixCustom
 do
