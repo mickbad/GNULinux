@@ -1073,8 +1073,8 @@ do
             apt install pdfmod -y 
             ;;
         "6") #Scenari (dépot pas encore actif pour 18.04)
-            echo "deb https://download.scenari.org/deb xenial main" > /etc/apt/sources.list.d/scenari.list 
-            wget -O- https://download.scenari.org/deb/scenari.asc | apt-key add -   
+            echo "deb https://download.scenari.org/deb xenial main" > /etc/apt/sources.list.d/scenari.list
+            wget -O- https://download.scenari.org/deb/scenari.asc | apt-key add -
             apt update
             apt install scenarichain4.2.fr-fr opale3.6.fr-fr -y
             ;;
