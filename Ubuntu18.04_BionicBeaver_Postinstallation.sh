@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.34 (alpha)
+# version 0.0.35 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -506,9 +506,6 @@ apt install dconf-editor gnome-tweak-tool gedit-plugins nautilus-image-converter
 
 # Autres outils utiles
 apt install net-tools vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar -y
-
-# Codecs utiles
-apt install ubuntu-restricted-extras x264 x265 libavcodec-extra -y
 
 # Suppression de l'icone Amazon
 apt remove ubuntu-web-launchers -y
@@ -1070,8 +1067,8 @@ do
             apt install pdfmod -y 
             ;;
         "6") #Scenari (dépot pas encore actif pour 18.04)
-            wget -O- https://download.scenari.org/deb/scenari.asc | apt-key add - 
             echo "deb https://download.scenari.org/deb xenial main" | tee -a /etc/apt/sources.list.d/scenari.list 
+            wget -O- https://download.scenari.org/deb/scenari.asc | apt-key add -   
             apt update
             apt install scenarichain4.2.fr-fr opale3.6.fr-fr -y
             ;;
@@ -1608,6 +1605,12 @@ do
             ;;   
     esac
 done
+
+# Codecs utiles
+apt install ubuntu-restricted-extras x264 x265 libavcodec-extra -y
+
+# Suppression des deb téléchargés par le script (plus nécessaire) et rangement des AppImages
+mkdir ./appimages ; rm *.deb ; mv *.AppIMage ./appimages/
 
 # Nettoyage/Purge
 apt install -fy ; apt autoremove --purge -y ; apt clean ; clear
