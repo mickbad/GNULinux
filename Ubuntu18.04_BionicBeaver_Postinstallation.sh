@@ -564,7 +564,7 @@ do
             ;;
          "7") #chrome
             wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-            sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+            sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             apt update ; apt install google-chrome-stable -y
             ;;
          "8") #epiphany
@@ -588,7 +588,7 @@ do
             ;;
          "12") #vivaldi x64
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2CC26F777B8B44A1
-            echo "deb http://repo.vivaldi.com/stable/deb/ stable main" >> /etc/apt/sources.list.d/vivaldi-stable.list
+            echo "deb http://repo.vivaldi.com/stable/deb/ stable main" >> /etc/apt/sources.list.d/vivaldi.list
             apt update ; apt install vivaldi-stable -y
             ;;
          "13") #Falkon/Qupzilla
@@ -1062,7 +1062,7 @@ do
             apt install libreoffice-dmaths libreoffice-templates openclipart-libreoffice libreoffice-nlpsolver -y
             ;;
         "3") # a modifier
-        
+            #ajouté plus tard
             ;;
         "4") #Marp
             wget https://github-production-release-asset-2e65be.s3.amazonaws.com/59939691/c7ce7c0c-5769-11e7-87d0-3900a81c0345?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20171103%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20171103T104517Z&X-Amz-Expires=300&X-Amz-Signature=3208d33a5f8318058d6cd959c91c18dac13c0615f0ac2b0be2400b3be6e4ac8d&X-Amz-SignedHeaders=host&actor_id=33062503&response-content-disposition=attachment%3B%20filename%3D0.0.11-Marp-linux-x64.tar.gz&response-content-type=application%2Foctet-stream
