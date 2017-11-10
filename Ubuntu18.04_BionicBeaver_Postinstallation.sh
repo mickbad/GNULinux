@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.33 (alpha)
+# version 0.0.34 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -43,13 +43,14 @@ then
             exit
             else
                 echo "Ok, vous avez correctement lancé le script, vous êtes bien sur Bionic avec Gnome-Shell, passons aux questions..."
+                echo -e "#########################################################"
                 echo "Légende : "
                 echo "[Snap] => Le paquet s'installera de manière isolé avec Snappy (snap install...)"
                 echo "[Flatpak] => Le paquet s'installera avec Flatpak, une autre alternative à Snappy"
                 echo "[Appimage] => Paquet AppImage téléchargé, pour l'utiliser il faudra le lancer manuellement (pas de raccourci)"
                 echo "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible sinon PPA"
+                echo -e "#########################################################\n"
 fi
-
 ### Section interactive avec les questions
 
 ## Mode normale
@@ -382,7 +383,7 @@ echo "*******************************************************"
 echo "14/ Des extensions pour navigateur ou gnome-shell à installer ? [mode avancé]"
 echo "*******************************************************"
 echo "[1] Non, ne pas ajouter de nouvelles extensions"
-echo "[2] Chrome Gnome Shell (extension pour les navigateurs : permet d'installer une extension Gnome depuis le site web)
+echo "[2] Chrome Gnome Shell (extension pour navigateur : permet d'installer une extension Gnome depuis le site web)"
 echo "[3] AlternateTab (alternative au Alt+Tab issu du mode classique)"
 echo "[4] Caffeine (permet en 1 clic de désactiver temporairement les mises en veilles)"
 echo "[5] DashToDock (permet + d'option pour les réglages du dock, celui d'Ubuntu étant basé dessus)"
@@ -406,7 +407,7 @@ echo "[22] Workspace indicator (Affiche dans le panel en haut dans quel espace d
 echo "[23] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
 echo "[24] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
 echo "[25] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
-echo "[26] AppFolders Management (Permet de classer les applis dans des dossiers)
+echo "[26] AppFolders Management (Permet de classer les applis dans des dossiers)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixExtension
 clear
 
@@ -444,7 +445,7 @@ echo "[11] IntelliJ Idea [Snap] (IDE Java commercial de JetBrains, plutôt conç
 echo "[12] JEdit (Éditeur libre, multiplateforme et très personnalisable)"
 echo "[13] Eclipse (Projet décliné en sous-projets de développement, extensible, universel et polyvalent)"
 echo "[14] Anjuta (IDE simple pour C/C++, Java, JavaScript, Python et Vala)"
-echo "[15] Kdevelop (IDE gérant de nombreux language conçu plutôt pour KDE)" #==> vérifier pertinence sous Gnome...
+echo "[15] Kdevelop (IDE gérant de nombreux language conçu plutôt pour KDE)"
 echo "[16] Android Studio (IDE de Google spécialisé pour le développement d'application Android)"
 echo "[17] Netbeans (EDI supportant plusieurs langage, surtout Java, avec de nombreux plugins)"
 echo "[18] BlueFish (éditeur orienté développement web : HTML/PHP/CSS/...)"
