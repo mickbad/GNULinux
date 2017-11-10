@@ -1069,10 +1069,11 @@ do
         "5") #PDFMod
             apt install pdfmod -y 
             ;;
-        "6") #Scenari (a tester plus tard) #remplacer xenial par bionic plus tard (par encore actif pour 18.04)
-            wget -O- https://download.scenari.org/deb/scenari.asc | apt-key add -
-            echo "deb https://download.scenari.org/deb xenial main" | tee -a /etc/apt/sources.list.d/scenari.list
-            apt update ; apt install scenarichain4.2.fr-fr opale3.6.fr-fr -y
+        "6") #Scenari (dépot pas encore actif pour 18.04)
+            wget -O- https://download.scenari.org/deb/scenari.asc | apt-key add - 
+            echo "deb https://download.scenari.org/deb xenial main" | tee -a /etc/apt/sources.list.d/scenari.list 
+            apt update
+            apt install scenarichain4.2.fr-fr opale3.6.fr-fr -y
             ;;
         "7") #Freeplane
             apt install freeplane -y
