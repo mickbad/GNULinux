@@ -38,6 +38,7 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 [MODIFIE] Ajouté une section Sécurité ? {pas de section sécurité mais un pack de logiciel de sécurité en proposition}
 [FAIT] Ajouter curseur partie customization
 - Notes : http://www.omgubuntu.co.uk/2017/11/notes-up-markdown-editor-for-linux
+- Ajouter 1 ou 2 logiciels pour bitcoins, exemple Electrum : https://electrum.org/#home
 
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
