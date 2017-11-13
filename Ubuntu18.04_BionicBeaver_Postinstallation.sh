@@ -1196,7 +1196,7 @@ do
             apt install glances -y
             ;;
         "6") #Brasero
-            apt install brasero brasero-cdrkit nautilus-extension-brasero
+            apt install brasero brasero-cdrkit nautilus-extension-brasero -y
             ;;
         "7") #Wine 
             apt install wine-stable -y
