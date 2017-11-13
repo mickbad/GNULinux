@@ -1416,7 +1416,7 @@ do
             #ajouter a la suite : minwaita vanilla + plano + Popgtk
             ;;
         "4") #pack theme gtk 3
-            apt install albatross-gtk-theme yuyo-gtk-theme human-theme gnome-theme-gilouche
+            apt install albatross-gtk-theme yuyo-gtk-theme human-theme gnome-theme-gilouche -y
             ;;
         "5") #théme gris GDM (changement effectif seulement si la session vanilla est installé)
             apt install gnome-session -y # session vanilla nécessaire pour le changement du thème
