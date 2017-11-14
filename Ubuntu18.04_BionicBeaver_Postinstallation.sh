@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.35 (alpha)
+# version 0.0.36 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -131,10 +131,10 @@ echo "[12] TeamSpeak (une autre alternative à Mumble mais propriétaire, beauco
 echo "[13] Discord [Snap] (logiciel propriétaire multiplateforme pour communiquer à plusieurs pour les gameurs)"
 echo "[14] Tox (une alternative opensource à Skype et sécurisé : P2P Chiffré sans serveur)"
 echo "[15] Viber [Flatpak] (logiciel de communication, surtout connue en application mobile)"
-echo "[16] Telegram (appli de messagerie basée sur le cloud avec du chiffrage)"
+echo "[16] Telegram [Snap] (appli de messagerie basée sur le cloud avec du chiffrage)"
 echo "[17] Wire (un autre client de messagerie instantanée chiffré crée par Wire Swiss)"
 echo "[18] Hexchat (client IRC, fork de xchat)"
-echo "[19] Signal (Messagerie instantannée crypté recommandé par Edward Snowden)"
+echo "[19] Signal [Flatpak & Experimental] (Messagerie instantannée crypté recommandé par Edward Snowden)"
 echo "[20] Polari (client IRC pour Gnome)"
 echo "[21] Slack [Flatpak] (plate-forme de communication collaborative propriétaire avec gestion de projets)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 17) : " choixMessagerie
@@ -149,7 +149,7 @@ echo "[2] FileZilla (logiciel très répendu utilisé pour les transferts FTP ou
 echo "[3] Deluge (client BitTorrent basé sur Python et GTK+)"
 echo "[4] Rtorrent (client BitTorrent en ligne de commande donc très léger)"
 echo "[5] qBittorrent (client BitTorrent léger développé en C++ avec Qt)"
-echo "[6] Bittorrent (client non-libre de base pour gérer les téléchargements Torrent)"
+echo "[6] Bittorrent (client non-libre qui s'utilise depuis le terminal via btdownloadgui)"
 echo "[7] Vuze alias Azureus [Snap] (Plate-forme commerciale d'Azureus avec le protocole BitTorrent)"
 echo "[8] aMule (pour le réseau eDonkey2000, clone de Emule)"
 echo "[9] FrostWire (client multiplate-forme pour le réseau Gnutella)"
@@ -672,10 +672,8 @@ do
         "15") #viber
             flatpak install --from https://flathub.org/repo/appstream/com.viber.Viber.flatpakref -y
             ;;               
-        "16") #telegram (ou via Snap, voir lequel est le plus pertinent)
-            add-apt-repository ppa:atareao/telegram -y
-            apt update ; apt install telegram -y
-            #snap install telegram-sergiusens
+        "16") #telegram (Snap)
+            snap install telegram-sergiusens
             ;;              
         "17") #wire
             apt-key adv --fetch-keys http://wire-app.wire.com/linux/releases.key
@@ -685,10 +683,8 @@ do
         "18") #hexchat
             apt install hexchat hexchat-plugins -y
             ;; 
-        "19") #signal
-            curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
-            echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | tee -a /etc/apt/sources.list.d/signal-xenial.list
-            apt update ; apt install signal-desktop -y
+        "19") #signal (flatpak)
+            flatpak install --from https://vrutkovs.github.io/flatpak-signal/signal.flatpakref -y
             ;;           
         "20") #Polari
             apt install polari -y
@@ -716,7 +712,7 @@ do
             apt install qbittorrent -y
             ;;         
         "6") #Bittorrent
-            apt install bittorrent -y
+            apt install bittorrent bittorrent-gui -y
             ;;            
         "7") #Vuze
             snap install vuze-vs
