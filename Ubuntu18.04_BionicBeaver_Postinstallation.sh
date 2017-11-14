@@ -97,7 +97,7 @@ echo "[6] Chromium (la version libre/opensource de Chrome)"
 echo "[7] Google Chrome <!!> (le célèbre navigateur de Google mais il est propriétaire !)"
 echo "[8] Gnome Web/Epiphany (navigateur de la fondation Gnome s'intégrant bien avec cet environnement)"
 echo "[9] Midori (libre & léger, utilisé notamment par défaut sur la distribution 'Elementary OS')"
-echo "[10] Opera <i!> (un navigateur propriétaire relativement connu)"
+echo "[10] Opera [Demande Interv!] (un navigateur propriétaire relativement connu)"
 echo "[11] PaleMoon <l!> (un navigateur plutôt récent, libre & performant)"
 echo "[12] Vivaldi (un navigateur propriétaire avec une interface sobre assez particulière)"
 echo "[13] Falkon/QupZilla (une alternative libre et légère utilisant Webkit)"
@@ -127,9 +127,9 @@ echo "[8] Ekiga (anciennement 'Gnome Meeting', logiciel de visioconférence/VoIP
 echo "[9] Linphone (visioconférence utilisant le protocole SIP)"
 echo "[10] Ring (anciennement 'SFLphone', logiciel très performant pour la téléphonie IP)"
 echo "[11] Mumble (logiciel libre connue chez les gameurs pour les conversations audios à plusieurs)"
-echo "[12] TeamSpeak (une autre alternative à Mumble mais propriétaire, beaucoup utilisé aussi par les joueurs)"
+echo "[12] TeamSpeak [NE FONCTIONNE PAS : Ne pas sélectionner !]"
 echo "[13] Discord [Snap] (logiciel propriétaire multiplateforme pour communiquer à plusieurs pour les gameurs)"
-echo "[14] Tox (une alternative opensource à Skype et sécurisé : P2P Chiffré sans serveur)"
+echo "[14] qTox [NE FONCTIONNE PAS : Ne pas sélectionner !]"
 echo "[15] Viber [Flatpak] (logiciel de communication, surtout connue en application mobile)"
 echo "[16] Telegram [Snap] (appli de messagerie basée sur le cloud avec du chiffrage)"
 echo "[17] Wire (un autre client de messagerie instantanée chiffré crée par Wire Swiss)"
@@ -150,18 +150,17 @@ echo "[3] Deluge (client BitTorrent basé sur Python et GTK+)"
 echo "[4] Rtorrent (client BitTorrent en ligne de commande donc très léger)"
 echo "[5] qBittorrent (client BitTorrent léger développé en C++ avec Qt)"
 echo "[6] Bittorrent (client non-libre qui s'utilise depuis le terminal via btdownloadgui)"
-echo "[7] Vuze alias Azureus [Snap] (Plate-forme commerciale d'Azureus avec le protocole BitTorrent)"
+echo "[7] Vuze [Snap][Pour Xorg uniquement!] (Plate-forme commerciale d'Azureus avec BitTorrent)"
 echo "[8] aMule (pour le réseau eDonkey2000, clone de Emule)"
 echo "[9] FrostWire (client multiplate-forme pour le réseau Gnutella)"
 echo "[10] Gtk-Gnutella (un autre client stable et léger avec pas mal d'option)"
 echo "[11] EiskaltDC++ (stable et en français, pour le réseau DirectConnect)"
-echo "[12] RetroShare (logiciel d'échange basé sur F2F et PGP sécurisé)"
-echo "[13] Calypso (client P3P anonyme et évolué)"
+echo "[12] RetroShare [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+echo "[13] Calypso/Kommute (client P3P anonyme et évolué, à lancer depuis la cli)"
 echo "[14] Grsync (une interface graphique pour l'outil rsync"
 echo "[15] SubDownloader (téléchargement de sous-titre)"
 echo "[16] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
-echo "[17] JDownloader (gestionnaire de téléchargement écrit en Java avec beaucoup d'option)"
-echo "[18] Gydl [Flatpak] (permet de télécharger des vidéos Youtube ou juste la piste audio)"
+echo "[17] Gydl [Flatpak] (permet de télécharger des vidéos Youtube ou juste la piste audio)"
 read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15) : " choixTelechargement
 clear
 
@@ -748,12 +747,8 @@ do
             ;;              
         "16") #Nicotine+ 
             apt install nicotine -y
-            ;;               
-        "17") #JDownloader
-            add-apt-repository ppa:jd-team/jdownloader -y
-            apt update ; apt install jdownloader-installer -y
-            ;;       
-        "18") #Gydl
+            ;;                   
+        "17") #Gydl
             flatpak install --from https://flathub.org/repo/appstream/com.github.JannikHv.Gydl.flatpakref -y
             ;;   
     esac
