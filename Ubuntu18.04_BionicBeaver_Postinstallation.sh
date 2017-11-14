@@ -1653,26 +1653,100 @@ done
 for snap in $choixSnap
 do
     case $snap in
-        "2") #nom logiciel
-            #ligne d'install
+        "2") #VLC version snap
+            snap install vlc
             ;;
+    esac
 done        
     
 # Question 20 : Extra Flatpak
 for flatpak in $choixFlatpak
 do
     case $flatpak in
-        "2") #nom logiciel
-            #ligne d'install
+        "2") #0ad version flatpak
+            flatpak install --from https://flathub.org/repo/appstream/com.play0ad.zeroad.flatpakref -y
             ;;
- 
+        "3") #Audacity version flatpak
+            flatpak install --from https://flathub.org/repo/appstream/org.audacityteam.Audacity.flatpakref -y
+            ;;
+        "4") #Battle Tanks
+            flatpak install --from https://flathub.org/repo/appstream/net.sourceforge.btanks.flatpakref -y
+            ;;            
+        "5") #Blender version flatpak
+            flatpak install --from https://flathub.org/repo/appstream/org.blender.Blender.flatpakref -y
+            ;;             
+        "6") #Dolphin Emulator
+            flatpak install --from https://flathub.org/repo/appstream/org.DolphinEmu.dolphin-emu.flatpakref -y
+            ;;  
+        "7") #Dolphin Emulator
+            flatpak install --from https://flathub.org/repo/appstream/org.DolphinEmu.dolphin-emu.flatpakref -y
+            ;;              
+        "8") #Extreme Tuxracer
+            flatpak install --from https://flathub.org/repo/appstream/net.sourceforge.ExtremeTuxRacer.flatpakref -y
+            ;;                
+        "9") #Frozen Bubble
+            flatpak install --from https://flathub.org/repo/appstream/org.frozen_bubble.frozen-bubble.flatpakref -y
+            ;;                    
+        "10") #Gnome MPV version flatpak
+            flatpak install --from https://flathub.org/repo/appstream/io.github.GnomeMpv.flatpakref -y
+            ;;               
+        "11") #GIMP version flatpak
+            flatpak install --from https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref -y
+            ;;                    
+        "12") #Google Play Music Desktop Player
+            flatpak install --from https://flathub.org/repo/appstream/com.googleplaymusicdesktopplayer.GPMDP.flatpakref -y
+            ;;              
+        "13") #Homebank
+            flatpak install --from https://flathub.org/repo/appstream/fr.free.Homebank.flatpakref -y
+            ;;               
+        "14") #LibreOffice version flatpak
+            flatpak install --from https://flathub.org/repo/appstream/org.libreoffice.LibreOffice.flatpakref -y
+            ;;         
+        "15") #Minetest version flatpak
+            flatpak install --from https://flathub.org/repo/appstream/net.minetest.Minetest.flatpakref -y
+            ;;             
+        "16") #Nextcloud
+            flatpak install --from https://flathub.org/repo/appstream/org.nextcloud.Nextcloud.flatpakref -y
+            ;;        
+        "17") #Othman Quran Browser
+            flatpak install --from https://flathub.org/repo/appstream/com.github.ojubaorg.Othman.flatpakref -y
+            ;;  
+        "18") #Password Calculator
+            flatpak install --from https://flathub.org/repo/appstream/com.bixense.PasswordCalculator.flatpakref -y
+            ;;             
+        "19") #PPSSPP
+            flatpak install --from https://flathub.org/repo/appstream/org.ppsspp.PPSSPP.flatpakref -y
+            ;;              
+        "20") #Riot
+            flatpak install --from https://flathub.org/repo/appstream/im.riot.Riot.flatpakref -y
+            ;;                
+        "21") #Riot
+            flatpak install --from https://flathub.org/repo/appstream/im.riot.Riot.flatpakref -y
+            ;;                
+        "22") #Teeworlds
+            flatpak install --from https://flathub.org/repo/appstream/com.teeworlds.Teeworlds.flatpakref -y
+            ;;       
+        "23") #VLC version flatpak
+            flatpak install --from https://flathub.org/repo/appstream/org.videolan.VLC.flatpakref -y
+            ;;
+    esac
+done
+
 # Question 21 : Extra Appimages
 for appimage in $choixAppimage
 do
     case $appimage in
-        "2") #nom logiciel
-            #ligne d'install
-            ;;   
+        "2") #Digikam
+            wget https://download.kde.org/stable/digikam/digikam-5.5.0-01-x86-64.appimage
+            ;;
+        "3") #Freecad
+            wget https://github.com/FreeCAD/FreeCAD/releases/download/0.16.6712/FreeCAD-0.16.6712.glibc2.17-x86_64.AppImage
+            ;;
+        "3") #KeePassXC
+            wget hhttps://github.com/keepassxreboot/keepassxc/releases/download/2.2.2/KeePassXC-2.2.2-2-x86_64.AppImage
+            ;;
+    esac
+done
     
    
 # Suppression des deb téléchargés par le script (plus nécessaire) et rangement des AppImages (a vérifier)
