@@ -1590,7 +1590,7 @@ do
             apt install hfsprogs hfsutils hfsplus -y
             ;;
         "11") #Nouvelle commande raccourci Maj totale
-            echo "alias maj='apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean ; snap refresh ; flatpak update -y'" >> /home/$SUDO_USER/.bashrc
+            echo "alias maj='sudo apt update ; sudo apt full-upgrade -y ; sudo apt autoremove --purge -y ; sudo apt clean ; sudo snap refresh ; sudo flatpak update -y'" >> /home/$SUDO_USER/.bashrc
             source /home/$SUDO_USER/.bashrc
             ;;
         "12") #Grub réduction temps d'attente + suppression test ram dans grub
