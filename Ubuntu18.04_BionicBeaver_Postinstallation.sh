@@ -1591,7 +1591,7 @@ do
             ;;
         "11") #Nouvelle commande raccourci Maj totale
             echo "alias maj='sudo apt update ; sudo apt full-upgrade -y ; sudo apt autoremove --purge -y ; sudo apt clean ; sudo snap refresh ; sudo flatpak update -y'" >> /home/$SUDO_USER/.bashrc
-            source /home/$SUDO_USER/.bashrc
+            su $SUDO_USER ; source /home/$SUDO_USER/.bashrc ; exit
             ;;
         "12") #Grub réduction temps d'attente + suppression test ram dans grub
             sed -ri 's/GRUB_TIMEOUT=10/GRUB_TIMEOUT=2/g' /etc/default/grub
