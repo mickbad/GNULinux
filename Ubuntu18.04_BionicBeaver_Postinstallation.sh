@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.36 (alpha)
+# version 0.0.37 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -58,437 +58,473 @@ fi
 echo "*******************************************************"
 echo "1/ Mode de lancement du script : "
 echo "*******************************************************"
-echo "[1] Mode standard (choix par défaut, recommandé pour la plupart des utilisateurs)"
-echo "[2] Mode avancé (pour les utilisateurs plus experimentés)"
+echo "[0] Mode novice (lancement automatique sans question avec des choix de logiciels pour les débutants)"
+echo "[1] Mode standard (choix par défaut, pose divers questions simples, recommandé pour la plupart des utilisateurs)"
+echo "[2] Mode avancé (comme standard mais avec des questions supplémentaires : programmation, optimisation, extension...)"
+echo "[3] Mode extra (comme avancé mais avec un supplément snap/flatpak/appimages proposé à la fin)"
 echo "*******************************************************"
 read -p "Répondre par le chiffre correspondant (exemple : 1) : " choixMode
 clear
 
-while [ "$choixMode" != "1" ] && [ "$choixMode" != "2" ]
+while [ "$choixMode" != "0" ] && [ "$choixMode" != "1" ] [ "$choixMode" != "2" ] && [ "$choixMode" != "3" ]
 do
-    read -p "Désolé, je ne comprend pas votre réponse, c'est soit 1 soit 2, merci de refaire un choix : " choixMode
+    read -p "Désolé, je ne comprend pas votre réponse, les seuls choix possibles sont 1 (novice), 2 (standard), 3 (avancé), 4 (extra) : " choixMode
     clear
 done
 
-echo "======================================================="
-echo "Précision : si vous validez directement par 'entrée' au clavier sans mettre de choix, le script considèra que vous avez sélectionné le choix par défaut cad 1 et ceci pour toutes les questions à venir"
-# Question 2 : Session 
-echo "*******************************************************"
-echo "2/ Quelle(s) session(s) supplémentaire(s) souhaitez-vous installer ? (plusieurs choix possibles)"
-echo "*******************************************************"
-echo "[1] Aucune, rester avec la session Ubuntu par défaut (cad Gnome customizé + 2 extensions)"
-echo "[2] Ajouter la session 'Gnome Vanilla' (cad une session Gnome non-customizé et sans extension)"
-echo "[3] Ajouter la session 'Gnome Classique' (interface plus traditionnelle dans le style de Gnome 2 ou Mate)"
-echo "[4] Ajouter la session 'Unity' (l'ancienne interface d'Ubuntu utilisé avant la 17.10)"
-echo "*******************************************************"
-read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 2 3) : " choixSession
-clear
+if [ "$choixMode" != "0" ] #lancement pour tous sauf mode novice
+then
+    echo "======================================================="
+    echo "Précision : si vous validez directement par 'entrée' au clavier sans mettre de choix, le script considèra que vous avez sélectionné le choix par défaut cad 1 et ceci pour toutes les questions à venir"
+    # Question 2 : Session 
+    echo "*******************************************************"
+    echo "2/ Quelle(s) session(s) supplémentaire(s) souhaitez-vous installer ? (plusieurs choix possibles)"
+    echo "*******************************************************"
+    echo "[1] Aucune, rester avec la session Ubuntu par défaut (cad Gnome customizé + 2 extensions)"
+    echo "[2] Ajouter la session 'Gnome Vanilla' (cad une session Gnome non-customizé et sans extension)"
+    echo "[3] Ajouter la session 'Gnome Classique' (interface plus traditionnelle dans le style de Gnome 2 ou Mate)"
+    echo "[4] Ajouter la session 'Unity' (l'ancienne interface d'Ubuntu utilisé avant la 17.10)"
+    echo "*******************************************************"
+    read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 2 3) : " choixSession
+    clear
 
-# Question 3 : Navigateur web 
-echo "*******************************************************"
-echo "3/ Quel(s) navigateur(s) vous intéresses ? (plusieurs choix possibles)"
-echo "*******************************************************"
-echo "[1] Pas de navigateur supplémentaire : rester sur la version classique de Firefox (stable)"
-echo "[2] Firefox Béta (n+1 : 1 version d'avance, remplace la version classique)"
-echo "[3] Firefox Developer Edition [Flatpak] (n+2 et inclue des outils pour les devs)"
-echo "[4] Firefox ESR (version plutôt orienté entreprise/organisation)"
-echo "[5] Firefox Nightly [Flatpak] (toute dernière build construite, parfois n+3, potentiellement instable !)"
-echo "[6] Chromium (la version libre/opensource de Chrome)"
-echo "[7] Google Chrome <!!> (le célèbre navigateur de Google mais il est propriétaire !)"
-echo "[8] Gnome Web/Epiphany (navigateur de la fondation Gnome s'intégrant bien avec cet environnement)"
-echo "[9] Midori (libre & léger, utilisé notamment par défaut sur la distribution 'Elementary OS')"
-echo "[10] Opera [Demande Interv!] (un navigateur propriétaire relativement connu)"
-echo "[11] PaleMoon <l!> (un navigateur plutôt récent, libre & performant)"
-echo "[12] Vivaldi (un navigateur propriétaire avec une interface sobre assez particulière)"
-echo "[13] Falkon/QupZilla (une alternative libre et légère utilisant Webkit)"
-echo "[14] Tor Browser (pour naviguer dans l'anonymat avec le réseau tor : basé sur Firefox ESR)"
-echo "[15] Eolie [Flatpak](une autre alternative pour Gnome)"
-echo "[16] Min <l!> (un navigateur minimaliste et donc très léger)"
-echo "[17] Rekonq <d!> (Navigateur de Kde, déconseillé sous Gnome !)" 
-echo "[18] NetSurf (basique mais très léger et performant)"
-echo "[19] Dillo (navigateur capable de tourner sur des ordinosaures)"
-echo "[20] Lynx (navigateur 100% en ligne de commande, pratique depuis une console SSH)"
-echo "*******************************************************"
-read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 11 20) : " choixNavigateur
-clear
+    # Question 3 : Navigateur web 
+    echo "*******************************************************"
+    echo "3/ Quel(s) navigateur(s) vous intéresses ? (plusieurs choix possibles)"
+    echo "*******************************************************"
+    echo "[1] Pas de navigateur supplémentaire : rester sur la version classique de Firefox (stable)"
+    echo "[2] Firefox Béta (n+1 : 1 version d'avance, remplace la version classique)"
+    echo "[3] Firefox Developer Edition [Flatpak] (n+2 et inclue des outils pour les devs)"
+    echo "[4] Firefox ESR (version plutôt orienté entreprise/organisation)"
+    echo "[5] Firefox Nightly [Flatpak] (toute dernière build construite, parfois n+3, potentiellement instable !)"
+    echo "[6] Chromium (la version libre/opensource de Chrome)"
+    echo "[7] Google Chrome <!!> (le célèbre navigateur de Google mais il est propriétaire !)"
+    echo "[8] Gnome Web/Epiphany (navigateur de la fondation Gnome s'intégrant bien avec cet environnement)"
+    echo "[9] Midori (libre & léger, utilisé notamment par défaut sur la distribution 'Elementary OS')"
+    echo "[10] Opera [Demande Interv!] (un navigateur propriétaire relativement connu)"
+    echo "[11] PaleMoon <l!> (un navigateur plutôt récent, libre & performant)"
+    echo "[12] Vivaldi (un navigateur propriétaire avec une interface sobre assez particulière)"
+    echo "[13] Falkon/QupZilla (une alternative libre et légère utilisant Webkit)"
+    echo "[14] Tor Browser (pour naviguer dans l'anonymat avec le réseau tor : basé sur Firefox ESR)"
+    echo "[15] Eolie [Flatpak](une autre alternative pour Gnome)"
+    echo "[16] Min <l!> (un navigateur minimaliste et donc très léger)"
+    echo "[17] Rekonq <d!> (Navigateur de Kde, déconseillé sous Gnome !)" 
+    echo "[18] NetSurf (basique mais très léger et performant)"
+    echo "[19] Dillo (navigateur capable de tourner sur des ordinosaures)"
+    echo "[20] Lynx (navigateur 100% en ligne de commande, pratique depuis une console SSH)"
+    echo "*******************************************************"
+    read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 11 20) : " choixNavigateur
+    clear
 
-# Question 4 : Messagerie instantannée
-echo "*******************************************************"
-echo "4/ Quel(s) logiciels(s) de courrier ou messagerie instantannée/tchat/VoIP/visio souhaitez-vous ?"
-echo "*******************************************************"
-echo "[1] Aucun"
-echo "[2] Empathy (messagerie instantanné adapté à Gnome, multi-protocole)"
-echo "[3] Pidgin (une alternative à Empathy avec l'avantage d'être multi-plateforme)"
-echo "[4] Jitsi (anciennement 'SIP Communicator' surtout orienté VoIP)"
-echo "[5] Psi (multiplateforme, libre et surtout conçu pour le protocole XMPP cad Jabber)"
-echo "[6] Gajim (un autre client Jabber utilisant GTK+)"
-echo "[7] Skype (logiciel propriétaire de téléphonie, vidéophonie et clavardage très connue)"
-echo "[8] Ekiga (anciennement 'Gnome Meeting', logiciel de visioconférence/VoIP)"
-echo "[9] Linphone (visioconférence utilisant le protocole SIP)"
-echo "[10] Ring (anciennement 'SFLphone', logiciel très performant pour la téléphonie IP)"
-echo "[11] Mumble (logiciel libre connue chez les gameurs pour les conversations audios à plusieurs)"
-echo "[12] TeamSpeak [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-echo "[13] Discord [Snap] (logiciel propriétaire multiplateforme pour communiquer à plusieurs pour les gameurs)"
-echo "[14] qTox [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-echo "[15] Viber [Flatpak] (logiciel de communication, surtout connue en application mobile)"
-echo "[16] Telegram [Snap] (appli de messagerie basée sur le cloud avec du chiffrage)"
-echo "[17] Wire (un autre client de messagerie instantanée chiffré crée par Wire Swiss)"
-echo "[18] Hexchat (client IRC, fork de xchat)"
-echo "[19] Signal [Flatpak & Experimental] (Messagerie instantannée crypté recommandé par Edward Snowden)"
-echo "[20] Polari (client IRC pour Gnome)"
-echo "[21] Slack [Flatpak] (plate-forme de communication collaborative propriétaire avec gestion de projets)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 17) : " choixMessagerie
-clear
+    # Question 4 : Messagerie instantannée
+    echo "*******************************************************"
+    echo "4/ Quel(s) logiciels(s) de courrier ou messagerie instantannée/tchat/VoIP/visio souhaitez-vous ?"
+    echo "*******************************************************"
+    echo "[1] Aucun"
+    echo "[2] Empathy (messagerie instantanné adapté à Gnome, multi-protocole)"
+    echo "[3] Pidgin (une alternative à Empathy avec l'avantage d'être multi-plateforme)"
+    echo "[4] Jitsi (anciennement 'SIP Communicator' surtout orienté VoIP)"
+    echo "[5] Psi (multiplateforme, libre et surtout conçu pour le protocole XMPP cad Jabber)"
+    echo "[6] Gajim (un autre client Jabber utilisant GTK+)"
+    echo "[7] Skype (logiciel propriétaire de téléphonie, vidéophonie et clavardage très connue)"
+    echo "[8] Ekiga (anciennement 'Gnome Meeting', logiciel de visioconférence/VoIP)"
+    echo "[9] Linphone (visioconférence utilisant le protocole SIP)"
+    echo "[10] Ring (anciennement 'SFLphone', logiciel très performant pour la téléphonie IP)"
+    echo "[11] Mumble (logiciel libre connue chez les gameurs pour les conversations audios à plusieurs)"
+    echo "[12] TeamSpeak [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[13] Discord [Snap] (logiciel propriétaire multiplateforme pour communiquer à plusieurs pour les gameurs)"
+    echo "[14] qTox [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[15] Viber [Flatpak] (logiciel de communication, surtout connue en application mobile)"
+    echo "[16] Telegram [Snap] (appli de messagerie basée sur le cloud avec du chiffrage)"
+    echo "[17] Wire (un autre client de messagerie instantanée chiffré crée par Wire Swiss)"
+    echo "[18] Hexchat (client IRC, fork de xchat)"
+    echo "[19] Signal [Flatpak & Experimental] (Messagerie instantannée crypté recommandé par Edward Snowden)"
+    echo "[20] Polari (client IRC pour Gnome)"
+    echo "[21] Slack [Flatpak] (plate-forme de communication collaborative propriétaire avec gestion de projets)"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 17) : " choixMessagerie
+    clear
 
-# Question 5 : Download/Upload
-echo "*******************************************************"
-echo "5/ Quel(s) logiciels(s) de téléchargement/copie voulez-vous ?"
-echo "*******************************************************"
-echo "[1] Pas de supplément ('Transmission' installé de base)"
-echo "[2] FileZilla (logiciel très répendu utilisé pour les transferts FTP ou SFTP)"
-echo "[3] Deluge (client BitTorrent basé sur Python et GTK+)"
-echo "[4] Rtorrent (client BitTorrent en ligne de commande donc très léger)"
-echo "[5] qBittorrent (client BitTorrent léger développé en C++ avec Qt)"
-echo "[6] Bittorrent (client non-libre qui s'utilise depuis le terminal via btdownloadgui)"
-echo "[7] Vuze [Snap][Pour Xorg uniquement!] (Plate-forme commerciale d'Azureus avec BitTorrent)"
-echo "[8] aMule (pour le réseau eDonkey2000, clone de Emule)"
-echo "[9] FrostWire (client multiplate-forme pour le réseau Gnutella)"
-echo "[10] Gtk-Gnutella (un autre client stable et léger avec pas mal d'option)"
-echo "[11] EiskaltDC++ (stable et en français, pour le réseau DirectConnect)"
-echo "[12] RetroShare [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-echo "[13] Calypso/Kommute (client P3P anonyme et évolué, à lancer depuis la cli)"
-echo "[14] Grsync (une interface graphique pour l'outil rsync"
-echo "[15] SubDownloader (téléchargement de sous-titre)"
-echo "[16] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
-echo "[17] Gydl [Flatpak] (permet de télécharger des vidéos Youtube ou juste la piste audio)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15) : " choixTelechargement
-clear
+    # Question 5 : Download/Upload
+    echo "*******************************************************"
+    echo "5/ Quel(s) logiciels(s) de téléchargement/copie voulez-vous ?"
+    echo "*******************************************************"
+    echo "[1] Pas de supplément ('Transmission' installé de base)"
+    echo "[2] FileZilla (logiciel très répendu utilisé pour les transferts FTP ou SFTP)"
+    echo "[3] Deluge (client BitTorrent basé sur Python et GTK+)"
+    echo "[4] Rtorrent (client BitTorrent en ligne de commande donc très léger)"
+    echo "[5] qBittorrent (client BitTorrent léger développé en C++ avec Qt)"
+    echo "[6] Bittorrent (client non-libre qui s'utilise depuis le terminal via btdownloadgui)"
+    echo "[7] Vuze [Snap][Pour Xorg uniquement!] (Plate-forme commerciale d'Azureus avec BitTorrent)"
+    echo "[8] aMule (pour le réseau eDonkey2000, clone de Emule)"
+    echo "[9] FrostWire (client multiplate-forme pour le réseau Gnutella)"
+    echo "[10] Gtk-Gnutella (un autre client stable et léger avec pas mal d'option)"
+    echo "[11] EiskaltDC++ (stable et en français, pour le réseau DirectConnect)"
+    echo "[12] RetroShare [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[13] Calypso/Kommute (client P3P anonyme et évolué, à lancer depuis la cli)"
+    echo "[14] Grsync (une interface graphique pour l'outil rsync"
+    echo "[15] SubDownloader (téléchargement de sous-titre)"
+    echo "[16] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
+    echo "[17] Gydl [Flatpak] (permet de télécharger des vidéos Youtube ou juste la piste audio)"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15) : " choixTelechargement
+    clear
 
-# Question 6 : Lecture multimédia
-echo "*******************************************************"
-echo "6/ Quel(s) logiciels(s) de lecture audio/vidéo (ou de stream) voulez-vous ?"
-echo "*******************************************************"
-echo "[1] Aucun, rester avec les choix par défaut ('Totem' pour la vidéo, 'Rhythmbox' pour la musique)"
-echo "[2] VLC VideoLan (le couteau suisse de la vidéo, très complet !)"
-echo "[3] Gnome MPV (léger et puissant, capable de lire de nombreux formats)"
-echo "[4] SmPlayer (lecteur basé sur mplayer avec une interface utilisant Qt)"
-echo "[5] Gxine (logiciel minimaliste écrit en GTK+ basé sur le moteur Xine"
-echo "[6] DragonPlayer (lecteur vidéo plutôt conçu pour l'environnement KDE)" #===> vérifier si il y a un intéret sous Gnome...
-echo "[7] Banshee (lecteur audio assez complet équivalent à Rhythmbox)"
-echo "[8] Clementine (lecteur audio avec gestion des pochettes, genres musicaux...)"
-echo "[9] QuodLibet (un lecteur audio très puissant avec liste de lecture basé sur les expressions rationnelles)"
-echo "[10] Audacious (lecteur complet pour les audiophiles avec beaucoup de plugins)"
-echo "[11] Guayadeque (lecteur audio et radio avec une interface agréable)"
-echo "[12] Gnome Music (utilitaire de la fondation Gnome pour la gestion audio, assez basique)"
-echo "[13] Gmusicbrowser (lecteur avec une interface très configurable)"
-echo "[14] Musique (un lecteur épuré)"
-echo "[15] Qmmp (dans le même style de Winamp pour les fans)"
-echo "[16] XMMS2 (un autre lecteur audio dans le style de Winamp, très complet)"
-echo "[17] Lollypop [Flatpak] (lecture de musique adapté à Gnome avec des fonctions très avancées)"
-echo "[18] Spotify [Flatpak] (Permet d'accéder gratuitement et légalement à de la musique en ligne)"
-echo "[19] MuseScore [Flatpak] (l'éditeur de partitions de musique le plus utilisé au monde !)"
-echo "[20] Gnome Twitch (pour visionner les flux vidéo du site Twitch depuis votre bureau sans utiliser de navigateur)"
-echo "[21] GRadio [Snap] (Application Gnome pour écouter la radio, plus de 1 000 référencés rien qu'en France !)"
-echo "[22] Molotov.TV [Appimage] (Service français de distribution de chaînes de TV)"
-echo "[23] Nuvola Player [Flatpak] (Environnement d'exécution pour les services de streaming de musique sur le Web)" 
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixMultimedia
-clear
+    # Question 6 : Lecture multimédia
+    echo "*******************************************************"
+    echo "6/ Quel(s) logiciels(s) de lecture audio/vidéo (ou de stream) voulez-vous ?"
+    echo "*******************************************************"
+    echo "[1] Aucun, rester avec les choix par défaut ('Totem' pour la vidéo, 'Rhythmbox' pour la musique)"
+    echo "[2] VLC VideoLan (le couteau suisse de la vidéo, très complet !)"
+    echo "[3] MPV/Gnome MPV (léger et puissant, capable de lire de nombreux formats)" #(semble instable dans une VM)
+    echo "[4] SmPlayer (lecteur basé sur mplayer avec une interface utilisant Qt)"
+    echo "[5] Gxine [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[6] DragonPlayer [Attention : beaucoup de dépendance !] (lecteur vidéo KDE)" 
+    echo "[7] Banshee (lecteur audio assez complet équivalent à Rhythmbox)"
+    echo "[8] Clementine (lecteur audio avec gestion des pochettes, genres musicaux...)"
+    echo "[9] QuodLibet (un lecteur audio très puissant avec liste de lecture basé sur les expressions rationnelles)"
+    echo "[10] Audacious (lecteur complet pour les audiophiles avec beaucoup de plugins)"
+    echo "[11] Guayadeque (lecteur audio et radio avec une interface agréable)"
+    echo "[12] Gnome Music (utilitaire de la fondation Gnome pour la gestion audio, assez basique)"
+    echo "[13] Gmusicbrowser (lecteur avec une interface très configurable)"
+    echo "[14] Musique (un lecteur épuré)"
+    echo "[15] Qmmp (dans le même style de Winamp pour les fans)"
+    echo "[16] Xmms2+Gxmms2 (un autre lecteur audio dans le style de Winamp)"
+    echo "[17] Lollypop [Flatpak] (lecture de musique adapté à Gnome avec des fonctions très avancées)"
+    echo "[18] Spotify [Flatpak] (Permet d'accéder gratuitement et légalement à de la musique en ligne)"
+    echo "[19] MuseScore [Flatpak] (l'éditeur de partitions de musique le plus utilisé au monde !)"
+    echo "[20] Gnome Twitch (pour visionner les flux vidéo du site Twitch depuis votre bureau sans utiliser de navigateur)"
+    echo "[21] GRadio [Flatpak] (Application Gnome pour écouter la radio, plus de 1 000 référencés rien qu'en France !)"
+    echo "[22] Molotov.TV [Appimage] (Service français de distribution de chaînes de TV)"
+    echo "[23] Nuvola Player [Flatpak] (Environnement d'exécution pour les services de streaming de musique sur le Web)" 
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixMultimedia
+    clear
 
-# Question 7 : Traitement/montage video
-echo "*******************************************************"
-echo "7/ Souhaitez-vous un logiciel de montage/encodage vidéo ?"
-echo "*******************************************************"
-echo "[1] Non merci (aucun n'est installé par défaut)"
-echo "[2] Handbrake (transcodage de n'importe quel fichier vidéo)"
-echo "[3] WinFF (encodage vidéo rapide dans différents formats)"
-echo "[4] Libav-tools (fork de FFmpeg, outil en CLI pour la conversion via : avconv)"
-echo "[5] KDEnLive (éditeur vidéo non-linéaire pour monter sons et images avec effets spéciaux)"
-echo "[6] OpenShot Video Editor (une autre alternative comme éditeur vidéo, libre et écrit en Python)"
-echo "[7] Pitivi (logiciel de montage basique avec une interface simple et intuitive)" 
-echo "[8] Lives (Dispose des fonctionnalités d'éditions vidéo/son classique, des filtres et multipiste"
-echo "[9] EKD (Opérations de post-prod sur les vidéos et images avec traitement par lot)"
-echo "[10] Shotcut [Snap] (editeur et montage vidéo libre et multi-plateformes)"
-echo "[11] SlowMoVideo (Création de vidéos en slow-motion en opensource)"
-echo "[12] Flowblade (Logiciel de montage video multi-piste performant)"
-echo "[13] Cinelerra (montage non-linéaire sophistiqué, équivalent à Adobe première, Final Cut et Sony Vegas"
-echo "[14] Natron (programme de post-prod destiné au compositing et aux effets spéciaux)"
-echo "[15] LightWorks (Montage vidéo professionnel propriétaire)"
-echo "[16] VLMC (montage vidéo de VideoLan, experimental !)" #===> vérifier stablilité...
-echo "[17] Avidemux [Appimage](Équivalent de 'VirtualDub' sous Windows : coupe, filtre et ré-encodage)"
-echo "[18] Mencoder (encodage de fichier vidéo, compatible avec de très nombreux formats)"
-echo "[19] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
-echo "[20] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
-echo "[21] Jahshaka (Montage vidéo mais aussi effets spéciaux, post-prod en temps réel. Modulaire)"
-echo "[22] Peek [Snap] (Outil de création de Gif animé à partir d'une capture vidéo d'une zone de l'écran)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
-clear
+    # Question 7 : Traitement/montage video
+    echo "*******************************************************"
+    echo "7/ Souhaitez-vous un logiciel de montage/encodage vidéo ?"
+    echo "*******************************************************"
+    echo "[1] Non merci (aucun n'est installé par défaut)"
+    echo "[2] Handbrake (transcodage de n'importe quel fichier vidéo)"
+    echo "[3] WinFF (encodage vidéo rapide dans différents formats)"
+    echo "[4] Libav-tools (fork de FFmpeg, outil en CLI pour la conversion via : avconv)"
+    echo "[5] KDEnLive (éditeur vidéo non-linéaire pour monter sons et images avec effets spéciaux)"
+    echo "[6] OpenShot Video Editor (une autre alternative comme éditeur vidéo, libre et écrit en Python)"
+    echo "[7] Pitivi (logiciel de montage basique avec une interface simple et intuitive)" 
+    echo "[8] Lives (Dispose des fonctionnalités d'éditions vidéo/son classique, des filtres et multipiste"
+    echo "[9] EKD (Opérations de post-prod sur les vidéos et images avec traitement par lot)"
+    echo "[10] Shotcut [Snap] (editeur et montage vidéo libre et multi-plateformes)"
+    echo "[11] SlowMoVideo (Création de vidéos en slow-motion en opensource)"
+    echo "[12] Flowblade (Logiciel de montage video multi-piste performant)"
+    echo "[13] Cinelerra (montage non-linéaire sophistiqué, équivalent à Adobe première, Final Cut et Sony Vegas"
+    echo "[14] Natron (programme de post-prod destiné au compositing et aux effets spéciaux)"
+    echo "[15] LightWorks (Montage vidéo professionnel propriétaire)"
+    echo "[16] VLMC (montage vidéo de VideoLan, experimental !)" #===> vérifier stablilité...
+    echo "[17] Avidemux [Appimage](Équivalent de 'VirtualDub' sous Windows : coupe, filtre et ré-encodage)"
+    echo "[18] Mencoder (encodage de fichier vidéo, compatible avec de très nombreux formats)"
+    echo "[19] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
+    echo "[20] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
+    echo "[21] Jahshaka (Montage vidéo mais aussi effets spéciaux, post-prod en temps réel. Modulaire)"
+    echo "[22] Peek [Snap] (Outil de création de Gif animé à partir d'une capture vidéo d'une zone de l'écran)"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
+    clear
 
-# Question 8 : Traitement/montage photo & modélisation 3D
-echo "*******************************************************"
-echo "8/ Quel(s) logiciels(s) de montage photo ou modélisation 3D ?"
-echo "*******************************************************"
-echo "[1] Aucun (pas de logiciel par défaut)"
-echo "[2] Gimp (montage photo avancé, équivalent à 'Adobe Photoshop')"
-echo "[3] Krita (outil d'édition et retouche d'image, orienté plutôt vers le dessin bitmap)"
-echo "[4] Pinta (graphisme simple équivalent à Paint.NET)"
-echo "[5] Pixeluvo (une autre alternative à Photoshop mais il reste propriétaire)"
-echo "[6] Phatch (pour traiter des images par lot via des scripts prédéfinis)"
-echo "[7] Cinepaint (outil de retouche d'image vidéo basé sur Gimp)"
-echo "[8] MyPaint (logiciel de peinture numérique développé en Python)"
-echo "[9] ImageMagick (ensemble d'utilitaire en CLI pour créer/convertir des images)"
-echo "[10] Ufraw (logiciel de dérawtisation capable de lire/interpréter la plupart des formats RAW)"
-echo "[11] Inkscape (Logiciel spécialisé dans le dessin vectoriel, équivalent de 'Adobe Illustrator')"
-echo "[12] sK1 (une autre alternative pour le dessin vectoriel comme Illustrator ou Inkscape)"
-echo "[13] Darktable (gestionnaire de photos libre sous forme de table lumineuse et chambre noir)"
-echo "[14] Art Of Illusion (modélisation 3D, animation et rendu)"
-echo "[15] Blender (suite libre de modélisation 3d, matériaux et textures, d'éclairage, d'animation...)"
-echo "[16] K-3D (Animation et modélisation polygonale et modélisation par courbes)"
-echo "[17] SweetHome 3D (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
-echo "[18] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
-echo "[19] Shutter (pour effectuer des captures d'écran, et de leur appliquer des modifications diverses)"
-echo "[20] Frogr (Utile pour ceux qui utilisent le service web 'Flickr')"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixGraphisme
-clear
+    # Question 8 : Traitement/montage photo & modélisation 3D
+    echo "*******************************************************"
+    echo "8/ Quel(s) logiciels(s) de montage photo ou modélisation 3D ?"
+    echo "*******************************************************"
+    echo "[1] Aucun (pas de logiciel par défaut)"
+    echo "[2] Gimp (montage photo avancé, équivalent à 'Adobe Photoshop')"
+    echo "[3] Krita (outil d'édition et retouche d'image, orienté plutôt vers le dessin bitmap)"
+    echo "[4] Pinta (graphisme simple équivalent à Paint.NET)"
+    echo "[5] Pixeluvo (une autre alternative à Photoshop mais il reste propriétaire)"
+    echo "[6] Phatch (pour traiter des images par lot via des scripts prédéfinis)"
+    echo "[7] Cinepaint (outil de retouche d'image vidéo basé sur Gimp)"
+    echo "[8] MyPaint (logiciel de peinture numérique développé en Python)"
+    echo "[9] ImageMagick (ensemble d'utilitaire en CLI pour créer/convertir des images)"
+    echo "[10] Ufraw (logiciel de dérawtisation capable de lire/interpréter la plupart des formats RAW)"
+    echo "[11] Inkscape (Logiciel spécialisé dans le dessin vectoriel, équivalent de 'Adobe Illustrator')"
+    echo "[12] sK1 (une autre alternative pour le dessin vectoriel comme Illustrator ou Inkscape)"
+    echo "[13] Darktable (gestionnaire de photos libre sous forme de table lumineuse et chambre noir)"
+    echo "[14] Art Of Illusion (modélisation 3D, animation et rendu)"
+    echo "[15] Blender (suite libre de modélisation 3d, matériaux et textures, d'éclairage, d'animation...)"
+    echo "[16] K-3D (Animation et modélisation polygonale et modélisation par courbes)"
+    echo "[17] SweetHome 3D (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
+    echo "[18] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
+    echo "[19] Shutter (pour effectuer des captures d'écran, et de leur appliquer des modifications diverses)"
+    echo "[20] Frogr (Utile pour ceux qui utilisent le service web 'Flickr')"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixGraphisme
+    clear
 
-# Question 9 : Traitement/encodage audio
-echo "*******************************************************"
-echo "9/ Quel(s) logiciels(s) pour l'encodage/réglage ou traitement audio ?"
-echo "*******************************************************"
-echo "[1] Aucun"
-echo "[2] SoundConverter (petit logiciel pour convertir des lots de fichiers audios)"
-echo "[3] Xcfa : X Convert File Audio (extraction cd audio, piste dvd, normalisation, création pochette)"
-echo "[4] Sound-Juicer (pour extraire les pistes audios d'un cd)"
-echo "[5] SoundKonverter (convertisseur audio utilisant les bilbiothèques Qt)"
-echo "[6] Gnome Sound Recorder (pour enregistrer et lire du son, realisé par défaut avec OggVorbis)"
-echo "[7] Audacity (enregistrement et édition de son numérique)"
-echo "[8] MhWaveEdit (application libre d'enregistrement et d'édition audio complète distribuée sous GPL)"
-echo "[9] Flacon (pour extraire les pistes d'un gros fichier audio pour sauvegarder en différents fichiers distincts)"
-echo "[10] RipperX (une autre alternative pour extraire les cd de musique)"
-echo "[11] Grip (Ripper facilement des cd de musique)"
-echo "[12] LMMS : Let's Make Music (station audio opensource crée par des musiciens pour les musiciens)"
-echo "[13] MiXX (logiciel pour Dj pour le mixage de musique)"
-echo "[14] Ardour (station de travail audio numérique avec enregistrement multipiste et mixage : logiciel lourd !)"
-echo "[15] Rosegarden (création musicale avec édition des partitions et peux s'interfacer avec des instruments)"
-echo "[16] Pavucontrol (outil graphique de contrôle des volumes audio entrée/sortie pour Pulseaudio)"
-echo "[17] Lame (outil d'encodage en CLI pour le format MP3,par ex pour convertir un Wav en Mp3)"
-echo "[18] PulseEffects [Flatpak] (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
+    # Question 9 : Traitement/encodage audio
+    echo "*******************************************************"
+    echo "9/ Quel(s) logiciels(s) pour l'encodage/réglage ou traitement audio ?"
+    echo "*******************************************************"
+    echo "[1] Aucun"
+    echo "[2] SoundConverter (petit logiciel pour convertir des lots de fichiers audios)"
+    echo "[3] Xcfa : X Convert File Audio (extraction cd audio, piste dvd, normalisation, création pochette)"
+    echo "[4] Sound-Juicer (pour extraire les pistes audios d'un cd)"
+    echo "[5] SoundKonverter (convertisseur audio utilisant les bilbiothèques Qt)"
+    echo "[6] Gnome Sound Recorder (pour enregistrer et lire du son, realisé par défaut avec OggVorbis)"
+    echo "[7] Audacity (enregistrement et édition de son numérique)"
+    echo "[8] MhWaveEdit (application libre d'enregistrement et d'édition audio complète distribuée sous GPL)"
+    echo "[9] Flacon (pour extraire les pistes d'un gros fichier audio pour sauvegarder en différents fichiers distincts)"
+    echo "[10] RipperX (une autre alternative pour extraire les cd de musique)"
+    echo "[11] Grip (Ripper facilement des cd de musique)"
+    echo "[12] LMMS : Let's Make Music (station audio opensource crée par des musiciens pour les musiciens)"
+    echo "[13] MiXX (logiciel pour Dj pour le mixage de musique)"
+    echo "[14] Ardour (station de travail audio numérique avec enregistrement multipiste et mixage : logiciel lourd !)"
+    echo "[15] Rosegarden (création musicale avec édition des partitions et peux s'interfacer avec des instruments)"
+    echo "[16] Pavucontrol (outil graphique de contrôle des volumes audio entrée/sortie pour Pulseaudio)"
+    echo "[17] Lame (outil d'encodage en CLI pour le format MP3,par ex pour convertir un Wav en Mp3)"
+    echo "[18] PulseEffects [Flatpak] (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
 
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixAudio
-clear
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixAudio
+    clear
 
-# Question 10 : Bureautique et Mail
-echo "*******************************************************"
-echo "10/ Quel(s) logiciel(s) de bureautique/courrier souhaitez-vous ?"
-echo "*******************************************************"
-echo "[1] Aucun supplément (par défaut : Evince pour pdf, LibreOffice en bureautique, Thunderbird pour les mails)"
-echo "[2] Supplément LibreOffice : ajout du module 'Base' + des extensions utiles (templates, modèles de documents, clipboard...)"
-echo "[3] a_modifier..."
-echo "[4] Marp (Permet de créer une présentation rapide en s’affranchissant des outils bureautiques lourds)"
-echo "[5] PdfMod (logiciel permettant diverses modifications sur vos PDF)"
-echo "[6] (scenarichaine + opale : famille d'applications d'édition avancées de chaînes éditoriales)"
-echo "[7] Freeplane (création de cartes heuristiques (Mind Map) avec des diagrammes représentant les connexions sémantiques)"
-echo "[8] FeedReader [Flatpak] (agrégateur RSS moderne pour consulter vos fils d'informations RSS)"
-echo "[9] Geary (logiciel de messagerie, alternative à Thunderbird et bien intégré à Gnome)"
-echo "[10] Gnome Evolution (logiciel de type groupware et courrielleur, facile à utiliser)"
-echo "[11] WPSOffice (Clone de Microsoft Office, propriétaire aussi)"
-echo "[12] OnlyOffice (bureautique avec des outils de collaboration et gestion de documents)"
-echo "[13] Gnome Office (pack contenant Abiword, Gnumeric, Dia, Planner, Glabels, Glom, Tomboy et Gnucash)"
-echo "[14] Apache OpenOffice (Déconseillé ! préviligiez LibreOffice qui est installé par défaut)"
-echo "[15] OOo4Kids (Suite bureautique spécialement simplifié pour les enfants)"
-echo "[16] Wordgrinder (Traitement de texte léger. Formats OpenDocument, HTML import and export)"
-echo "[17] LaTex (langage de description de document très utile pour les documents formatés de manière logique)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
-clear
+    # Question 10 : Bureautique et Mail
+    echo "*******************************************************"
+    echo "10/ Quel(s) logiciel(s) de bureautique/courrier souhaitez-vous ?"
+    echo "*******************************************************"
+    echo "[1] Aucun supplément (par défaut : Evince pour pdf, LibreOffice en bureautique, Thunderbird pour les mails)"
+    echo "[2] Supplément LibreOffice : ajout du module 'Base' + des extensions utiles (templates, modèles de documents, clipboard...)"
+    echo "[3] a_modifier..."
+    echo "[4] Marp (Permet de créer une présentation rapide en s’affranchissant des outils bureautiques lourds)"
+    echo "[5] PdfMod (logiciel permettant diverses modifications sur vos PDF)"
+    echo "[6] (scenarichaine + opale : famille d'applications d'édition avancées de chaînes éditoriales)"
+    echo "[7] Freeplane (création de cartes heuristiques (Mind Map) avec des diagrammes représentant les connexions sémantiques)"
+    echo "[8] FeedReader [Flatpak] (agrégateur RSS moderne pour consulter vos fils d'informations RSS)"
+    echo "[9] Geary (logiciel de messagerie, alternative à Thunderbird et bien intégré à Gnome)"
+    echo "[10] Gnome Evolution (logiciel de type groupware et courrielleur, facile à utiliser)"
+    echo "[11] WPSOffice (Clone de Microsoft Office, propriétaire aussi)"
+    echo "[12] OnlyOffice (bureautique avec des outils de collaboration et gestion de documents)"
+    echo "[13] Gnome Office (pack contenant Abiword, Gnumeric, Dia, Planner, Glabels, Glom, Tomboy et Gnucash)"
+    echo "[14] Apache OpenOffice (Déconseillé ! préviligiez LibreOffice qui est installé par défaut)"
+    echo "[15] OOo4Kids (Suite bureautique spécialement simplifié pour les enfants)"
+    echo "[16] Wordgrinder (Traitement de texte léger. Formats OpenDocument, HTML import and export)"
+    echo "[17] LaTex (langage de description de document très utile pour les documents formatés de manière logique)"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
+    clear
 
-# Question 11 : Science et éducation (voir pour Scratch2 + Celestia ?)
-echo "*******************************************************"
-echo "11/ Des logiciels de science ou pour l'éducation ?"
-echo "*******************************************************"
-echo "[1] Pas d'ajout"
-echo "[2] Google Earth (globe terrestre de Google pour explorer la planète)"
-echo "[3] [GEO] Extension OooHg pour LibreOffice (ajoute 1600 cartes de géographie)"
-echo "[4] [SCIENCE] SciLab (Logiciel scientifique pour le calcul numérique pour des applications scientifiques"
-echo "[5] [MATH] GeoGebra (géométrie dynamique pour manipuler des objets avec un ensemble de fonctions algébriques)"
-echo "[6] [MATH] Algobox (Logiciel libre d'aide à l'élaboration/exécution d'algorithmes en mathématique)"
-echo "[7] [MATH] CaRMetal (Logiciel libre de géométrie dynamique, créé à partir du moteur de C.a.R.)"
-echo "[8] [ASTRO] Stellarium (Planétarium avec l'affichage du ciel réaliste en 3D avec simulation d'un téléscope)"
-echo "[9] [ASTRO] SkyChart (Cartographie céleste très complet avec un catalogue riche)"
-echo "[10] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
-echo "[11] [TECHNO] Scratch (langage de prog visuel libre et OpenSource, créé par le MIT, à vocation éducative et ludique)"
-echo "[12] [TECHNO] mBlock (environnement de programmation par blocs basé sur Scratch 2, permet le pilotage d'Arduino"
-echo "[13] [TECHNO] Phratch (fork de Scratch, 100% libre, sans besoin de Flash ni d'Adobe Air)"
-echo "[14] [TECHNO] Récupérer Algoid [.jar] (Language de programmation éducatif)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
-clear
+    # Question 11 : Science et éducation (voir pour Scratch2 + Celestia ?)
+    echo "*******************************************************"
+    echo "11/ Des logiciels de science ou pour l'éducation ?"
+    echo "*******************************************************"
+    echo "[1] Pas d'ajout"
+    echo "[2] Google Earth (globe terrestre de Google pour explorer la planète)"
+    echo "[3] [GEO] Extension OooHg pour LibreOffice (ajoute 1600 cartes de géographie)"
+    echo "[4] [SCIENCE] SciLab (Logiciel scientifique pour le calcul numérique pour des applications scientifiques"
+    echo "[5] [MATH] GeoGebra (géométrie dynamique pour manipuler des objets avec un ensemble de fonctions algébriques)"
+    echo "[6] [MATH] Algobox (Logiciel libre d'aide à l'élaboration/exécution d'algorithmes en mathématique)"
+    echo "[7] [MATH] CaRMetal (Logiciel libre de géométrie dynamique, créé à partir du moteur de C.a.R.)"
+    echo "[8] [ASTRO] Stellarium (Planétarium avec l'affichage du ciel réaliste en 3D avec simulation d'un téléscope)"
+    echo "[9] [ASTRO] SkyChart (Cartographie céleste très complet avec un catalogue riche)"
+    echo "[10] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
+    echo "[11] [TECHNO] Scratch (langage de prog visuel libre et OpenSource, créé par le MIT, à vocation éducative et ludique)"
+    echo "[12] [TECHNO] mBlock (environnement de programmation par blocs basé sur Scratch 2, permet le pilotage d'Arduino"
+    echo "[13] [TECHNO] Phratch (fork de Scratch, 100% libre, sans besoin de Flash ni d'Adobe Air)"
+    echo "[14] [TECHNO] Récupérer Algoid [.jar] (Language de programmation éducatif)"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
+    clear
 
-# Question 12 : Utilitaires 
-echo "*******************************************************"
-echo "12/ Quel(s) utilitaire(s) supplémentaire(s) voulez-vous ?"
-echo "*******************************************************"
-echo "[1] Aucun"
-echo "[2] Kazam (capture vidéo de votre bureau)"
-echo "[3] SimpleScreenRecorder (autre alternative pour la capture vidéo)"
-echo "[4] OpenBroadcaster Software (Pour faire du live en streaming, adapté pour les gameurs)"
-echo "[5] Glances (afficher l'état des ressources systèmes en temps réel, comme htop mais plus complet)"
-echo "[6] Brasero (logiciel de gravure de cd/dvd)" 
-echo "[7] Wine (une sorte d'émulateur pour faire tourner des applis/jeux conçu à la base pour Windows)"
-echo "[8] Ajouter Oracle Java (propriétaire)"
-echo "[9] Installer FlashPlayer (via le dépot partenaire)"
-echo "[10] VirtualBox (virtualisation de système)"
-echo "[11] VMWare Workstation Player (version gratuite de VmWare Workstation mais pas libre)"
-echo "[12] Bleachbit (permet de libérer de l'espace en effaçant les fichiers inutiles et temporaires du système)"
-echo "[13] KeePassX 2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
-echo "[14] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
-echo "[15] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)"
-echo "[16] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
-echo "[17] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
-echo "[18] Gufw (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
-echo "[19] Gnome Enfs Manager (coffre-fort pour vos fichiers/dossiers)"
-echo "[20] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Wireshark + Nmap)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
-clear
+    # Question 12 : Utilitaires 
+    echo "*******************************************************"
+    echo "12/ Quel(s) utilitaire(s) supplémentaire(s) voulez-vous ?"
+    echo "*******************************************************"
+    echo "[1] Aucun"
+    echo "[2] Kazam (capture vidéo de votre bureau)"
+    echo "[3] SimpleScreenRecorder (autre alternative pour la capture vidéo)"
+    echo "[4] OpenBroadcaster Software (Pour faire du live en streaming, adapté pour les gameurs)"
+    echo "[5] Glances (afficher l'état des ressources systèmes en temps réel, comme htop mais plus complet)"
+    echo "[6] Brasero (logiciel de gravure de cd/dvd)" 
+    echo "[7] Wine (une sorte d'émulateur pour faire tourner des applis/jeux conçu à la base pour Windows)"
+    echo "[8] Ajouter Oracle Java (propriétaire)"
+    echo "[9] Installer FlashPlayer (via le dépot partenaire)"
+    echo "[10] VirtualBox (virtualisation de système)"
+    echo "[11] VMWare Workstation Player (version gratuite de VmWare Workstation mais pas libre)"
+    echo "[12] Bleachbit [potentiellement dangereux !] (efface les fichiers inutiles/temporaires du système)"
+    echo "[13] KeePassX 2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
+    echo "[14] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
+    echo "[15] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)"
+    echo "[16] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
+    echo "[17] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
+    echo "[18] Gufw (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
+    echo "[19] Gnome Enfs Manager (coffre-fort pour vos fichiers/dossiers)"
+    echo "[20] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Wireshark + Nmap)"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
+    clear
 
-# Question 13 : Gaming
-echo "*******************************************************"
-echo "13/ Quel(s) jeux-vidéos (ou applis liés aux jeux) installer ?"
-echo "*******************************************************"
-echo "[1] Aucun, je ne suis pas un gameur"
-echo "[2] Steam (plateforme de distribution de jeux. Permet notamment d'installer Dota2, TF2, CS, TR...)"
-echo "[3] PlayOnLinux (permet de faire tourner des jeux Windows via Wine avec des réglages pré-établis)"
-echo "[4] Minecraft (un des plus célèbres jeux sandbox, jeu propriétaire et payant)"
-echo "[5] Minetest (un clone de Minecraft mais libre/opensource et totalement gratuit)"
-echo "[6] OpenArena (un clone libre du célèbre jeu 'Quake')"
-echo "[7] 0ad: Empires Ascendant (jeu de stratégie en temps réel RTS)"
-echo "[8] FlightGear (simulateur de vol)"
-echo "[9] SuperTux (clone de Super Mario mais avec un pingouin)"
-echo "[10] SuperTuxKart (clone de Super Mario Kart)"
-echo "[11] Assault Cube (clone de Counter Strike)"
-echo "[12] World Of Padman (jeu de tir basé sur Quake 3 avec des graphismes amusant)"
-echo "[13] Second Life (métavers 3D sortie en 2003 sur le modèle f2p)"
-echo "[14] Gnome Games (Pack d'une dizaine de mini-jeux pour Gnome)"
-echo "[15] Albion Online [Flatpak] (MMORPG avec système de quête et donjons)"
-echo "[16] Megaglest (RTS 3d dans un monde fantastique avec 2 factions qui s'affrontent : la magie et la technologie)"
-echo "[17] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
-echo "[18] Battle for Wesnoth [Flatpak] (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
-echo "[19] RunScape [Flatpak] (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
-clear
-
-## Mode avancé
-if [ "$choixMode" = "2" ] ; then
-
-# Question 14 : Extension 
-echo "*******************************************************"
-echo "14/ Des extensions pour navigateur ou gnome-shell à installer ? [mode avancé]"
-echo "*******************************************************"
-echo "[1] Non, ne pas ajouter de nouvelles extensions"
-echo "[2] Chrome Gnome Shell (extension pour navigateur : permet d'installer une extension Gnome depuis le site web)"
-echo "[3] AlternateTab (alternative au Alt+Tab issu du mode classique)"
-echo "[4] Caffeine (permet en 1 clic de désactiver temporairement les mises en veilles)"
-echo "[5] DashToDock (permet + d'option pour les réglages du dock, celui d'Ubuntu étant basé dessus)"
-echo "[6] DashToPanel (un dock alternatif conçu pour remplacer le panel de Gnome, se place en bas ou en haut)"
-echo "[7] Clipboard Indicator (permet de conserver du contenu copier/coller facilement accessible depuis le panel)"
-echo "[8] Hide Top Bar (permet de cacher le panel en haut avec nombreux réglages possibles)"
-echo "[9] Impatience (permet d'augmenter la vitesse d'affichage des animations de Gnome Shell)"
-echo "[10] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
-echo "[11] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
-echo "[12] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
-echo "[13] Weather (Pour avoir la météo directement sur votre bureau)"
-echo "[14] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
-echo "[15] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
-echo "[16] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
-echo "[17] Suspend button (Ajout d'un bouton pour activer l'hibernation)"
-echo "[18] Taskbar (Permet d'ajouter des raccourcis d'applis directement sur le panel en haut)"
-echo "[19] Trash (Ajoute un raccourci vers la corbeille dans le panel en haut)"
-echo "[20] User themes (Pour charger des thèmes pour Gnome Shell à partir du répertoire de l'utilisateur)"
-echo "[21] Window list (Affiche la liste des fênêtres en bas du bureau, comme à l'époque sous Gnome 2)"
-echo "[22] Workspace indicator (Affiche dans le panel en haut dans quel espace de travail vous êtes)"
-echo "[23] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
-echo "[24] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
-echo "[25] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
-echo "[26] AppFolders Management (Permet de classer les applis dans des dossiers)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixExtension
-clear
-
-# Question 15 : Customization
-echo "*******************************************************"
-echo "15/ Sélectionnez ce qui vous intéresses en terme de customization [mode avancé]"
-echo "*******************************************************"
-echo "[1] Pas d'ajout"
-echo "[2] Pack de thème GTK à succès : Arc + Numix + United Gnome Darker + Gnome OS X + Silicon"
-echo "[3] Pack2 avec encore d'autres thèmes : Adapta + Minwaita Vanilla + Plano + Greybird/Blackbird/Bluebird + PopGTK"
-echo "[4] Pack3 de thème : albatross, Yuyo, human, gilouche"
-echo "[5] Remettre le thème gris pour GDM (par défaut violet) : Attention ! ajoute la session Vanilla en dépendance !"
-echo "[6] Pack d'icone 1 : Numix, Breathe, Breeze, Elementary, Brave + supplément extra icone Gnome"
-echo "[7] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
-echo "[8] Pack d'icone 3 : Human, Moblin, Oxygen, Fuenza, Suede, Yasis"
-echo "[9] Pack de curseur : Breeze + Moblin + Oxygen/Oxygen-extra"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
-clear
-
-# Question 16 : Prog
-echo "*******************************************************"
-echo "16/ Quel éditeur de texte ou logiciel de Dev (IDE) voulez-vous ? [mode avancé]"
-echo "*******************************************************"
-echo "[1] Aucun (en dehors de Vim et Gedit)"
-echo "[2] Gvim (interface graphique pour Vim)"
-echo "[3] Emacs (le couteau suisse des éditeurs de texte, il fait tout mais il est complexe)"
-echo "[4] Geany (EDI rapide et simple utilisant GTK2 supportant de nombreux languages)"
-echo "[5] PyCharm [Snap] (IDE spécialisé pour le language Python)"
-echo "[6] Visual Studio Code [Snap] (Développé par Microsoft, sous licence libre MIT)"
-echo "[7] Atom [Snap] (Éditeur sous licence libre qui supporte les plug-ins Node.js et implémente GitControl)"
-echo "[8] Brackets [Snap] (Éditeur opensource d'Adobe pour le web design et dev web HTML, CSS, JavaScript...)"
-echo "[9] Sublime Text (Logiciel développé en C++ et Python prenant en charge 44 languages de prog)"
-echo "[10] Code:Blocks (IDE spécialisé pour le language C/C++)"
-echo "[11] IntelliJ Idea [Snap] (IDE Java commercial de JetBrains, plutôt conçu pour Java)"
-echo "[12] JEdit (Éditeur libre, multiplateforme et très personnalisable)"
-echo "[13] Eclipse (Projet décliné en sous-projets de développement, extensible, universel et polyvalent)"
-echo "[14] Anjuta (IDE simple pour C/C++, Java, JavaScript, Python et Vala)"
-echo "[15] Kdevelop (IDE gérant de nombreux language conçu plutôt pour KDE)"
-echo "[16] Android Studio (IDE de Google spécialisé pour le développement d'application Android)"
-echo "[17] Netbeans (EDI supportant plusieurs langage, surtout Java, avec de nombreux plugins)"
-echo "[18] BlueFish (éditeur orienté développement web : HTML/PHP/CSS/...)"
-echo "[19] BlueGriffon (éditeur HTML/CSS avec aperçu du rendu en temps réel)"
-echo "[20] SciTE : Scintilla Text Editor (éditeur web avec une bonne coloration syntaxique)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5) : " choixDev
-clear
-
-# Question 17 : Serveur 
-echo "*******************************************************"
-echo "17/ Des fonctions serveurs à activer ? [mode avancé]"
-echo "*******************************************************"
-echo "[1] Pas de service à activer"
-echo "[2] Serveur SSH (Pour contrôler votre PC à distance via SSH)"
-echo "[3] Serveur LAMP (Pour faire un serveur web avec votre PC : Apache + MariaDB + PHP)"
-echo "[4] Serveur FTP avec ProFTPd (Stockage de fichier sur votre machine via FTP)"
-echo "[5] Serveur BDD PostgreSQL (Pour installer une base de donnée PostgreSQL)"
-echo "[6] Serveur BDD Oracle (Pour créer une base Oracle sur votre machine)"
-echo "[7] Rétroportage PHP5 (Ancienne version de PHP rétroporté)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixServeur
-clear
-
-# Question 18 : Optimisation
-echo "*******************************************************"
-echo "18/ Des optimisations supplémentaires à activer ? [mode avancé]"
-echo "*******************************************************"
-echo "[1] Non"
-echo "[2] Déporter répertoire snappy dans /home pour gagner de l'espace (utile si le /home est séparé et racine limité)"
-echo "[3] Optimisation Swap : swapiness à 5% + cache_pressure à 50 (swap utilisé uniquement si + de 95% de ram utilisé)"
-echo "[4] Désactiver complètement le swap (utile si vous avez un SSD et 8 Go de ram ou +)"
-echo "[5] Activer TLP avec Powertop et Laptop-mode-tools (économie d'energie pour pc portable)"
-echo "[6] Installer le microcode propriétaire Intel (pour cpu intel uniquement !)"
-echo "[7] Ajouter une commande 'fraude' pour Wayland (pour pouvoir lancer des applis comme Gparted. Exemple : fraude gparted)"
-echo "[8] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
-echo "[9] Ajouter le support pour le système de fichier exFat de Microsoft"
-echo "[10] Ajouter le support pour le système de fichier HFS d'Apple"
-echo "[11] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
-echo "[12] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
-echo "[13] Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
-echo "[14] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
-echo "[15] Support imprimantes HP (hplip + sane + hplip-gui)"
-read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
-clear
+    # Question 13 : Gaming
+    echo "*******************************************************"
+    echo "13/ Quel(s) jeux-vidéos (ou applis liés aux jeux) installer ?"
+    echo "*******************************************************"
+    echo "[1] Aucun, je ne suis pas un gameur"
+    echo "[2] Steam (plateforme de distribution de jeux. Permet notamment d'installer Dota2, TF2, CS, TR...)"
+    echo "[3] PlayOnLinux (permet de faire tourner des jeux Windows via Wine avec des réglages pré-établis)"
+    echo "[4] Minecraft (un des plus célèbres jeux sandbox, jeu propriétaire et payant)"
+    echo "[5] Minetest (un clone de Minecraft mais libre/opensource et totalement gratuit)"
+    echo "[6] OpenArena (un clone libre du célèbre jeu 'Quake')"
+    echo "[7] 0ad: Empires Ascendant (jeu de stratégie en temps réel RTS)"
+    echo "[8] FlightGear (simulateur de vol)"
+    echo "[9] SuperTux (clone de Super Mario mais avec un pingouin)"
+    echo "[10] SuperTuxKart (clone de Super Mario Kart)"
+    echo "[11] Assault Cube (clone de Counter Strike)"
+    echo "[12] World Of Padman (jeu de tir basé sur Quake 3 avec des graphismes amusant)"
+    echo "[13] Second Life (métavers 3D sortie en 2003 sur le modèle f2p)"
+    echo "[14] Gnome Games (Pack d'une dizaine de mini-jeux pour Gnome)"
+    echo "[15] Albion Online [Flatpak] (MMORPG avec système de quête et donjons)"
+    echo "[16] Megaglest (RTS 3d dans un monde fantastique avec 2 factions qui s'affrontent : la magie et la technologie)"
+    echo "[17] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
+    echo "[18] Battle for Wesnoth [Flatpak] (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
+    echo "[19] RunScape [Flatpak] (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
+    clear
 fi
+
+## Mode avancé (seulement pour mode avancé et extra)
+if [ "$choixMode" = "2" ] || [ "$choixMode" = "3" ]
+then
+    # Question 14 : Extension 
+    echo "*******************************************************"
+    echo "14/ Des extensions pour navigateur ou gnome-shell à installer ? [mode avancé]"
+    echo "*******************************************************"
+    echo "[1] Non, ne pas ajouter de nouvelles extensions"
+    echo "[2] Chrome Gnome Shell (extension pour navigateur : permet d'installer une extension Gnome depuis le site web)"
+    echo "[3] AlternateTab (alternative au Alt+Tab issu du mode classique)"
+    echo "[4] Caffeine (permet en 1 clic de désactiver temporairement les mises en veilles)"
+    echo "[5] DashToDock (permet + d'option pour les réglages du dock, celui d'Ubuntu étant basé dessus)"
+    echo "[6] DashToPanel (un dock alternatif conçu pour remplacer le panel de Gnome, se place en bas ou en haut)"
+    echo "[7] Clipboard Indicator (permet de conserver du contenu copier/coller facilement accessible depuis le panel)"
+    echo "[8] Hide Top Bar (permet de cacher le panel en haut avec nombreux réglages possibles)"
+    echo "[9] Impatience (permet d'augmenter la vitesse d'affichage des animations de Gnome Shell)"
+    echo "[10] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
+    echo "[11] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
+    echo "[12] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
+    echo "[13] Weather (Pour avoir la météo directement sur votre bureau)"
+    echo "[14] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
+    echo "[15] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
+    echo "[16] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
+    echo "[17] Suspend button (Ajout d'un bouton pour activer l'hibernation)"
+    echo "[18] Taskbar (Permet d'ajouter des raccourcis d'applis directement sur le panel en haut)"
+    echo "[19] Trash (Ajoute un raccourci vers la corbeille dans le panel en haut)"
+    echo "[20] User themes (Pour charger des thèmes pour Gnome Shell à partir du répertoire de l'utilisateur)"
+    echo "[21] Window list (Affiche la liste des fênêtres en bas du bureau, comme à l'époque sous Gnome 2)"
+    echo "[22] Workspace indicator (Affiche dans le panel en haut dans quel espace de travail vous êtes)"
+    echo "[23] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
+    echo "[24] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
+    echo "[25] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
+    echo "[26] AppFolders Management (Permet de classer les applis dans des dossiers)"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixExtension
+    clear
+
+    # Question 15 : Customization
+    echo "*******************************************************"
+    echo "15/ Sélectionnez ce qui vous intéresses en terme de customization [mode avancé]"
+    echo "*******************************************************"
+    echo "[1] Pas d'ajout"
+    echo "[2] Pack de thème GTK à succès : Arc + Numix + United Gnome Darker + Gnome OS X + Silicon"
+    echo "[3] Pack2 avec encore d'autres thèmes : Adapta + Minwaita Vanilla + Plano + Greybird/Blackbird/Bluebird + PopGTK"
+    echo "[4] Pack3 de thème : albatross, Yuyo, human, gilouche"
+    echo "[5] Remettre le thème gris pour GDM (par défaut violet) : Attention ! ajoute la session Vanilla en dépendance !"
+    echo "[6] Pack d'icone 1 : Numix, Breathe, Breeze, Elementary, Brave + supplément extra icone Gnome"
+    echo "[7] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
+    echo "[8] Pack d'icone 3 : Human, Moblin, Oxygen, Fuenza, Suede, Yasis"
+    echo "[9] Pack de curseur : Breeze + Moblin + Oxygen/Oxygen-extra"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
+    clear
+
+    # Question 16 : Prog
+    echo "*******************************************************"
+    echo "16/ Quel éditeur de texte ou logiciel de Dev (IDE) voulez-vous ? [mode avancé]"
+    echo "*******************************************************"
+    echo "[1] Aucun (en dehors de Vim et Gedit)"
+    echo "[2] Gvim (interface graphique pour Vim)"
+    echo "[3] Emacs (le couteau suisse des éditeurs de texte, il fait tout mais il est complexe)"
+    echo "[4] Geany (EDI rapide et simple utilisant GTK2 supportant de nombreux languages)"
+    echo "[5] PyCharm [Snap] (IDE spécialisé pour le language Python)"
+    echo "[6] Visual Studio Code [Snap] (Développé par Microsoft, sous licence libre MIT)"
+    echo "[7] Atom [Snap] (Éditeur sous licence libre qui supporte les plug-ins Node.js et implémente GitControl)"
+    echo "[8] Brackets [Snap] (Éditeur opensource d'Adobe pour le web design et dev web HTML, CSS, JavaScript...)"
+    echo "[9] Sublime Text (Logiciel développé en C++ et Python prenant en charge 44 languages de prog)"
+    echo "[10] Code:Blocks (IDE spécialisé pour le language C/C++)"
+    echo "[11] IntelliJ Idea [Snap] (IDE Java commercial de JetBrains, plutôt conçu pour Java)"
+    echo "[12] JEdit (Éditeur libre, multiplateforme et très personnalisable)"
+    echo "[13] Eclipse (Projet décliné en sous-projets de développement, extensible, universel et polyvalent)"
+    echo "[14] Anjuta (IDE simple pour C/C++, Java, JavaScript, Python et Vala)"
+    echo "[15] Kdevelop (IDE gérant de nombreux language conçu plutôt pour KDE)"
+    echo "[16] Android Studio (IDE de Google spécialisé pour le développement d'application Android)"
+    echo "[17] Netbeans (EDI supportant plusieurs langage, surtout Java, avec de nombreux plugins)"
+    echo "[18] BlueFish (éditeur orienté développement web : HTML/PHP/CSS/...)"
+    echo "[19] BlueGriffon (éditeur HTML/CSS avec aperçu du rendu en temps réel)"
+    echo "[20] SciTE : Scintilla Text Editor (éditeur web avec une bonne coloration syntaxique)"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5) : " choixDev
+    clear
+
+    # Question 17 : Serveur 
+    echo "*******************************************************"
+    echo "17/ Des fonctions serveurs à activer ? [mode avancé]"
+    echo "*******************************************************"
+    echo "[1] Pas de service à activer"
+    echo "[2] Serveur SSH (Pour contrôler votre PC à distance via SSH)"
+    echo "[3] Serveur LAMP (Pour faire un serveur web avec votre PC : Apache + MariaDB + PHP)"
+    echo "[4] Serveur FTP avec ProFTPd (Stockage de fichier sur votre machine via FTP)"
+    echo "[5] Serveur BDD PostgreSQL (Pour installer une base de donnée PostgreSQL)"
+    echo "[6] Serveur BDD Oracle (Pour créer une base Oracle sur votre machine)"
+    echo "[7] Rétroportage PHP5 (Ancienne version de PHP rétroporté)"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixServeur
+    clear
+
+    # Question 18 : Optimisation
+    echo "*******************************************************"
+    echo "18/ Des optimisations supplémentaires à activer ? [mode avancé]"
+    echo "*******************************************************"
+    echo "[1] Non"
+    echo "[2] Déporter répertoire snappy dans /home pour gagner de l'espace (utile si le /home est séparé et racine limité)"
+    echo "[3] Optimisation Swap : swapiness à 5% + cache_pressure à 50 (swap utilisé uniquement si + de 95% de ram utilisé)"
+    echo "[4] Désactiver complètement le swap (utile si vous avez un SSD et 8 Go de ram ou +)"
+    echo "[5] Activer TLP avec Powertop et Laptop-mode-tools (économie d'energie pour pc portable)"
+    echo "[6] Installer le microcode propriétaire Intel (pour cpu intel uniquement !)"
+    echo "[7] Ajouter une commande 'fraude' pour Wayland (pour pouvoir lancer des applis comme Gparted. Exemple : fraude gparted)"
+    echo "[8] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
+    echo "[9] Ajouter le support pour le système de fichier exFat de Microsoft"
+    echo "[10] Ajouter le support pour le système de fichier HFS d'Apple"
+    echo "[11] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
+    echo "[12] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
+    echo "[13] Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
+    echo "[14] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
+    echo "[15] Support imprimantes HP (hplip + sane + hplip-gui)"
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
+    clear
+fi
+
+# Mode Extra
+if [ "$choixMode" = "3" ] 
+    # Question 19 : Snap
+    echo "*******************************************************"
+    echo "19/ Mode Extra : supplément paquet Snap : "
+    echo "*******************************************************"
+    echo "[1] Aucun"
+    echo "[2] ..."
+    read -p "Choix snappy : " choixSnap
+    clear
+    
+    # Question 20 : Flatpak
+    echo "*******************************************************"
+    echo "20/ Mode Extra : supplément paquet Flatpak : "
+    echo "*******************************************************"
+    echo "[1] Aucun"
+    echo "[2] ..."
+    read -p "Choix flatpak : " choixFlatpak
+    clear
+
+    # Question 21 : Appimages
+    echo "*******************************************************"
+    echo "21/ Mode Extra : récupération Appimages: "
+    echo "*******************************************************"
+    echo "[1] Aucune"
+    echo "[2] ..."
+    read -p "Choix appimage : " choixAppimage
+    clear
+fi
+
 
 ### Section installation automatisé
 
@@ -517,6 +553,17 @@ apt install ubuntu-restricted-extras x264 x265 libavcodec-extra -y
 
 # Désactivation de l'affichage des messages d'erreurs à l'écran
 echo "enabled=0" > /etc/default/apport
+
+# Pour mode novice :
+if [ "$choixMode" = "0" ]
+then
+    #internet
+    apt install chromium-browser pidgin -y
+    #multimédia
+    apt install vlc gnome-mpv pitivi gimp pinta -y
+    #divers
+    apt install brasero adobe-flashplugin
+fi
 
 
 ## Installation suivant les choix de l'utilisateur :
@@ -774,8 +821,7 @@ do
             apt install dragonplayer -y
             ;;
         "7") #Banshee + extensions
-            apt install banshee banshee-community-extensions -y
-            apt install banshee-extension-radiostationfetcher banshee-extension-duplicatesongdetector banshee-extension-appindicator banshee-extension-albumartwriter -y
+            apt install banshee -y
             ;;            
         "8") #Clementine
             apt install clementine -y
@@ -786,9 +832,11 @@ do
         "10") #audacious
             apt install audacious audacious-plugins -y
             ;;        
-        "11") #Guayadeque
-            add-apt-repository ppa:anonbeat/guayadeque -y
-            apt update ; apt install guayadeque -y
+        "11") #Guayadeque #(dépot pour Artful utilisé car Bionic pas encore activé mais fonctionnement validé)
+            echo "deb http://ppa.launchpad.net/anonbeat/guayadeque/ubuntu artful main" >> /etc/apt/sources.list.d/anonbeat-ubuntu-guayadeque-bionic.list
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 95FABEFB4499973B
+            apt update
+            apt install guayadeque -y
             ;;    
         "12") #gnome music
             apt install gnome-music -y
@@ -803,7 +851,7 @@ do
             apt install qmmp -y
             ;;               
         "16") #xmms2 + plugins
-            apt install xmms2 xmms2-plugin-all -y
+            apt install xmms2 xmms2-plugin-all gxmms2 -y
             ;;              
         "17") #Lollypop 
             flatpak install --from https://flathub.org/repo/appstream/org.gnome.Lollypop.flatpakref -y
@@ -817,8 +865,8 @@ do
         "20") #Gnome Twitch
             apt install gnome-twitch -y
             ;;         
-        "21") #Gradio
-            snap install gradio
+        "21") #Gradio (flatpak)
+            flatpak install --from https://flathub.org/repo/appstream/de.haeckerfelix.gradio.flatpakref -y
             ;;    
         "22") #Molotov.tv (appimage)
             wget https://desktop-auto-upgrade.s3.amazonaws.com/linux/1.8.0/molotov
@@ -1601,8 +1649,35 @@ do
     esac
 done
 
-# Suppression des deb téléchargés par le script (plus nécessaire) et rangement des AppImages
-mkdir ./appimages ; rm *.deb ; mv *.AppIMage ./appimages/
+# Question 19 : Extra Snap
+for snap in $choixSnap
+do
+    case $snap in
+        "2") #nom logiciel
+            #ligne d'install
+            ;;
+done        
+    
+# Question 20 : Extra Flatpak
+for flatpak in $choixFlatpak
+do
+    case $flatpak in
+        "2") #nom logiciel
+            #ligne d'install
+            ;;
+ 
+# Question 21 : Extra Appimages
+for appimage in $choixAppimage
+do
+    case $appimage in
+        "2") #nom logiciel
+            #ligne d'install
+            ;;   
+    
+   
+# Suppression des deb téléchargés par le script (plus nécessaire) et rangement des AppImages (a vérifier)
+chown -R $SUDO_USER:$SUDO_USER *.AppImage
+mkdir ./appimages ; rm *.deb ; mv *.AppImage ./appimages/
 
 # Nettoyage/Purge
 apt install -fy ; apt autoremove --purge -y ; apt clean ; clear
