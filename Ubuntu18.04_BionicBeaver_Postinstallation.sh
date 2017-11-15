@@ -209,20 +209,19 @@ then
     echo "[6] OpenShot Video Editor (une autre alternative comme éditeur vidéo, libre et écrit en Python)"
     echo "[7] Pitivi (logiciel de montage basique avec une interface simple et intuitive)" 
     echo "[8] Lives (Dispose des fonctionnalités d'éditions vidéo/son classique, des filtres et multipiste"
-    echo "[9] EKD (Opérations de post-prod sur les vidéos et images avec traitement par lot)"
-    echo "[10] Shotcut [Snap] (editeur et montage vidéo libre et multi-plateformes)"
-    echo "[11] SlowMoVideo (Création de vidéos en slow-motion en opensource)"
-    echo "[12] Flowblade (Logiciel de montage video multi-piste performant)"
-    echo "[13] Cinelerra (montage non-linéaire sophistiqué, équivalent à Adobe première, Final Cut et Sony Vegas"
-    echo "[14] Natron (programme de post-prod destiné au compositing et aux effets spéciaux)"
-    echo "[15] LightWorks (Montage vidéo professionnel propriétaire)"
-    echo "[16] VLMC (montage vidéo de VideoLan, experimental !)" #===> vérifier stablilité...
-    echo "[17] Avidemux [Appimage](Équivalent de 'VirtualDub' sous Windows : coupe, filtre et ré-encodage)"
-    echo "[18] Mencoder (encodage de fichier vidéo, compatible avec de très nombreux formats)"
-    echo "[19] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
-    echo "[20] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
-    echo "[21] Jahshaka (Montage vidéo mais aussi effets spéciaux, post-prod en temps réel. Modulaire)"
-    echo "[22] Peek [Snap] (Outil de création de Gif animé à partir d'une capture vidéo d'une zone de l'écran)"
+    echo "[9] Shotcut [Snap] (editeur et montage vidéo libre et multi-plateformes)"
+    echo "[10] SlowMoVideo (Création de vidéos en slow-motion en opensource)"
+    echo "[11] Flowblade (Logiciel de montage video multi-piste performant)"
+    echo "[12] Cinelerra (montage non-linéaire sophistiqué, équivalent à Adobe première, Final Cut et Sony Vegas"
+    echo "[13] Natron (programme de post-prod destiné au compositing et aux effets spéciaux)"
+    echo "[14] LightWorks (Montage vidéo professionnel propriétaire)"
+    echo "[15] VLMC (montage vidéo de VideoLan, experimental !)" #===> vérifier stablilité...
+    echo "[16] Avidemux [Appimage](Équivalent de 'VirtualDub' sous Windows : coupe, filtre et ré-encodage)"
+    echo "[17] Mencoder (encodage de fichier vidéo, compatible avec de très nombreux formats)"
+    echo "[18] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
+    echo "[19] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
+    echo "[20] Jahshaka (Montage vidéo mais aussi effets spéciaux, post-prod en temps réel. Modulaire)"
+    echo "[21] Peek [Snap] (Outil de création de Gif animé à partir d'une capture vidéo d'une zone de l'écran)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
     clear
 
@@ -899,58 +898,53 @@ do
         "8") #Lives
             apt install lives -y
             ;;         
-        "9") #EKD  # Abandonné ???? vérifier si çá fonctionne car vieux paquet sinon le retirer
-            wget https://ayera.dl.sourceforge.net/project/ekd/ekd/3.1.0/GNU-Linux/ekd_3.1.0-1ubuntu1_all.deb
-            dpkg -i ekd_3.1.0-1ubuntu1_all.deb
-            apt install -fy
-            ;;
-        "10") #Shotcut via snap (possible aussi en ppa)
+        "9") #Shotcut via snap (possible aussi en ppa)
             snap install shotcut
             ;;            
-        "11") #SlowMoVideo
+        "10") #SlowMoVideo
             add-apt-repository ppa:ubuntuhandbook1/slowmovideo -y
             apt update ; apt install slowmovideo -y
             ;;           
-        "12") #Flowblade
+        "11") #Flowblade
             apt install flowblade -y
             ;;           
-        "13") #Cinelerra  #vérifier stabilité !!!
+        "12") #Cinelerra  #vérifier stabilité !!!
             add-apt-repository ppa:cinelerra-ppa/ppa -y
             apt update ; apt install cinelerra-cv -y
             ;;        
-        "14") #Natron  (si marche pas, s'inscrire sur le site pour voir méthode d'install http://natron.fr/download/?os=Linux)
+        "13") #Natron  (si marche pas, s'inscrire sur le site pour voir méthode d'install http://natron.fr/download/?os=Linux)
             wget http://www.deb-multimedia.org/pool/main/n/natron-dmo/natron_2.3.2-dmo1_amd64.deb
             dpkg -i natron_2.3.2-dmo1_amd64.deb
             apt install -fy
             ;;    
-        "15") #LightWorks
+        "14") #LightWorks
             wget https://downloads.lwks.com/v14/lwks-14.0.0-amd64.deb
             dpkg -i lwks-14.0.0-amd64.deb
             apt install -fy
             ;;       
-        "16") #VLMC (vérifier stabilité !)
+        "15") #VLMC (vérifier stabilité !)
             add-apt-repository ppa:webupd8team/vlmc -y
             apt update ; apt install vlmc -y
             ;;                         
-        "17") #Avidemux (AppImage)
+        "16") #Avidemux (AppImage)
             wget https://www.fosshub.com/Avidemux.html/avidemux_2.7.0.appImage
             chmod +x avidemux_2.7.0.appImage
             ;;               
-        "18") #Mencoder
+        "17") #Mencoder
             apt install mencoder -y
             ;;               
-        "19") #MMG MkvMergeGui
+        "18") #MMG MkvMergeGui
             apt install mkvtoolnix mkvtoolnix-gui -y
             ;;              
-        "20") #DeVeDe 
+        "19") #DeVeDe 
             apt install devede -y
             ;;     
-        "21") #Jahshaka (a mon avis marche pas, a tester)
+        "20") #Jahshaka (a mon avis marche pas, a tester)
             apt install libfuse2:i386 -y 
             wget https://netix.dl.sourceforge.net/project/portable/Jahshaka%202.0
             chmod +x Jahshaka*
             ;;             
-        "22") #Peek
+        "21") #Peek
             snap install peek
             ;;  
     esac
