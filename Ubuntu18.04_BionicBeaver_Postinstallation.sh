@@ -194,7 +194,6 @@ then
     echo "[20] Gnome Twitch (pour visionner les flux vidéo du site Twitch depuis votre bureau sans utiliser de navigateur)"
     echo "[21] GRadio [Flatpak] (Application Gnome pour écouter la radio, plus de 1 000 référencés rien qu'en France !)"
     echo "[22] Molotov.TV [Appimage] (Service français de distribution de chaînes de TV)"
-    echo "[23] Nuvola Player [Flatpak] (Environnement d'exécution pour les services de streaming de musique sur le Web)" 
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixMultimedia
     clear
 
@@ -870,11 +869,8 @@ do
             ;;    
         "22") #Molotov.tv (appimage)
             wget https://desktop-auto-upgrade.s3.amazonaws.com/linux/1.8.0/molotov
-            chmod +x molotov
+            mv molotov molotov.AppImage && chmod +x molotov.AppImage
             ;; 
-        "22") #Nuvola Player (Flatpak)
-            flatpak install --from https://nuvola.tiliado.eu/eu.tiliado.Nuvola.flatpakref -y
-            ;;   
     esac
 done
 
@@ -892,7 +888,7 @@ do
             apt install libav-tools -y
             ;;
         "5") #KDEnLive
-            apt install kdenlive -y
+            apt install kdenlive breeze-icon-theme -y
             ;;
         "6") #OpenShot Video Editor
             apt install openshot openshot-doc -y
