@@ -898,8 +898,8 @@ do
         "8") #Lives
             apt install lives -y
             ;;         
-        "9") #Shotcut via snap (possible aussi en ppa)
-            snap install shotcut
+        "9") #Shotcut (Snap)
+            snap install shotcut --classic
             ;;            
         "10") #SlowMoVideo
             add-apt-repository ppa:ubuntuhandbook1/slowmovideo -y
