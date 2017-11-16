@@ -33,7 +33,7 @@ violet="\\033[35m"
 . /etc/lsb-release
 if [ "$UID" -ne "0" ]
 then
-    echo -e "${rouge}Ce script doit se lancer avec les droits d'administrateur : sudo ./script.sh{blanc}"
+    echo -e "${rouge}Ce script doit se lancer avec les droits d'administrateur : sudo ./script.sh"
     exit
     elif  [ "$DISTRIB_RELEASE" != "18.04" ]
     then
@@ -45,13 +45,13 @@ then
             exit
             else
                 echo "Ok, vous avez correctement lancé le script, vous êtes bien sur Bionic avec Gnome-Shell, passons aux questions..."
-                echo -e "${violet}#########################################################"
+                echo -e "#########################################################"
                 echo "Légende : "
                 echo "[Snap] => Le paquet s'installera de manière isolé avec Snappy (snap install...)"
                 echo "[Flatpak] => Le paquet s'installera avec Flatpak, une autre alternative à Snappy"
                 echo "[Appimage] => Paquet AppImage téléchargé, pour l'utiliser il faudra le lancer manuellement (pas de raccourci)"
                 echo "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible sinon PPA"
-                echo -e "#########################################################${blanc}\n"
+                echo -e "#########################################################\n"
 fi
 ### Section interactive avec les questions
 
