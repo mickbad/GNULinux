@@ -68,7 +68,7 @@ clear
 
 while [ "$choixMode" != "0" ] && [ "$choixMode" != "1" ] && [ "$choixMode" != "2" ] && [ "$choixMode" != "3" ]
 do
-    read -p "Désolé, je ne comprend pas votre réponse, les seuls choix possibles sont 1 (novice), 2 (standard), 3 (avancé), 4 (extra) : " choixMode
+    read -p "Désolé, je ne comprend pas votre réponse, les seuls choix possibles sont 0 (novice), 1 (standard), 2 (avancé), 3 (extra) : " choixMode
     clear
 done
 
