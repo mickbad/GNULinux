@@ -66,7 +66,7 @@ echo "*******************************************************"
 read -p "Répondre par le chiffre correspondant (exemple : 1) : " choixMode
 clear
 
-while [ "$choixMode" != "0" ] && [ "$choixMode" != "1" ] [ "$choixMode" != "2" ] && [ "$choixMode" != "3" ]
+while [ "$choixMode" != "0" ] && [ "$choixMode" != "1" ] && [ "$choixMode" != "2" ] && [ "$choixMode" != "3" ]
 do
     read -p "Désolé, je ne comprend pas votre réponse, les seuls choix possibles sont 1 (novice), 2 (standard), 3 (avancé), 4 (extra) : " choixMode
     clear
