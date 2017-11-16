@@ -21,35 +21,37 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 
-# Legende
-# <!!> : problème actuellement avec le dépot lors d'un rafraichissement avec apt update
-# <i!> : demande intervention de la part de l'utilisateur (install pas entièrement automatisé)
-# <l!> : lien précis de la version pour l'installation, peux potentiellement poser problème sur le long terme si le lien change
-# <d!> : attention, beaucoup de dépendance Kde !
+#code couleur
+rouge="\\033[31m"
+blanc="\\033[27m"
+cyan="\\033[36m"
+vert="\\033[32m"
+jaune="\\033[33m"
+violet="\\033[35m"
 
 # Contrôle de la configuration système (script correctement lancé + version 18.04 + gnome-shell présent)
 . /etc/lsb-release
 if [ "$UID" -ne "0" ]
 then
-    echo "Ce script doit se lancer avec les droits d'administrateur : sudo ./script.sh"
+    echo -e "${rouge}Ce script doit se lancer avec les droits d'administrateur : sudo ./script.sh{blanc}"
     exit
     elif  [ "$DISTRIB_RELEASE" != "18.04" ]
     then
-        echo "Désolé $SUDO_USER, ce script n'est conçu que pour la 18.04LTS alors que vous êtes actuellement sur la version $DISTRIB_RELEASE"
+        echo -e "${rouge}Désolé $SUDO_USER, ce script n'est conçu que pour la 18.04LTS alors que vous êtes actuellement sur la version $DISTRIB_RELEASE${blanc}"
         exit
         elif [ "$(which gnome-shell)" != "/usr/bin/gnome-shell" ]
         then
-            echo "Bien que vous soyez effectivement sur la 18.04 $SUDO_USER, ce script est conçu uniquement pour la version de base sous Gnome-Shell (pour l'instant) alors que vous utilisez une variante."
+            echo -e "${rouge}Bien que vous soyez effectivement sur la 18.04 $SUDO_USER, ce script est conçu uniquement pour la version de base sous Gnome-Shell (pour l'instant) alors que vous utilisez une variante.${blanc}"
             exit
             else
                 echo "Ok, vous avez correctement lancé le script, vous êtes bien sur Bionic avec Gnome-Shell, passons aux questions..."
-                echo -e "#########################################################"
+                echo -e "${violet}#########################################################"
                 echo "Légende : "
                 echo "[Snap] => Le paquet s'installera de manière isolé avec Snappy (snap install...)"
                 echo "[Flatpak] => Le paquet s'installera avec Flatpak, une autre alternative à Snappy"
                 echo "[Appimage] => Paquet AppImage téléchargé, pour l'utiliser il faudra le lancer manuellement (pas de raccourci)"
                 echo "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible sinon PPA"
-                echo -e "#########################################################\n"
+                echo -e "#########################################################${blanc}\n"
 fi
 ### Section interactive avec les questions
 
