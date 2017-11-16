@@ -491,6 +491,7 @@ fi
 
 # Mode Extra
 if [ "$choixMode" = "3" ] 
+then
     # Question 19 : Snap
     echo "*******************************************************"
     echo "19/ Mode Extra : supplément paquet Snap : "
