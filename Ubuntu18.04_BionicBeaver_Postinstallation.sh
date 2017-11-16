@@ -131,7 +131,7 @@ then
     echo "[9] Linphone (visioconférence utilisant le protocole SIP)"
     echo "[10] Ring (anciennement 'SFLphone', logiciel très performant pour la téléphonie IP)"
     echo "[11] Mumble (logiciel libre connue chez les gameurs pour les conversations audios à plusieurs)"
-    echo "[12] TeamSpeak [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[12] TeamSpeak [Demande Interv!] [NE FONCTIONNE PAS : Ne pas sélectionner !]"
     echo "[13] Discord [Snap] (logiciel propriétaire multiplateforme pour communiquer à plusieurs pour les gameurs)"
     echo "[14] qTox [NE FONCTIONNE PAS : Ne pas sélectionner !]"
     echo "[15] Viber [Flatpak] (logiciel de communication, surtout connue en application mobile)"
@@ -214,13 +214,13 @@ then
     echo "[11] Flowblade [Pour Xorg uniquement!] (Logiciel de montage video multi-piste performant)"
     echo "[12] Cinelerra (montage non-linéaire sophistiqué, équivalent à Adobe première, Final Cut et Sony Vegas"
     echo "[13] Natron (programme de post-prod destiné au compositing et aux effets spéciaux)"
-    echo "[14] LightWorks [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[14] LightWorks [A tester sur une MP]"
     echo "[15] Avidemux [Appimage] (Équivalent de 'VirtualDub' : coupe, filtre et ré-encodage)"
     echo "[16] Mencoder (s'utilise en ligne de commande : encodage de fichier vidéo)"
     echo "[17] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
     echo "[18] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
     echo "[19] Jahshaka [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[20] Peek [Snap][Pour Xorg uniquement!] (Outil de création de Gif animé à partir d'une capture vidéo)"
+    echo "[20] Peek [Snap][Pour Xorg uniquement!][A tester sur MP](Outil de création de Gif animé à partir d'une capture vidéo)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
     clear
 
@@ -238,13 +238,12 @@ then
     echo "[8] Ufraw (logiciel de dérawtisation capable de lire/interpréter la plupart des formats RAW)"
     echo "[9] Inkscape (Logiciel spécialisé dans le dessin vectoriel, équivalent de 'Adobe Illustrator')"
     echo "[10] Darktable (gestionnaire de photos libre sous forme de table lumineuse et chambre noir)"
-    echo "[11] Art Of Illusion (modélisation 3D, animation et rendu)"
-    echo "[12] Blender (suite libre de modélisation 3d, matériaux et textures, d'éclairage, d'animation...)"
-    echo "[13] K-3D (Animation et modélisation polygonale et modélisation par courbes)"
-    echo "[14] SweetHome 3D (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
-    echo "[15] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
-    echo "[16] Shutter (pour effectuer des captures d'écran, et de leur appliquer des modifications diverses)"
-    echo "[17] Frogr (Utile pour ceux qui utilisent le service web 'Flickr')"
+    echo "[11] Blender (suite libre de modélisation 3d, matériaux et textures, d'éclairage, d'animation...)"
+    echo "[12] K-3D (Animation et modélisation polygonale et modélisation par courbes)"
+    echo "[13] SweetHome 3D [affichage à tester sur MP] (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
+    echo "[14] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
+    echo "[15] Shutter [Pour Xorg uniquement!] (pour effectuer des captures d'écran + appliquer des modifications diverses)"
+    echo "[16] Frogr (Utile pour ceux qui utilisent le service web 'Flickr')"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixGraphisme
     clear
 
@@ -975,27 +974,23 @@ do
             ;;                    
         "10") #Darktable
             apt install darktable -y
-            ;;        
-        "11") #Art Of Illusion
-            add-apt-repository ppa:altair-ibn-la-ahad/artofillusion -y
-            apt update ; apt install artofillusion -y
-            ;;    
-        "12") #Blender
+            ;;          
+        "11") #Blender
             apt install blender -y
             ;;       
-        "13") #K-3D
+        "12") #K-3D
             apt install k3d -y
             ;;                         
-        "14") #SweetHome 3D
-            apt install sweethome3d sweethome3d-furniture sweethome3d-furniture-nonfree -y
+        "13") #SweetHome 3D
+            apt install sweethome3d -y
             ;;               
-        "15") #LibreCAD
+        "14") #LibreCAD
             apt install librecad -y
             ;;        
-        "16") #Shutter
+        "15") #Shutter
             apt install shutter -y
             ;;    
-        "17") #Frogr
+        "16") #Frogr
             apt install frogr -y
             ;;    
     esac
