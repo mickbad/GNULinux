@@ -237,15 +237,14 @@ then
     echo "[7] MyPaint (logiciel de peinture numérique développé en Python)"
     echo "[8] Ufraw (logiciel de dérawtisation capable de lire/interpréter la plupart des formats RAW)"
     echo "[9] Inkscape (Logiciel spécialisé dans le dessin vectoriel, équivalent de 'Adobe Illustrator')"
-    echo "[10] sK1 (une autre alternative pour le dessin vectoriel comme Illustrator ou Inkscape)"
-    echo "[11] Darktable (gestionnaire de photos libre sous forme de table lumineuse et chambre noir)"
-    echo "[12] Art Of Illusion (modélisation 3D, animation et rendu)"
-    echo "[13] Blender (suite libre de modélisation 3d, matériaux et textures, d'éclairage, d'animation...)"
-    echo "[14] K-3D (Animation et modélisation polygonale et modélisation par courbes)"
-    echo "[15] SweetHome 3D (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
-    echo "[16] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
-    echo "[17] Shutter (pour effectuer des captures d'écran, et de leur appliquer des modifications diverses)"
-    echo "[18] Frogr (Utile pour ceux qui utilisent le service web 'Flickr')"
+    echo "[10] Darktable (gestionnaire de photos libre sous forme de table lumineuse et chambre noir)"
+    echo "[11] Art Of Illusion (modélisation 3D, animation et rendu)"
+    echo "[12] Blender (suite libre de modélisation 3d, matériaux et textures, d'éclairage, d'animation...)"
+    echo "[13] K-3D (Animation et modélisation polygonale et modélisation par courbes)"
+    echo "[14] SweetHome 3D (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
+    echo "[15] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
+    echo "[16] Shutter (pour effectuer des captures d'écran, et de leur appliquer des modifications diverses)"
+    echo "[17] Frogr (Utile pour ceux qui utilisent le service web 'Flickr')"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixGraphisme
     clear
 
@@ -973,35 +972,30 @@ do
             ;;            
         "9") #Inkscape
             apt install inkscape -y
-            ;;           
-        "10") #sK1 (si marche pas tester PPA : http://www.webupd8.org/2009/09/sk1-ubuntu-repository-vector-graphics.html)
-            wget http://downloads.sk1project.net/sk1/2.0rc2/python-sk1-2.0rc2_0ubuntu1_16.10_amd64.deb
-            dpkg -i python-sk1-2.0rc2_0ubuntu1_16.10_amd64.deb
-            apt install -fy
-            ;;           
-        "11") #Darktable
+            ;;                    
+        "10") #Darktable
             apt install darktable -y
             ;;        
-        "12") #Art Of Illusion
+        "11") #Art Of Illusion
             add-apt-repository ppa:altair-ibn-la-ahad/artofillusion -y
             apt update ; apt install artofillusion -y
             ;;    
-        "13") #Blender
+        "12") #Blender
             apt install blender -y
             ;;       
-        "14") #K-3D
+        "13") #K-3D
             apt install k3d -y
             ;;                         
-        "15") #SweetHome 3D
+        "14") #SweetHome 3D
             apt install sweethome3d sweethome3d-furniture sweethome3d-furniture-nonfree -y
             ;;               
-        "16") #LibreCAD
+        "15") #LibreCAD
             apt install librecad -y
             ;;        
-        "17") #Shutter
+        "16") #Shutter
             apt install shutter -y
             ;;    
-        "18") #Frogr
+        "17") #Frogr
             apt install frogr -y
             ;;    
     esac
