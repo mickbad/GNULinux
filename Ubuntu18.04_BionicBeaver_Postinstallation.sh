@@ -257,20 +257,18 @@ then
     echo "[2] SoundConverter (petit logiciel pour convertir des lots de fichiers audios)"
     echo "[3] Xcfa : X Convert File Audio (extraction cd audio, piste dvd, normalisation, création pochette)"
     echo "[4] Sound-Juicer (pour extraire les pistes audios d'un cd)"
-    echo "[5] SoundKonverter (convertisseur audio utilisant les bilbiothèques Qt)"
-    echo "[6] Gnome Sound Recorder (pour enregistrer et lire du son, realisé par défaut avec OggVorbis)"
-    echo "[7] Audacity (enregistrement et édition de son numérique)"
-    echo "[8] MhWaveEdit (application libre d'enregistrement et d'édition audio complète distribuée sous GPL)"
-    echo "[9] Flacon (pour extraire les pistes d'un gros fichier audio pour sauvegarder en différents fichiers distincts)"
-    echo "[10] RipperX (une autre alternative pour extraire les cd de musique)"
-    echo "[11] Grip (Ripper facilement des cd de musique)"
-    echo "[12] LMMS : Let's Make Music (station audio opensource crée par des musiciens pour les musiciens)"
-    echo "[13] MiXX (logiciel pour Dj pour le mixage de musique)"
-    echo "[14] Ardour (station de travail audio numérique avec enregistrement multipiste et mixage : logiciel lourd !)"
-    echo "[15] Rosegarden (création musicale avec édition des partitions et peux s'interfacer avec des instruments)"
-    echo "[16] Pavucontrol (outil graphique de contrôle des volumes audio entrée/sortie pour Pulseaudio)"
-    echo "[17] Lame (outil d'encodage en CLI pour le format MP3,par ex pour convertir un Wav en Mp3)"
-    echo "[18] PulseEffects [Flatpak] (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
+    echo "[5] Gnome Sound Recorder (pour enregistrer et lire du son, realisé par défaut avec OggVorbis)"
+    echo "[6] Audacity (enregistrement et édition de son numérique)"
+    echo "[7] MhWaveEdit (application libre d'enregistrement et d'édition audio complète distribuée sous GPL)"
+    echo "[8] Flacon [Snap] (pour extraire les pistes d'un gros fichier audio)"
+    echo "[9] RipperX (une autre alternative pour extraire les cd de musique)"
+    echo "[10] LMMS : Let's Make Music (station audio opensource crée par des musiciens pour les musiciens)"
+    echo "[11] MiXX (logiciel pour Dj pour le mixage de musique)"
+    echo "[12] Ardour [Demande Interv!] (station de travail audio numérique avec enregistrement multipiste et mixage)"
+    echo "[13] Rosegarden (création musicale avec édition des partitions et peux s'interfacer avec des instruments)"
+    echo "[14] Pavucontrol (outil graphique de contrôle des volumes audio entrée/sortie pour Pulseaudio)"
+    echo "[15] Lame (outil d'encodage en CLI pour le format MP3,par ex pour convertir un Wav en Mp3)"
+    echo "[16] PulseEffects [Flatpak] (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
 
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixAudio
     clear
@@ -1002,58 +1000,51 @@ done
 for audio in $choixAudio
 do
     case $audio in
-        "2") #SoundConverter
-            apt install soundconverter -y
-            ;;
-        "3") #Xcfa
+        "2") #Xcfa
             apt install xcfa -y
             ;;
-        "4") #SoundJuicer
+        "3") #SoundJuicer
             apt install sound-juicer -y
             ;;
-        "5") #SoundKonverter (risque de ne pas marcher sinon retirer)
+        "4") #SoundKonverter (risque de ne pas marcher sinon retirer)
             wget http://archive.ubuntu.com/ubuntu/pool/universe/s/soundkonverter/soundkonverter_2.2.2-1_amd64.deb
             dpkg -i soundkonverter_2.2.2-1_amd64.deb
             apt install -fy
             ;;
-        "6") #Gnome Sound Recorder
+        "5") #Gnome Sound Recorder
             apt install gnome-sound-recorder -y
             ;;
-        "7") #Audacity
+        "6") #Audacity
             apt install audacity -y
             ;;
-        "8") #MhWaveEdit
+        "7") #MhWaveEdit
             apt install mhwaveedit -y
             ;;         
-        "9") #Flacon
-            add-apt-repository -y ppa:flacon/ppa
-            apt update ; apt install flacon -y
+        "8") #Flacon
+            snap install flacon-tabetai
             ;;
-        "10") #RipperX
+        "9") #RipperX
             apt install ripperx -y
-            ;;            
-        "11") #Grip
-            apt install grip -y
-            ;;           
-        "12") #LMMS
+            ;;                     
+        "10") #LMMS
             apt install lmms -y
             ;;           
-        "13") #MiXX
-            apt install mixx -y
+        "11") #MiXX
+            apt install mixxx -y
             ;;        
-        "14") #Ardour
+        "12") #Ardour
             apt install ardour ardour-video-timeline -y
             ;;    
-        "15") #Rosegarden
+        "13") #Rosegarden
             apt install rosegarden -y
             ;;           
-        "16") #Pavucontrol
+        "14") #Pavucontrol
             apt install pavucontrol -y
             ;;   
-        "17") #lame
+        "15") #lame
             apt install lame -y
             ;;   
-        "18") #PulseEffects
+        "16") #PulseEffects
             flatpak install --from https://flathub.org/repo/appstream/com.github.wwmm.pulseeffects.flatpakref -y
             ;;   
     esac
