@@ -279,7 +279,7 @@ then
     echo "*******************************************************"
     echo "[1] Aucun supplément (par défaut : Evince pour pdf, LibreOffice en bureautique, Thunderbird pour les mails)"
     echo "[2] Supplément LibreOffice : ajout du module 'Base' + des extensions utiles (templates, modèles de documents, clipboard...)"
-    echo "[3] a_modifier..."
+    echo "[3] MailSpring [Snap] (client de messagerie moderne et multi-plateforme)"
     echo "[4] Marp (Permet de créer une présentation rapide en s’affranchissant des outils bureautiques lourds)"
     echo "[5] PdfMod (logiciel permettant diverses modifications sur vos PDF)"
     echo "[6] (scenarichaine + opale : famille d'applications d'édition avancées de chaînes éditoriales)"
@@ -294,7 +294,6 @@ then
     echo "[15] OOo4Kids (Suite bureautique spécialement simplifié pour les enfants)"
     echo "[16] Wordgrinder (Traitement de texte léger. Formats OpenDocument, HTML import and export)"
     echo "[17] LaTex (langage de description de document très utile pour les documents formatés de manière logique)"
-    echo "[18] MailSpring [Snap] (client de messagerie moderne et multi-plateforme)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
     clear
 
@@ -1066,8 +1065,8 @@ do
             apt install libreoffice libreoffice-style-oxygen libreoffice-style-human libreoffice-style-sifrm libreoffice-wiki-publisher -y
             apt install libreoffice-dmaths libreoffice-templates openclipart-libreoffice libreoffice-nlpsolver -y
             ;;
-        "3") # a modifier
-            #ajouté plus tard
+        "3") #MailSpring (Snap)
+            snap install mailspring
             ;;
         "4") #Marp
             wget https://github-production-release-asset-2e65be.s3.amazonaws.com/59939691/c7ce7c0c-5769-11e7-87d0-3900a81c0345?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20171103%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20171103T104517Z&X-Amz-Expires=300&X-Amz-Signature=3208d33a5f8318058d6cd959c91c18dac13c0615f0ac2b0be2400b3be6e4ac8d&X-Amz-SignedHeaders=host&actor_id=33062503&response-content-disposition=attachment%3B%20filename%3D0.0.11-Marp-linux-x64.tar.gz&response-content-type=application%2Foctet-stream
@@ -1124,10 +1123,7 @@ do
             ;;            
         "17") #Latex
             apt install texlive texlive-lang-french texlife-latex-extra -y
-            ;; 
-        "18") #MailSpring (Snap)
-            snap install mailspring
-            ;;               
+            ;;             
     esac
 done
 
