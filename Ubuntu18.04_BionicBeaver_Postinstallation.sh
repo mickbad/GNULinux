@@ -557,7 +557,7 @@ then
     #multimédia
     apt install vlc gnome-mpv pitivi gimp pinta -y
     #divers
-    apt install brasero adobe-flashplugin
+    apt install brasero adobe-flashplugin -y
 fi
 
 
