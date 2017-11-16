@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.37 (alpha)
+# version 0.0.38 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -209,19 +209,18 @@ then
     echo "[6] OpenShot Video Editor (une autre alternative comme éditeur vidéo, libre et écrit en Python)"
     echo "[7] Pitivi (logiciel de montage basique avec une interface simple et intuitive)" 
     echo "[8] Lives (Dispose des fonctionnalités d'éditions vidéo/son classique, des filtres et multipiste"
-    echo "[9] Shotcut [Snap] (editeur et montage vidéo libre et multi-plateformes)"
-    echo "[10] SlowMoVideo (Création de vidéos en slow-motion en opensource)"
-    echo "[11] Flowblade (Logiciel de montage video multi-piste performant)"
+    echo "[9] Shotcut [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[10] SlowMoVideo [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[11] Flowblade [Pour Xorg uniquement!] (Logiciel de montage video multi-piste performant)"
     echo "[12] Cinelerra (montage non-linéaire sophistiqué, équivalent à Adobe première, Final Cut et Sony Vegas"
     echo "[13] Natron (programme de post-prod destiné au compositing et aux effets spéciaux)"
-    echo "[14] LightWorks (Montage vidéo professionnel propriétaire)"
-    echo "[15] VLMC (montage vidéo de VideoLan, experimental !)" #===> vérifier stablilité...
-    echo "[16] Avidemux [Appimage](Équivalent de 'VirtualDub' sous Windows : coupe, filtre et ré-encodage)"
-    echo "[17] Mencoder (encodage de fichier vidéo, compatible avec de très nombreux formats)"
-    echo "[18] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
-    echo "[19] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
-    echo "[20] Jahshaka (Montage vidéo mais aussi effets spéciaux, post-prod en temps réel. Modulaire)"
-    echo "[21] Peek [Snap] (Outil de création de Gif animé à partir d'une capture vidéo d'une zone de l'écran)"
+    echo "[14] LightWorks [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[15] Avidemux [Appimage] (Équivalent de 'VirtualDub' : coupe, filtre et ré-encodage)"
+    echo "[16] Mencoder (s'utilise en ligne de commande : encodage de fichier vidéo)"
+    echo "[17] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
+    echo "[18] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
+    echo "[19] Jahshaka [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[20] Peek [Snap][Pour Xorg uniquement!] (Outil de création de Gif animé à partir d'une capture vidéo)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
     clear
 
@@ -912,40 +911,36 @@ do
             add-apt-repository ppa:cinelerra-ppa/ppa -y
             apt update ; apt install cinelerra-cv -y
             ;;        
-        "13") #Natron  (si marche pas, s'inscrire sur le site pour voir méthode d'install http://natron.fr/download/?os=Linux)
-            wget http://www.deb-multimedia.org/pool/main/n/natron-dmo/natron_2.3.2-dmo1_amd64.deb
-            dpkg -i natron_2.3.2-dmo1_amd64.deb
+        "13") #Natron
+            wget https://downloads.natron.fr/Linux/releases/64bit/files/natron_2.3.3_amd64.deb
+            dpkg -i natron_2.3.3_amd64.deb
             apt install -fy
             ;;    
-        "14") #LightWorks
+        "14") #LightWorks (a tester sur une vrai machine, KO sur VM)
             wget https://downloads.lwks.com/v14/lwks-14.0.0-amd64.deb
             dpkg -i lwks-14.0.0-amd64.deb
             apt install -fy
-            ;;       
-        "15") #VLMC (vérifier stabilité !)
-            add-apt-repository ppa:webupd8team/vlmc -y
-            apt update ; apt install vlmc -y
-            ;;                         
-        "16") #Avidemux (AppImage)
-            wget https://www.fosshub.com/Avidemux.html/avidemux_2.7.0.appImage
-            chmod +x avidemux_2.7.0.appImage
+            ;;                             
+        "15") #Avidemux (AppImage)
+            wget http://nux87.free.fr/script-postinstall-ubuntu/appimage/avidemux2.7.0.AppImage
+            chmod +x avidemux2.7.0.AppImage
             ;;               
-        "17") #Mencoder
+        "16") #Mencoder
             apt install mencoder -y
             ;;               
-        "18") #MMG MkvMergeGui
+        "17") #MMG MkvMergeGui
             apt install mkvtoolnix mkvtoolnix-gui -y
             ;;              
-        "19") #DeVeDe 
+        "18") #DeVeDe 
             apt install devede -y
             ;;     
-        "20") #Jahshaka (a mon avis marche pas, a tester)
+        "19") #Jahshaka 
             apt install libfuse2:i386 -y 
             wget https://netix.dl.sourceforge.net/project/portable/Jahshaka%202.0
             chmod +x Jahshaka*
             ;;             
-        "21") #Peek
-            snap install peek
+        "20") #Peek (via Flatpak)
+            flatpak install --from https://flathub.org/repo/appstream/com.uploadedlobster.peek.flatpakref -y
             ;;  
     esac
 done
