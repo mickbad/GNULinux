@@ -298,6 +298,7 @@ then
     echo "[15] OOo4Kids (Suite bureautique spécialement simplifié pour les enfants)"
     echo "[16] Wordgrinder (Traitement de texte léger. Formats OpenDocument, HTML import and export)"
     echo "[17] LaTex (langage de description de document très utile pour les documents formatés de manière logique)"
+    echo "[18] MailSpring [Snap] (client de messagerie moderne et multi-plateforme)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
     clear
 
@@ -1143,7 +1144,10 @@ do
             ;;            
         "17") #Latex
             apt install texlive texlive-lang-french texlife-latex-extra -y
-            ;;                          
+            ;; 
+        "18") #MailSpring (Snap)
+            snap install mailspring
+            ;;               
     esac
 done
 
