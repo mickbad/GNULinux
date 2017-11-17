@@ -1253,7 +1253,7 @@ do
             apt install gufw -y
             ;;  
         "20") #Gnome Encfs Manager (dépot Xenial car Bionic pas encore actif)
-            add-apt-repository "deb http://ppa.launchpad.net/gencfsm/ppa/ubuntu xenial main"
+            add-apt-repository "deb http://ppa.launchpad.net/gencfsm/ppa/ubuntu xenial main" -y
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 6A0344470F68ADCA
             apt update ; apt install gnome-encfs-manager -y
             ;; 
@@ -1504,8 +1504,9 @@ do
         "15") #develop
             #????
             ;;
-        "16") #Android Studio
-            add-apt-repository ppa:paolorotolo/android-studio -y
+        "16") #Android Studio (dépot Artful car Bionic pas actif)
+            add-apt-repository "deb http://ppa.launchpad.net/maarten-fonville/android-studio/ubuntu artful main" -y
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4DEA8909DC6A13A3
             apt update ; apt install android-studio -y
             ;;
         "17") #Netbeans
