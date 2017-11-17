@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.38 (alpha)
+# version 0.0.39 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -307,14 +307,15 @@ then
     echo "[4] [SCIENCE] SciLab (Logiciel scientifique pour le calcul numérique pour des applications scientifiques"
     echo "[5] [MATH] GeoGebra (géométrie dynamique pour manipuler des objets avec un ensemble de fonctions algébriques)"
     echo "[6] [MATH] Algobox (Logiciel libre d'aide à l'élaboration/exécution d'algorithmes en mathématique)"
-    echo "[7] [MATH] CaRMetal (Logiciel libre de géométrie dynamique, créé à partir du moteur de C.a.R.)"
+    echo "[7] [MATH] CaRMetal [NE FONCTIONNE PAS : Ne pas sélectionner !]"
     echo "[8] [ASTRO] Stellarium (Planétarium avec l'affichage du ciel réaliste en 3D avec simulation d'un téléscope)"
     echo "[9] [ASTRO] SkyChart (Cartographie céleste très complet avec un catalogue riche)"
-    echo "[10] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
-    echo "[11] [TECHNO] Scratch (langage de prog visuel libre et OpenSource, créé par le MIT, à vocation éducative et ludique)"
-    echo "[12] [TECHNO] mBlock (environnement de programmation par blocs basé sur Scratch 2, permet le pilotage d'Arduino"
-    echo "[13] [TECHNO] Phratch (fork de Scratch, 100% libre, sans besoin de Flash ni d'Adobe Air)"
-    echo "[14] [TECHNO] Récupérer Algoid [.jar] (Language de programmation éducatif)"
+    echo "[10] [ASTRO] Celestia (Simulation spatiale en temps réel qui permet d’explorer l'Univers en trois dimensions)"
+    echo "[11] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
+    echo "[12] [TECHNO] Scratch 1.4 (langage de prog visuel libre, créé par le MIT, à vocation éducative et ludique)"
+    echo "[13] [TECHNO] mBlock (environnement de programmation par blocs basé sur Scratch 2, permet le pilotage d'Arduino"
+    echo "[14] [TECHNO] Phratch (fork de Scratch, 100% libre, sans besoin de Flash ni d'Adobe Air)"
+    echo "[15] [TECHNO] Récupérer Algoid [.jar] (Language de programmation éducatif)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
     clear
 
@@ -1148,27 +1149,35 @@ do
             apt install stellarium -y
             ;;            
         "9") #Skychart
-            wget https://vorboss.dl.sourceforge.net/project/skychart/1-software/version_4.0/skychart_4.0-3575b_amd64.deb
-            dpkg -i skychart_4.0-3575b_amd64.deb
-            apt install -fy
+            add-apt-repository 'deb http://www.ap-i.net/apt stable main' -y
+            add-apt-repository --remove 'deb-src http://www.ap-i.net/apt stable main' -y
+            apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA716FC2
+            apt update ; apt install --no-install-recommends skychart -y
+            apt install skychart-data-stars skychart-data-dso skychart-data-pictures -y
             ;;
-        "10") #Avogadro
+        "10") #Celestia
+            wget https://raw.githubusercontent.com/BionicBeaver/Divers/master/CelestiaBionic.sh
+            chmod +x CelestiaBionic.sh
+            ./CelestiaBionic.sh
+            rm CelestiaBionic.sh
+            ;;
+        "11") #Avogadro
             apt install avogadro -y
             ;;
-        "11") #Scratch
-            # A voir plus tard pour l'install...
+        "12") #Scratch
+            apt install scratch -y
             ;;   
-        "12") #mBlock
+        "13") #mBlock
             wget https://mblockdev.blob.core.chinacloudapi.cn/mblock-src/mBlock.deb
             dpkg -i mBlock.deb
             apt install -fy
             ;;
-        "13") #Phratch (a vérifier)
+        "14") #Phratch (a vérifier)
             wget http://phratch.com/download/Phratch4.1-linux.zip
             unzip Phratch4.1-linux.zip
             chmod +x ./Phratch4.1-linux/phratch
             ;;  
-        "14") #AlgoIDE (a vérifier)
+        "15") #AlgoIDE (a vérifier)
             wget http://www.algoid.net/downloads/AlgoIDE-release.jar
             chmod +x AlgoIDE-release.jar
             ;;             
