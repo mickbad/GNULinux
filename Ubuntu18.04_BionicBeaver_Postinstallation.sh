@@ -314,7 +314,7 @@ then
     echo "[11] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
     echo "[12] [TECHNO] Scratch 1.4 (langage de prog visuel libre, créé par le MIT, à vocation éducative et ludique)"
     echo "[13] [TECHNO] mBlock (environnement de programmation par blocs basé sur Scratch 2, permet le pilotage d'Arduino"
-    echo "[14] [TECHNO] Phratch (fork de Scratch, 100% libre, sans besoin de Flash ni d'Adobe Air)"
+    echo "[14] [TECHNO] Phratch [A tester sur MP] (fork de Scratch, 100% libre, sans besoin de Flash ni d'Adobe Air)"
     echo "[15] [TECHNO] Récupérer Algoid [.jar] (Language de programmation éducatif)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
     clear
@@ -1167,15 +1167,15 @@ do
         "12") #Scratch
             apt install scratch -y
             ;;   
-        "13") #mBlock
-            wget https://mblockdev.blob.core.chinacloudapi.cn/mblock-src/mBlock.deb
-            dpkg -i mBlock.deb
-            apt install -fy
+        "13") #mBlock (voir plus tard pour un raccourci dans le menu des applications et non dans le dossier de l'utilisateur)
+            wget https://github.com/Makeblock-official/mBlock/releases/download/V4.0.0-Linux/mBlock-4.0.0-linux-4.0.0.tar.gz
+            tar zxvf mBlock-4.0.0-linux-4.0.0.tar.gz -C /opt/
+            ln -s /opt/mBlock/mblock /home/$SUDO_USER/raccourci_mblock
             ;;
         "14") #Phratch (a vérifier)
             wget http://phratch.com/download/Phratch4.1-linux.zip
             unzip Phratch4.1-linux.zip
-            chmod +x ./Phratch4.1-linux/phratch
+            chmod +x ./Phratch/phratch
             ;;  
         "15") #AlgoIDE (a vérifier)
             wget http://www.algoid.net/downloads/AlgoIDE-release.jar
