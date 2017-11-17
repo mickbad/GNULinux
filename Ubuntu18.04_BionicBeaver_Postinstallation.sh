@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.39 (alpha)
+# version 0.0.40 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -324,25 +324,26 @@ then
     echo "12/ Quel(s) utilitaire(s) supplémentaire(s) voulez-vous ?"
     echo "*******************************************************"
     echo "[1] Aucun"
-    echo "[2] Kazam (capture vidéo de votre bureau)"
+    echo "[2] Kazam [Pour Xorg uniquement!] (capture vidéo de votre bureau)"
     echo "[3] SimpleScreenRecorder (autre alternative pour la capture vidéo)"
     echo "[4] OpenBroadcaster Software (Pour faire du live en streaming, adapté pour les gameurs)"
     echo "[5] Glances (afficher l'état des ressources systèmes en temps réel, comme htop mais plus complet)"
     echo "[6] Brasero (logiciel de gravure de cd/dvd)" 
     echo "[7] Wine (une sorte d'émulateur pour faire tourner des applis/jeux conçu à la base pour Windows)"
-    echo "[8] Ajouter Oracle Java (propriétaire)"
-    echo "[9] Installer FlashPlayer (via le dépot partenaire)"
-    echo "[10] VirtualBox (virtualisation de système)"
-    echo "[11] VMWare Workstation Player (version gratuite de VmWare Workstation mais pas libre)"
-    echo "[12] Bleachbit [potentiellement dangereux !] (efface les fichiers inutiles/temporaires du système)"
-    echo "[13] KeePassX 2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
-    echo "[14] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
-    echo "[15] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)"
-    echo "[16] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
-    echo "[17] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
-    echo "[18] Gufw (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
-    echo "[19] Gnome Enfs Manager (coffre-fort pour vos fichiers/dossiers)"
-    echo "[20] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Wireshark + Nmap)"
+    echo "[8] Oracle Java 8 (plate-forme propriétaire pour le développement/éxécution des logiciels écrits Java)"
+    echo "[9] Oracle Java 9 (nouvelle version majeure de Java, encore peu répendue)"
+    echo "[10] Installer FlashPlayer (via le dépot partenaire)"
+    echo "[11] VirtualBox (virtualisation de système)"
+    echo "[12] VMWare Workstation Player (version gratuite de VmWare Workstation mais pas libre)"
+    echo "[13] Bleachbit [potentiellement dangereux !] (efface les fichiers inutiles/temporaires du système)"
+    echo "[14] KeePassX2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
+    echo "[15] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
+    echo "[16] Cheese [Pour Xorg uniquement!] (outil pour prendre des photos/vidéos à partir d'une webcam)"
+    echo "[17] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
+    echo "[18] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
+    echo "[19] Gufw [Pour Xorg uniquement!] (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
+    echo "[20] Gnome Enfs Manager [Demande Interv!] (coffre-fort pour vos fichiers/dossiers)"
+    echo "[21] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Wireshark + Nmap)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
     clear
 
@@ -1207,49 +1208,56 @@ do
         "7") #Wine 
             apt install wine-stable -y
             ;;
-        "8") #Oracle Java (d'ici la sortie, passera peut être en v9)
-            add-apt-repository ppa:/webupd8team/java -y
-            apt update ; apt install oracle-java8-installer -y
-            ;;         
-        "9") #FlashPlayer (avec dépot partenaire)
+        "8") #Oracle Java 8 (dépot xenial car celui de bionic pas encore activé)
+            add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" -y
+            apt update
+            echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections | apt install oracle-java8-installer -y
+            ;;  
+        "9") #Oracle Java 9 (dépot xenial car celui de bionic pas encore activé)
+            add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" -y
+            apt update
+            echo oracle-java9-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections | apt install oracle-java9-installer -y
+            ;;    
+        "10") #FlashPlayer (avec dépot partenaire)
             apt install adobe-flashplugin -y
             ;;
-        "10") #VirtualBox
+        "11") #VirtualBox
             apt install virtualbox virtualbox-ext-pack -y
             ;;            
-        "11") #VMWare Workstation Player
+        "12") #VMWare Workstation Player
             wget https://download3.vmware.com/software/player/file/VMware-Player-12.5.7-5813279.x86_64.bundle?HashKey=cfce2a8b4444fd32692e9b4d2a251cf9&params=%7B%22sourcefilesize%22%3A%22128.01+MB%22%2C%22dlgcode%22%3A%22PLAYER-1257%22%2C%22languagecode%22%3A%22fr%22%2C%22source%22%3A%22DOWNLOADS%22%2C%22downloadtype%22%3A%22manual%22%2C%22eula%22%3A%22N%22%2C%22downloaduuid%22%3A%22f24b51a3-09d3-48e6-85ef-652c4ccc06e2%22%2C%22purchased%22%3A%22N%22%2C%22dlgtype%22%3A%22Product+Binaries%22%2C%22productversion%22%3A%2212.5.7%22%2C%22productfamily%22%3A%22VMware+Workstation+Player%22%7D&AuthKey=1509617319_6e970e8422684aa4c4219db17d0ab115
             chmod +x VMware-Player-12.5.7-5813279.x86_64.bundle
             ./VMware-Player-12.5.7-5813279.x86_64.bundle
             ;;  
-        "12") #Bleachbit
+        "13") #Bleachbit
             apt install bleachbit -y
             ;;        
-        "13") #KeepassX2 (voir aussi KeePass et KeePassXC)
-            apt install keepassx2 -y
+        "14") #KeepassX2
+            apt install keepassx -y
             ;; 
-        "14") #Teamviewer
+        "15") #Teamviewer
             wget https://dl.tvcdn.de/download/version_12x/teamviewer_12.0.85001_i386.deb
             dpkg -i teamviewer_12.0.85001_i386.deb
             apt install -fy
             ;;   
-        "15") #Cheese
+        "16") #Cheese
             apt install cheese -y
             ;; 
-        "16") #Corebird
+        "17") #Corebird
             flatpak install --from https://flathub.org/repo/appstream/org.baedert.corebird.flatpakref -y
             ;;   
-        "17") #Gnome Recipes
+        "18") #Gnome Recipes
             apt install gnome-recipes -y
             ;;   
-        "18") #Gufw
+        "19") #Gufw
             apt install gufw -y
             ;;  
-        "19") #Gnome Encfs Manager
-            add-apt-repository ppa:gencfsm/ppa -y
+        "20") #Gnome Encfs Manager (dépot Xenial car Bionic pas encore actif)
+            add-apt-repository "deb http://ppa.launchpad.net/gencfsm/ppa/ubuntu xenial main"
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 6A0344470F68ADCA
             apt update ; apt install gnome-encfs-manager -y
             ;; 
-        "20") #Pack cyber-sécurité
+        "21") #Pack cyber-sécurité
             apt install aircrack-ng wireshark nmap -y
             snap install john-the-ripper
             ;;             
