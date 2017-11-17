@@ -291,9 +291,9 @@ then
     echo "[12] OnlyOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
     echo "[13] Gnome Office (pack contenant Abiword, Gnumeric, Dia, Planner, Glabels, Glom, Tomboy et Gnucash)"
     echo "[14] Apache OpenOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[15] OOo4Kids (Suite bureautique spécialement simplifié pour les enfants)"
-    echo "[16] Wordgrinder (Traitement de texte léger. Formats OpenDocument, HTML import and export)"
-    echo "[17] LaTex (langage de description de document très utile pour les documents formatés de manière logique)"
+    echo "[15] OOo4Kids [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[16] Wordgrinder (Traitement de texte léger en ligne de commande. Formats OpenDocument, HTML import and export)"
+    echo "[17] LaTex + Texworks (langage de description de document avec un éditeur spécialisé LaTex)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
     clear
 
@@ -1115,7 +1115,7 @@ do
             apt install wordgrinder -y
             ;;            
         "17") #Latex
-            apt install texlive texlive-lang-french texlife-latex-extra -y
+            apt install texlive texlive-lang-french texlife-latex-extra texworks -y
             ;;             
     esac
 done
