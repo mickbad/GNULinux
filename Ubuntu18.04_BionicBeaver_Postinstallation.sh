@@ -221,7 +221,7 @@ then
     echo "[13] Mencoder (s'utilise en ligne de commande : encodage de fichier vidéo)"
     echo "[14] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
     echo "[15] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
-    echo "[16] Peek [Snap][Pour Xorg uniquement!][A tester sur MP](Outil de création de Gif animé à partir d'une capture vidéo)"
+    echo "[16] Peek [Flatpak] [Pour Xorg uniquement!] [A tester sur MP](Outil de création de Gif animé à partir d'une capture vidéo)"
     echo "[17] Avidemux [Appimage] (Équivalent de 'VirtualDub' : coupe, filtre et ré-encodage)"
     echo "[18] Jahshaka [NE FONCTIONNE PAS : Ne pas sélectionner !]"
     echo "[19] Shotcut [NE FONCTIONNE PAS : Ne pas sélectionner !]"
@@ -594,74 +594,74 @@ do
             add-apt-repository ppa:mozillateam/firefox-next -y 
             apt update ; apt upgrade -y
             ;;
-         "3") #firefox developper edition 
-            flatpak install --from https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxDevEdition.flatpakref -y
-            ;;
-         "4") #firefox esr
+        "3") #firefox esr
             add-apt-repository ppa:mozillateam/ppa -y 
             apt update ; apt install firefox-esr -y
             ;;
-         "5") #firefox nightly
+        "4") #firefox developper edition 
+            flatpak install --from https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxDevEdition.flatpakref -y
+            ;;
+        "5") #firefox nightly
             flatpak install --from https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxNightly.flatpakref -y
             ;;
-         "6") #chromium
+        "6") #chromium
             apt install chromium-browser -y    
             ;;
-         "7") #chrome
+        "7") #chrome
             wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
             sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
             apt update ; apt install google-chrome-stable -y
             ;;
-         "8") #epiphany
-            apt install epiphany-browser -y
+        "8") #vivaldi x64
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2CC26F777B8B44A1
+            echo "deb http://repo.vivaldi.com/stable/deb/ stable main" >> /etc/apt/sources.list.d/vivaldi.list
+            apt update ; apt install vivaldi-stable -y
             ;;
-         "9") #midori
-            wget http://midori-browser.org/downloads/midori_0.5.11-0_amd64_.deb
-            dpkg -i midori_0.5.11-0_amd64_.deb
-            apt install -fy
-            ;;
-         "10") #opera 
+        "9") #opera 
             wget -q http://deb.opera.com/archive.key -O- | apt-key add -
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 517590D9A8492E35
             echo "deb https://deb.opera.com/opera/ stable non-free" | tee -a /etc/apt/sources.list.d/opera-stable.list
             apt update ; apt install opera-stable -y
             ;;
-         "11") #palemoon 
+        "10") #palemoon 
             wget http://download.opensuse.org/repositories/home:/stevenpusser/xUbuntu_17.04/amd64/palemoon_27.6.0~repack-1_amd64.deb
             dpkg -i palemoon_27.6.0~repack-1_amd64.deb
             apt install -fy 
             ;;
-         "12") #vivaldi x64
-            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 2CC26F777B8B44A1
-            echo "deb http://repo.vivaldi.com/stable/deb/ stable main" >> /etc/apt/sources.list.d/vivaldi.list
-            apt update ; apt install vivaldi-stable -y
-            ;;
-         "13") #Falkon/Qupzilla
-            apt install qupzilla -y
-         ;;
-         "14") #Tor browser
+        "11") #Tor browser
             apt install torbrowser-launcher -y
-         ;;
-         "15") #Eolie via Flatpak
-            flatpak install --from https://flathub.org/repo/appstream/org.gnome.Eolie.flatpakref -y
-         ;;
-         "16") Min
+            ;;
+        "12") #epiphany
+            apt install epiphany-browser -y
+            ;;
+        "13") #midori
+            wget http://midori-browser.org/downloads/midori_0.5.11-0_amd64_.deb
+            dpkg -i midori_0.5.11-0_amd64_.deb
+            apt install -fy
+            ;;
+        "14") #Falkon/Qupzilla
+            apt install qupzilla -y
+            ;;
+        "15") Min
             wget https://github.com/minbrowser/min/releases/download/v1.6.3/Min_1.6.3_amd64.deb
             dpkg -i Min_1.6.3_amd64.deb
             apt install -fy
-         ;;
-         "17") #Rekonq
-            apt install rekonq -y
-         ;;
-         "18") #Netsurf
+            ;;
+        "16") #Netsurf
             apt install netsurf-gtk -y
-         ;;
-         "19") #Dillo
+            ;;
+        "17") #Dillo
             apt install dillo -y
-         ;;
-         "20") #Lynx
+            ;;
+        "18") #Lynx
             apt install lynx -y
-         ;;
+            ;;
+        "19") #Rekonq
+            apt install rekonq -y
+            ;;
+        "20") #Eolie via Flatpak
+            flatpak install --from https://flathub.org/repo/appstream/org.gnome.Eolie.flatpakref -y
+            ;;
     esac
 done
 
@@ -703,40 +703,41 @@ do
         "11") #mumble
             apt install mumble -y
             ;;    
-        "12") #teamspeak (vérifier le fonctionnement, demande peut être intervention pour l'install)
-            wget http://dl.4players.de/ts/releases/3.1.6/TeamSpeak3-Client-linux_amd64-3.1.6.run
-            chmod +x TeamSpeak3-Client-linux_amd64-3.1.6.run
-            ./TeamSpeak3-Client-linux_amd64-3.1.6.run
-            ;;       
-        "13") #discord (via snap)
-            snap install discord
-            ;;                         
-        "14") #tox
-            apt install tox -y
-            ;;               
-        "15") #viber
-            flatpak install --from https://flathub.org/repo/appstream/com.viber.Viber.flatpakref -y
-            ;;               
-        "16") #telegram (Snap)
-            snap install telegram-sergiusens
-            ;;              
-        "17") #wire
+        "12") #wire
             apt-key adv --fetch-keys http://wire-app.wire.com/linux/releases.key
             echo "deb https://wire-app.wire.com/linux/debian stable main" | tee /etc/apt/sources.list.d/wire-desktop.list
             apt update ; apt install apt-transport-https wire-desktop -y
             ;;               
-        "18") #hexchat
+        "13") #hexchat
             apt install hexchat hexchat-plugins -y
-            ;; 
+            ;;       
+        "14") #Polari
+            apt install polari -y
+            ;;                       
+        "15") #discord (via snap)
+            snap install discord
+            ;;
+        "16") #telegram (Snap)
+            snap install telegram-sergiusens
+            ;;                 
+        "17") #viber
+            flatpak install --from https://flathub.org/repo/appstream/com.viber.Viber.flatpakref -y
+            ;;               
+        "18") #Slack (flatpak)
+            flatpak install --from https://flathub.org/repo/appstream/com.slack.Slack.flatpakref -y
+            ;;          
+
         "19") #signal (flatpak)
             flatpak install --from https://vrutkovs.github.io/flatpak-signal/signal.flatpakref -y
             ;;           
-        "20") #Polari
-            apt install polari -y
-            ;;
-        "21") #Slack (flatpak)
-            flatpak install --from https://flathub.org/repo/appstream/com.slack.Slack.flatpakref -y
-            ;;     
+        "20") #tox/qtpx
+            apt install tox -y
+            ;;  
+        "21") #teamspeak (vérifier le fonctionnement, demande peut être intervention pour l'install)
+            wget http://dl.4players.de/ts/releases/3.1.6/TeamSpeak3-Client-linux_amd64-3.1.6.run
+            chmod +x TeamSpeak3-Client-linux_amd64-3.1.6.run
+            ./TeamSpeak3-Client-linux_amd64-3.1.6.run
+            ;; 
     esac
 done
 
@@ -758,42 +759,42 @@ do
             ;;         
         "6") #Bittorrent
             apt install bittorrent bittorrent-gui -y
-            ;;            
-        "7") #Vuze
-            snap install vuze-vs
-            ;;           
-        "8") #aMule
+            ;;                 
+        "7") #aMule
             apt install amule -y
             ;;           
-        "9") #FrostWire
+        "8") #FrostWire
             wget https://netcologne.dl.sourceforge.net/project/frostwire/FrostWire%206.x/6.5.9-build-246/frostwire-6.5.9.all.deb
             dpkg -i frostwire-6.5.9.all.deb
             apt install -fy
             ;;        
-        "10") #Gtk-Gnutella
+        "9") #Gtk-Gnutella
             apt install gtk-gnutella -y
             ;;    
-        "11") #EiskaltDC++
+        "10") #EiskaltDC++
             apt install eiskaltdcpp eiskaltdcpp-gtk3 -y
             ;;       
-        "12") #RetroShare
+        "11") #RetroShare
             add-apt-repository ppa:ppa:retroshare/stable -y
             apt update ; apt install retroshare -y
             ;;                         
-        "13") #Calypso
+        "12") #Calypso
             wget https://netcologne.dl.sourceforge.net/project/calypso/kommute/0.24/kommute_0.24-2_i386.deb
             dpkg -i kommute_0.24-2_i386.deb
             apt install -fy
             ;;               
-        "14") #Grsync
+        "13") #Grsync
             apt install grsync -y
             ;;               
-        "15") #SubDownloader
+        "14") #SubDownloader
             apt install subdownloader -y
             ;;              
-        "16") #Nicotine+ 
+        "15") #Nicotine+ 
             apt install nicotine -y
-            ;;                   
+            ;;  
+        "16") #Vuze
+            snap install vuze-vs
+            ;;  
         "17") #Gydl
             flatpak install --from https://flathub.org/repo/appstream/com.github.JannikHv.Gydl.flatpakref -y
             ;;   
@@ -812,46 +813,46 @@ do
             ;;
         "4") #SmPlayer
             apt install smplayer smplayer-l10n smplayer-themes -y
-            ;;
-        "5") #gxine
-            apt install gxine  -y
-            ;;         
-        "6") #dragonplayer
+            ;;       
+        "5") #dragonplayer
             apt install dragonplayer -y
             ;;
-        "7") #Banshee + extensions
+        "6") #Banshee
             apt install banshee -y
             ;;            
-        "8") #Clementine
+        "7") #Clementine
             apt install clementine -y
             ;;           
-        "9") #QuodLibet
+        "8") #QuodLibet
             apt install quodlibet -y
             ;;           
-        "10") #audacious
+        "9") #audacious
             apt install audacious audacious-plugins -y
             ;;        
-        "11") #Guayadeque #(dépot pour Artful utilisé car Bionic pas encore activé mais fonctionnement validé)
+        "10") #Guayadeque #(dépot pour Artful utilisé car Bionic pas encore activé mais fonctionnement validé)
             echo "deb http://ppa.launchpad.net/anonbeat/guayadeque/ubuntu artful main" >> /etc/apt/sources.list.d/anonbeat-ubuntu-guayadeque-bionic.list
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 95FABEFB4499973B
             apt update
             apt install guayadeque -y
             ;;    
-        "12") #gnome music
+        "11") #gnome music
             apt install gnome-music -y
             ;;       
-        "13") #gmusicbrowser
+        "12") #gmusicbrowser
             apt install gmusicbrowser -y
             ;;                         
-        "14") #musique
+        "13") #musique
             apt install musique -y
             ;;               
-        "15") #qmmp
+        "14") #qmmp
             apt install qmmp -y
             ;;               
-        "16") #xmms2 + plugins
+        "15") #xmms2 + plugins
             apt install xmms2 xmms2-plugin-all gxmms2 -y
             ;;              
+        "16") #Gnome Twitch
+            apt install gnome-twitch -y
+            ;;         
         "17") #Lollypop 
             flatpak install --from https://flathub.org/repo/appstream/org.gnome.Lollypop.flatpakref -y
             ;;             
@@ -860,17 +861,17 @@ do
             ;;     
         "19") #MuseScore (via flatpak)
             flatpak install --from https://flathub.org/repo/appstream/org.musescore.MuseScore.flatpakref -y
-            ;;         
-        "20") #Gnome Twitch
-            apt install gnome-twitch -y
-            ;;         
-        "21") #Gradio (flatpak)
-            flatpak install --from https://flathub.org/repo/appstream/de.haeckerfelix.gradio.flatpakref -y
             ;;    
-        "22") #Molotov.tv (appimage)
+        "20") #Gradio (flatpak)
+            flatpak install --from https://flathub.org/repo/appstream/de.haeckerfelix.gradio.flatpakref -y
+            ;;  
+        "21") #Molotov.tv (appimage)
             wget https://desktop-auto-upgrade.s3.amazonaws.com/linux/1.8.0/molotov
             mv molotov molotov.AppImage && chmod +x molotov.AppImage
             ;; 
+        "22") #gxine
+            apt install gxine  -y
+            ;;  
     esac
 done
 
@@ -898,52 +899,52 @@ do
             ;;
         "8") #Lives
             apt install lives -y
-            ;;         
-        "9") #Shotcut (Snap)
-            snap install shotcut --classic
             ;;            
-        "10") #SlowMoVideo
-            add-apt-repository ppa:ubuntuhandbook1/slowmovideo -y
-            apt update ; apt install slowmovideo -y
-            ;;           
-        "11") #Flowblade
+        "9") #Flowblade
             apt install flowblade -y
             ;;           
-        "12") #Cinelerra  #vérifier stabilité !!!
+        "10") #Cinelerra
             add-apt-repository ppa:cinelerra-ppa/ppa -y
             apt update ; apt install cinelerra-cv -y
             ;;        
-        "13") #Natron
+        "11") #Natron
             wget https://downloads.natron.fr/Linux/releases/64bit/files/natron_2.3.3_amd64.deb
             dpkg -i natron_2.3.3_amd64.deb
             apt install -fy
             ;;    
-        "14") #LightWorks (a tester sur une vrai machine, KO sur VM)
+        "12") #LightWorks 
             wget https://downloads.lwks.com/v14/lwks-14.0.0-amd64.deb
             dpkg -i lwks-14.0.0-amd64.deb
             apt install -fy
-            ;;                             
-        "15") #Avidemux (AppImage)
-            wget http://nux87.free.fr/script-postinstall-ubuntu/appimage/avidemux2.7.0.AppImage
-            chmod +x avidemux2.7.0.AppImage
-            ;;               
-        "16") #Mencoder
+            ;;                                   
+        "13") #Mencoder
             apt install mencoder -y
             ;;               
-        "17") #MMG MkvMergeGui
+        "14") #MMG MkvMergeGui
             apt install mkvtoolnix mkvtoolnix-gui -y
             ;;              
-        "18") #DeVeDe 
+        "15") #DeVeDe 
             apt install devede -y
             ;;     
-        "19") #Jahshaka 
+        "16") #Peek (via Flatpak)
+            flatpak install --from https://flathub.org/repo/appstream/com.uploadedlobster.peek.flatpakref -y
+            ;;  
+        "17") #Avidemux (AppImage)
+            wget http://nux87.free.fr/script-postinstall-ubuntu/appimage/avidemux2.7.0.AppImage
+            chmod +x avidemux2.7.0.AppImage
+            ;;    
+        "18") #Jahshaka 
             apt install libfuse2:i386 -y 
             wget https://netix.dl.sourceforge.net/project/portable/Jahshaka%202.0
             chmod +x Jahshaka*
-            ;;             
-        "20") #Peek (via Flatpak)
-            flatpak install --from https://flathub.org/repo/appstream/com.uploadedlobster.peek.flatpakref -y
-            ;;  
+            ;;    
+        "19") #Shotcut (Snap)
+            snap install shotcut --classic
+            ;;   
+        "20") #SlowMoVideo
+            add-apt-repository ppa:ubuntuhandbook1/slowmovideo -y
+            apt update ; apt install slowmovideo -y
+            ;;              
     esac
 done
 
@@ -1025,30 +1026,30 @@ do
         "7") #MhWaveEdit
             apt install mhwaveedit -y
             ;;         
-        "8") #Flacon
-            snap install flacon-tabetai
-            ;;
-        "9") #RipperX
+        "8") #RipperX
             apt install ripperx -y
             ;;                     
-        "10") #LMMS
+        "9") #LMMS
             apt install lmms -y
             ;;           
-        "11") #MiXX
+        "10") #MiXX
             apt install mixxx -y
             ;;        
-        "12") #Ardour
-            apt install ardour ardour-video-timeline -y
-            ;;    
-        "13") #Rosegarden
+        "11") #Rosegarden
             apt install rosegarden -y
             ;;           
-        "14") #Pavucontrol
+        "12") #Pavucontrol
             apt install pavucontrol -y
             ;;   
-        "15") #lame
+        "13") #lame
             apt install lame -y
-            ;;   
+            ;;
+        "14") #Ardour
+            apt install ardour ardour-video-timeline -y
+            ;;                
+        "15") #Flacon
+            snap install flacon-tabetai
+            ;;            
         "16") #PulseEffects
             flatpak install --from https://flathub.org/repo/appstream/com.github.wwmm.pulseeffects.flatpakref -y
             ;;   
@@ -1063,65 +1064,65 @@ do
             apt install libreoffice libreoffice-style-oxygen libreoffice-style-human libreoffice-style-sifrm libreoffice-wiki-publisher -y
             apt install libreoffice-dmaths libreoffice-templates openclipart-libreoffice libreoffice-nlpsolver -y
             ;;
-        "3") #MailSpring (Snap)
-            snap install mailspring
-            ;;
-        "4") #Marp
-            wget https://github.com/yhatt/marp/releases/download/v0.0.11/0.0.11-Marp-linux-x64.tar.gz 
-            mkdir marp && tar xvf 0.0.11-Marp-linux-x64.tar.gz -C marp/
-            chmod +x ./marp/Marp
-            ;;
-        "5") #PDFMod
+        "3") #PDFMod
             apt install pdfmod -y 
             ;;
-        "6") #Scenari (dépot pas encore actif pour 18.04)
+        "4") #Scenari (dépot pas encore actif pour 18.04)
             echo "deb https://download.scenari.org/deb xenial main" > /etc/apt/sources.list.d/scenari.list
             wget -O- https://download.scenari.org/deb/scenari.asc | apt-key add -
             apt update
             apt install scenarichain4.2.fr-fr opale3.6.fr-fr -y
             ;;
-        "7") #Freeplane
+        "5") #Freeplane
             apt install freeplane -y
             ;;
-        "8") #Feedreader
+        "6") #Feedreader
             flatpak install --from https://flathub.org/repo/appstream/org.gnome.FeedReader.flatpakref -y
             ;;
-        "9") #Geary
+        "7") #Geary
             apt install geary -y
             ;;        
-        "10") #Gnome Evolution
-            apt install evolution -y
-            ;; 
-        "11") #WPS Office
-            wget http://kdl1.cache.wps.com/ksodl/download/linux/a21//wps-office_10.1.0.5707~a21_amd64.deb
-            dpkg -i wps-office_10.1.0.5707~a21_amd64.deb
-            apt install -fy
-            ;; 
-        "12") #OnlyOffice
-            wget http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
-            dpkg -i onlyoffice-desktopeditors_amd64.deb
-            apt install -fy
-            ;; 
-        "13") #Gnome Office
+        "8") #Gnome Office
             apt install abiword gnumeric dia planner glabels glom tomboy gnucash -y
             ;; 
-        "14") #Apache OpenOffice
+        "9") #Wordgrinder
+            apt install wordgrinder -y
+            ;;            
+        "10") #Latex
+            apt install texlive texlive-lang-french texlife-latex-extra texworks -y
+            ;; 
+        "11") #Gnome Evolution
+            apt install evolution -y
+            ;;  
+        "12") #MailSpring (Snap)
+            snap install mailspring
+            ;;            
+        "13") #Apache OpenOffice
             wget https://freefr.dl.sourceforge.net/project/openofficeorg.mirror/4.1.4/binaries/fr/Apache_OpenOffice_4.1.4_Linux_x86_install-deb_fr.tar.gz
             tar zxvf Apache_OpenOffice_4.1.4_Linux_x86_install-deb_fr.tar.gz
             dpkg -i ./fr/DEBS/*.deb ; dpkg -i ./fr/DEBS/desktop-integration/open*.deb
             apt install -fy
             ;; 
-        "15") #OOo4Kids
+        "14") #OOo4Kids
             wget https://downloads.sourceforge.net/project/educooo/OOo4Kids/Linux/deb/dists/testing/main/binary-amd64/ooo4kids-fr_1.3-1_amd64.deb
             dpkg -i ooo4kids-fr_1.3-1_amd64.deb
             apt install -fy
-            ;;            
-        "16") #Wordgrinder
-            apt install wordgrinder -y
-            ;;            
-        "17") #Latex
-            apt install texlive texlive-lang-french texlife-latex-extra texworks -y
+            ;;               
+        "15") #WPS Office
+            wget http://kdl1.cache.wps.com/ksodl/download/linux/a21//wps-office_10.1.0.5707~a21_amd64.deb
+            dpkg -i wps-office_10.1.0.5707~a21_amd64.deb
+            apt install -fy
+            ;; 
+        "16") #OnlyOffice
+            wget http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
+            dpkg -i onlyoffice-desktopeditors_amd64.deb
+            apt install -fy
             ;;             
+        "17") #Marp
+            wget https://github.com/yhatt/marp/releases/download/v0.0.11/0.0.11-Marp-linux-x64.tar.gz 
+            mkdir marp && tar xvf 0.0.11-Marp-linux-x64.tar.gz -C marp/
+            chmod +x ./marp/Marp
+            ;;            
     esac
 done
 
@@ -1232,38 +1233,38 @@ do
             chmod +x VMware-Player-12.5.7-5813279.x86_64.bundle
             ./VMware-Player-12.5.7-5813279.x86_64.bundle
             ;;  
-        "13") #Bleachbit
-            apt install bleachbit -y
-            ;;        
-        "14") #KeepassX2
+        "13") #KeepassX2
             apt install keepassx -y
             ;; 
-        "15") #Teamviewer
+        "14") #Teamviewer
             wget https://dl.tvcdn.de/download/version_12x/teamviewer_12.0.85001_i386.deb
             dpkg -i teamviewer_12.0.85001_i386.deb
             apt install -fy
             ;;   
-        "16") #Cheese
+        "15") #Cheese
             apt install cheese -y
             ;; 
-        "17") #Corebird
-            flatpak install --from https://flathub.org/repo/appstream/org.baedert.corebird.flatpakref -y
-            ;;   
-        "18") #Gnome Recipes
+        "16") #Gnome Recipes
             apt install gnome-recipes -y
             ;;   
-        "19") #Gufw
+        "17") #Gufw
             apt install gufw -y
             ;;  
-        "20") #Gnome Encfs Manager (dépot Xenial car Bionic pas encore actif)
+        "18") #Pack cyber-sécurité
+            apt install aircrack-ng wireshark nmap -y
+            snap install john-the-ripper
+            ;;  
+        "19") #Gnome Encfs Manager (dépot Xenial car Bionic pas encore actif)
             add-apt-repository "deb http://ppa.launchpad.net/gencfsm/ppa/ubuntu xenial main" -y
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 6A0344470F68ADCA
             apt update ; apt install gnome-encfs-manager -y
-            ;; 
-        "21") #Pack cyber-sécurité
-            apt install aircrack-ng wireshark nmap -y
-            snap install john-the-ripper
             ;;             
+        "20") #Bleachbit
+            apt install bleachbit -y
+            ;;              
+        "21") #Corebird
+            flatpak install --from https://flathub.org/repo/appstream/org.baedert.corebird.flatpakref -y
+            ;;               
     esac
 done
 
@@ -1317,18 +1318,18 @@ do
         "14") #Gnome Games (verifier si gg-app utile)
             apt install gnome-games gnome-games-app -y
             ;;  
-        "15") #Albion online
-            flatpak install --from https://flathub.org/repo/appstream/com.albiononline.AlbionOnline.flatpakref -y
-            ;;
-        "16") #Megaglest
+        "15") #Megaglest
             apt install megaglest -y
             ;;
-        "17") #Pingus
+        "16") #Pingus
             apt install pingus -y            
             ;;
-        "18") #Battle for Wesnoth
+        "17") #Battle for Wesnoth
             flatpak install --from https://flathub.org/repo/appstream/org.wesnoth.Wesnoth.flatpakref -y   
             ;;
+        "18") #Albion online
+            flatpak install --from https://flathub.org/repo/appstream/com.albiononline.AlbionOnline.flatpakref -y
+            ;;            
         "19") #Runscape
             flatpak install --from https://flathub.org/repo/appstream/com.jagex.RuneScape.flatpakref -y   
             ;;
@@ -1468,64 +1469,64 @@ do
         "4") #Geany (verifier les extensions)
             apt install geany geany-plugins geany-plugin-* -y
             ;;
-        "5") #PyCharm
-            snap install pycharm-community
-            ;;
-        "6") #Visual Studio Code
-            snap install vscode --classic
-            ;;
-        "7") #Atom
-            snap install atom --classic
-            ;;
-        "8") #Brackets
-            snap install brackets --classic
-            ;;         
-        "9") #Sublime Text
+        "5") #Sublime Text
             wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
             apt install apt-transport-https -y
             echo "deb https://download.sublimetext.com/ apt/stable/" | tee /etc/apt/sources.list.d/sublime-text.list
             apt update ; apt install sublime-text -y
             ;;
-        "10") #Code:Blocks
+        "6") #Code:Blocks
             apt install codeblocks codeblocks-contrib -y
             ;;           
-        "11") #IntelliJ Idea
-            snap install intellij-idea-community --classic 
-            ;;
-        "12") #JEdit
+        "7") #JEdit
             apt instakk jedit -y
             ;;
-        "13") #Eclipse
+        "8") #Eclipse
             wget http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/oomph/epp/oxygen/R/eclipse-inst-linux64.tar.gz
             tar xvfz eclipse-inst-linux64.tar.gz
             chmod +x ./eclipse-installer/eclipse-inst
             ./eclipse-installer/eclipse-inst
             ;;
-        "14") #Anjuta
+        "9") #Anjuta
             apt install anjuta anjuta-extras -y
             ;;
-        "15") #develop
+        "10") #develop
             #????
             ;;
-        "16") #Android Studio (dépot Artful car Bionic pas actif)
+        "11") #Android Studio (dépot Artful car Bionic pas actif)
             add-apt-repository "deb http://ppa.launchpad.net/maarten-fonville/android-studio/ubuntu artful main" -y
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4DEA8909DC6A13A3
             apt update ; apt install android-studio -y
             ;;
-        "17") #Netbeans
+        "12") #Netbeans
             apt install netbeans -y
             ;;         
-        "18") #BlueFish
+        "13") #BlueFish
             apt install bluefish bluefish-plugins -y
             ;;
-        "19") #BlueGriffon
+        "14") #BlueGriffon
             wget http://ftp.heanet.ie/pub/www.getdeb.net/getdeb/ubuntu/pool/apps/b/bluegriffon/bluegriffon_1.7.2-1~getdeb2~raring_amd64.deb
             dpkg -i bluegriffon_1.7.2-1~getdeb2~raring_amd64.deb
             apt install -fy
             ;;         
-        "20") #SciTE
+        "15") #SciTE
             apt install scite -y
             ;;  
+        "16") #PyCharm
+            snap install pycharm-community
+            ;;
+        "17") #Visual Studio Code
+            snap install vscode --classic
+            ;;
+        "18") #Atom
+            snap install atom --classic
+            ;;
+        "19") #Brackets
+            snap install brackets --classic
+            ;;      
+        "20") #IntelliJ Idea
+            snap install intellij-idea-community --classic 
+            ;;            
     esac
 done
 
