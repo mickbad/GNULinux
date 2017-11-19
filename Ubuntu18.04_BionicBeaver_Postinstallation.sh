@@ -1284,7 +1284,7 @@ do
             apt install -fy
             ;;
         "5") #Minetest + mods (à tester)
-            apt install minetest minetest-mod-* -y
+            apt install minetest -y
             ;;
         "6") #OpenArena
             apt install openarena -y
