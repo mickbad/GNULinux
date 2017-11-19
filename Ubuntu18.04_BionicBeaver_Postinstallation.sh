@@ -1283,7 +1283,7 @@ do
             dpkg -i minecraft-installer_0.1+r12~ubuntu16.04.1_amd64.deb
             apt install -fy
             ;;
-        "5") #Minetest + mods (à tester)
+        "5") #Minetest 
             apt install minetest -y
             ;;
         "6") #OpenArena
