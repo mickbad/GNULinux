@@ -217,15 +217,15 @@ then
     echo "[9] Flowblade [Pour Xorg uniquement!] (Logiciel de montage video multi-piste performant)"
     echo "[10] Cinelerra (montage non-linéaire sophistiqué, équivalent à Adobe première, Final Cut et Sony Vegas"
     echo "[11] Natron (programme de post-prod destiné au compositing et aux effets spéciaux)"
-    echo "[12] LightWorks [A tester sur une MP]"
-    echo "[13] Mencoder (s'utilise en ligne de commande : encodage de fichier vidéo)"
-    echo "[14] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
-    echo "[15] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
-    echo "[16] Peek [Flatpak] [Pour Xorg uniquement!] [A tester sur MP](Outil de création de Gif animé à partir d'une capture vidéo)"
-    echo "[17] Avidemux [Appimage] (Équivalent de 'VirtualDub' : coupe, filtre et ré-encodage)"
-    echo "[18] Jahshaka [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[19] Shotcut [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[20] SlowMoVideo [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[12] Mencoder (s'utilise en ligne de commande : encodage de fichier vidéo)"
+    echo "[13] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
+    echo "[14] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
+    echo "[15] Peek [Flatpak] (Outil de création de Gif animé à partir d'une capture vidéo)"
+    echo "[16] Avidemux [Appimage] (Équivalent de 'VirtualDub' : coupe, filtre et ré-encodage)"
+    echo "[17] Jahshaka [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[18] Shotcut [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[19] SlowMoVideo [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[20] LightWorks [NE FONCTIONNE PAS : Ne pas sélectionner !]"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
     clear
 
@@ -245,7 +245,7 @@ then
     echo "[10] Darktable (gestionnaire de photos libre sous forme de table lumineuse et chambre noir)"
     echo "[11] Blender (suite libre de modélisation 3d, matériaux et textures, d'éclairage, d'animation...)"
     echo "[12] K-3D (Animation et modélisation polygonale et modélisation par courbes)"
-    echo "[13] SweetHome 3D [affichage à tester sur MP] (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
+    echo "[13] SweetHome 3D (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
     echo "[14] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
     echo "[15] Shutter [Pour Xorg uniquement!] (pour effectuer des captures d'écran + appliquer des modifications diverses)"
     echo "[16] Frogr (Utile pour ceux qui utilisent le service web 'Flickr')"
@@ -317,8 +317,8 @@ then
     echo "[11] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
     echo "[12] [TECHNO] Scratch 1.4 (langage de prog visuel libre, créé par le MIT, à vocation éducative et ludique)"
     echo "[13] [TECHNO] mBlock (environnement de programmation par blocs basé sur Scratch 2, permet le pilotage d'Arduino"
-    echo "[14] [TECHNO] Phratch [A tester sur MP] (fork de Scratch, 100% libre, sans besoin de Flash ni d'Adobe Air)"
-    echo "[15] [TECHNO] Récupérer Algoid [.jar] (Language de programmation éducatif)"
+    echo "[14] [TECHNO] Récupérer Algoid [.jar] (Language de programmation éducatif)"
+    echo "[15] [TECHNO] Phratch [NE FONCTIONNE PAS : Ne pas sélectionner !]"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
     clear
 
@@ -366,13 +366,12 @@ then
     echo "[10] SuperTuxKart (clone de Super Mario Kart)"
     echo "[11] Assault Cube (clone de Counter Strike)"
     echo "[12] World Of Padman (jeu de tir basé sur Quake 3 avec des graphismes amusant)"
-    echo "[13] Second Life (métavers 3D sortie en 2003 sur le modèle f2p)"
-    echo "[14] Gnome Games (Pack d'une dizaine de mini-jeux pour Gnome)"
-    echo "[15] Megaglest (RTS 3d dans un monde fantastique avec 2 factions qui s'affrontent : la magie et la technologie)"
-    echo "[16] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
-    echo "[17] Battle for Wesnoth [Flatpak] (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
-    echo "[18] Albion Online [Flatpak] (MMORPG avec système de quête et donjons)"
-    echo "[19] RunScape [Flatpak] (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
+    echo "[13] Gnome Games (Pack d'une dizaine de mini-jeux pour Gnome)"
+    echo "[14] Megaglest (RTS 3d dans un monde fantastique avec 2 factions qui s'affrontent : la magie et la technologie)"
+    echo "[15] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
+    echo "[16] Battle for Wesnoth [Flatpak] (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
+    echo "[17] Albion Online [Flatpak] (MMORPG avec système de quête et donjons)"
+    echo "[18] RunScape [Flatpak] (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
     clear
 fi
@@ -911,40 +910,40 @@ do
             wget https://downloads.natron.fr/Linux/releases/64bit/files/natron_2.3.3_amd64.deb
             dpkg -i natron_2.3.3_amd64.deb
             apt install -fy
-            ;;    
-        "12") #LightWorks 
-            wget https://downloads.lwks.com/v14/lwks-14.0.0-amd64.deb
-            dpkg -i lwks-14.0.0-amd64.deb
-            apt install -fy
             ;;                                   
-        "13") #Mencoder
+        "12") #Mencoder
             apt install mencoder -y
             ;;               
-        "14") #MMG MkvMergeGui
+        "13") #MMG MkvMergeGui
             apt install mkvtoolnix mkvtoolnix-gui -y
             ;;              
-        "15") #DeVeDe 
+        "14") #DeVeDe 
             apt install devede -y
             ;;     
-        "16") #Peek (via Flatpak)
+        "15") #Peek (via Flatpak)
             flatpak install --from https://flathub.org/repo/appstream/com.uploadedlobster.peek.flatpakref -y
             ;;  
-        "17") #Avidemux (AppImage)
+        "16") #Avidemux (AppImage)
             wget http://nux87.free.fr/script-postinstall-ubuntu/appimage/avidemux2.7.0.AppImage
             chmod +x avidemux2.7.0.AppImage
             ;;    
-        "18") #Jahshaka 
+        "17") #Jahshaka 
             apt install libfuse2:i386 -y 
             wget https://netix.dl.sourceforge.net/project/portable/Jahshaka%202.0
             chmod +x Jahshaka*
             ;;    
-        "19") #Shotcut (Snap)
+        "18") #Shotcut (Snap)
             snap install shotcut --classic
             ;;   
-        "20") #SlowMoVideo
+        "19") #SlowMoVideo
             add-apt-repository ppa:ubuntuhandbook1/slowmovideo -y
             apt update ; apt install slowmovideo -y
-            ;;              
+            ;;  
+        "20") #LightWorks 
+            wget https://downloads.lwks.com/v14/lwks-14.0.0-amd64.deb
+            dpkg -i lwks-14.0.0-amd64.deb
+            apt install -fy
+            ;;                
     esac
 done
 
@@ -1177,15 +1176,15 @@ do
             tar zxvf mBlock-4.0.0-linux-4.0.0.tar.gz -C /opt/
             ln -s /opt/mBlock/mblock /home/$SUDO_USER/raccourci_mblock
             ;;
-        "14") #Phratch (a vérifier)
+        "14") #AlgoIDE 
+            wget http://www.algoid.net/downloads/AlgoIDE-release.jar
+            chmod +x AlgoIDE-release.jar
+            ;;
+        "15") #Phratch 
             wget http://phratch.com/download/Phratch4.1-linux.zip
             unzip Phratch4.1-linux.zip
             chmod +x ./Phratch/phratch
-            ;;  
-        "15") #AlgoIDE (a vérifier)
-            wget http://www.algoid.net/downloads/AlgoIDE-release.jar
-            chmod +x AlgoIDE-release.jar
-            ;;             
+            ;;              
     esac
 done
 
@@ -1278,10 +1277,10 @@ do
         "3") #PlayOnLinux
             apt install playonlinux -y
             ;;
-        "4") #Minecraft  (a tester si c'est ok sinon choisir autre méthode d'install)
+        "4") #Minecraft 
+            apt install curl -y
             wget http://packages.linuxmint.com/pool/import/m/minecraft-installer/minecraft-installer_0.1+r12~ubuntu16.04.1_amd64.deb
-            dpkg -i minecraft-installer_0.1+r12~ubuntu16.04.1_amd64.deb
-            apt install -fy
+            dpkg -i minecraft-installer_0.1+r12~ubuntu16.04.1_amd64.deb ; apt install -fy
             ;;
         "5") #Minetest 
             apt install minetest -y
@@ -1308,29 +1307,23 @@ do
         "12") #World Of Padman
             wget https://netix.dl.sourceforge.net/project/worldofpadman/wop-1.5.x-to-1.6-patch-unified.zip
             unzip wop-1.5.x-to-1.6-patch-unified.zip
-            ;;
-        "13") #Second Life (a mon avis ne marchera pas, a tester)
-            wget http://download.cloud.secondlife.com/Viewer_5/Second_Life_5_0_8_329115_i686.tar.bz2
-            tar jxvf Second_Life_5_0_8_329115_i686.tar.bz2
-            chmod +x ./Second_Life_5_0_8_329115_i686/install.sh
-            ./Second_Life_5_0_8_329115_i686/install.sh
-            ;;            
-        "14") #Gnome Games (verifier si gg-app utile)
+            ;;        
+        "13") #Gnome Games (verifier si gg-app utile)
             apt install gnome-games gnome-games-app -y
             ;;  
-        "15") #Megaglest
+        "14") #Megaglest
             apt install megaglest -y
             ;;
-        "16") #Pingus
+        "15") #Pingus
             apt install pingus -y            
             ;;
-        "17") #Battle for Wesnoth
+        "16") #Battle for Wesnoth
             flatpak install --from https://flathub.org/repo/appstream/org.wesnoth.Wesnoth.flatpakref -y   
             ;;
-        "18") #Albion online
+        "17") #Albion online
             flatpak install --from https://flathub.org/repo/appstream/com.albiononline.AlbionOnline.flatpakref -y
             ;;            
-        "19") #Runscape
+        "18") #Runscape
             flatpak install --from https://flathub.org/repo/appstream/com.jagex.RuneScape.flatpakref -y   
             ;;
     esac
