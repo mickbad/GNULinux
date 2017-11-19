@@ -486,8 +486,8 @@ then
     echo "[10] Ajouter le support pour le système de fichier HFS d'Apple"
     echo "[11] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
     echo "[12] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
-    echo "[13] Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
-    echo "[14] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
+    echo "[13] [pas encore actif]Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
+    echo "[14] [pas encore actif]Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
     echo "[15] Support imprimantes HP (hplip + sane + hplip-gui)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
     clear
@@ -498,7 +498,7 @@ if [ "$choixMode" = "3" ]
 then
     # Question 19 : Snap
     echo "*******************************************************"
-    echo "19/ Mode Extra : supplément paquet Snap : "
+    echo "19/ [pas encore actif]Mode Extra : supplément paquet Snap : "
     echo "*******************************************************"
     echo "[1] Aucun"
     echo "[2] ..."
@@ -507,7 +507,7 @@ then
     
     # Question 20 : Flatpak
     echo "*******************************************************"
-    echo "20/ Mode Extra : supplément paquet Flatpak : "
+    echo "20/ [pas encore actif]Mode Extra : supplément paquet Flatpak : "
     echo "*******************************************************"
     echo "[1] Aucun"
     echo "[2] ..."
@@ -516,7 +516,7 @@ then
 
     # Question 21 : Appimages
     echo "*******************************************************"
-    echo "21/ Mode Extra : récupération Appimages: "
+    echo "21/ [pas encore actif]Mode Extra : récupération Appimages: "
     echo "*******************************************************"
     echo "[1] Aucune"
     echo "[2] ..."
