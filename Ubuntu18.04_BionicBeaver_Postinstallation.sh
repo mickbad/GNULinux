@@ -366,13 +366,12 @@ then
     echo "[9] SuperTux (clone de Super Mario mais avec un pingouin)"
     echo "[10] SuperTuxKart (clone de Super Mario Kart)"
     echo "[11] Assault Cube (clone de Counter Strike)"
-    echo "[12] World Of Padman (jeu de tir basé sur Quake 3 avec des graphismes amusant)"
-    echo "[13] Gnome Games (Pack d'une dizaine de mini-jeux pour Gnome)"
-    echo "[14] Megaglest (RTS 3d dans un monde fantastique avec 2 factions qui s'affrontent : la magie et la technologie)"
-    echo "[15] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
-    echo "[16] Battle for Wesnoth [Flatpak] (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
-    echo "[17] Albion Online [Flatpak] (MMORPG avec système de quête et donjons)"
-    echo "[18] RunScape [Flatpak] (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
+    echo "[12] Gnome Games (Pack d'une dizaine de mini-jeux pour Gnome)"
+    echo "[13] Megaglest (RTS 3d dans un monde fantastique avec 2 factions qui s'affrontent : la magie et la technologie)"
+    echo "[14] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
+    echo "[15] Battle for Wesnoth [Flatpak] (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
+    echo "[16] Albion Online [Flatpak] (MMORPG avec système de quête et donjons)"
+    echo "[17] RunScape [Flatpak] (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
     clear
 fi
@@ -1307,27 +1306,23 @@ do
             ;;   
         "11") #Assault Cube
             apt install assaultcube -y
-            ;;         
-        "12") #World Of Padman
-            wget https://netix.dl.sourceforge.net/project/worldofpadman/wop-1.5.x-to-1.6-patch-unified.zip
-            unzip wop-1.5.x-to-1.6-patch-unified.zip
-            ;;        
-        "13") #Gnome Games (verifier si gg-app utile)
+            ;;               
+        "12") #Gnome Games (verifier si gg-app utile)
             apt install gnome-games gnome-games-app -y
             ;;  
-        "14") #Megaglest
+        "13") #Megaglest
             apt install megaglest -y
             ;;
-        "15") #Pingus
+        "14") #Pingus
             apt install pingus -y            
             ;;
-        "16") #Battle for Wesnoth
+        "15") #Battle for Wesnoth
             flatpak install --from https://flathub.org/repo/appstream/org.wesnoth.Wesnoth.flatpakref -y   
             ;;
-        "17") #Albion online
+        "16") #Albion online
             flatpak install --from https://flathub.org/repo/appstream/com.albiononline.AlbionOnline.flatpakref -y
             ;;            
-        "18") #Runscape
+        "17") #Runscape
             flatpak install --from https://flathub.org/repo/appstream/com.jagex.RuneScape.flatpakref -y   
             ;;
     esac
