@@ -145,7 +145,7 @@ then
     echo "[18] Slack [Flatpak] (plate-forme de communication collaborative propriétaire avec gestion de projets)"
     echo "[19] Signal [Flatpak] Experimental ! (Messagerie instantannée crypté recommandé par Edward Snowden)"
     echo "[20] qTox [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[21] TeamSpeak [Demande Interv!] [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[21] TeamSpeak [Demande Interv!] (Conversation audio à plusieurs pour les gameurs, propriétaire)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 18) : " choixMessagerie
     clear
 
