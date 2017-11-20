@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.41 (alpha)
+# version 0.0.42 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -498,30 +498,87 @@ then
     echo "19/ [pas encore actif]Mode Extra : supplément paquet Snap : "
     echo "*******************************************************"
     echo "[1] Aucun"
-    echo "[2] ..."
+    echo "[2] VLC"
+    echo "[3] LibreOffice"
+    echo "[4] 0ad"
+    echo "[5] Dino"
+    echo "[6] Gimp"
+    echo "[7] Instagraph"
+    echo "[8] KeepassXC"
+    echo "[9] Ktube media downloader"
+    echo "[10] Warzone 2100"
+    echo "[11] Asciinema [isolation --classic]"
+    echo "[12] Bitcoin"
+    echo "[13] Blender [isolation --classic]"
+    echo "[14] Electrum"
+    echo "[15] NextCloud cli"
+    echo "[16] Paint suprem 3D"
+    echo "[17] PyCharm édition Professionnelle [isolation --classic]"
+    echo "[18] Qimo Wallpapers"
+    echo "[19] Quassel client"
+    echo "[20] Rube cube"
+    echo "[21] TermiusApp"
+    echo "[22] TicTacToe"
     read -p "Choix snappy : " choixSnap
     clear
-    
+             
     # Question 20 : Flatpak
     echo "*******************************************************"
     echo "20/ [pas encore actif]Mode Extra : supplément paquet Flatpak : "
     echo "*******************************************************"
     echo "[1] Aucun"
-    echo "[2] ..."
+    echo "[2] 0ad"
+    echo "[3] Audacity"
+    echo "[4] Battle Tanks"
+    echo "[5] Blender"
+    echo "[6] Dolphin Emulator"
+    echo "[7] Extreme Tuxracer"
+    echo "[8] Frozen Bubble"
+    echo "[9] Gnome MPV"
+    echo "[10] Gimp"
+    echo "[11] Google Play Music Desktop Player"
+    echo "[12] Homebank"
+    echo "[13] LibreOffice"
+    echo "[14] Minetest"
+    echo "[15] Nextcloud cli"
+    echo "[16] Othman Quran Browser"
+    echo "[17] Password Calculator"
+    echo "[18] PPSSPP"
+    echo "[19] Riot"
+    echo "[20] Teeworlds"
+    echo "[21] VLC"
     read -p "Choix flatpak : " choixFlatpak
     clear
-
+            
     # Question 21 : Appimages
     echo "*******************************************************"
     echo "21/ [pas encore actif]Mode Extra : récupération Appimages: "
     echo "*******************************************************"
     echo "[1] Aucune"
-    echo "[2] ..."
+    echo "[2] Digikam"
+    echo "[3] Freecad"
+    echo "[4] Aidos Wallet"
+    echo "[5] Cerebro"
+    echo "[6] Chronos"
+    echo "[7] Crypter"
+    echo "[8] Dedop studio"
+    echo "[9] Imagine"
+    echo "[10] Infinite Electron"
+    echo "[11] Kdenlive"
+    echo "[12] KDevelop"
+    echo "[13] MellowPlayer"
+    echo "[14] Nextcloud Cli"
+    echo "[15] Openshot"
+    echo "[16] Owncloud Cli"
+    echo "[17] Popcorntime"
+    echo "[18] Skype for Business"
+    echo "[19] Spotify web client"
+    echo "[20] Tulip"
+    echo "[21] Wire"
     read -p "Choix appimage : " choixAppimage
     clear
 fi
-
-
+                  
 ### Section installation automatisé
 
 ## Les choses utiles recommandés pour tous :
@@ -1631,61 +1688,64 @@ do
         "2") #VLC version snap
             snap install vlc
             ;;
-        "3") #0ad version snap
+        "3") #LibreOffice version snap
+            snap install libreoffice
+            ;;            
+        "4") #0ad version snap
             snap install play0ad
             ;;            
-        "4") #dino
+        "5") #dino
             snap install dino
             ;;   
-        "5") #gimp version snap
+        "6") #gimp version snap
             snap install gimp
             ;;    
-        "6") #instagraph
+        "7") #instagraph
             snap install instagraph
             ;;  
-        "7") #keepassXC
+        "8") #keepassXC
             snap install keepassxc
             ;;  
-        "8") #ktube media downloader
+        "9") #ktube media downloader
             snap install ktube-media-downloader --classic
             ;; 
-        "9") #warzone 2100
+        "10") #warzone 2100
             snap install warzone2100
             ;; 
-        "10") #asciinema
+        "11") #asciinema
             snap install asciinema --classic
             ;;      
-        "11") #bitcoin
+        "12") #bitcoin
             snap install bitcoin
             ;;
-        "12") #blender
+        "13") #blender
             snap install blender --classic
             ;;  
-        "13") #electrum
+        "14") #electrum
             snap install electrum
             ;; 
-        "14") #nextcloud
+        "15") #nextcloud
             snap install nextcloud
             ;; 
-        "15") #paint suprem 3D
+        "16") #paint suprem 3D
             snap install paintsupreme-3d
             ;;      
-        "16") #pycharm pro
+        "17") #pycharm pro
             snap install pycharm-professional --classic
             ;;  
-        "17") #Qimo Wallpapers
+        "18") #Qimo Wallpapers
             snap install qimo-wallpapers
             ;;    
-        "18") #Quassel client
+        "19") #Quassel client
             snap install quasselclient-moon127
             ;;   
-        "19") #Rube cube
+        "20") #Rube cube
             snap install rubecube
             ;;            
-        "20") #TermiusApp
+        "21") #TermiusApp
             snap install termius-app
             ;;        
-        "21") #TicTacToe
+        "22") #TicTacToe
             snap install tic-tac-toe
             ;;              
     esac
@@ -1709,56 +1769,50 @@ do
             ;;             
         "6") #Dolphin Emulator
             flatpak install --from https://flathub.org/repo/appstream/org.DolphinEmu.dolphin-emu.flatpakref -y
-            ;;  
-        "7") #Dolphin Emulator
-            flatpak install --from https://flathub.org/repo/appstream/org.DolphinEmu.dolphin-emu.flatpakref -y
-            ;;              
-        "8") #Extreme Tuxracer
+            ;;             
+        "7") #Extreme Tuxracer
             flatpak install --from https://flathub.org/repo/appstream/net.sourceforge.ExtremeTuxRacer.flatpakref -y
             ;;                
-        "9") #Frozen Bubble
+        "8") #Frozen Bubble
             flatpak install --from https://flathub.org/repo/appstream/org.frozen_bubble.frozen-bubble.flatpakref -y
             ;;                    
-        "10") #Gnome MPV version flatpak
+        "9") #Gnome MPV version flatpak
             flatpak install --from https://flathub.org/repo/appstream/io.github.GnomeMpv.flatpakref -y
             ;;               
-        "11") #GIMP version flatpak
+        "10") #GIMP version flatpak
             flatpak install --from https://flathub.org/repo/appstream/org.gimp.GIMP.flatpakref -y
             ;;                    
-        "12") #Google Play Music Desktop Player
+        "11") #Google Play Music Desktop Player
             flatpak install --from https://flathub.org/repo/appstream/com.googleplaymusicdesktopplayer.GPMDP.flatpakref -y
             ;;              
-        "13") #Homebank
+        "12") #Homebank
             flatpak install --from https://flathub.org/repo/appstream/fr.free.Homebank.flatpakref -y
             ;;               
-        "14") #LibreOffice version flatpak
+        "13") #LibreOffice version flatpak
             flatpak install --from https://flathub.org/repo/appstream/org.libreoffice.LibreOffice.flatpakref -y
             ;;         
-        "15") #Minetest version flatpak
+        "14") #Minetest version flatpak
             flatpak install --from https://flathub.org/repo/appstream/net.minetest.Minetest.flatpakref -y
             ;;             
-        "16") #Nextcloud
+        "15") #Nextcloud
             flatpak install --from https://flathub.org/repo/appstream/org.nextcloud.Nextcloud.flatpakref -y
             ;;        
-        "17") #Othman Quran Browser
+        "16") #Othman Quran Browser
             flatpak install --from https://flathub.org/repo/appstream/com.github.ojubaorg.Othman.flatpakref -y
             ;;  
-        "18") #Password Calculator
+        "17") #Password Calculator
             flatpak install --from https://flathub.org/repo/appstream/com.bixense.PasswordCalculator.flatpakref -y
             ;;             
-        "19") #PPSSPP
+        "18") #PPSSPP
             flatpak install --from https://flathub.org/repo/appstream/org.ppsspp.PPSSPP.flatpakref -y
             ;;              
-        "20") #Riot
+        "19") #Riot
             flatpak install --from https://flathub.org/repo/appstream/im.riot.Riot.flatpakref -y
-            ;;                
-        "21") #Riot
-            flatpak install --from https://flathub.org/repo/appstream/im.riot.Riot.flatpakref -y
-            ;;                
-        "22") #Teeworlds
+            ;;                             
+        "20") #Teeworlds
             flatpak install --from https://flathub.org/repo/appstream/com.teeworlds.Teeworlds.flatpakref -y
             ;;       
-        "23") #VLC version flatpak
+        "21") #VLC version flatpak
             flatpak install --from https://flathub.org/repo/appstream/org.videolan.VLC.flatpakref -y
             ;;
     esac
@@ -1770,12 +1824,10 @@ do
     case $appimage in
         "2") #Digikam
             wget https://download.kde.org/stable/digikam/digikam-5.5.0-01-x86-64.appimage
+            mv digikam-5.5.0-01-x86-64.appimage digikam-5.5.0-01-x86-64.AppImage
             ;;
         "3") #Freecad
             wget https://github.com/FreeCAD/FreeCAD/releases/download/0.16.6712/FreeCAD-0.16.6712.glibc2.17-x86_64.AppImage
-            ;;
-        "3") #KeePassXC
-            wget hhttps://github.com/keepassxreboot/keepassxc/releases/download/2.2.2/KeePassXC-2.2.2-2-x86_64.AppImage
             ;;
         "4") #Aidos Wallet
             wget https://github.com/AidosKuneen/aidos-wallet/releases/download/v1.2.7/Aidos-1.2.7-x86_64.AppImage
@@ -1792,49 +1844,43 @@ do
         "8") #Dedop studio
             wget https://github.com/DeDop/dedop-studio/releases/download/v1.2.0/DeDop-studio-1.2.0-x86_64.AppImage
             ;;            
-        "9") #DigiKam
-            wget https://download.kde.org/stable/digikam/digikam-5.5.0-01-x86-64.appimage
-            ;;                  
-        "10") #FreeCAD
-            wget https://github.com/FreeCAD/FreeCAD/releases/download/0.16.6712/FreeCAD-0.16.6712.glibc2.17-x86_64.AppImage
-            ;;  
-        "11") #Imagine
+        "9") #Imagine
             wget https://github.com/meowtec/Imagine/releases/download/v0.4.0/Imagine-0.4.0-x86_64.AppImage
             ;;     
-        "12") #Infinite Electron
+        "10") #Infinite Electron
             wget https://github.com/InfiniteLibrary/infinite-electron/releases/download/0.1.1/infinite-electron-0.1.1-x86_64.AppImage
             ;; 
-        "13") #Kdenlive version Appimage
+        "11") #Kdenlive version Appimage
             wget https://download.kde.org/unstable/kdenlive/16.12/linux/Kdenlive-16.12-rc-x86_64.AppImage
             ;;   
-        "14") #KDevelop
+        "12") #KDevelop
             wget https://download.kde.org/stable/kdevelop/5.2.0/bin/linux/KDevelop-5.2.0-x86_64.AppImage
             ;;     
-        "15") #MellowPlayer
+        "13") #MellowPlayer
             wget https://github.com/ColinDuquesnoy/MellowPlayer/releases/download/Continuous/MellowPlayer-x86_64.AppImage
             ;; 
-        "16") #Nextcloud version Appimage
+        "14") #Nextcloud version Appimage
             wget https://download.nextcloud.com/desktop/prereleases/Linux/Nextcloud-2.3.3-beta-x86_64.AppImage
             ;;    
-        "17") #Openshot version Appimage
+        "15") #Openshot version Appimage
             wget http://github.com/OpenShot/openshot-qt/releases/download/v2.4.1/OpenShot-v2.4.1-x86_64.AppImage
             ;;  
-        "18") #Owncloud Client
+        "16") #Owncloud Client
             wget http://download.opensuse.org/repositories/home:/ocfreitag/AppImage/owncloud-client-latest-x86_64.AppImage
             ;;     
-        "19") #Popcorntime
+        "17") #Popcorntime
             wget https://github.com/amilajack/popcorn-time-desktop/releases/download/v0.0.6/PopcornTime-0.0.6-x86_64.AppImage
             ;;     
-        "20") #Skype for Business
+        "18") #Skype for Business
             wget https://tel.red/linux/sky-latest-x86_64.AppImage
             ;;              
-        "21") #Spotify web client
+        "19") #Spotify web client
             wget https://github.com/Quacky2200/Spotify-Web-Player-for-Linux/releases/download/1.0.42/spotifywebplayer-1.0.42-x86_64.AppImage
             ;;      
-        "22") #Tulip
+        "20") #Tulip
             wget https://github.com/Tulip-Dev/tulip/releases/download/tulip_5_1_0/Tulip-5.1.0-x86_64.AppImage
             ;;        
-        "23") #Wire
+        "21") #Wire
             wget https://wire-app.wire.com/linux/wire-3.0.2816-x86_64.AppImage
             ;;                
     esac
