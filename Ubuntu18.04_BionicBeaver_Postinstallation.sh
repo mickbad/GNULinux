@@ -1202,6 +1202,7 @@ do
             ;;
         "4") #OpenBroadcaster Software (dépot bionic pas encore activé donc artful utilisé en attendant)
             add-apt-repository "deb http://ppa.launchpad.net/obsproject/obs-studio/ubuntu artful main" -y
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com BC7345F522079769F5BBE987EFC71127F425E228
             apt update ; apt install ffmpeg obs-studio -y
             ;;
         "5") #Glances
@@ -1215,11 +1216,13 @@ do
             ;;
         "8") #Oracle Java 8 (dépot xenial car celui de bionic pas encore activé)
             add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" -y
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 7B2C3B0889BF5709A105D03AC2518248EEA14886
             apt update
             echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections | apt install oracle-java8-installer -y
             ;;  
         "9") #Oracle Java 9 (dépot xenial car celui de bionic pas encore activé)
             add-apt-repository "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" -y
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 7B2C3B0889BF5709A105D03AC2518248EEA14886
             apt update
             echo oracle-java9-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections | apt install oracle-java9-installer -y
             ;;    
