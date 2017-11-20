@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.42 (alpha)
+# version 0.0.43 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -337,15 +337,15 @@ then
     echo "[9] Oracle Java 9 (nouvelle version majeure de Java, encore peu répendue)"
     echo "[10] Installer FlashPlayer (via le dépot partenaire)"
     echo "[11] VirtualBox (virtualisation de système Windows/Mac/Linux/Bsd)"
-    echo "[12] VMWare Workstation Player [Demande Interv!] (version gratuite de VmWare Workstation mais propriétaire)"
-    echo "[13] KeePassX2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
-    echo "[14] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
-    echo "[15] Cheese [Pour Xorg uniquement!] (outil pour prendre des photos/vidéos à partir d'une webcam)"
-    echo "[16] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
-    echo "[17] Gufw [Pour Xorg uniquement!] (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
-    echo "[18] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Nmap)"
-    echo "[19] Gnome Enfs Manager [Demande Interv!] (coffre-fort pour vos fichiers/dossiers)"
-    echo "[20] Bleachbit [potentiellement dangereux !] (efface les fichiers inutiles/temporaires du système)"
+    echo "[12] KeePassX2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
+    echo "[13] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
+    echo "[14] Cheese [Pour Xorg uniquement!] (outil pour prendre des photos/vidéos à partir d'une webcam)"
+    echo "[15] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
+    echo "[16] Gufw [Pour Xorg uniquement!] (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
+    echo "[17] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Nmap)"
+    echo "[18] Gnome Enfs Manager [Demande Interv!] (coffre-fort pour vos fichiers/dossiers)"
+    echo "[19] Bleachbit [potentiellement dangereux !] (efface les fichiers inutiles/temporaires du système)"
+    echo "[20] VMWare Workstation Player [Demande Interv!][Install depuis Xorg!] (version gratuite mais propriétaire de VmWare)"
     echo "[21] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
     echo "[22] Wireshark [demande interv!] (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
@@ -475,7 +475,7 @@ then
     echo "[2] Déporter répertoire snappy dans /home pour gagner de l'espace (utile si le /home est séparé et racine limité)"
     echo "[3] Optimisation Swap : swapiness à 5% (swap utilisé uniquement si + de 95% de ram utilisé)"
     echo "[4] Désactiver complètement le swap (utile si vous avez un SSD et 8 Go de ram ou +)"
-    echo "[5] Activer TLP avec Powertop et Laptop-mode-tools (économie d'energie pour pc portable)"
+    echo "[5] Activer TLP avec Powertop (économie d'energie pour pc portable)"
     echo "[6] Installer le microcode propriétaire Intel (pour cpu intel uniquement !)"
     echo "[7] Ajouter une commande 'fraude' pour Wayland (pour pouvoir lancer des applis comme Gparted. Exemple : fraude gparted)"
     echo "[8] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
@@ -1289,40 +1289,40 @@ do
         "11") #VirtualBox
             apt install virtualbox -y
             ;;            
-        "12") #VMWare Workstation Player 
-            #apt install gcc -y #<= vérifier si nécessaire sur MP
-            wget https://download3.vmware.com/software/player/file/VMware-Player-14.0.0-6661328.x86_64.bundle
-            chmod +x VMware-Player-14.0.0-6661328.x86_64.bundle
-            ./VMware-Player-12.5.7-5813279.x86_64.bundle
-            ;;  
-        "13") #KeepassX2
+        "12") #KeepassX2
             apt install keepassx -y
             ;; 
-        "14") #Teamviewer
+        "13") #Teamviewer
             wget https://dl.tvcdn.de/download/version_12x/teamviewer_12.0.85001_i386.deb
             dpkg -i teamviewer_12.0.85001_i386.deb
             apt install -fy
             ;;   
-        "15") #Cheese
+        "14") #Cheese
             apt install cheese -y
             ;; 
-        "16") #Gnome Recipes
+        "15") #Gnome Recipes
             apt install gnome-recipes -y
             ;;   
-        "17") #Gufw
+        "16") #Gufw
             apt install gufw -y
             ;;  
-        "18") #Pack cyber-sécurité
+        "17") #Pack cyber-sécurité
             apt install aircrack-ng nmap -y
             snap install john-the-ripper
             ;;  
-        "19") #Gnome Encfs Manager (dépot Xenial car Bionic pas encore actif)
+        "18") #Gnome Encfs Manager (dépot Xenial car Bionic pas encore actif)
             add-apt-repository "deb http://ppa.launchpad.net/gencfsm/ppa/ubuntu xenial main" -y
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 6A0344470F68ADCA
             apt update ; apt install gnome-encfs-manager -y
             ;;             
-        "20") #Bleachbit
+        "19") #Bleachbit
             apt install bleachbit -y
+            ;;    
+        "20") #VMWare Workstation Player 
+            #apt install gcc -y #<= vérifier si nécessaire sur MP
+            wget https://download3.vmware.com/software/player/file/VMware-Player-14.0.0-6661328.x86_64.bundle
+            chmod +x VMware-Player-14.0.0-6661328.x86_64.bundle
+            ./VMware-Player-12.5.7-5813279.x86_64.bundle
             ;;              
         "21") #Corebird
             flatpak install --from https://flathub.org/repo/appstream/org.baedert.corebird.flatpakref -y
@@ -1630,9 +1630,10 @@ do
             sed -i -e '/.swapfile*/d' /etc/fstab #ligne swap retiré de fstab
             ;;
         "5") #Activer TLP + install Powertop
-            apt install tlp powertop laptop-mode-tools -y
+            apt install tlp powertop -y
             systemctl enable tlp
             systemctl emable tlp-sleep
+            systemctl disable postfix.service
             ;;
         "6") #Microcode Intel
             apt install intel-microcode -y
