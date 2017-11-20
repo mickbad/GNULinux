@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.40 (alpha)
+# version 0.0.41 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -336,8 +336,8 @@ then
     echo "[8] Oracle Java 8 (plate-forme propriétaire pour le développement/éxécution des logiciels écrits Java)"
     echo "[9] Oracle Java 9 (nouvelle version majeure de Java, encore peu répendue)"
     echo "[10] Installer FlashPlayer (via le dépot partenaire)"
-    echo "[11] VirtualBox (virtualisation de système)"
-    echo "[12] VMWare Workstation Player (version gratuite de VmWare Workstation mais pas libre)"
+    echo "[11] VirtualBox (virtualisation de système Windows/Mac/Linux/Bsd)"
+    echo "[12] VMWare Workstation Player [Demande Interv!] (version gratuite de VmWare Workstation mais propriétaire)"
     echo "[13] KeePassX2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
     echo "[14] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
     echo "[15] Cheese [Pour Xorg uniquement!] (outil pour prendre des photos/vidéos à partir d'une webcam)"
@@ -439,19 +439,18 @@ then
     echo "[5] Sublime Text (Logiciel développé en C++ et Python prenant en charge 44 languages de prog)"
     echo "[6] Code:Blocks (IDE spécialisé pour le language C/C++)"
     echo "[7] JEdit (Éditeur libre, multiplateforme et très personnalisable)"
-    echo "[8] Eclipse (Projet décliné en sous-projets de développement, extensible, universel et polyvalent)"
-    echo "[9] Anjuta (IDE simple pour C/C++, Java, JavaScript, Python et Vala)"
-    echo "[10] Kdevelop (IDE gérant de nombreux language conçu plutôt pour KDE)"
-    echo "[11] Android Studio (IDE de Google spécialisé pour le développement d'application Android)"
-    echo "[12] Netbeans (EDI supportant plusieurs langage, surtout Java, avec de nombreux plugins)"
-    echo "[13] BlueFish (éditeur orienté développement web : HTML/PHP/CSS/...)"
-    echo "[14] BlueGriffon (éditeur HTML/CSS avec aperçu du rendu en temps réel)"
-    echo "[15] SciTE : Scintilla Text Editor (éditeur web avec une bonne coloration syntaxique)"
-    echo "[16] PyCharm [Snap] (IDE spécialisé pour le language Python)"
-    echo "[17] Visual Studio Code [Snap] (Développé par Microsoft, sous licence libre MIT)"
-    echo "[18] Atom [Snap] (Éditeur sous licence libre qui supporte les plug-ins Node.js et implémente GitControl)"
-    echo "[19] Brackets [Snap] (Éditeur opensource d'Adobe pour le web design et dev web HTML, CSS, JavaScript...)"
-    echo "[20] IntelliJ Idea [Snap] (IDE Java commercial de JetBrains, plutôt conçu pour Java)"
+    echo "[8] Anjuta (IDE simple pour C/C++, Java, JavaScript, Python et Vala)"
+    echo "[9] Android Studio (IDE de Google spécialisé pour le développement d'application Android)"
+    echo "[10] Netbeans (EDI supportant plusieurs langage, surtout Java, avec de nombreux plugins)"
+    echo "[11] BlueFish (éditeur orienté développement web : HTML/PHP/CSS/...)"
+    echo "[12] BlueGriffon (éditeur HTML/CSS avec aperçu du rendu en temps réel)"
+    echo "[13] SciTE : Scintilla Text Editor (éditeur web avec une bonne coloration syntaxique)"
+    echo "[14] Eclipse [Demande Interv!][Install sous Xorg uniquement!](Projet décliné en sous-projets de dev)"
+    echo "[15] PyCharm [Snap] (IDE spécialisé pour le language Python)"
+    echo "[16] Visual Studio Code [Snap] (Développé par Microsoft, sous licence libre MIT)"
+    echo "[17] Atom [Snap] (Éditeur sous licence libre qui supporte les plug-ins Node.js et implémente GitControl)"
+    echo "[18] Brackets [Snap] (Éditeur opensource d'Adobe pour le web design et dev web HTML, CSS, JavaScript...)"
+    echo "[19] IntelliJ Idea [Snap] (IDE Java commercial de JetBrains, plutôt conçu pour Java)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5) : " choixDev
     clear
 
@@ -1198,8 +1197,8 @@ do
         "3") #SimpleScreenRecorder
             apt install simplescreenrecorder -y
             ;;
-        "4") #OpenBroadcaster Software
-            add-apt-repository ppa:obsproject/obs-studio -y
+        "4") #OpenBroadcaster Software (dépot bionic pas encore activé donc artful utilisé en attendant)
+            add-apt-repository "deb http://ppa.launchpad.net/obsproject/obs-studio/ubuntu artful main" -y
             apt update ; apt install ffmpeg obs-studio -y
             ;;
         "5") #Glances
@@ -1225,11 +1224,12 @@ do
             apt install adobe-flashplugin -y
             ;;
         "11") #VirtualBox
-            apt install virtualbox virtualbox-ext-pack -y
+            apt install virtualbox -y
             ;;            
-        "12") #VMWare Workstation Player
-            wget https://download3.vmware.com/software/player/file/VMware-Player-12.5.7-5813279.x86_64.bundle?HashKey=cfce2a8b4444fd32692e9b4d2a251cf9&params=%7B%22sourcefilesize%22%3A%22128.01+MB%22%2C%22dlgcode%22%3A%22PLAYER-1257%22%2C%22languagecode%22%3A%22fr%22%2C%22source%22%3A%22DOWNLOADS%22%2C%22downloadtype%22%3A%22manual%22%2C%22eula%22%3A%22N%22%2C%22downloaduuid%22%3A%22f24b51a3-09d3-48e6-85ef-652c4ccc06e2%22%2C%22purchased%22%3A%22N%22%2C%22dlgtype%22%3A%22Product+Binaries%22%2C%22productversion%22%3A%2212.5.7%22%2C%22productfamily%22%3A%22VMware+Workstation+Player%22%7D&AuthKey=1509617319_6e970e8422684aa4c4219db17d0ab115
-            chmod +x VMware-Player-12.5.7-5813279.x86_64.bundle
+        "12") #VMWare Workstation Player 
+            #apt install gcc -y #<= vérifier si nécessaire sur MP
+            wget https://download3.vmware.com/software/player/file/VMware-Player-14.0.0-6661328.x86_64.bundle
+            chmod +x VMware-Player-14.0.0-6661328.x86_64.bundle
             ./VMware-Player-12.5.7-5813279.x86_64.bundle
             ;;  
         "13") #KeepassX2
@@ -1472,52 +1472,49 @@ do
             apt install codeblocks codeblocks-contrib -y
             ;;           
         "7") #JEdit
-            apt instakk jedit -y
+            apt install jedit -y
             ;;
-        "8") #Eclipse
-            wget http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/oomph/epp/oxygen/R/eclipse-inst-linux64.tar.gz
-            tar xvfz eclipse-inst-linux64.tar.gz
-            chmod +x ./eclipse-installer/eclipse-inst
-            ./eclipse-installer/eclipse-inst
-            ;;
-        "9") #Anjuta
+        "8") #Anjuta
             apt install anjuta anjuta-extras -y
             ;;
-        "10") #develop
-            #????
-            ;;
-        "11") #Android Studio (dépot Artful car Bionic pas actif)
+        "9") #Android Studio (dépot Artful car Bionic pas actif)
             add-apt-repository "deb http://ppa.launchpad.net/maarten-fonville/android-studio/ubuntu artful main" -y
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4DEA8909DC6A13A3
             apt update ; apt install android-studio -y
             ;;
-        "12") #Netbeans
+        "10") #Netbeans
             apt install netbeans -y
             ;;         
-        "13") #BlueFish
+        "11") #BlueFish
             apt install bluefish bluefish-plugins -y
             ;;
-        "14") #BlueGriffon
-            wget http://ftp.heanet.ie/pub/www.getdeb.net/getdeb/ubuntu/pool/apps/b/bluegriffon/bluegriffon_1.7.2-1~getdeb2~raring_amd64.deb
-            dpkg -i bluegriffon_1.7.2-1~getdeb2~raring_amd64.deb
+        "12") #BlueGriffon
+            wget http://bluegriffon.org/freshmeat/3.0/bluegriffon-3.0.Ubuntu16.04-x86_64.deb
+            dpkg -i bluegriffon-3.0.Ubuntu16.04-x86_64.deb
             apt install -fy
             ;;         
-        "15") #SciTE
+        "13") #SciTE
             apt install scite -y
             ;;  
-        "16") #PyCharm
-            snap install pycharm-community
+        "14") #Eclipse
+            wget http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/oomph/epp/oxygen/R/eclipse-inst-linux64.tar.gz
+            tar xvfz eclipse-inst-linux64.tar.gz
+            chmod +x ./eclipse-installer/eclipse-inst
+            ./eclipse-installer/eclipse-inst
+            ;;           
+        "15") #PyCharm
+            snap install pycharm-community --classic
             ;;
-        "17") #Visual Studio Code
+        "16") #Visual Studio Code
             snap install vscode --classic
             ;;
-        "18") #Atom
+        "17") #Atom
             snap install atom --classic
             ;;
-        "19") #Brackets
+        "18") #Brackets
             snap install brackets --classic
             ;;      
-        "20") #IntelliJ Idea
+        "19") #IntelliJ Idea
             snap install intellij-idea-community --classic 
             ;;            
     esac
