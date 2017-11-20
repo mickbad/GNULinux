@@ -20,7 +20,8 @@
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
-
+unzip dash-to-dock@micxgx.gmail.com.v61.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
+chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions/appfolders-manager@maest
 #code couleur
 rouge="\\033[31m"
 blanc="\\033[27m"
@@ -1345,7 +1346,7 @@ do
         "5") #DashToDOck
             wget https://extensions.gnome.org/extension-data/dash-to-dock%40micxgx.gmail.com.v61.shell-extension.zip
             unzip dash-to-dock@micxgx.gmail.com.v61.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
-            chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions/appfolders-manager@maestroschan.fr
+            chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
             rm dash-to-dock@micxgx.gmail.com.v61.shell-extension.zip
             ;;
         "6") #DashToPanel
@@ -1409,7 +1410,10 @@ do
             #a faire plus tard, cf => https://extensions.gnome.org/extension/1287/unite/
             ;;
         "26") #AppFolders Management
-            
+            wget hhttps://extensions.gnome.org/extension-data/appfolders-manager%40maestroschan.fr.v11.shell-extension.zip
+            unzip appfolders-manager@maestroschan.fr.v11.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/appfolders-manager@maestroschan.fr
+            chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions/appfolders-manager@maestroschan.fr
+            rm appfolders-manager@maestroschan.fr.v11.shell-extension.zip            
             ;;    
     esac
 done
