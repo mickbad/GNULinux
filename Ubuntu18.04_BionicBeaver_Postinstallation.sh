@@ -1343,7 +1343,10 @@ do
             apt install gnome-shell-extension-caffeine -y
             ;;
         "5") #DashToDOck
-            #a faire plus tard, cf => https://extensions.gnome.org/extension/307/dash-to-dock/
+            wget https://extensions.gnome.org/extension-data/dash-to-dock%40micxgx.gmail.com.v61.shell-extension.zip
+            unzip dash-to-dock@micxgx.gmail.com.v61.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
+            chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions/appfolders-manager@maestroschan.fr
+            rm dash-to-dock@micxgx.gmail.com.v61.shell-extension.zip
             ;;
         "6") #DashToPanel
             apt install gnome-shell-extension-dash-to-panel -y
@@ -1406,7 +1409,7 @@ do
             #a faire plus tard, cf => https://extensions.gnome.org/extension/1287/unite/
             ;;
         "26") #AppFolders Management
-            #a faire plus tard, cf => https://extensions.gnome.org/extension/1217/appfolders-manager/
+            
             ;;    
     esac
 done
