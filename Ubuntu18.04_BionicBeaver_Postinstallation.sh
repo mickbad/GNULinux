@@ -463,8 +463,7 @@ then
     echo "[3] Serveur LAMP (Pour faire un serveur web avec votre PC : Apache + MariaDB + PHP)"
     echo "[4] Serveur FTP avec ProFTPd (Stockage de fichier sur votre machine via FTP)"
     echo "[5] Serveur BDD PostgreSQL (Pour installer une base de donnée PostgreSQL)"
-    echo "[6] Serveur BDD Oracle (Pour créer une base Oracle sur votre machine)"
-    echo "[7] Rétroportage PHP5 (Ancienne version de PHP rétroporté)"
+    echo "[6] Rétroportage PHP5 (Ancienne version de PHP rétroporté)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixServeur
     clear
 
@@ -474,7 +473,7 @@ then
     echo "*******************************************************"
     echo "[1] Non"
     echo "[2] Déporter répertoire snappy dans /home pour gagner de l'espace (utile si le /home est séparé et racine limité)"
-    echo "[3] Optimisation Swap : swapiness à 5% + cache_pressure à 50 (swap utilisé uniquement si + de 95% de ram utilisé)"
+    echo "[3] Optimisation Swap : swapiness à 5% (swap utilisé uniquement si + de 95% de ram utilisé)"
     echo "[4] Désactiver complètement le swap (utile si vous avez un SSD et 8 Go de ram ou +)"
     echo "[5] Activer TLP avec Powertop et Laptop-mode-tools (économie d'energie pour pc portable)"
     echo "[6] Installer le microcode propriétaire Intel (pour cpu intel uniquement !)"
@@ -1530,19 +1529,15 @@ do
             apt install apache2 php mariadb-server libapache2-mod-php php-mysql -y
             ;;
         "4") #proftpd
-            apt install proftpd gadmin-proftpd -y
+            apt install proftpd -y
             ;;
         "5") #Postgresql
             apt install postgresql -y
             ;;
-        "6") #Oracle
-            wget http://oss.oracle.com/el4/RPM-GPG-KEY-oracle  -O- | apt-key add -
-            echo "deb http://oss.oracle.com/debian unstable main non-free" > /etc/apt/sources.list.d/oracle-db.list
-            apt update ; apt install oracle-xe-universal oracle-xe-client -y
-            ;;
-        "7") #Retroportage PHP5
+        "6") #Retroportage PHP5 (dépot artful utilisé car bionic pas encore activé)
             apt install python-software-properties -y
-            add-apt-repository ppa:ondrej/php -y
+            add-apt-repository "deb http://ppa.launchpad.net/ondrej/php/ubuntu artful main" -y
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F4EA0AAE5267A6C
             apt update ; apt install php5.6 -y
             ;;
     esac
@@ -1558,7 +1553,6 @@ do
             ;;
         "3") #Swapiness 95% +cache pressure 50
             echo vm.swappiness=5 | tee /etc/sysctl.d/99-swappiness.conf
-            vm.vfs_cache_pressure=50 | tee -a /etc/sysctl.d/99-swappiness.conf
             sysctl -p /etc/sysctl.d/99-swappiness.conf
             ;;
         "4") #Désactiver swap
