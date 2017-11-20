@@ -446,7 +446,7 @@ then
     echo "[12] BlueGriffon (éditeur HTML/CSS avec aperçu du rendu en temps réel)"
     echo "[13] SciTE : Scintilla Text Editor (éditeur web avec une bonne coloration syntaxique)"
     echo "[14] Eclipse [Demande Interv!][Install sous Xorg uniquement!](Projet décliné en sous-projets de dev)"
-    echo "[15] PyCharm [Snap] (IDE spécialisé pour le language Python)"
+    echo "[15] PyCharm [Snap] (IDE pour le language Python / à lancer depuis le terminal la 1ère fois)"
     echo "[16] Visual Studio Code [Snap] (Développé par Microsoft, sous licence libre MIT)"
     echo "[17] Atom [Snap] (Éditeur sous licence libre qui supporte les plug-ins Node.js et implémente GitControl)"
     echo "[18] Brackets [Snap] (Éditeur opensource d'Adobe pour le web design et dev web HTML, CSS, JavaScript...)"
@@ -545,7 +545,7 @@ echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select tr
 apt remove ubuntu-web-launchers -y
 
 # Codecs utiles
-apt install ubuntu-restricted-extras x264 x265 libavcodec-extra -y
+apt install ubuntu-restricted-extras x264 x265 -y
 
 # Désactivation de l'affichage des messages d'erreurs à l'écran
 echo "enabled=0" > /etc/default/apport
@@ -1631,6 +1631,63 @@ do
         "2") #VLC version snap
             snap install vlc
             ;;
+        "3") #0ad version snap
+            snap install play0ad
+            ;;            
+        "4") #dino
+            snap install dino
+            ;;   
+        "5") #gimp version snap
+            snap install gimp
+            ;;    
+        "6") #instagraph
+            snap install instagraph
+            ;;  
+        "7") #keepassXC
+            snap install keepassxc
+            ;;  
+        "8") #ktube media downloader
+            snap install ktube-media-downloader --classic
+            ;; 
+        "9") #warzone 2100
+            snap install warzone2100
+            ;; 
+        "10") #asciinema
+            snap install asciinema --classic
+            ;;      
+        "11") #bitcoin
+            snap install bitcoin
+            ;;
+        "12") #blender
+            snap install blender --classic
+            ;;  
+        "13") #electrum
+            snap install electrum
+            ;; 
+        "14") #nextcloud
+            snap install nextcloud
+            ;; 
+        "15") #paint suprem 3D
+            snap install paintsupreme-3d
+            ;;      
+        "16") #pycharm pro
+            snap install pycharm-professional --classic
+            ;;  
+        "17") #Qimo Wallpapers
+            snap install qimo-wallpapers
+            ;;    
+        "18") #Quassel client
+            snap install quasselclient-moon127
+            ;;   
+        "19") #Rube cube
+            snap install rubecube
+            ;;            
+        "20") #TermiusApp
+            snap install termius-app
+            ;;        
+        "21") #TicTacToe
+            snap install tic-tac-toe
+            ;;              
     esac
 done        
     
@@ -1720,6 +1777,66 @@ do
         "3") #KeePassXC
             wget hhttps://github.com/keepassxreboot/keepassxc/releases/download/2.2.2/KeePassXC-2.2.2-2-x86_64.AppImage
             ;;
+        "4") #Aidos Wallet
+            wget https://github.com/AidosKuneen/aidos-wallet/releases/download/v1.2.7/Aidos-1.2.7-x86_64.AppImage
+            ;; 
+        "5") #Cerebro
+            wget https://github.com/KELiON/cerebro/releases/download/v0.3.1/cerebro-0.3.1-x86_64.AppImage
+            ;;             
+        "6") #Chronos
+            wget https://github.com/web-pal/Chronos/releases/download/v2.2.1/Chronos-2.2.1-x86_64.AppImage
+            ;;     
+        "7") #Crypter
+            wget https://github.com/HR/Crypter/releases/download/v3.1.0/Crypter-3.1.0-x86_64.AppImage
+            ;;
+        "8") #Dedop studio
+            wget https://github.com/DeDop/dedop-studio/releases/download/v1.2.0/DeDop-studio-1.2.0-x86_64.AppImage
+            ;;            
+        "9") #DigiKam
+            wget https://download.kde.org/stable/digikam/digikam-5.5.0-01-x86-64.appimage
+            ;;                  
+        "10") #FreeCAD
+            wget https://github.com/FreeCAD/FreeCAD/releases/download/0.16.6712/FreeCAD-0.16.6712.glibc2.17-x86_64.AppImage
+            ;;  
+        "11") #Imagine
+            wget https://github.com/meowtec/Imagine/releases/download/v0.4.0/Imagine-0.4.0-x86_64.AppImage
+            ;;     
+        "12") #Infinite Electron
+            wget https://github.com/InfiniteLibrary/infinite-electron/releases/download/0.1.1/infinite-electron-0.1.1-x86_64.AppImage
+            ;; 
+        "13") #Kdenlive version Appimage
+            wget https://download.kde.org/unstable/kdenlive/16.12/linux/Kdenlive-16.12-rc-x86_64.AppImage
+            ;;   
+        "14") #KDevelop
+            wget https://download.kde.org/stable/kdevelop/5.2.0/bin/linux/KDevelop-5.2.0-x86_64.AppImage
+            ;;     
+        "15") #MellowPlayer
+            wget https://github.com/ColinDuquesnoy/MellowPlayer/releases/download/Continuous/MellowPlayer-x86_64.AppImage
+            ;; 
+        "16") #Nextcloud version Appimage
+            wget https://download.nextcloud.com/desktop/prereleases/Linux/Nextcloud-2.3.3-beta-x86_64.AppImage
+            ;;    
+        "17") #Openshot version Appimage
+            wget http://github.com/OpenShot/openshot-qt/releases/download/v2.4.1/OpenShot-v2.4.1-x86_64.AppImage
+            ;;  
+        "18") #Owncloud Client
+            wget http://download.opensuse.org/repositories/home:/ocfreitag/AppImage/owncloud-client-latest-x86_64.AppImage
+            ;;     
+        "19") #Popcorntime
+            wget https://github.com/amilajack/popcorn-time-desktop/releases/download/v0.0.6/PopcornTime-0.0.6-x86_64.AppImage
+            ;;     
+        "20") #Skype for Business
+            wget https://tel.red/linux/sky-latest-x86_64.AppImage
+            ;;              
+        "21") #Spotify web client
+            wget https://github.com/Quacky2200/Spotify-Web-Player-for-Linux/releases/download/1.0.42/spotifywebplayer-1.0.42-x86_64.AppImage
+            ;;      
+        "22") #Tulip
+            wget https://github.com/Tulip-Dev/tulip/releases/download/tulip_5_1_0/Tulip-5.1.0-x86_64.AppImage
+            ;;        
+        "23") #Wire
+            wget https://wire-app.wire.com/linux/wire-3.0.2816-x86_64.AppImage
+            ;;                
     esac
 done
     
