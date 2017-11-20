@@ -343,10 +343,11 @@ then
     echo "[15] Cheese [Pour Xorg uniquement!] (outil pour prendre des photos/vidéos à partir d'une webcam)"
     echo "[16] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
     echo "[17] Gufw [Pour Xorg uniquement!] (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
-    echo "[18] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Wireshark + Nmap)"
+    echo "[18] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Nmap)"
     echo "[19] Gnome Enfs Manager [Demande Interv!] (coffre-fort pour vos fichiers/dossiers)"
     echo "[20] Bleachbit [potentiellement dangereux !] (efface les fichiers inutiles/temporaires du système)"
     echo "[21] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
+    echo "[22] Wireshark [demande interv!] (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
     clear
 
@@ -1250,7 +1251,7 @@ do
             apt install gufw -y
             ;;  
         "18") #Pack cyber-sécurité
-            apt install aircrack-ng wireshark nmap -y
+            apt install aircrack-ng nmap -y
             snap install john-the-ripper
             ;;  
         "19") #Gnome Encfs Manager (dépot Xenial car Bionic pas encore actif)
@@ -1263,7 +1264,10 @@ do
             ;;              
         "21") #Corebird
             flatpak install --from https://flathub.org/repo/appstream/org.baedert.corebird.flatpakref -y
-            ;;               
+            ;; 
+        "22") #Wireshark
+            apt install wireshark -y
+            ;;                
     esac
 done
 
