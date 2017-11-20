@@ -550,6 +550,10 @@ apt install ubuntu-restricted-extras x264 x265 libavcodec-extra -y
 # Désactivation de l'affichage des messages d'erreurs à l'écran
 echo "enabled=0" > /etc/default/apport
 
+# Création répertoire extension pour l'ajout d'extension supplémentaire pour l'utilisateur principal
+mkdir /home/$SUDO_USER/.local/share/gnome-shell/extensions
+chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions
+
 # Pour mode novice :
 if [ "$choixMode" = "0" ]
 then
@@ -593,7 +597,7 @@ do
             ;;
         "3") #firefox esr
             add-apt-repository ppa:mozillateam/ppa -y 
-            apt update ; apt install firefox-esr -y
+            apt update ; apt install firefox-esr firefox-esr-locale-fr -y
             ;;
         "4") #firefox developper edition 
             flatpak install --from https://firefox-flatpak.mojefedora.cz/org.mozilla.FirefoxDevEdition.flatpakref -y
@@ -1292,7 +1296,6 @@ do
             ;;
         "7") #0ad: Empires Ascendant (ou via flatpak)
             apt install 0ad -y
-            #flatpak install --from https://flathub.org/repo/appstream/com.play0ad.zeroad.flatpakref
             ;;     
         "8") #FlightGear
             apt install flightgear -y
@@ -1306,7 +1309,7 @@ do
         "11") #Assault Cube
             apt install assaultcube -y
             ;;               
-        "12") #Gnome Games (verifier si gg-app utile)
+        "12") #Gnome Games 
             apt install gnome-games gnome-games-app -y
             ;;  
         "13") #Megaglest
@@ -1342,7 +1345,7 @@ do
         "4") #Caffeine
             apt install gnome-shell-extension-caffeine -y
             ;;
-        "5") #DashToDOck
+        "5") #DashToDock
             wget https://extensions.gnome.org/extension-data/dash-to-dock%40micxgx.gmail.com.v61.shell-extension.zip
             unzip dash-to-dock@micxgx.gmail.com.v61.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
             chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
