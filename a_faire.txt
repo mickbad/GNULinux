@@ -42,6 +42,7 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Intégrer "ffmpegthumbnailer" pour charger les miniatures vidéos plus rapidement dans Nautilus ? (cf page 13 bionic forum ubuntu)
 - Ajouter GDevelop ? cf http://compilgames.net/main-fr.html
 - Ajouter en paquet natif si dispo Electrum et Ascinemma ?
+- Ajouter Waterfox ? cf https://github.com/hawkeye116477/waterfox-deb / https://github.com/dylan493/waterfox-script
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
 
