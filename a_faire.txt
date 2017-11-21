@@ -41,6 +41,7 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Ajouter 1 ou 2 logiciels pour bitcoins, exemple Electrum : https://electrum.org/#home
 - Intégrer "ffmpegthumbnailer" pour charger les miniatures vidéos plus rapidement dans Nautilus ? (cf page 13 bionic forum ubuntu)
 - Ajouter GDevelop ? cf http://compilgames.net/main-fr.html
+- Ajouter en paquet natif si dispo Electrum et Ascinemma ?
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
 
