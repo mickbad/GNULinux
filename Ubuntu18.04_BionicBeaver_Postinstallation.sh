@@ -50,8 +50,8 @@ then
                 echo "[Snap] => Le paquet s'installera de manière isolé avec Snappy (snap install...)"
                 echo "[Flatpak] => Le paquet s'installera avec Flatpak, une autre alternative à Snappy"
                 echo "[Appimage] => Paquet AppImage téléchargé, pour l'utiliser il faudra le lancer manuellement"
-                echo "[Demande Interv!] => Signifie que l'installation n'est pas totalement automatisé, vous devrez intervenir pour valider quelque chose (contrat de licence...)"
-                echo "[Pour Xorg uniquement!] => Signifie que le logiciel ne fonctionnera correctement uniquement sur la session Xorg mais pas la session Wayland"
+                echo "[Interv!] => Signifie que l'installation n'est pas totalement automatisé, vous devrez intervenir pour valider quelque chose (contrat de licence...)"
+                echo "[Xorg only!] => Signifie que le logiciel ne fonctionnera correctement uniquement sur la session Xorg mais pas la session Wayland"
                 echo "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible sinon en PPA ou dépot externe"
                 echo -e "#########################################################\n"
 fi
@@ -104,7 +104,7 @@ then
     echo "[6] Chromium (la version libre/opensource de Chrome)"
     echo "[7] Google Chrome (le célèbre navigateur de Google mais il est propriétaire !)"
     echo "[8] Vivaldi (un navigateur propriétaire avec une interface sobre assez particulière)"
-    echo "[9] Opera [Demande Interv!] (un navigateur propriétaire relativement connu)"
+    echo "[9] Opera [Interv!] (un navigateur propriétaire relativement connu)"
     echo "[10] PaleMoon (un navigateur plutôt récent, libre & performant)"
     echo "[11] Tor Browser (pour naviguer dans l'anonymat avec le réseau tor : basé sur Firefox ESR)"
     echo "[12] Gnome Web/Epiphany (navigateur de la fondation Gnome s'intégrant bien avec cet environnement)"
@@ -145,7 +145,7 @@ then
     echo "[18] Slack [Flatpak] (plate-forme de communication collaborative propriétaire avec gestion de projets)"
     echo "[19] Signal [Flatpak] Experimental ! (Messagerie instantannée crypté recommandé par Edward Snowden)"
     echo "[20] qTox [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[21] TeamSpeak [Demande Interv!] (Conversation audio à plusieurs pour les gameurs, propriétaire)"
+    echo "[21] TeamSpeak [Interv!] (Conversation audio à plusieurs pour les gameurs, propriétaire)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 18) : " choixMessagerie
     clear
 
@@ -168,7 +168,7 @@ then
     echo "[13] Grsync (une interface graphique pour l'outil rsync"
     echo "[14] SubDownloader (téléchargement de sous-titre)"
     echo "[15] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
-    echo "[16] Vuze [Snap][Pour Xorg uniquement!] (Plate-forme commerciale d'Azureus avec BitTorrent)"
+    echo "[16] Vuze [Snap][Xorg only!] (Plate-forme commerciale d'Azureus avec BitTorrent)"
     echo "[17] Gydl [Flatpak] (permet de télécharger des vidéos Youtube ou juste la piste audio)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15) : " choixTelechargement
     clear
@@ -214,7 +214,7 @@ then
     echo "[6] OpenShot Video Editor (une autre alternative comme éditeur vidéo, libre et écrit en Python)"
     echo "[7] Pitivi (logiciel de montage basique avec une interface simple et intuitive)" 
     echo "[8] Lives (Dispose des fonctionnalités d'éditions vidéo/son classique, des filtres et multipiste"
-    echo "[9] Flowblade [Pour Xorg uniquement!] (Logiciel de montage video multi-piste performant)"
+    echo "[9] Flowblade [Xorg only!] (Logiciel de montage video multi-piste performant)"
     echo "[10] Cinelerra (montage non-linéaire sophistiqué, équivalent à Adobe première, Final Cut et Sony Vegas"
     echo "[11] Natron (programme de post-prod destiné au compositing et aux effets spéciaux)"
     echo "[12] Mencoder (s'utilise en ligne de commande : encodage de fichier vidéo)"
@@ -247,7 +247,7 @@ then
     echo "[12] K-3D (Animation et modélisation polygonale et modélisation par courbes)"
     echo "[13] SweetHome 3D (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
     echo "[14] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
-    echo "[15] Shutter [Pour Xorg uniquement!] (pour effectuer des captures d'écran + appliquer des modifications diverses)"
+    echo "[15] Shutter [Xorg only!] (pour effectuer des captures d'écran + appliquer des modifications diverses)"
     echo "[16] Frogr (Utile pour ceux qui utilisent le service web 'Flickr')"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixGraphisme
     clear
@@ -269,7 +269,7 @@ then
     echo "[11] Rosegarden (création musicale avec édition des partitions et peux s'interfacer avec des instruments)"
     echo "[12] Pavucontrol (outil graphique de contrôle des volumes audio entrée/sortie pour Pulseaudio)"
     echo "[13] Lame (outil d'encodage en CLI pour le format MP3,par ex pour convertir un Wav en Mp3)"
-    echo "[14] Ardour [Demande Interv!] (station de travail audio numérique avec enregistrement multipiste et mixage)"
+    echo "[14] Ardour [Interv!] (station de travail audio numérique avec enregistrement multipiste et mixage)"
     echo "[15] Flacon [Snap] (pour extraire les pistes d'un gros fichier audio)"
     echo "[16] PulseEffects [Flatpak] (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
 
@@ -327,7 +327,7 @@ then
     echo "12/ Quel(s) utilitaire(s) supplémentaire(s) voulez-vous ?"
     echo "*******************************************************"
     echo "[1] Aucun"
-    echo "[2] Kazam [Pour Xorg uniquement!] (capture vidéo de votre bureau)"
+    echo "[2] Kazam [Xorg Only!] (capture vidéo de votre bureau)"
     echo "[3] SimpleScreenRecorder (autre alternative pour la capture vidéo)"
     echo "[4] OpenBroadcaster Software (Pour faire du live en streaming, adapté pour les gameurs)"
     echo "[5] Glances (afficher l'état des ressources systèmes en temps réel, comme htop mais plus complet)"
@@ -339,15 +339,15 @@ then
     echo "[11] VirtualBox (virtualisation de système Windows/Mac/Linux/Bsd)"
     echo "[12] KeePassX2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
     echo "[13] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
-    echo "[14] Cheese [Pour Xorg uniquement!] (outil pour prendre des photos/vidéos à partir d'une webcam)"
+    echo "[14] Cheese [Xorg only!] (outil pour prendre des photos/vidéos à partir d'une webcam)"
     echo "[15] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
-    echo "[16] Gufw [Pour Xorg uniquement!] (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
+    echo "[16] Gufw [Xorg only!] (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
     echo "[17] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Nmap)"
-    echo "[18] Gnome Enfs Manager [Demande Interv!] (coffre-fort pour vos fichiers/dossiers)"
+    echo "[18] Gnome Enfs Manager [Interv!] (coffre-fort pour vos fichiers/dossiers)"
     echo "[19] Bleachbit [potentiellement dangereux !] (efface les fichiers inutiles/temporaires du système)"
-    echo "[20] VMWare Workstation Player [Demande Interv!][Install depuis Xorg!] (version gratuite mais propriétaire de VmWare)"
+    echo "[20] VMWare Workstation Player [Interv!][Install depuis Xorg!] (version gratuite mais propriétaire de VmWare)"
     echo "[21] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
-    echo "[22] Wireshark [demande interv!] (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
+    echo "[22] Wireshark [interv!] (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
     clear
 
@@ -445,7 +445,7 @@ then
     echo "[11] BlueFish (éditeur orienté développement web : HTML/PHP/CSS/...)"
     echo "[12] BlueGriffon (éditeur HTML/CSS avec aperçu du rendu en temps réel)"
     echo "[13] SciTE : Scintilla Text Editor (éditeur web avec une bonne coloration syntaxique)"
-    echo "[14] Eclipse [Demande Interv!][Install sous Xorg uniquement!](Projet décliné en sous-projets de dev)"
+    echo "[14] Eclipse [Interv!][Install sous Xorg uniquement!](Projet décliné en sous-projets de dev)"
     echo "[15] PyCharm [Snap] (IDE pour le language Python / à lancer depuis le terminal la 1ère fois)"
     echo "[16] Visual Studio Code [Snap] (Développé par Microsoft, sous licence libre MIT)"
     echo "[17] Atom [Snap] (Éditeur sous licence libre qui supporte les plug-ins Node.js et implémente GitControl)"
@@ -500,25 +500,23 @@ then
     echo "[1] Aucun"
     echo "[2] VLC"
     echo "[3] LibreOffice"
-    echo "[4] 0ad"
-    echo "[5] Dino"
-    echo "[6] Gimp"
-    echo "[7] Instagraph"
-    echo "[8] KeepassXC"
-    echo "[9] Ktube media downloader"
-    echo "[10] Warzone 2100"
-    echo "[11] Asciinema [isolation --classic]"
-    echo "[12] Bitcoin"
-    echo "[13] Blender [isolation --classic]"
-    echo "[14] Electrum"
-    echo "[15] NextCloud cli"
-    echo "[16] Paint suprem 3D"
-    echo "[17] PyCharm édition Professionnelle [isolation --classic]"
-    echo "[18] Qimo Wallpapers"
-    echo "[19] Quassel client"
-    echo "[20] Rube cube"
-    echo "[21] TermiusApp"
-    echo "[22] TicTacToe"
+    echo "[4] Dino"
+    echo "[5] Gimp"
+    echo "[6] Instagraph"
+    echo "[7] KeepassXC"
+    echo "[8] Ktube media downloader"
+    echo "[9] Warzone 2100"
+    echo "[10] Asciinema [isolation --classic]"
+    echo "[11] Bitcoin"
+    echo "[12] Blender [isolation --classic]"
+    echo "[13] Electrum"
+    echo "[14] NextCloud client"
+    echo "[15] Paint suprem 3D"
+    echo "[16] PyCharm édition Professionnelle [isolation --classic] ["
+    echo "[17] Quassel client"
+    echo "[18] Rube cube"
+    echo "[19] TermiusApp"
+    echo "[20] TicTacToe"
     read -p "Choix snappy : " choixSnap
     clear
              
@@ -1691,62 +1689,56 @@ do
             ;;
         "3") #LibreOffice version snap
             snap install libreoffice
-            ;;            
-        "4") #0ad version snap
-            snap install play0ad
-            ;;            
-        "5") #dino
+            ;;                       
+        "4") #dino
             snap install dino
             ;;   
-        "6") #gimp version snap
+        "5") #gimp version snap
             snap install gimp
             ;;    
-        "7") #instagraph
+        "6") #instagraph
             snap install instagraph
             ;;  
-        "8") #keepassXC
+        "7") #keepassXC
             snap install keepassxc
             ;;  
-        "9") #ktube media downloader
+        "8") #ktube media downloader
             snap install ktube-media-downloader --classic
             ;; 
-        "10") #warzone 2100
+        "9") #warzone 2100 
             snap install warzone2100
             ;; 
-        "11") #asciinema
+        "10") #asciinema
             snap install asciinema --classic
             ;;      
-        "12") #bitcoin
+        "11") #bitcoin
             snap install bitcoin
             ;;
-        "13") #blender
+        "12") #blender
             snap install blender --classic
             ;;  
-        "14") #electrum
+        "13") #electrum
             snap install electrum
             ;; 
-        "15") #nextcloud
-            snap install nextcloud
+        "14") #nextcloud client
+            snap install nextcloudclient
             ;; 
-        "16") #paint suprem 3D
+        "15") #paint suprem 3D
             snap install paintsupreme-3d
             ;;      
-        "17") #pycharm pro
+        "16") #pycharm pro
             snap install pycharm-professional --classic
-            ;;  
-        "18") #Qimo Wallpapers
-            snap install qimo-wallpapers
-            ;;    
-        "19") #Quassel client
+            ;;   
+        "17") #Quassel client
             snap install quasselclient-moon127
             ;;   
-        "20") #Rube cube
+        "18") #Rube cube
             snap install rubecube
             ;;            
-        "21") #TermiusApp
+        "19") #TermiusApp
             snap install termius-app
             ;;        
-        "22") #TicTacToe
+        "20") #TicTacToe
             snap install tic-tac-toe
             ;;              
     esac
@@ -1889,8 +1881,9 @@ done
     
    
 # Suppression des deb téléchargés par le script (plus nécessaire) et rangement des AppImages (a vérifier)
-chown -R $SUDO_USER:$SUDO_USER *.AppImage
 mkdir ./appimages ; rm *.deb ; mv *.AppImage ./appimages/
+chown -R $SUDO_USER:$SUDO_USER ./appimages
+chmod -R +x ./appimages
 
 # Nettoyage/Purge
 apt install -fy ; apt autoremove --purge -y ; apt clean ; clear
