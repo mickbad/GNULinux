@@ -47,6 +47,50 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Outil de récup ? : testdisk , ddrescue,  dcfldd 
 - Ajouter coloration des dossiers, cf : https://websetnet.com/fr/folder-color-nautilus-tool-how-to-change-folder-colour-in-ubuntu-15-0414-0414-10/
 - vrms (connaitre logiciel non libre) : https://memo-linux.com/lister-les-paquets-non-libre-sur-debianubuntu-avec-vrms-virtual-richard-matthew-stallman/
+- Ajouter possibilité minimisation fenêtre sur icone dock : gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+- Ajouter numix-circle, cf : 
+        git clone https://github.com/numixproject/numix-icon-theme-circle.git
+        cp -rf numix-icon-theme-circle/Numix* /usr/share/icons/ 
+        #rafraichissement cache pour numix-circle 
+        gtk-update-icon-cache /usr/share/icons/Numix-Circle/
+- Ajouter Zim ? TV8 ?
+- Ajouter Screenfetch
+- Sirikali ? asciinema ?
+- backport virtualbox ? (+verifier si depot bionic actif)
+        echo "deb http://download.virtualbox.org/virtualbox/debian bionic contrib" >> /etc/apt/sources.list
+        wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
+        apt update
+        apt install -y virtualbox-5.1
+- thefuck ? ncdu ? gdebi ? synaptic ? screen ?
+- backport LO ?
+- Kclean ?
+         wget http://hoper.dnsalias.net/tdc/public/kclean.deb
+         dpkg -i kclean.deb
+         apt install -fy
+         rm -f kclean.deb
+client hubic ?
+         wget http://mir7.ovh.net/ovh-applications/hubic/hubiC-Linux/2.1.0/hubiC-Linux-2.1.0.53-linux.deb
+         dpkg -i hubiC-Linux-2.1.0.53-linux.deb
+         apt install -fy
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
 
