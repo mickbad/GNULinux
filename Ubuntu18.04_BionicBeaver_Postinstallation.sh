@@ -603,7 +603,7 @@ apt remove ubuntu-web-launchers -y
 apt install ubuntu-restricted-extras x264 x265 -y
 
 # Désactivation de l'affichage des messages d'erreurs à l'écran
-echo "enabled=0" > /etc/default/apport
+sed -i 's/^enabled=1$/enabled=0/' /etc/default/apport
 
 # Création répertoire extension pour l'ajout d'extension supplémentaire pour l'utilisateur principal
 mkdir /home/$SUDO_USER/.local/share/gnome-shell/extensions
@@ -1660,7 +1660,7 @@ do
             apt install hfsprogs hfsutils hfsplus -y
             ;;
         "11") #Nouvelle commande raccourci Maj totale
-            echo "alias maj='sudo apt update ; sudo apt full-upgrade -y ; sudo apt autoremove --purge -y ; sudo apt clean ; sudo snap refresh ; sudo flatpak update -y'" >> /home/$SUDO_USER/.bashrc
+            echo "alias maj='sudo apt update && sudo apt autoremove --purge -y && sudo apt full-upgrade -y && sudo apt clean && sudo snap refresh && sudo flatpak update -y ; clear'" >> /home/$SUDO_USER/.bashrc
             su $SUDO_USER ; source /home/$SUDO_USER/.bashrc ; exit
             ;;
         "12") #Grub réduction temps d'attente + suppression test ram dans grub
