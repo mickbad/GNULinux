@@ -45,6 +45,8 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Ajouter Waterfox ? cf https://github.com/hawkeye116477/waterfox-deb / https://github.com/dylan493/waterfox-script
 - Ajouter Smartmontools ? 
 - Outil de récup ? : testdisk , ddrescue,  dcfldd 
+- Ajouter coloration des dossiers, cf : https://websetnet.com/fr/folder-color-nautilus-tool-how-to-change-folder-colour-in-ubuntu-15-0414-0414-10/
+
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
 
