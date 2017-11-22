@@ -42,7 +42,7 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Intégrer "ffmpegthumbnailer" pour charger les miniatures vidéos plus rapidement dans Nautilus ? (cf page 13 bionic forum ubuntu)
 - Ajouter GDevelop ? cf http://compilgames.net/main-fr.html
 - Ajouter en paquet natif si dispo Electrum et Ascinemma ?
-- Ajouter Waterfox ? cf https://github.com/hawkeye116477/waterfox-deb / https://github.com/dylan493/waterfox-script
+- Ajouter Waterfox ? cf https://github.com/hawkeye116477/waterfox-deb / https://github.com/dylan493/waterfox-script + https://dolys.fr/forums/topic/waterfox-alternative-a-firefox/
 - Ajouter Smartmontools ? 
 - Outil de récup ? : testdisk , ddrescue,  dcfldd 
 - Ajouter coloration des dossiers, cf : https://websetnet.com/fr/folder-color-nautilus-tool-how-to-change-folder-colour-in-ubuntu-15-0414-0414-10/
