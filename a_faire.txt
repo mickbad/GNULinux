@@ -43,6 +43,8 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 - Ajouter GDevelop ? cf http://compilgames.net/main-fr.html
 - Ajouter en paquet natif si dispo Electrum et Ascinemma ?
 - Ajouter Waterfox ? cf https://github.com/hawkeye116477/waterfox-deb / https://github.com/dylan493/waterfox-script
+- Ajouter Smartmontools ? 
+- Outil de récup ? : testdisk , ddrescue,  dcfldd 
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
 
