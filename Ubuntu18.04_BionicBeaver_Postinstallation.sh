@@ -104,7 +104,7 @@ then
     echo "[6] Chromium (la version libre/opensource de Chrome)"
     echo "[7] Google Chrome (le célèbre navigateur de Google mais il est propriétaire !)"
     echo "[8] Vivaldi (un navigateur propriétaire avec une interface sobre assez particulière)"
-    echo "[9] Opera [Interv!] (un navigateur propriétaire relativement connu)"
+    echo "[9] Opera (un navigateur propriétaire relativement connu)"
     echo "[10] PaleMoon (un navigateur plutôt récent, libre & performant)"
     echo "[11] WaterFox (un fork de Firefox compatible avec les anciennes extensions)"
     echo "[12] Tor Browser (pour naviguer dans l'anonymat avec le réseau tor : basé sur Firefox ESR)"
@@ -688,6 +688,7 @@ do
             wget -q http://deb.opera.com/archive.key -O- | apt-key add -
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 517590D9A8492E35
             echo "deb https://deb.opera.com/opera/ stable non-free" | tee -a /etc/apt/sources.list.d/opera-stable.list
+            echo "opera-stable opera-stable/add-deb-source boolean true\n" | debconf-set-selections
             apt update ; apt install opera-stable -y
             ;;
         "10") #Palemoon
