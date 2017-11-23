@@ -350,7 +350,7 @@ then
     echo "[19] Bleachbit [potentiellement dangereux !] (efface les fichiers inutiles/temporaires du système)"
     echo "[20] VMWare Workstation Player [Interv!][Install depuis Xorg!] (version gratuite mais propriétaire de VmWare)"
     echo "[21] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
-    echo "[22] Wireshark [interv!] (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
+    echo "[22] Wireshark (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
     echo "[23] Pack d'outils utiles : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
     clear
@@ -586,6 +586,9 @@ fi
 
 ## Les choses utiles recommandés pour tous :
 
+# Pour automatiser l'instalaliton de certains logiciels qui pose des questions :
+export DEBIAN_FRONTEND="noninteractive"
+
 # Activation du dépot partenaire 
 sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 
@@ -596,7 +599,7 @@ apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
 apt install dconf-editor gnome-tweak-tool folder-color gedit-plugins nautilus-image-converter gnome-themes-standard gnome-weather gnome-packagekit -y
 
 # Autres outils utiles
-apt install curl net-tools git gdebi vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar -y
+apt install curl net-tools git gdebi vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar debconf-utils -y
 
 #Police d'écriture Microsoft
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | /usr/bin/debconf-set-selections | apt install ttf-mscorefonts-installer -y
@@ -1346,7 +1349,9 @@ do
             flatpak install --from https://flathub.org/repo/appstream/org.baedert.corebird.flatpakref -y
             ;; 
         "22") #Wireshark
+            debconf-set-selections <<< "wireshark-common/install-setuid true"
             apt install wireshark -y
+            usermod -aG wireshark $SUDO_USER #permet à l'utilisateur principal de faire des captures
             ;;   
         "23") #pack d'outils : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone
             apt install vrms screenfetch asciinema ncdu screen rclone -y
