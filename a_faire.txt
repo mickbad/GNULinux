@@ -9,21 +9,18 @@
 [REJETE] Ajouter extension pour afficher bureau, exemple Show Desktop Button (https://extensions.gnome.org/extension/1194/show-desktop-button/) {Obsolète pour l'instant, pas pour 3.26}
 [FAIT] Ajouter extension Unite : https://extensions.gnome.org/extension/1287/unite/
 [FAIT] Supprimer les extensions : Screenshot windows sizer + Tilix dropdown + Redshift
-- Ajouter un mode Novice ou tout est automatique (pas de question) pour les débutants
-- Dans le mode avancé, ajouter des sections dédiés à Snappy, FlatPak et AppImage
+[FAIT] Ajouter un mode Novice ou tout est automatique (pas de question) pour les débutants
+[MODIFIE] Dans le mode avancé, ajouter des sections dédiés à Snappy, FlatPak et AppImage {=> ds extra}
 [ANNULE] Pour lecture Blu-ray : https://doc.ubuntu-fr.org/blu-ray#lire_les_blu-ray_avec_vlc {pas demandé}
 [FAIT] Proposer Nuvola Player cf http://www.omgubuntu.co.uk/2012/04/rdio-pandora-support-added-to-nuvola-player
 [REFUSE] Proposer MellowPlayer ? cf https://colinduquesnoy.github.io/MellowPlayer/ {doublons en terme de fonctionnalité}
-
-- Logiciel à installer pour mode novice :
-Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a vérifier si là par défaut), 
-
+[FAIT]Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium
 [ERREUR] Section audio : préciser si "Musique" est Gnome musique (si oui à préciser sinon ajouter gnome musique en +) {mauvais commentaire rapporté, c'était déjà précisé}
 [MODIF] Gnome Twitch à déplacer ds une autre catégorie ? {pas déplacé mais question modifié pour préciser que cela concerne les streams}
 [INUTILE] Pour section Jeu, voir si on peux inclure paquet gnome-games-app (instable selon Roschan) {pas d'intérêt}
 - Customization : ajouter thème Vertex (gtk) + pack d'icone Obsidian
-[FAIT] Install Laptop-mode-tools ? cf#2 : https://forum.ubuntu-fr.org/viewtopic.php?id=2016748 {ajouté ds la fonction prévu pour éco d'énergie}
-- AppImages : créer /opt/appimage et les déplacer dedans + chmod+x ? ajouter lanceur ?
+[ANNULE] Install Laptop-mode-tools ? cf#2 : https://forum.ubuntu-fr.org/viewtopic.php?id=2016748 {ajouté ds la fonction prévu pour éco d'énergie} => {annulé car incompatible avec TPM}
+[MODIFIE] AppImages : créer /opt/appimage et les déplacer dedans + chmod+x ? ajouter lanceur ? {ds perso de l'utilisateur ~/appimages}
 [FAIT]Ajouter l'appli Slack ds les choix : https://slack.com/intl/fr-fr/downloads/linux
 [ANNULE] Ajouter Audex ds les choix (bien selon certains utilisateurs) : https://doc.ubuntu-fr.org/audex {pas d'intéret}
 [REJET] Ajouter K3B ? https://doc.ubuntu-fr.org/k3b {trop de dépendance KDE !}
@@ -37,12 +34,11 @@ Gimp, Pitivi, Tweaks, GNOME ToDo, GNOME Paquets, Chromium, GNOME Caractères (a 
 [FAIT] Ajouter Gnome Enfs Manager (ou autre logiciel de cryptage)
 [MODIFIE] Ajouté une section Sécurité ? {pas de section sécurité mais un pack de logiciel de sécurité en proposition}
 [FAIT] Ajouter curseur partie customization
-- Notes : http://www.omgubuntu.co.uk/2017/11/notes-up-markdown-editor-for-linux
-- Ajouter 1 ou 2 logiciels pour bitcoins, exemple Electrum : https://electrum.org/#home
-- Intégrer "ffmpegthumbnailer" pour charger les miniatures vidéos plus rapidement dans Nautilus ? (cf page 13 bionic forum ubuntu)
-- Ajouter GDevelop ? cf http://compilgames.net/main-fr.html
-- Ajouter en paquet natif si dispo Electrum et Ascinemma ?
-- Ajouter Waterfox ? cf https://github.com/hawkeye116477/waterfox-deb / https://github.com/dylan493/waterfox-script + https://dolys.fr/forums/topic/waterfox-alternative-a-firefox/
+[FAIT] Notes : http://www.omgubuntu.co.uk/2017/11/notes-up-markdown-editor-for-linux
+[FAIT] Ajouter Electrum https://electrum.org/#home
+[FAIT] Intégrer "ffmpegthumbnailer" pour charger les miniatures vidéos plus rapidement dans Nautilus ? (cf page 13 bionic forum ubuntu)
+[ANNULE] Ajouter GDevelop ? cf http://compilgames.net/main-fr.html (pas demandé + pas encore de dépot récent pour bionic, éventuellement pour plus tard)
+[FAIT] Ajouter Waterfox : cf https://dolys.fr/forums/topic/waterfox-alternative-a-firefox/
 - Ajouter Smartmontools ? 
 - Outil de récup ? : testdisk , ddrescue,  dcfldd 
 - Ajouter coloration des dossiers, cf : https://websetnet.com/fr/folder-color-nautilus-tool-how-to-change-folder-colour-in-ubuntu-15-0414-0414-10/
