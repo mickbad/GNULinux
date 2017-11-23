@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.43 (alpha)
+# version 0.0.44 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -106,16 +106,17 @@ then
     echo "[8] Vivaldi (un navigateur propriétaire avec une interface sobre assez particulière)"
     echo "[9] Opera [Interv!] (un navigateur propriétaire relativement connu)"
     echo "[10] PaleMoon (un navigateur plutôt récent, libre & performant)"
-    echo "[11] Tor Browser (pour naviguer dans l'anonymat avec le réseau tor : basé sur Firefox ESR)"
-    echo "[12] Gnome Web/Epiphany (navigateur de la fondation Gnome s'intégrant bien avec cet environnement)"
-    echo "[13] Midori (libre & léger, utilisé notamment par défaut sur la distribution 'Elementary OS')"
-    echo "[14] QupZilla/Falkon (une alternative libre et légère utilisant Webkit)"   
-    echo "[15] Min (un navigateur minimaliste et donc très léger)"   
-    echo "[16] NetSurf (basique mais très léger et performant)"
-    echo "[17] Dillo (navigateur capable de tourner sur des ordinosaures)"
-    echo "[18] Lynx (navigateur 100% en ligne de commande, pratique depuis une console SSH)"
-    echo "[19] Rekonq (Navigateur pour Kde, déconseillé sous Gnome car beaucoup de dépendance kde !)"
-    echo "[20] Eolie [Flatpak] (une autre alternative pour Gnome)"
+    echo "[11] WaterFox (un fork de Firefox compatible avec les anciennes extensions)"
+    echo "[12] Tor Browser (pour naviguer dans l'anonymat avec le réseau tor : basé sur Firefox ESR)"
+    echo "[13] Gnome Web/Epiphany (navigateur de la fondation Gnome s'intégrant bien avec cet environnement)"
+    echo "[14] Midori (libre & léger, utilisé notamment par défaut sur la distribution 'Elementary OS')"
+    echo "[15] QupZilla/Falkon (une alternative libre et légère utilisant Webkit)"   
+    echo "[16] Min (un navigateur minimaliste et donc très léger)"   
+    echo "[17] NetSurf (basique mais très léger et performant)"
+    echo "[18] Dillo (navigateur capable de tourner sur des ordinosaures)"
+    echo "[19] Lynx (navigateur 100% en ligne de commande, pratique depuis une console SSH)"
+    echo "[20] Rekonq (Navigateur pour Kde, déconseillé sous Gnome car beaucoup de dépendance kde !)"
+    echo "[21] Eolie [Flatpak] (une autre alternative pour Gnome)"
 
     echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 11 20) : " choixNavigateur
@@ -292,11 +293,12 @@ then
     echo "[10] LaTex + Texworks (langage de description de document avec un éditeur spécialisé LaTex)"
     echo "[11] Gnome Evolution (logiciel de type groupware et courrielleur, facile à utiliser)"
     echo "[12] MailSpring [Snap] (client de messagerie moderne et multi-plateforme)"
-    echo "[13] Apache OpenOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[14] OOo4Kids [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[15] WPSOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[16] OnlyOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[17] Marp [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[13] Notes Up [Flatpak] (éditeur et manager de notes avec markdown, simple mais efficace)"
+    echo "[14] Apache OpenOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[15] OOo4Kids [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[16] WPSOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[17] OnlyOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[18] Marp [NE FONCTIONNE PAS : Ne pas sélectionner !]"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
     clear
 
@@ -588,10 +590,10 @@ sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
 
 # Utile pour Gnome
-apt install dconf-editor gnome-tweak-tool gedit-plugins nautilus-image-converter gnome-themes-standard gnome-weather -y
+apt install dconf-editor gnome-tweak-tool gedit-plugins nautilus-image-converter gnome-themes-standard gnome-weather gnome-packagekit -y
 
 # Autres outils utiles
-apt install net-tools vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar -y
+apt install curl net-tools vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar -y
 
 #Police d'écriture Microsoft
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | /usr/bin/debconf-set-selections | apt install ttf-mscorefonts-installer -y
@@ -601,6 +603,9 @@ apt remove ubuntu-web-launchers -y
 
 # Codecs utiles
 apt install ubuntu-restricted-extras x264 x265 -y
+
+#optimisation
+apt install ffmpegthumbnailer -y #permet de charger les minatures vidéos plus rapidement dans nautilus
 
 # Désactivation de l'affichage des messages d'erreurs à l'écran
 sed -i 's/^enabled=1$/enabled=0/' /etc/default/apport
@@ -617,7 +622,7 @@ then
     #multimédia
     apt install vlc gnome-mpv pitivi gimp pinta -y
     #divers
-    apt install brasero adobe-flashplugin -y
+    apt install brasero adobe-flashplugin gnome-todo -y
 fi
 
 
@@ -679,43 +684,49 @@ do
             echo "deb https://deb.opera.com/opera/ stable non-free" | tee -a /etc/apt/sources.list.d/opera-stable.list
             apt update ; apt install opera-stable -y
             ;;
-        "10") #palemoon 
+        "10") #Palemoon
             wget http://download.opensuse.org/repositories/home:/stevenpusser/xUbuntu_17.04/amd64/palemoon_27.6.0~repack-1_amd64.deb
             dpkg -i palemoon_27.6.0~repack-1_amd64.deb
             apt install -fy 
-            ;;
-        "11") #Tor browser
+            ;; 
+        "11") #Waterfox
+            echo "deb https://dl.bintray.com/hawkeye116477/waterfox-deb release main" >> /etc/apt/sources.list.d/waterfox.list
+            curl https://bintray.com/user/downloadSubjectPublicKey?username=hawkeye116477 | apt-key add - 
+            apt update
+            apt install waterfox waterfox-locale-fr -y
+            ;;                       
+        "12") #Tor browser
             apt install torbrowser-launcher -y
             ;;
-        "12") #epiphany
+        "13") #epiphany
             apt install epiphany-browser -y
             ;;
-        "13") #midori
+        "14") #midori
             wget http://midori-browser.org/downloads/midori_0.5.11-0_amd64_.deb
             dpkg -i midori_0.5.11-0_amd64_.deb
             apt install -fy
             ;;
-        "14") #Falkon/Qupzilla
+        "15") #Falkon/Qupzilla
             apt install qupzilla -y
             ;;
-        "15") Min
+        "16") Min
             wget https://github.com/minbrowser/min/releases/download/v1.6.3/Min_1.6.3_amd64.deb
             dpkg -i Min_1.6.3_amd64.deb
             apt install -fy
             ;;
-        "16") #Netsurf
+        "17") #Netsurf
             apt install netsurf-gtk -y
             ;;
-        "17") #Dillo
+        "18") #Dillo
             apt install dillo -y
             ;;
-        "18") #Lynx
+        "19") #Lynx
             apt install lynx -y
             ;;
-        "19") #Rekonq
+        "20") #Rekonq
             apt install rekonq -y
             ;;
-        "20") #Eolie via Flatpak
+        "21") #Eolie via Flatpak
             flatpak install --from https://flathub.org/repo/appstream/org.gnome.Eolie.flatpakref -y
             ;;
     esac
@@ -1152,29 +1163,32 @@ do
             ;;  
         "12") #MailSpring (Snap)
             snap install mailspring
-            ;;            
-        "13") #Apache OpenOffice
+            ;; 
+        "13") #Notes Up (Flatpak)
+            flatpak install --from https://flathub.org/repo/appstream/com.github.philip_scott.notes-up.flatpakref -y
+            ;;             
+        "14") #Apache OpenOffice
             wget https://freefr.dl.sourceforge.net/project/openofficeorg.mirror/4.1.4/binaries/fr/Apache_OpenOffice_4.1.4_Linux_x86_install-deb_fr.tar.gz
             tar zxvf Apache_OpenOffice_4.1.4_Linux_x86_install-deb_fr.tar.gz
             dpkg -i ./fr/DEBS/*.deb ; dpkg -i ./fr/DEBS/desktop-integration/open*.deb
             apt install -fy
             ;; 
-        "14") #OOo4Kids
+        "15") #OOo4Kids
             wget https://downloads.sourceforge.net/project/educooo/OOo4Kids/Linux/deb/dists/testing/main/binary-amd64/ooo4kids-fr_1.3-1_amd64.deb
             dpkg -i ooo4kids-fr_1.3-1_amd64.deb
             apt install -fy
             ;;               
-        "15") #WPS Office
+        "16") #WPS Office
             wget http://kdl1.cache.wps.com/ksodl/download/linux/a21//wps-office_10.1.0.5707~a21_amd64.deb
             dpkg -i wps-office_10.1.0.5707~a21_amd64.deb
             apt install -fy
             ;; 
-        "16") #OnlyOffice
+        "17") #OnlyOffice
             wget http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
             dpkg -i onlyoffice-desktopeditors_amd64.deb
             apt install -fy
             ;;             
-        "17") #Marp
+        "18") #Marp
             wget https://github.com/yhatt/marp/releases/download/v0.0.11/0.0.11-Marp-linux-x64.tar.gz 
             mkdir marp && tar xvf 0.0.11-Marp-linux-x64.tar.gz -C marp/
             chmod +x ./marp/Marp
@@ -1342,12 +1356,11 @@ do
             apt install playonlinux -y
             ;;
         "4") #Minecraft 
-            apt install curl -y
             wget http://packages.linuxmint.com/pool/import/m/minecraft-installer/minecraft-installer_0.1+r12~ubuntu16.04.1_amd64.deb
             dpkg -i minecraft-installer_0.1+r12~ubuntu16.04.1_amd64.deb ; apt install -fy
             ;;
         "5") #Minetest 
-            apt install minetest -y
+            apt install minetest minetest-mod-nether -y
             ;;
         "6") #OpenArena
             apt install openarena -y
