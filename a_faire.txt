@@ -94,6 +94,28 @@
 ==========================================================================================
 ++ Peux éventuellement servir plus tard :
 
+- Astuce de Bruno (ubuntu-fr.org) pour automatiser install de certain paquet (exemple avec wireshark) :
+Certains paquets utilisent debconf pour poser des questions à l'utilisateur lors de l'installation (mysql-server, phpmyadmin , par exemple).
+Pour pouvoir fournir « automatiquement » les réponses à ce questions il faut d'abord installer le paquet debconf-utils.
+
+Pour déterminer les questions posées par un paquet et le type de réponses attendues, on peut alors utiliser debconf-get-selections:
+
+$ sudo debconf-get-selections | grep wireshark
+        wireshark-common        wireshark-common/install-setuid boolean true
+
+À partir de la on peut utiliser une installation sans interaction avec l'utilisateur :
+
+        export DEBIAN_FRONTEND="noninteractive"
+        sudo debconf-set-selections <<< "wireshark-common/install-setuid false"
+        sudo apt install -y wireshark
+
+
+
+
+
+
+
+
 - Liste des AppImages :
 https://github.com/AppImage/AppImageKit/wiki/AppImages
 https://www.linux-appimages.org/
