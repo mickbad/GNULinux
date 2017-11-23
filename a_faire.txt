@@ -70,10 +70,8 @@
          dpkg -i kclean.deb
          apt install -fy
          rm -f kclean.deb
-client hubic ?
-         wget http://mir7.ovh.net/ovh-applications/hubic/hubiC-Linux/2.1.0/hubiC-Linux-2.1.0.53-linux.deb
-         dpkg -i hubiC-Linux-2.1.0.53-linux.deb
-         apt install -fy
+[MODIFIE] client hubic ? {remplacé par rclone qui gère pleins de cloud dont hubic
+
          
          
          
