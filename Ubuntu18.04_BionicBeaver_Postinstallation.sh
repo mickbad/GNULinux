@@ -294,11 +294,12 @@ then
     echo "[11] Gnome Evolution (logiciel de type groupware et courrielleur, facile à utiliser)"
     echo "[12] MailSpring [Snap] (client de messagerie moderne et multi-plateforme)"
     echo "[13] Notes Up [Flatpak] (éditeur et manager de notes avec markdown, simple mais efficace)"
-    echo "[14] Apache OpenOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[15] OOo4Kids [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[16] WPSOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[17] OnlyOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[18] Marp [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[14] Zim (wiki en local avec une collection de pages et des marqueurs)"
+    echo "[15] Apache OpenOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[16] OOo4Kids [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[17] WPSOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[18] OnlyOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[19] Marp [NE FONCTIONNE PAS : Ne pas sélectionner !]"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
     clear
 
@@ -350,6 +351,7 @@ then
     echo "[20] VMWare Workstation Player [Interv!][Install depuis Xorg!] (version gratuite mais propriétaire de VmWare)"
     echo "[21] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
     echo "[22] Wireshark [interv!] (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
+    echo "[23] Pack d'outils utiles : vrms + screenfetch + asciinema + ncdu + screen + kclean"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
     clear
 
@@ -488,6 +490,7 @@ then
     echo "[13] [pas encore actif]Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
     echo "[14] [pas encore actif]Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
     echo "[15] Support imprimantes HP (hplip + sane + hplip-gui)"
+    echo "[16] Activer la minimisation de fenêtre si on clique sur l'icone dans le dock"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
     clear
 fi
@@ -590,10 +593,10 @@ sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
 
 # Utile pour Gnome
-apt install dconf-editor gnome-tweak-tool gedit-plugins nautilus-image-converter gnome-themes-standard gnome-weather gnome-packagekit -y
+apt install dconf-editor gnome-tweak-tool folder-color gedit-plugins nautilus-image-converter gnome-themes-standard gnome-weather gnome-packagekit -y
 
 # Autres outils utiles
-apt install curl net-tools vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar -y
+apt install curl net-tools git gdebi vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar -y
 
 #Police d'écriture Microsoft
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | /usr/bin/debconf-set-selections | apt install ttf-mscorefonts-installer -y
@@ -1166,29 +1169,32 @@ do
             ;; 
         "13") #Notes Up (Flatpak)
             flatpak install --from https://flathub.org/repo/appstream/com.github.philip_scott.notes-up.flatpakref -y
-            ;;             
-        "14") #Apache OpenOffice
+            ;;          
+        "14") #Zim
+            apt install zim -y
+            ;;               
+        "15") #Apache OpenOffice
             wget https://freefr.dl.sourceforge.net/project/openofficeorg.mirror/4.1.4/binaries/fr/Apache_OpenOffice_4.1.4_Linux_x86_install-deb_fr.tar.gz
             tar zxvf Apache_OpenOffice_4.1.4_Linux_x86_install-deb_fr.tar.gz
             dpkg -i ./fr/DEBS/*.deb ; dpkg -i ./fr/DEBS/desktop-integration/open*.deb
             apt install -fy
             ;; 
-        "15") #OOo4Kids
+        "16") #OOo4Kids
             wget https://downloads.sourceforge.net/project/educooo/OOo4Kids/Linux/deb/dists/testing/main/binary-amd64/ooo4kids-fr_1.3-1_amd64.deb
             dpkg -i ooo4kids-fr_1.3-1_amd64.deb
             apt install -fy
             ;;               
-        "16") #WPS Office
+        "17") #WPS Office
             wget http://kdl1.cache.wps.com/ksodl/download/linux/a21//wps-office_10.1.0.5707~a21_amd64.deb
             dpkg -i wps-office_10.1.0.5707~a21_amd64.deb
             apt install -fy
             ;; 
-        "17") #OnlyOffice
+        "18") #OnlyOffice
             wget http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
             dpkg -i onlyoffice-desktopeditors_amd64.deb
             apt install -fy
             ;;             
-        "18") #Marp
+        "19") #Marp
             wget https://github.com/yhatt/marp/releases/download/v0.0.11/0.0.11-Marp-linux-x64.tar.gz 
             mkdir marp && tar xvf 0.0.11-Marp-linux-x64.tar.gz -C marp/
             chmod +x ./marp/Marp
@@ -1341,7 +1347,11 @@ do
             ;; 
         "22") #Wireshark
             apt install wireshark -y
-            ;;                
+            ;;   
+        "23") #pack d'outils : vrms + screenfetch + asciinema + ncdu + screen + kclean
+            apt install vrms screenfetch asciinema ncdu screen -y
+            wget http://hoper.dnsalias.net/tdc/public/kclean.deb && dpkg -i kclean.deb ; apt install -fy ; rm kclean.deb
+            ;;                   
     esac
 done
 
@@ -1690,6 +1700,9 @@ do
         "15") #Support imprimante HP
             apt install hplip hplip-doc hplip-gui sane sane-utils -y
             ;;   
+        "16") #Minimisation fenêtre sur l'icone du dock
+            gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+            ;;             
     esac
 done
 
