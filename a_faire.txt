@@ -39,27 +39,33 @@
 [FAIT] Intégrer "ffmpegthumbnailer" pour charger les miniatures vidéos plus rapidement dans Nautilus ? (cf page 13 bionic forum ubuntu)
 [ANNULE] Ajouter GDevelop ? cf http://compilgames.net/main-fr.html (pas demandé + pas encore de dépot récent pour bionic, éventuellement pour plus tard)
 [FAIT] Ajouter Waterfox : cf https://dolys.fr/forums/topic/waterfox-alternative-a-firefox/
-- Ajouter Smartmontools ? 
+- Ajouter Smartmontools (demande interv postfix !) ? 
 - Outil de récup ? : testdisk , ddrescue,  dcfldd 
-- Ajouter coloration des dossiers, cf : https://websetnet.com/fr/folder-color-nautilus-tool-how-to-change-folder-colour-in-ubuntu-15-0414-0414-10/
-- vrms (connaitre logiciel non libre) : https://memo-linux.com/lister-les-paquets-non-libre-sur-debianubuntu-avec-vrms-virtual-richard-matthew-stallman/
-- Ajouter possibilité minimisation fenêtre sur icone dock : gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+[FAIT] Ajouter coloration des dossiers, cf : https://websetnet.com/fr/folder-color-nautilus-tool-how-to-change-folder-colour-in-ubuntu-15-0414-0414-10/
+[FAIT] vrms (connaitre logiciel non libre) : https://memo-linux.com/lister-les-paquets-non-libre-sur-debianubuntu-avec-vrms-virtual-richard-matthfew-stallman/
+[FAIT] Ajouter possibilité minimisation fenêtre sur icone dock : gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 - Ajouter numix-circle, cf : 
         git clone https://github.com/numixproject/numix-icon-theme-circle.git
         cp -rf numix-icon-theme-circle/Numix* /usr/share/icons/ 
         #rafraichissement cache pour numix-circle 
         gtk-update-icon-cache /usr/share/icons/Numix-Circle/
-- Ajouter Zim ? TV8 ?
-- Ajouter Screenfetch
-- Sirikali ? asciinema ?
+[FAIT]Ajouter Zim
+- TV8 ?
+[FAIT] Ajouter Screenfetch
+- Sirikali ? 
+[FAIT] asciinema 
 - backport virtualbox ? (+verifier si depot bionic actif)
         echo "deb http://download.virtualbox.org/virtualbox/debian bionic contrib" >> /etc/apt/sources.list
         wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
         apt update
         apt install -y virtualbox-5.1
-- thefuck ? ncdu ? gdebi ? synaptic ? screen ?
+- thefuck ? [marche pas en VM, a restetr sur MP]
+[FAIT] ncdu ? 
+[FAIT] gdebi ? 
+- synaptic ? (attention uniquement pour xorg) 
+[FAIT] screen 
 - backport LO ?
-- Kclean ?
+[FAIT] Kclean
          wget http://hoper.dnsalias.net/tdc/public/kclean.deb
          dpkg -i kclean.deb
          apt install -fy
