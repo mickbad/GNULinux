@@ -351,7 +351,7 @@ then
     echo "[20] VMWare Workstation Player [Interv!][Install depuis Xorg!] (version gratuite mais propriétaire de VmWare)"
     echo "[21] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
     echo "[22] Wireshark [interv!] (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
-    echo "[23] Pack d'outils utiles : vrms + screenfetch + asciinema + ncdu + screen + kclean"
+    echo "[23] Pack d'outils utiles : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
     clear
 
@@ -1348,8 +1348,8 @@ do
         "22") #Wireshark
             apt install wireshark -y
             ;;   
-        "23") #pack d'outils : vrms + screenfetch + asciinema + ncdu + screen + kclean
-            apt install vrms screenfetch asciinema ncdu screen -y
+        "23") #pack d'outils : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone
+            apt install vrms screenfetch asciinema ncdu screen rclone -y
             wget http://hoper.dnsalias.net/tdc/public/kclean.deb && dpkg -i kclean.deb ; apt install -fy ; rm kclean.deb
             ;;                   
     esac
