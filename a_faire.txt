@@ -1,8 +1,6 @@
 [FAIT] Modifier Section Bureautique par "Bureautique et Mail"
 [FAIT] Déplacer "Geary" dans la partie bureautique/mail
 [FAIT] Ajouter "Evolution" dans cette partie
-- voir pour modif réglage mise en veille ?
-- Modifier page d'acceuil par défaut de Firefox par Qwant ?
 [FAIT] Ajouter choix si imprimante HP (hplip + sane)
 [FAIT] Utiliser vouvoiement et non tutoiement
 [FAIT] Extension "Clipboard Indicator" plutôt que GPaste 
@@ -39,38 +37,23 @@
 [FAIT] Intégrer "ffmpegthumbnailer" pour charger les miniatures vidéos plus rapidement dans Nautilus ? (cf page 13 bionic forum ubuntu)
 [ANNULE] Ajouter GDevelop ? cf http://compilgames.net/main-fr.html (pas demandé + pas encore de dépot récent pour bionic, éventuellement pour plus tard)
 [FAIT] Ajouter Waterfox : cf https://dolys.fr/forums/topic/waterfox-alternative-a-firefox/
-- Ajouter Smartmontools (demande interv postfix !) ? 
-- Outil de récup ? : testdisk , ddrescue,  dcfldd 
+[ANNULE] Outil de récup ? : testdisk , ddrescue,  dcfldd {trop peu utilisé}
 [FAIT] Ajouter coloration des dossiers, cf : https://websetnet.com/fr/folder-color-nautilus-tool-how-to-change-folder-colour-in-ubuntu-15-0414-0414-10/
 [FAIT] vrms (connaitre logiciel non libre) : https://memo-linux.com/lister-les-paquets-non-libre-sur-debianubuntu-avec-vrms-virtual-richard-matthfew-stallman/
 [FAIT] Ajouter possibilité minimisation fenêtre sur icone dock : gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
-- Ajouter numix-circle, cf : 
-        git clone https://github.com/numixproject/numix-icon-theme-circle.git
-        cp -rf numix-icon-theme-circle/Numix* /usr/share/icons/ 
-        #rafraichissement cache pour numix-circle 
-        gtk-update-icon-cache /usr/share/icons/Numix-Circle/
+[FAIT] Ajouter numix-circle
 [FAIT]Ajouter Zim
-- TV8 ?
+[ANNULE] TV8 ? {pas sur ce script, version obsolète}
 [FAIT] Ajouter Screenfetch
-- Sirikali ? 
+[ANNULE]Sirikali ? {pas mieux que GeM} 
 [FAIT] asciinema 
-- backport virtualbox ? (+verifier si depot bionic actif)
-        echo "deb http://download.virtualbox.org/virtualbox/debian bionic contrib" >> /etc/apt/sources.list
-        wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
-        apt update
-        apt install -y virtualbox-5.1
-- thefuck ? [marche pas en VM, a restetr sur MP]
+[ANNULE] backport virtualbox ? (pas sur ce script}
 [FAIT] ncdu ? 
 [FAIT] gdebi ? 
-- synaptic ? (attention uniquement pour xorg) 
+[FAIT] synaptic ? (xorg only)
 [FAIT] screen 
-- backport LO ?
 [FAIT] Kclean
-         wget http://hoper.dnsalias.net/tdc/public/kclean.deb
-         dpkg -i kclean.deb
-         apt install -fy
-         rm -f kclean.deb
-[MODIFIE] client hubic ? {remplacé par rclone qui gère pleins de cloud dont hubic
+[MODIFIE] client hubic ? {remplacé par rclone qui gère pleins de cloud dont hubic}
 
          
          
