@@ -352,6 +352,7 @@ then
     echo "[21] CoreBird [Flatpak] (Un client de bureau pour le réseau social Twitter)"
     echo "[22] Wireshark (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
     echo "[23] Pack d'outils utiles : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone"
+    echo "[24] Synaptic [Xorg only!] (gestionnaire graphique pour les paquets deb)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
     clear
 
@@ -1357,7 +1358,10 @@ do
         "23") #pack d'outils : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone
             apt install vrms screenfetch asciinema ncdu screen rclone -y
             wget http://hoper.dnsalias.net/tdc/public/kclean.deb && dpkg -i kclean.deb ; apt install -fy ; rm kclean.deb
-            ;;                   
+            ;; 
+        "24") #Synaptic
+            apt install synaptic -y
+            ;;               
     esac
 done
 
