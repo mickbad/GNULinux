@@ -425,7 +425,7 @@ then
     echo "[3] Pack2 avec encore d'autres thèmes : Adapta + Minwaita Vanilla + Plano + Greybird/Blackbird/Bluebird + PopGTK"
     echo "[4] Pack3 de thème : albatross, Yuyo, human, gilouche"
     echo "[5] Remettre le thème gris pour GDM (par défaut violet) : Attention ! ajoute la session Vanilla en dépendance !"
-    echo "[6] Pack d'icone 1 : Numix, Breathe, Breeze, Elementary, Brave + supplément extra icone Gnome"
+    echo "[6] Pack d'icone 1 : Numix et Numix Circle, Breathe, Breeze, Elementary, Brave + supplément extra icone Gnome"
     echo "[7] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
     echo "[8] Pack d'icone 3 : Human, Moblin, Oxygen, Fuenza, Suede, Yasis"
     echo "[9] Pack de curseur : Breeze + Moblin + Oxygen/Oxygen-extra"
@@ -1513,6 +1513,9 @@ do
     case $custom in
         "2") #pack theme gtk 1
             apt install arc-thene numix-blue-gtk-theme numix-gtk-theme silicon-theme -y
+            #Numix Circle
+            git clone https://github.com/numixproject/numix-icon-theme-circle.git && cp -rf numix-icon-theme-circle/Numix* /usr/share/icons/ 
+            gtk-update-icon-cache /usr/share/icons/Numix-Circle/ && rm -r numix-icon-theme-circle
             #a ajouter a la suite : united gnome darker + gnomeosx
             ;;
         "3") #pack theme gtk 2
