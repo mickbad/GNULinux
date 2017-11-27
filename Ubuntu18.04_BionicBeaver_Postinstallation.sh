@@ -600,7 +600,7 @@ apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
 apt install dconf-editor gnome-tweak-tool folder-color gedit-plugins nautilus-image-converter gnome-themes-standard gnome-weather gnome-packagekit -y
 
 # Autres outils utiles
-apt install curl net-tools git gdebi vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar debconf-utils -y
+apt install inxi curl net-tools git gdebi vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar debconf-utils -y
 
 #Police d'écriture Microsoft
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | /usr/bin/debconf-set-selections | apt install ttf-mscorefonts-installer -y
