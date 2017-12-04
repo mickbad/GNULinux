@@ -421,7 +421,7 @@ then
     echo "[7] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
     echo "[8] Pack d'icone 3 : Human, Moblin, Oxygen, Fuenza, Suede, Yasis"
     echo "[9] Pack de curseur : Breeze + Moblin + Oxygen/Oxygen-extra"
-    echo "[10] Pack de transormation en Mac OS X Sierra (Thème Gnome OS X + wallpaper Sierra + icone MacOS)
+    echo "[10] Pack de transformation en Mac OS X Sierra (Thème Gnome OS X + wallpaper Sierra + icone MacOS)
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
     clear
 
@@ -460,7 +460,8 @@ then
     echo "[3] Serveur LAMP (Pour faire un serveur web avec votre PC : Apache + MariaDB + PHP)"
     echo "[4] Serveur FTP avec ProFTPd (Stockage de fichier sur votre machine via FTP)"
     echo "[5] Serveur BDD PostgreSQL (Pour installer une base de donnée PostgreSQL)"
-    echo "[6] Rétroportage PHP5 (Ancienne version de PHP rétroporté)"
+    echo "[6] PHP5.6 (Rétroportage de l'ancienne version)"
+    echo "[7] PHP7.2 (dernière version stable de PHP)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixServeur
     clear
 
@@ -480,10 +481,10 @@ then
     echo "[10] Ajouter le support pour le système de fichier HFS d'Apple"
     echo "[11] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
     echo "[12] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
-    echo "[13] [pas encore actif]Pouvoir lire vos DVD/BR commerciaux achetés et protégés par CSS (Content Scrambling System)"
-    echo "[14] [pas encore actif]Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
+    echo "[13] [Interv!] Lecture DVD commerciaux protégés par CSS (Content Scrambling System)"
+    echo "[14] [pas encore actif] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
     echo "[15] Support imprimantes HP (hplip + sane + hplip-gui)"
-    echo "[16] Activer la minimisation de fenêtre si on clique sur l'icone dans le dock"
+    echo "[16] Pour DashToDock : Activer la minimisation de fenêtre si on clique sur l'icone dans le dock"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
     clear
 fi
@@ -493,7 +494,7 @@ if [ "$choixMode" = "3" ]
 then
     # Question 19 : Snap
     echo "*******************************************************"
-    echo "19/ [pas encore actif]Mode Extra : supplément paquet Snap : "
+    echo "19/ Mode Extra : supplément paquet Snap : "
     echo "*******************************************************"
     echo "[1] Aucun"
     echo "[2] VLC"
@@ -520,7 +521,7 @@ then
              
     # Question 20 : Flatpak
     echo "*******************************************************"
-    echo "20/ [pas encore actif]Mode Extra : supplément paquet Flatpak : "
+    echo "20/ Mode Extra : supplément paquet Flatpak : "
     echo "*******************************************************"
     echo "[1] Aucun"
     echo "[2] 0ad"
@@ -548,7 +549,7 @@ then
             
     # Question 21 : Appimages
     echo "*******************************************************"
-    echo "21/ [pas encore actif]Mode Extra : récupération Appimages: "
+    echo "21/ Mode Extra : récupération Appimages: "
     echo "*******************************************************"
     echo "[1] Aucune"
     echo "[2] Digikam"
@@ -1611,10 +1612,12 @@ do
             apt install postgresql -y
             ;;
         "6") #Retroportage PHP5 (dépot artful utilisé car bionic pas encore activé)
-            apt install python-software-properties -y
             add-apt-repository "deb http://ppa.launchpad.net/ondrej/php/ubuntu artful main" -y
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F4EA0AAE5267A6C
             apt update ; apt install php5.6 -y
+            ;;
+        "7") #php7.2
+            apt install php7.2 -y
             ;;
     esac
 done
@@ -1677,8 +1680,9 @@ do
             mkdir /boot/old ; mv /boot/memtest86* /boot/old/
             update-grub
             ;;
-        "13") #Lecture DVD Commerciaux (vérifier si suffisant)
-            apt install libdvdcss2 -y
+        "13") #Lecture DVD Commerciaux
+            apt install libdvdcss2 libdvd-pkg -y
+            dpkg-reconfigure libdvd-pkg
             ;;
         "14") #Nvidia Bumblebee pour techno optimus
             # complexe, créer un script spécialement pour ça plus tard puis le récupérer/lancer depuis ici
@@ -1686,7 +1690,7 @@ do
         "15") #Support imprimante HP
             apt install hplip hplip-doc hplip-gui sane sane-utils -y
             ;;   
-        "16") #Minimisation fenêtre sur l'icone du dock
+        "16") #Minimisation fenêtre sur l'icone du dock (pour dashtodock uniquement)
             gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
             ;;             
     esac
