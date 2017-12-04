@@ -63,7 +63,7 @@ fi
 echo "*******************************************************"
 echo "1/ Mode de lancement du script : "
 echo "*******************************************************"
-echo "[0] Mode novice (lancement automatique sans question avec des choix de logiciels pour les débutants)"
+echo "[0] Mode novice (lancement automatique sans question, le script installera des logiciels intéressants pour les novices)"
 echo "[1] Mode standard (choix par défaut, pose divers questions simples, recommandé pour la plupart des utilisateurs)"
 echo "[2] Mode avancé (comme standard mais avec des questions supplémentaires : programmation, optimisation, extension...)"
 echo "[3] Mode extra (comme avancé mais avec un supplément snap/flatpak/appimages proposé à la fin)"
