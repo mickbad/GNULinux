@@ -314,7 +314,6 @@ then
     echo "[12] [TECHNO] Scratch 1.4 (langage de prog visuel libre, créé par le MIT, à vocation éducative et ludique)"
     echo "[13] [TECHNO] mBlock (environnement de programmation par blocs basé sur Scratch 2, permet le pilotage d'Arduino"
     echo "[14] [TECHNO] Récupérer Algoid [.jar] (Language de programmation éducatif)"
-    echo "[15] [TECHNO] Phratch [NE FONCTIONNE PAS : Ne pas sélectionner !]"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
     clear
 
@@ -1226,12 +1225,7 @@ do
         "14") #AlgoIDE 
             wget http://www.algoid.net/downloads/AlgoIDE-release.jar
             chmod +x AlgoIDE-release.jar
-            ;;
-        "15") #Phratch 
-            wget http://phratch.com/download/Phratch4.1-linux.zip
-            unzip Phratch4.1-linux.zip
-            chmod +x ./Phratch/phratch
-            ;;              
+            ;;           
     esac
 done
 
@@ -1397,6 +1391,10 @@ do
             ;;
         "3") #AlternateTab
             #a faire plus tard, cf => https://extensions.gnome.org/extension/15/alternatetab/
+            wget https://extensions.gnome.org/extension-data/alternate-tab%40gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip
+            unzip alternate-tab@gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/alternate-tab@gnome-shell-extensions.gcampax.github.com
+            chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions/alternate-tab@gnome-shell-extensions.gcampax.github.com
+            rm alternate-tab@gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip
             ;;
         "4") #Caffeine
             apt install gnome-shell-extension-caffeine -y
