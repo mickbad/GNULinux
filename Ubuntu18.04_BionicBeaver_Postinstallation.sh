@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.44 (alpha)
+# version 0.0.46 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -387,25 +387,24 @@ then
     echo "[5] DashToDock (permet + d'option pour les réglages du dock, celui d'Ubuntu étant basé dessus)"
     echo "[6] DashToPanel (un dock alternatif conçu pour remplacer le panel de Gnome, se place en bas ou en haut)"
     echo "[7] Clipboard Indicator (permet de conserver du contenu copier/coller facilement accessible depuis le panel)"
-    echo "[8] Hide Top Bar (permet de cacher le panel en haut avec nombreux réglages possibles)"
-    echo "[9] Impatience (permet d'augmenter la vitesse d'affichage des animations de Gnome Shell)"
-    echo "[10] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
-    echo "[11] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
-    echo "[12] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
-    echo "[13] Weather (Pour avoir la météo directement sur votre bureau)"
-    echo "[14] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
-    echo "[15] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
-    echo "[16] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
-    echo "[17] Suspend button (Ajout d'un bouton pour activer l'hibernation)"
-    echo "[18] Taskbar (Permet d'ajouter des raccourcis d'applis directement sur le panel en haut)"
-    echo "[19] Trash (Ajoute un raccourci vers la corbeille dans le panel en haut)"
-    echo "[20] User themes (Pour charger des thèmes pour Gnome Shell à partir du répertoire de l'utilisateur)"
-    echo "[21] Window list (Affiche la liste des fênêtres en bas du bureau, comme à l'époque sous Gnome 2)"
-    echo "[22] Workspace indicator (Affiche dans le panel en haut dans quel espace de travail vous êtes)"
-    echo "[23] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
-    echo "[24] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
-    echo "[25] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
-    echo "[26] AppFolders Management (Permet de classer les applis dans des dossiers)"
+    echo "[8] Impatience (permet d'augmenter la vitesse d'affichage des animations de Gnome Shell)"
+    echo "[9] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
+    echo "[10] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
+    echo "[11] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
+    echo "[12] Weather (Pour avoir la météo directement sur votre bureau)"
+    echo "[13] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
+    echo "[14] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
+    echo "[15] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
+    echo "[16] Suspend button (Ajout d'un bouton pour activer l'hibernation)"
+    echo "[17] Taskbar (Permet d'ajouter des raccourcis d'applis directement sur le panel en haut)"
+    echo "[18] Trash (Ajoute un raccourci vers la corbeille dans le panel en haut)"
+    echo "[19] User themes (Pour charger des thèmes pour Gnome Shell à partir du répertoire de l'utilisateur)"
+    echo "[20] Window list (Affiche la liste des fênêtres en bas du bureau, comme à l'époque sous Gnome 2)"
+    echo "[21] Workspace indicator (Affiche dans le panel en haut dans quel espace de travail vous êtes)"
+    echo "[22] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
+    echo "[23] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
+    echo "[24] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
+    echo "[25] AppFolders Management (Permet de classer les applis dans des dossiers)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixExtension
     clear
 
@@ -414,14 +413,15 @@ then
     echo "15/ Sélectionnez ce qui vous intéresses en terme de customization [mode avancé]"
     echo "*******************************************************"
     echo "[1] Pas d'ajout"
-    echo "[2] Pack de thème GTK à succès : Arc + Numix + United Gnome Darker + Gnome OS X + Silicon"
-    echo "[3] Pack2 avec encore d'autres thèmes : Adapta + Minwaita Vanilla + Plano + Greybird/Blackbird/Bluebird + PopGTK"
+    echo "[2] Pack de thème GTK à succès : Arc + Numix + Silicon"
+    echo "[3] Pack2 avec encore d'autres thèmes : Adapta + Greybird/Blackbird/Bluebird"
     echo "[4] Pack3 de thème : albatross, Yuyo, human, gilouche"
     echo "[5] Remettre le thème gris pour GDM (par défaut violet) : Attention ! ajoute la session Vanilla en dépendance !"
     echo "[6] Pack d'icone 1 : Numix et Numix Circle, Breathe, Breeze, Elementary, Brave + supplément extra icone Gnome"
     echo "[7] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
     echo "[8] Pack d'icone 3 : Human, Moblin, Oxygen, Fuenza, Suede, Yasis"
     echo "[9] Pack de curseur : Breeze + Moblin + Oxygen/Oxygen-extra"
+    echo "[10] Pack de transormation en Mac OS X Sierra (Thème Gnome OS X + wallpaper Sierra + icone MacOS)
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
     clear
 
@@ -611,7 +611,6 @@ sed -i 's/^enabled=1$/enabled=0/' /etc/default/apport
 
 # Création répertoire extension pour l'ajout d'extension supplémentaire pour l'utilisateur principal
 mkdir /home/$SUDO_USER/.local/share/gnome-shell/extensions
-chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions
 
 # Pour mode novice :
 if [ "$choixMode" = "0" ]
@@ -1390,11 +1389,8 @@ do
             apt install chrome-gnome-shell -y
             ;;
         "3") #AlternateTab
-            #a faire plus tard, cf => https://extensions.gnome.org/extension/15/alternatetab/
             wget https://extensions.gnome.org/extension-data/alternate-tab%40gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip
             unzip alternate-tab@gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/alternate-tab@gnome-shell-extensions.gcampax.github.com
-            chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions/alternate-tab@gnome-shell-extensions.gcampax.github.com
-            rm alternate-tab@gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip
             ;;
         "4") #Caffeine
             apt install gnome-shell-extension-caffeine -y
@@ -1402,74 +1398,75 @@ do
         "5") #DashToDock
             wget https://extensions.gnome.org/extension-data/dash-to-dock%40micxgx.gmail.com.v61.shell-extension.zip
             unzip dash-to-dock@micxgx.gmail.com.v61.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
-            chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
-            rm dash-to-dock@micxgx.gmail.com.v61.shell-extension.zip
             ;;
         "6") #DashToPanel
             apt install gnome-shell-extension-dash-to-panel -y
             ;;
         "7") #Clipboard Indicator
-            #a faire plus tard, cf => https://extensions.gnome.org/extension/779/clipboard-indicator/
-            ;;
-        "8") #Hide Top bar
-            #a faire plus tard, cf => https://extensions.gnome.org/extension/545/hide-top-bar/
-            ;;         
-        "9") #Impatience
+            wget https://extensions.gnome.org/extension-data/clipboard-indicator%40tudmotu.com.v29.shell-extension.zip
+            unzip clipboard-indicator@tudmotu.com.v29.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com
+            ;;       
+        "8") #Impatience
             apt install gnome-shell-extension-impatience -y
             ;;
-        "10") #Logout button
+        "9") #Logout button
             apt install gnome-shell-extension-log-out-button -y
             ;; 
-        "11") #Media Player Indicator
+        "10") #Media Player Indicator
             apt install gnome-shell-extension-mediaplayer -y
             ;;
-        "12") #Multi monitors
+        "11") #Multi monitors
             apt install gnome-shell-extension-multi-monitors -y
             ;;
-        "13") #Weather
+        "12") #Weather
             apt install gnome-shell-extension-weather -y
             ;;
-        "14") #Places status indicator
-            #a faire plus tard, cf => https://extensions.gnome.org/extension/8/places-status-indicator/
+        "13") #Places status indicator
+            wget https://extensions.gnome.org/extension-data/places-menu%40gnome-shell-extensions.gcampax.github.com.v38.shell-extension.zip
+            unzip places-menu@gnome-shell-extensions.gcampax.github.com.v38.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com
             ;;
-        "15") #Removable drive menu
-            #a faire plus tard, cf => https://extensions.gnome.org/extension/7/removable-drive-menu/
+        "14") #Removable drive menu
+            wget https://extensions.gnome.org/extension-data/drive-menu%40gnome-shell-extensions.gcampax.github.com.v35.shell-extension.zip
+            unzip drive-menu@gnome-shell-extensions.gcampax.github.com.v35.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/drive-menu@gnome-shell-extensions.gcampax.github.com
             ;;
-        "16") #Shortcuts
+        "15") #Shortcuts
             apt install gnome-shell-extension-shortcuts -y
             ;;
-        "17") #Suspend button
+        "16") #Suspend button
             apt install gnome-shell-extension-suspend-button -y
             ;;         
-        "18") #Taskbar
+        "17") #Taskbar
             apt install gnome-shell-extension-taskbar -y
             ;;
-        "19") #Trash
+        "18") #Trash
             apt install gnome-shell-extension-trash -y
             ;;
-        "20") #User themes
+        "19") #User themes
             #a faire plus tard, cf => https://extensions.gnome.org/extension/19/user-themes/
+            wget https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip
+            unzip user-theme@gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com
             ;;   
-        "21") #Window list
-            #a faire plus tard, cf => https://extensions.gnome.org/extension/602/window-list/
+        "20") #Window list
+            wget https://extensions.gnome.org/extension-data/window-list%40gnome-shell-extensions.gcampax.github.com.v22.shell-extension.zip
+            unzip window-list@gnome-shell-extensions.gcampax.github.com.v22.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
             ;;
-        "22") #Workspace indicator
-            #a faire plus tard, cf => https://extensions.gnome.org/extension/21/workspace-indicator/
+        "21") #Workspace indicator
+            wget https://extensions.gnome.org/extension-data/workspace-indicator%40gnome-shell-extensions.gcampax.github.com.v34.shell-extension.zip
+            unzip workspace-indicator@gnome-shell-extensions.gcampax.github.com.v34.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com
             ;;
-        "23") #System-monitor
+        "22") #System-monitor
             apt install gnome-shell-extension-system-monitor -y
             ;;         
-        "24") #Top Icon Plus
+        "23") #Top Icon Plus
             apt install gnome-shell-extension-top-icons-plus -y
             ;;
-        "25") #Unite
-            #a faire plus tard, cf => https://extensions.gnome.org/extension/1287/unite/
-            ;;
-        "26") #AppFolders Management
+        "24") #Unite
+            wget https://extensions.gnome.org/extension-data/unite%40hardpixel.eu.v8.shell-extension.zip
+            unzip unite@hardpixel.eu.v8.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/unite@hardpixel.eu
+            ;;  
+        "25") #AppFolders Management
             wget https://extensions.gnome.org/extension-data/appfolders-manager%40maestroschan.fr.v11.shell-extension.zip
-            unzip appfolders-manager@maestroschan.fr.v11.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/appfolders-manager@maestroschan.fr
-            chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions/appfolders-manager@maestroschan.fr
-            rm appfolders-manager@maestroschan.fr.v11.shell-extension.zip            
+            unzip appfolders-manager@maestroschan.fr.v11.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/appfolders-manager@maestroschan.fr          
             ;;    
     esac
 done
@@ -1481,9 +1478,8 @@ do
         "2") #pack theme gtk 1
             apt install arc-thene numix-blue-gtk-theme numix-gtk-theme silicon-theme -y
             #Numix Circle
-            git clone https://github.com/numixproject/numix-icon-theme-circle.git && cp -rf numix-icon-theme-circle/Numix* /usr/share/icons/ 
-            gtk-update-icon-cache /usr/share/icons/Numix-Circle/ && rm -r numix-icon-theme-circle
-            #a ajouter a la suite : united gnome darker + gnomeosx
+            git clone https://github.com/numixproject/numix-icon-theme-circle.git && cp -r numix-icon-theme-circle/Numix-Circle /usr/share/icons/ 
+            gtk-update-icon-cache /usr/share/icons/Numix-Circle && rm -r numix-icon-theme-circle
             ;;
         "3") #pack theme gtk 2
             apt-add-repository ppa:tista/adapta -y ; apt update ; apt install adapta-gtk-theme -y
@@ -1509,7 +1505,21 @@ do
             ;;   
         "9") #pack curseur
             apt install breeze-cursor-theme moblin-cursor-theme oxygen-cursor-theme oxygen-cursor-theme-extra -y
-            ;;      
+            ;;  
+        "10") #Mac OS X transformation
+            #Gnome OS X theme
+            apt install gtk2-engines-pixbuf gtk2-engines-murrine -y
+            wget https://dl.opendesktop.org/api/files/download/id/1512334645/Gnome-OSX-V-H.Sierra-1-2-1.tar.xz
+            tar Jxvf Gnome-OSX-V-H.Sierra-1-2-1.tar.xz ; mv Gnome-OSX-V-H.Sierra-1-2-1 /usr/share/themes/ ; rm Gnome-OSX-V-H.Sierra-1-2-1.tar.xz
+            #Pack d'icone la capitaine + macOS
+            git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git /usr/share/icones/la-capitaine
+            wget https://dl.opendesktop.org/api/files/download/id/1510321229/macOS.tar.xz ; tar Jxvf macOS.tar.xz ; mv macOS /usr/share/icons/ ; rm macOS.tar.xz
+            #Wallpaper officiel Mac OS X Sierra
+            wget http://wallpaperswide.com/download/macos_sierra_2-wallpaper-3554x1999.jpg -P /usr/share/backgrounds/
+            # Pour comportement identique à Mac OS sur gestion des fenêtres :
+            #gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
+            #gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
+            ;;
     esac
 done
 
@@ -1887,7 +1897,9 @@ mkdir ./appimages ; rm *.deb ; mv *.AppImage ./appimages/
 chown -R $SUDO_USER:$SUDO_USER ./appimages
 chmod -R +x ./appimages
 
-# Nettoyage/Purge
+# Finalisation & nettoyage
+chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions
+rm *-extension.zip 
 apt install -fy ; apt autoremove --purge -y ; apt clean ; clear
 
 echo "Pour prendre en compte tous les changements, il faut maintenant redémarrer !"
