@@ -841,8 +841,9 @@ do
         "10") #EiskaltDC++
             apt install eiskaltdcpp eiskaltdcpp-gtk3 -y
             ;;       
-        "11") #RetroShare
-            add-apt-repository ppa:ppa:retroshare/stable -y
+        "11") #RetroShare (ppa bionic pas actif)
+            add-apt-repository "deb http://ppa.launchpad.net/retroshare/stable/ubuntu zesty main" -y
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0DCC231C3A9D71D19E719486AEFCFCD4144729B5
             apt update ; apt install retroshare -y
             ;;                         
         "12") #Calypso
