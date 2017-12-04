@@ -47,12 +47,13 @@ then
                 echo "Ok, vous avez correctement lancé le script, vous êtes bien sur Bionic avec Gnome-Shell, passons aux questions..."
                 echo -e "#########################################################"
                 echo "Légende : "
-                echo "[Snap] => Le paquet s'installera de manière isolé avec Snappy (snap install...)"
-                echo "[Flatpak] => Le paquet s'installera avec Flatpak, une autre alternative à Snappy"
-                echo "[Appimage] => Paquet AppImage téléchargé, pour l'utiliser il faudra le lancer manuellement"
-                echo "[Interv!] => Signifie que l'installation n'est pas totalement automatisé, vous devrez intervenir pour valider quelque chose (contrat de licence...)"
-                echo "[Xorg only!] => Signifie que le logiciel ne fonctionnera correctement uniquement sur la session Xorg mais pas la session Wayland"
-                echo "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible sinon en PPA ou dépot externe"
+                echo "[Snap] => Le paquet s'installera avec Snap (snap install...)"
+                echo "[Flatpak] => S'installera avec Flatpak, une alternative aux snaps (flatpak install --from...)"
+                echo "[Appimage] => Application portable (pas d'installation), à lancer comme ceci : ./nomdulogiciel.AppImage"
+                echo "[Interv!] => Installation pas totalement automatisé : vous devrez intervenir (ex : valider contrat de licence...)"
+                echo "[Xorg only!] => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
+                echo "[à lancer manuellement] => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
+                echo "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)"
                 echo -e "#########################################################\n"
 fi
 ### Section interactive avec les questions
@@ -144,9 +145,8 @@ then
     echo "[16] Telegram [Snap] (appli de messagerie basée sur le cloud avec du chiffrage)"
     echo "[17] Viber [Flatpak] (logiciel de communication, surtout connue en application mobile)"
     echo "[18] Slack [Flatpak] (plate-forme de communication collaborative propriétaire avec gestion de projets)"
-    echo "[19] Signal [Flatpak] Experimental ! (Messagerie instantannée crypté recommandé par Edward Snowden)"
-    echo "[20] qTox [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[21] TeamSpeak [Interv!] (Conversation audio à plusieurs pour les gameurs, propriétaire)"
+    echo "[19] Signal [Flatpak] (Messagerie instantannée crypté recommandé par Edward Snowden)"
+    echo "[20] TeamSpeak [Interv!][à lancer manuellemnt] (équivalent à Mumble mais propriétaire)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 18) : " choixMessagerie
     clear
 
@@ -199,7 +199,6 @@ then
     echo "[19] MuseScore [Flatpak] (l'éditeur de partitions de musique le plus utilisé au monde !)"
     echo "[20] GRadio [Flatpak] (Application Gnome pour écouter la radio, plus de 1 000 référencés rien qu'en France !)"
     echo "[21] Molotov.TV [Appimage] (Service français de distribution de chaînes de TV)"
-    echo "[22] Gxine [NE FONCTIONNE PAS : Ne pas sélectionner !]"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixMultimedia
     clear
 
@@ -223,10 +222,8 @@ then
     echo "[14] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
     echo "[15] Peek [Flatpak] (Outil de création de Gif animé à partir d'une capture vidéo)"
     echo "[16] Avidemux [Appimage] (Équivalent de 'VirtualDub' : coupe, filtre et ré-encodage)"
-    echo "[17] Jahshaka [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[18] Shotcut [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[19] SlowMoVideo [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[20] LightWorks [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[17] Shotcut (éditeur de vidéos libre, open source, gratuit et multi-plate-formes)"
+    #echo "[18] LightWorks [NE FONCTIONNE PAS : Ne pas sélectionner !] / Tester sur MP avec pilote nvidia proprio"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
     clear
 
@@ -295,11 +292,7 @@ then
     echo "[12] MailSpring [Snap] (client de messagerie moderne et multi-plateforme)"
     echo "[13] Notes Up [Flatpak] (éditeur et manager de notes avec markdown, simple mais efficace)"
     echo "[14] Zim (wiki en local avec une collection de pages et des marqueurs)"
-    echo "[15] Apache OpenOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[16] OOo4Kids [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[17] WPSOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[18] OnlyOffice [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[19] Marp [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[15] WPSOffice (suite bureautique propriétaire avec une interface proche de Microsoft Office)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
     clear
 
@@ -1003,23 +996,16 @@ do
             wget http://nux87.free.fr/script-postinstall-ubuntu/appimage/avidemux2.7.0.AppImage
             chmod +x avidemux2.7.0.AppImage
             ;;    
-        "17") #Jahshaka 
-            apt install libfuse2:i386 -y 
-            wget https://netix.dl.sourceforge.net/project/portable/Jahshaka%202.0
-            chmod +x Jahshaka*
-            ;;    
-        "18") #Shotcut (Snap)
-            snap install shotcut --classic
+        "17") #Shotcut (PPA pour Bionic pas encore actif)
+            add-apt-repository "deb http://ppa.launchpad.net/haraldhv/shotcut/ubuntu zesty main" -y
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com D03D19F673FED66EBD64099959A9D327745898E3
+            apt update ; apt install shotcut -y
             ;;   
-        "19") #SlowMoVideo
-            add-apt-repository ppa:ubuntuhandbook1/slowmovideo -y
-            apt update ; apt install slowmovideo -y
-            ;;  
-        "20") #LightWorks 
-            wget https://downloads.lwks.com/v14/lwks-14.0.0-amd64.deb
-            dpkg -i lwks-14.0.0-amd64.deb
-            apt install -fy
-            ;;                
+        #"18") #LightWorks (vérifier avec pilote propriétaire nvidia sur MP)
+        #    wget https://downloads.lwks.com/v14/lwks-14.0.0-amd64.deb
+        #    dpkg -i lwks-14.0.0-amd64.deb
+        #    apt install -fy
+        #    ;;                
     esac
 done
 
@@ -1177,33 +1163,12 @@ do
             ;;          
         "14") #Zim
             apt install zim -y
-            ;;               
-        "15") #Apache OpenOffice
-            wget https://freefr.dl.sourceforge.net/project/openofficeorg.mirror/4.1.4/binaries/fr/Apache_OpenOffice_4.1.4_Linux_x86_install-deb_fr.tar.gz
-            tar zxvf Apache_OpenOffice_4.1.4_Linux_x86_install-deb_fr.tar.gz
-            dpkg -i ./fr/DEBS/*.deb ; dpkg -i ./fr/DEBS/desktop-integration/open*.deb
-            apt install -fy
-            ;; 
-        "16") #OOo4Kids
-            wget https://downloads.sourceforge.net/project/educooo/OOo4Kids/Linux/deb/dists/testing/main/binary-amd64/ooo4kids-fr_1.3-1_amd64.deb
-            dpkg -i ooo4kids-fr_1.3-1_amd64.deb
-            apt install -fy
-            ;;               
-        "17") #WPS Office
+            ;;                         
+        "15") #WPS Office
+            wget http://ftp.fr.debian.org/debian/pool/main/libp/libpng/libpng12-0_1.2.50-2+deb8u3_amd64.deb
             wget http://kdl1.cache.wps.com/ksodl/download/linux/a21//wps-office_10.1.0.5707~a21_amd64.deb
-            dpkg -i wps-office_10.1.0.5707~a21_amd64.deb
-            apt install -fy
-            ;; 
-        "18") #OnlyOffice
-            wget http://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
-            dpkg -i onlyoffice-desktopeditors_amd64.deb
-            apt install -fy
-            ;;             
-        "19") #Marp
-            wget https://github.com/yhatt/marp/releases/download/v0.0.11/0.0.11-Marp-linux-x64.tar.gz 
-            mkdir marp && tar xvf 0.0.11-Marp-linux-x64.tar.gz -C marp/
-            chmod +x ./marp/Marp
-            ;;            
+            dpkg -i libpng12-0_1.2.50-2+deb8u3_amd64.deb ; dpkg -i wps-office_10.1.0.5707~a21_amd64.deb ; apt install -fy
+            ;;                    
     esac
 done
 
