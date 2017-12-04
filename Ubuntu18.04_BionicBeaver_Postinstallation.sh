@@ -223,7 +223,6 @@ then
     echo "[15] Peek [Flatpak] (Outil de création de Gif animé à partir d'une capture vidéo)"
     echo "[16] Avidemux [Appimage] (Équivalent de 'VirtualDub' : coupe, filtre et ré-encodage)"
     echo "[17] Shotcut (éditeur de vidéos libre, open source, gratuit et multi-plate-formes)"
-    #echo "[18] LightWorks [NE FONCTIONNE PAS : Ne pas sélectionner !] / Tester sur MP avec pilote nvidia proprio"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
     clear
 
@@ -484,7 +483,7 @@ then
     echo "[13] [Interv!] Lecture DVD commerciaux protégés par CSS (Content Scrambling System)"
     echo "[14] Support imprimantes HP (hplip + sane + hplip-gui)"
     echo "[15] Pour DashToDock : Activer la minimisation de fenêtre si on clique sur l'icone dans le dock"
-    #echo "[16] [Ne fonctionn pas]Installer + Configurer Bumblebee (pilote Nvidia proprio) pour technologie Optimus nvidia/intel"
+    #echo "[16] [Ne fonctionn pas] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour technologie Optimus nvidia/intel"
  
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
     clear
@@ -1000,12 +999,7 @@ do
             add-apt-repository "deb http://ppa.launchpad.net/haraldhv/shotcut/ubuntu zesty main" -y
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com D03D19F673FED66EBD64099959A9D327745898E3
             apt update ; apt install shotcut -y
-            ;;   
-        #"18") #LightWorks (vérifier avec pilote propriétaire nvidia sur MP)
-        #    wget https://downloads.lwks.com/v14/lwks-14.0.0-amd64.deb
-        #    dpkg -i lwks-14.0.0-amd64.deb
-        #    apt install -fy
-        #    ;;                
+            ;;              
     esac
 done
 
@@ -1491,7 +1485,7 @@ do
         "4") #pack theme gtk 3
             apt install albatross-gtk-theme yuyo-gtk-theme human-theme gnome-theme-gilouche -y
             ;;
-        "5") #théme gris GDM (changement effectif seulement si la session vanilla est installé)
+        "5") #thème gris GDM (changement effectif seulement si la session vanilla est installé)
             apt install gnome-session -y # session vanilla nécessaire pour le changement du thème
             mv /usr/share/gnome-shell/theme/ubuntu.css /usr/share/gnome-shell/theme/ubuntu_old.css
             mv /usr/share/gnome-shell/theme/gnome-shell.css /usr/share/gnome-shell/theme/ubuntu.css
