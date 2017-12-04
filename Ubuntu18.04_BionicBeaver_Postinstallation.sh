@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.46 (alpha)
+# version 0.0.47 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -482,9 +482,10 @@ then
     echo "[11] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
     echo "[12] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
     echo "[13] [Interv!] Lecture DVD commerciaux protégés par CSS (Content Scrambling System)"
-    echo "[14] [pas encore actif] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour portable avec technologie Optimus nvidia/intel"
-    echo "[15] Support imprimantes HP (hplip + sane + hplip-gui)"
-    echo "[16] Pour DashToDock : Activer la minimisation de fenêtre si on clique sur l'icone dans le dock"
+    echo "[14] Support imprimantes HP (hplip + sane + hplip-gui)"
+    echo "[15] Pour DashToDock : Activer la minimisation de fenêtre si on clique sur l'icone dans le dock"
+    #echo "[16] [Ne fonctionn pas]Installer + Configurer Bumblebee (pilote Nvidia proprio) pour technologie Optimus nvidia/intel"
+ 
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
     clear
 fi
@@ -1684,15 +1685,16 @@ do
             apt install libdvdcss2 libdvd-pkg -y
             dpkg-reconfigure libdvd-pkg
             ;;
-        "14") #Nvidia Bumblebee pour techno optimus
-            # complexe, créer un script spécialement pour ça plus tard puis le récupérer/lancer depuis ici
-            ;;   
-        "15") #Support imprimante HP
+        "14") #Support imprimante HP
             apt install hplip hplip-doc hplip-gui sane sane-utils -y
             ;;   
-        "16") #Minimisation fenêtre sur l'icone du dock (pour dashtodock uniquement)
+        "15") #Minimisation fenêtre sur l'icone du dock (pour dashtodock uniquement)
             gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
-            ;;             
+            ;;    
+        #"16") #Nvidia Bumblebee pour techno optimus (Ne fonctionne pas)
+            #wget https://raw.githubusercontent.com/BionicBeaver/Divers/master/BumblebeeBionic_install.sh ; chmod +x BumblebeeBionic_install.sh
+            #./BumblebeeBionic_install.sh
+            #;;   
     esac
 done
 
