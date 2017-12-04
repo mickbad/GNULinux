@@ -110,7 +110,7 @@ then
     echo "[11] WaterFox (un fork de Firefox compatible avec les anciennes extensions)"
     echo "[12] Tor Browser (pour naviguer dans l'anonymat avec le réseau tor : basé sur Firefox ESR)"
     echo "[13] Gnome Web/Epiphany (navigateur de la fondation Gnome s'intégrant bien avec cet environnement)"
-    echo "[14] Midori (libre & léger, utilisé notamment par défaut sur la distribution 'Elementary OS')"
+    echo "[14] Midori (libre & léger mais un peu obsolète maintenant...)"
     echo "[15] QupZilla/Falkon (une alternative libre et légère utilisant Webkit)"   
     echo "[16] Min (un navigateur minimaliste et donc très léger)"   
     echo "[17] NetSurf (basique mais très léger et performant)"
