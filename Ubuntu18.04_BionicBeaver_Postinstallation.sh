@@ -164,13 +164,12 @@ then
     echo "[8] FrostWire (client multiplate-forme pour le réseau Gnutella)"
     echo "[9] Gtk-Gnutella (un autre client stable et léger avec pas mal d'option)"
     echo "[10] EiskaltDC++ (stable et en français, pour le réseau DirectConnect)"
-    echo "[11] RetroShare [NE FONCTIONNE PAS : Ne pas sélectionner !]"
-    echo "[12] Calypso/Kommute (client P3P anonyme et évolué, à lancer depuis la cli)"
-    echo "[13] Grsync (une interface graphique pour l'outil rsync"
-    echo "[14] SubDownloader (téléchargement de sous-titre)"
-    echo "[15] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
-    echo "[16] Vuze [Snap][Xorg only!] (Plate-forme commerciale d'Azureus avec BitTorrent)"
-    echo "[17] Gydl [Flatpak] (permet de télécharger des vidéos Youtube ou juste la piste audio)"
+    echo "[11] Calypso/Kommute (client P3P anonyme et évolué, à lancer depuis la cli)"
+    echo "[12] Grsync (une interface graphique pour l'outil rsync"
+    echo "[13] SubDownloader (téléchargement de sous-titre)"
+    echo "[14] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
+    echo "[15] Vuze [Snap] (Plate-forme commerciale d'Azureus avec BitTorrent)"
+    echo "[16] Gydl [Flatpak] (permet de télécharger des vidéos Youtube ou juste la piste audio)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15) : " choixTelechargement
     clear
 
@@ -305,7 +304,7 @@ then
     echo "[4] [SCIENCE] SciLab (Logiciel scientifique pour le calcul numérique pour des applications scientifiques"
     echo "[5] [MATH] GeoGebra (géométrie dynamique pour manipuler des objets avec un ensemble de fonctions algébriques)"
     echo "[6] [MATH] Algobox (Logiciel libre d'aide à l'élaboration/exécution d'algorithmes en mathématique)"
-    echo "[7] [MATH] CaRMetal [NE FONCTIONNE PAS : Ne pas sélectionner !]"
+    echo "[7] [MATH] CaRMetal (logiciel libre de géométrie dynamique, conçu à partir du moteur de C.a.R)"
     echo "[8] [ASTRO] Stellarium (Planétarium avec l'affichage du ciel réaliste en 3D avec simulation d'un téléscope)"
     echo "[9] [ASTRO] SkyChart (Cartographie céleste très complet avec un catalogue riche)"
     echo "[10] [ASTRO] Celestia (Simulation spatiale en temps réel qui permet d’explorer l'Univers en trois dimensions)"
@@ -333,7 +332,7 @@ then
     echo "[11] VirtualBox (virtualisation de système Windows/Mac/Linux/Bsd)"
     echo "[12] KeePassX2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
     echo "[13] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
-    echo "[14] Cheese [Xorg only!] (outil pour prendre des photos/vidéos à partir d'une webcam)"
+    echo "[14] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)"
     echo "[15] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
     echo "[16] Gufw [Xorg only!] (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
     echo "[17] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Nmap)"
@@ -511,7 +510,7 @@ then
     echo "[13] Electrum"
     echo "[14] NextCloud client"
     echo "[15] Paint suprem 3D"
-    echo "[16] PyCharm édition Professionnelle [isolation --classic][Xorg only!]"
+    echo "[16] PyCharm édition Professionnelle [Xorg only!][isolation --classic]"
     echo "[17] Quassel client"
     echo "[18] Rube cube"
     echo "[19] TermiusApp"
@@ -528,7 +527,7 @@ then
     echo "[3] Audacity"
     echo "[4] Battle Tanks"
     echo "[5] Blender"
-    echo "[6] Dolphin Emulator [Xorg only!]"
+    echo "[6] Dolphin Emulator"
     echo "[7] Extreme Tuxracer"
     echo "[8] Frozen Bubble"
     echo "[9] Gnome MPV"
@@ -840,30 +839,25 @@ do
             ;;    
         "10") #EiskaltDC++
             apt install eiskaltdcpp eiskaltdcpp-gtk3 -y
-            ;;       
-        "11") #RetroShare (ppa bionic pas actif)
-            add-apt-repository "deb http://ppa.launchpad.net/retroshare/stable/ubuntu zesty main" -y
-            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0DCC231C3A9D71D19E719486AEFCFCD4144729B5
-            apt update ; apt install retroshare -y
-            ;;                         
-        "12") #Calypso
+            ;;                            
+        "11") #Calypso
             wget https://netcologne.dl.sourceforge.net/project/calypso/kommute/0.24/kommute_0.24-2_i386.deb
             dpkg -i kommute_0.24-2_i386.deb
             apt install -fy
             ;;               
-        "13") #Grsync
+        "12") #Grsync
             apt install grsync -y
             ;;               
-        "14") #SubDownloader
+        "13") #SubDownloader
             apt install subdownloader -y
             ;;              
-        "15") #Nicotine+ 
+        "14") #Nicotine+ 
             apt install nicotine -y
             ;;  
-        "16") #Vuze
-            snap install vuze-vs
+        "15") #Vuze
+            snap install vuze-vs --classic
             ;;  
-        "17") #Gydl
+        "16") #Gydl
             flatpak install --from https://flathub.org/repo/appstream/com.github.JannikHv.Gydl.flatpakref -y
             ;;   
     esac
@@ -1439,7 +1433,6 @@ do
             apt install gnome-shell-extension-trash -y
             ;;
         "19") #User themes
-            #a faire plus tard, cf => https://extensions.gnome.org/extension/19/user-themes/
             wget https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip
             unzip user-theme@gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com
             ;;   
