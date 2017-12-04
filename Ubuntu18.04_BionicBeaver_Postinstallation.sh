@@ -1265,8 +1265,8 @@ do
             apt install keepassx -y
             ;; 
         "13") #Teamviewer
-            wget https://dl.tvcdn.de/download/version_12x/teamviewer_12.0.85001_i386.deb
-            dpkg -i teamviewer_12.0.85001_i386.deb
+            wget https://dl.tvcdn.de/download/linux/version_13x/teamviewer_13.0.5494_amd64.deb
+            dpkg -i teamviewer_13.0.5494_amd64.deb
             apt install -fy
             ;;   
         "14") #Cheese
