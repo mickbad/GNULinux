@@ -420,7 +420,7 @@ then
     echo "[7] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
     echo "[8] Pack d'icone 3 : Human, Moblin, Oxygen, Fuenza, Suede, Yasis"
     echo "[9] Pack de curseur : Breeze + Moblin + Oxygen/Oxygen-extra"
-    echo "[10] Pack de transformation en Mac OS X Sierra (Thème Gnome OS X + wallpaper Sierra + icone MacOS)
+    echo "[10] Pack de transformation en Mac OS X Sierra (Thème Gnome OS X + wallpaper Sierra + icone MacOS)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
     clear
 
