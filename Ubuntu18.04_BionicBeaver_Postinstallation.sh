@@ -22,18 +22,29 @@
 #  MA 02110-1301, USA.
 
 #code couleur
-rouge="\\033[31m"
-blanc="\\033[27m"
-cyan="\\033[36m"
-vert="\\033[32m"
-jaune="\\033[33m"
-violet="\\033[35m"
+noir='\e[0;30m'
+gris='\e[1;30m'
+rouge='\e[0;31m'
+rose='\e[1;31m'
+vertfonce='\e[0;32m'
+vertclair='\e[1;32m'
+orange='\e[0;33m'
+jaune='\e[1;33m'
+bleufonce='\e[0;34m'
+bleuclair='\e[1;34m'
+violetfonce='\e[0;35m'
+violetclair='\e[1;35m'
+cyanfonce='\e[0;36m'
+cyanclair='\e[1;36m'
+grisclair='\e[0;37m'
+blanc='\e[1;37m'
+neutre='\e[0;m'
 
 # Contrôle de la configuration système (script correctement lancé + version 18.04 + gnome-shell présent)
 . /etc/lsb-release
 if [ "$UID" -ne "0" ]
 then
-    echo -e "${rouge}Ce script doit se lancer avec les droits d'administrateur : sudo ./script.sh"
+    echo -e "${rouge}Ce script doit se lancer avec les droits d'administrateur : sudo ./script.sh${neutre}"
     exit
     elif  [ "$DISTRIB_RELEASE" != "18.04" ]
     then
@@ -46,14 +57,14 @@ then
             else
                 echo "Ok, vous avez correctement lancé le script, vous êtes bien sur Bionic avec Gnome-Shell, passons aux questions..."
                 echo -e "#########################################################"
-                echo "Légende : "
-                echo "[Snap] => Le paquet s'installera avec Snap (snap install...)"
-                echo "[Flatpak] => S'installera avec Flatpak, une alternative aux snaps (flatpak install --from...)"
-                echo "[Appimage] => Application portable (pas d'installation), à lancer comme ceci : ./nomdulogiciel.AppImage"
-                echo "[Interv!] => Installation pas totalement automatisé : vous devrez intervenir (ex : valider contrat de licence...)"
-                echo "[Xorg only!] => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
-                echo "[à lancer manuellement] => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
-                echo "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)"
+                echo -e "Légende : "
+                echo -e "${orange}[Snap]${neutre} => Le paquet s'installera avec Snap (snap install...)"
+                echo -e "${bleuclair}[Flatpak]${neutre} => S'installera avec Flatpak, une alternative aux snaps (flatpak install --from...)"
+                echo -e "${vertfonce}[Appimage]${neutre} => Application portable (pas d'installation), à lancer comme ceci : ./nomdulogiciel.AppImage"
+                echo -e "${rouge}[Interv!]${neutre} => Installation pas totalement automatisé : vous devrez intervenir (ex : valider contrat de licence...)"
+                echo -e "${rose}[Xorg only!]${neutre} => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
+                echo -e "${gris}[à lancer manuellement]${neutre} => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
+                echo -e "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)"
                 echo -e "#########################################################\n"
 fi
 ### Section interactive avec les questions
