@@ -31,7 +31,7 @@ vertC='\e[1;32m'
 orange='\e[0;33m'
 jaune='\e[1;33m'
 bleuF='\e[0;34m'
-bleuCr='\e[1;34m'
+bleuC='\e[1;34m'
 violetF='\e[0;35m'
 violetC='\e[1;35m'
 cyanF='\e[0;36m'
@@ -63,7 +63,7 @@ then
                 echo -e "${bleuC}[Flatpak]${neutre} => S'installera avec Flatpak, une alternative aux snaps (flatpak install --from...)"
                 echo -e "${vertF}[Appimage]${neutre} => Application portable (pas d'installation), à lancer comme ceci : ./nomdulogiciel.AppImage"
                 echo -e "${rouge}[Interv!]${neutre} => Installation pas totalement automatisé : vous devrez intervenir (ex : valider contrat de licence...)"
-                echo -e "${violetC}[Xorg only!]${neutre} => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
+                echo -e "${violetF}[Xorg only!]${neutre} => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
                 echo -e "${gris}[à lancer manuellement]${neutre} => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
                 echo -e "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)"
                 echo -e "#########################################################\n"
