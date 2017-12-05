@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.47 (alpha)
+# version 0.0.48 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -109,8 +109,8 @@ then
     echo "[1] Pas de navigateur supplémentaire : rester sur la version classique de Firefox (stable)"
     echo "[2] Firefox Béta (n+1 : 1 version d'avance, remplace la version classique)"
     echo "[3] Firefox ESR (version plutôt orienté entreprise/organisation)"
-    echo -e "[4] Firefox Developer Edition ${bleu}[Flatpak]${neutre} (n+2 et inclue des outils pour les devs)"
-    echo -e "[5] Firefox Nightly ${bleu}[Flatpak]${neutre} (toute dernière build construite, parfois n+3, potentiellement instable !)"
+    echo -e "[4] Firefox Developer Edition ${bleu}[Flatpak]${neutre} (version alternative incluant des outils de développement, généralement n+1/n+2)"
+    echo -e "[5] Firefox Nightly ${bleu}[Flatpak]${neutre} (toute dernière build construite, n+2/n+3, ${rouge}potentiellement instable !${neutre})"
     echo "[6] Chromium (la version libre/opensource de Chrome)"
     echo "[7] Google Chrome (le célèbre navigateur de Google mais il est propriétaire !)"
     echo "[8] Vivaldi (un navigateur propriétaire avec une interface sobre assez particulière)"
@@ -125,7 +125,7 @@ then
     echo "[17] NetSurf (basique mais très léger et performant)"
     echo "[18] Dillo (navigateur capable de tourner sur des ordinosaures)"
     echo "[19] Lynx (navigateur 100% en ligne de commande, pratique depuis une console SSH)"
-    echo "[20] Rekonq (Navigateur pour Kde, déconseillé sous Gnome car beaucoup de dépendance kde !)"
+    echo "[20] Rekonq (Navigateur pour Kde, ${rouge}déconseillé sous Gnome${neutre} car beaucoup de dépendance kde !)"
     echo -e "[21] Eolie ${bleu}[Flatpak]${neutre} (une autre alternative pour Gnome)"
 
     echo "*******************************************************"
@@ -173,12 +173,11 @@ then
     echo "[8] FrostWire (client multiplate-forme pour le réseau Gnutella)"
     echo "[9] Gtk-Gnutella (un autre client stable et léger avec pas mal d'option)"
     echo "[10] EiskaltDC++ (stable et en français, pour le réseau DirectConnect)"
-    echo "[11] Calypso/Kommute (client P3P anonyme et évolué, à lancer depuis la cli)"
-    echo "[12] Grsync (une interface graphique pour l'outil rsync"
-    echo "[13] SubDownloader (téléchargement de sous-titre)"
-    echo "[14] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
-    echo -e "[15] Vuze ${jaune}[Snap]${neutre} (Plate-forme commerciale d'Azureus avec BitTorrent)"
-    echo -e "[16] Gydl ${bleu}[Flatpak]${neutre} (permet de télécharger des vidéos Youtube ou juste la piste audio)"
+    echo "[11] Grsync (une interface graphique pour l'outil rsync"
+    echo "[12] SubDownloader (téléchargement de sous-titre)"
+    echo "[13] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
+    echo -e "[14] Vuze ${jaune}[Snap]${neutre} (Plate-forme commerciale d'Azureus avec BitTorrent)"
+    echo -e "[15] Gydl ${bleu}[Flatpak]${neutre} (permet de télécharger des vidéos Youtube ou juste la piste audio)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15) : " choixTelechargement
     clear
 
@@ -190,7 +189,7 @@ then
     echo "[2] VLC VideoLan (le couteau suisse de la vidéo, très complet !)"
     echo "[3] MPV/Gnome MPV (léger et puissant, capable de lire de nombreux formats)" #(semble instable dans une VM)
     echo "[4] SmPlayer (lecteur basé sur mplayer avec une interface utilisant Qt)"
-    echo "[5] DragonPlayer [Attention : beaucoup de dépendance !] (lecteur vidéo KDE)" 
+    echo "[5] DragonPlayer [${rouge}Déconseillé${neutre} : beaucoup de dépendance KDE !] (lecteur vidéo pour KDE)" 
     echo "[6] Banshee (lecteur audio assez complet équivalent à Rhythmbox)"
     echo "[7] Clementine (lecteur audio avec gestion des pochettes, genres musicaux...)"
     echo "[8] QuodLibet (un lecteur audio très puissant avec liste de lecture basé sur les expressions rationnelles)"
@@ -229,7 +228,7 @@ then
     echo "[13] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
     echo "[14] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
     echo -e "[15] Peek ${bleu}[Flatpak]${neutre} (Outil de création de Gif animé à partir d'une capture vidéo)"
-    echo -e "[16] Avidemux ${vert}[Appimage]${neutre} (Équivalent de 'VirtualDub' : coupe, filtre et ré-encodage)"
+    echo -e "[16] Avidemux ${vert}[Appimage]${neutre}${rouge}[Ne semble pas fonctionner !]${neutre} (Équivalent de 'VirtualDub' : coupe, filtre et ré-encodage)"
     echo "[17] Shotcut (éditeur de vidéos libre, open source, gratuit et multi-plate-formes)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
     clear
@@ -262,22 +261,20 @@ then
     echo "9/ Quel(s) logiciels(s) pour l'encodage/réglage ou traitement audio ?"
     echo "*******************************************************"
     echo "[1] Aucun"
-    echo "[2] SoundConverter (petit logiciel pour convertir des lots de fichiers audios)"
-    echo "[3] Xcfa : X Convert File Audio (extraction cd audio, piste dvd, normalisation, création pochette)"
-    echo "[4] Sound-Juicer (pour extraire les pistes audios d'un cd)"
-    echo "[5] Gnome Sound Recorder (pour enregistrer et lire du son, realisé par défaut avec OggVorbis)"
-    echo "[6] Audacity (enregistrement et édition de son numérique)"
-    echo "[7] MhWaveEdit (application libre d'enregistrement et d'édition audio complète distribuée sous GPL)"
-    echo "[8] RipperX (une autre alternative pour extraire les cd de musique)"
-    echo "[9] LMMS : Let's Make Music (station audio opensource crée par des musiciens pour les musiciens)"
-    echo "[10] MiXX (logiciel pour Dj pour le mixage de musique)"
-    echo "[11] Rosegarden (création musicale avec édition des partitions et peux s'interfacer avec des instruments)"
-    echo "[12] Pavucontrol (outil graphique de contrôle des volumes audio entrée/sortie pour Pulseaudio)"
-    echo "[13] Lame (outil d'encodage en CLI pour le format MP3,par ex pour convertir un Wav en Mp3)"
-    echo -e "[14] Ardour ${rouge}[Interv!]${neutre} (station de travail audio numérique avec enregistrement multipiste et mixage)"
-    echo -e "[15] Flacon ${jaune}[Snap]${neutre} (pour extraire les pistes d'un gros fichier audio)"
-    echo -e "[16] PulseEffects ${bleu}[Flatpak]${neutre} (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
-
+    echo "[2] Xcfa : X Convert File Audio (extraction cd audio, piste dvd, normalisation, création pochette)"
+    echo "[3] Sound-Juicer (pour extraire les pistes audios d'un cd)"
+    echo "[4] Gnome Sound Recorder (pour enregistrer et lire du son, realisé par défaut avec OggVorbis)"
+    echo "[5] Audacity (enregistrement et édition de son numérique)"
+    echo "[6] MhWaveEdit (application libre d'enregistrement et d'édition audio complète distribuée sous GPL)"
+    echo "[7] RipperX (une autre alternative pour extraire les cd de musique)"
+    echo "[8] LMMS : Let's Make Music (station audio opensource crée par des musiciens pour les musiciens)"
+    echo "[9] MiXX (logiciel pour Dj pour le mixage de musique)"
+    echo "[10] Rosegarden (création musicale avec édition des partitions et peux s'interfacer avec des instruments)"
+    echo "[11] Pavucontrol (outil graphique de contrôle des volumes audio entrée/sortie pour Pulseaudio)"
+    echo "[12] Lame (outil d'encodage en CLI pour le format MP3,par ex pour convertir un Wav en Mp3)"
+    echo -e "[13] Ardour ${rouge}[Interv!]${neutre} (station de travail audio numérique avec enregistrement multipiste et mixage)"
+    echo -e "[14] Flacon ${jaune}[Snap]${neutre} (pour extraire les pistes d'un gros fichier audio)"
+    echo -e "[15] PulseEffects ${bleu}[Flatpak]${neutre} (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixAudio
     clear
 
@@ -293,7 +290,7 @@ then
     echo -e "[6] FeedReader ${bleu}[Flatpak]${neutre} (agrégateur RSS moderne pour consulter vos fils d'informations RSS)"
     echo "[7] Geary (logiciel de messagerie, alternative à Thunderbird et bien intégré à Gnome)"
     echo "[8] Gnome Office (pack contenant Abiword, Gnumeric, Dia, Planner, Glabels, Glom, Tomboy et Gnucash)"
-    echo "[9] Wordgrinder (Traitement de texte léger en ligne de commande. Formats OpenDocument, HTML import and export)"
+    echo "[9] Wordgrinder (Traitement de texte léger en CLI, Formats OpenDocument, HTML import and export)"
     echo "[10] LaTex + Texworks (langage de description de document avec un éditeur spécialisé LaTex)"
     echo "[11] Gnome Evolution (logiciel de type groupware et courrielleur, facile à utiliser)"
     echo -e "[12] MailSpring ${jaune}[Snap]${neutre} (client de messagerie moderne et multi-plateforme)"
@@ -693,9 +690,9 @@ do
             apt update ; apt install opera-stable -y
             ;;
         "10") #Palemoon
-            wget http://download.opensuse.org/repositories/home:/stevenpusser/xUbuntu_17.04/amd64/palemoon_27.6.0~repack-1_amd64.deb
-            dpkg -i palemoon_27.6.0~repack-1_amd64.deb
-            apt install -fy 
+            echo "deb http://kovacsoltvideo.hu/moonchildproductions/ ./" >> /etc/apt/sources.list.d/palemoon.list
+            wget -q http://kovacsoltvideo.hu/moonchildproductions/public.gpg -O- | apt-key add -
+            apt update ; apt install palemoon -y
             ;; 
         "11") #Waterfox
             echo "deb https://dl.bintray.com/hawkeye116477/waterfox-deb release main" >> /etc/apt/sources.list.d/waterfox.list
@@ -848,25 +845,20 @@ do
             ;;    
         "10") #EiskaltDC++
             apt install eiskaltdcpp eiskaltdcpp-gtk3 -y
-            ;;                            
-        "11") #Calypso
-            wget https://netcologne.dl.sourceforge.net/project/calypso/kommute/0.24/kommute_0.24-2_i386.deb
-            dpkg -i kommute_0.24-2_i386.deb
-            apt install -fy
-            ;;               
-        "12") #Grsync
+            ;;                                          
+        "11") #Grsync
             apt install grsync -y
             ;;               
-        "13") #SubDownloader
+        "12") #SubDownloader
             apt install subdownloader -y
             ;;              
-        "14") #Nicotine+ 
+        "13") #Nicotine+ 
             apt install nicotine -y
             ;;  
-        "15") #Vuze
+        "14") #Vuze
             snap install vuze-vs --classic
             ;;  
-        "16") #Gydl
+        "15") #Gydl
             flatpak install --from https://flathub.org/repo/appstream/com.github.JannikHv.Gydl.flatpakref -y
             ;;   
     esac
@@ -962,8 +954,10 @@ do
         "5") #KDEnLive
             apt install kdenlive breeze-icon-theme -y
             ;;
-        "6") #OpenShot Video Editor
-            apt install openshot openshot-doc -y
+        "6") #OpenShot Video Editor (PPA stable utilisé car version trop ancienne dans dépot officiel - PPA pour bionic)
+            echo "deb http://ppa.launchpad.net/openshot.developers/ppa/ubuntu zesty main" >> /etc/apt/sources.list.d/openshot-stable.list 
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com FBA0C227099A5360635E3D9152165BD6B9BA26FA
+            apt update ; apt install openshot-qt -y
             ;;
         "7") #Pitivi
             apt install pitivi -y
@@ -979,7 +973,7 @@ do
             apt update ; apt install cinelerra-cv -y
             ;;        
         "11") #Natron
-            wget https://downloads.natron.fr/Linux/releases/64bit/files/natron_2.3.3_amd64.deb
+            wget http://nux87.free.fr/script-postinstall-ubuntu/deb/natron_2.3.3_amd64.deb
             dpkg -i natron_2.3.3_amd64.deb
             apt install -fy
             ;;                                   
@@ -1145,10 +1139,10 @@ do
             apt install abiword gnumeric dia planner glabels glom tomboy gnucash -y
             ;; 
         "9") #Wordgrinder
-            apt install wordgrinder -y
+            apt install wordgrinder wordgrinder-x11 -y
             ;;            
         "10") #Latex
-            apt install texlive texlive-lang-french texlife-latex-extra texworks -y
+            apt install texlive texlive-lang-french texworks -y
             ;; 
         "11") #Gnome Evolution
             apt install evolution -y
