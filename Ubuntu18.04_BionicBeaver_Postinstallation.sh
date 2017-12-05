@@ -1651,7 +1651,7 @@ do
             fraude(){ 
                 xhost + && sudo \$1 && xhost -
                 }" >> /home/$SUDO_USER/.bashrc
-            source /home/$SUDO_USER/.bashrc
+            su $SUDO_USER -c "source ~/.bashrc"
             ;;
         "8") #Désactiver userlist GDM
             echo "user-db:user
