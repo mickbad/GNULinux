@@ -24,19 +24,19 @@
 #code couleur
 noir='\e[0;30m'
 gris='\e[1;30m'
-rouge='\e[0;31m'
-rose='\e[1;31m'
-vertfonce='\e[0;32m'
-vertclair='\e[1;32m'
+rougeF='\e[0;31m'
+rouge='\e[1;31m'
+vertF='\e[0;32m'
+vertC='\e[1;32m'
 orange='\e[0;33m'
 jaune='\e[1;33m'
-bleufonce='\e[0;34m'
-bleuclair='\e[1;34m'
-violetfonce='\e[0;35m'
-violetclair='\e[1;35m'
-cyanfonce='\e[0;36m'
-cyanclair='\e[1;36m'
-grisclair='\e[0;37m'
+bleuF='\e[0;34m'
+bleuCr='\e[1;34m'
+violetF='\e[0;35m'
+violetC='\e[1;35m'
+cyanF='\e[0;36m'
+cyanC='\e[1;36m'
+grisC='\e[0;37m'
 blanc='\e[1;37m'
 neutre='\e[0;m'
 
@@ -55,14 +55,15 @@ then
             echo -e "${rouge}Bien que vous soyez effectivement sur la 18.04 $SUDO_USER, ce script est conçu uniquement pour la version de base sous Gnome-Shell (pour l'instant) alors que vous utilisez une variante.${blanc}"
             exit
             else
+                clear
                 echo "Ok, vous avez correctement lancé le script, vous êtes bien sur Bionic avec Gnome-Shell, passons aux questions..."
                 echo -e "#########################################################"
                 echo -e "Légende : "
                 echo -e "${orange}[Snap]${neutre} => Le paquet s'installera avec Snap (snap install...)"
-                echo -e "${bleuclair}[Flatpak]${neutre} => S'installera avec Flatpak, une alternative aux snaps (flatpak install --from...)"
-                echo -e "${vertfonce}[Appimage]${neutre} => Application portable (pas d'installation), à lancer comme ceci : ./nomdulogiciel.AppImage"
+                echo -e "${bleuC}[Flatpak]${neutre} => S'installera avec Flatpak, une alternative aux snaps (flatpak install --from...)"
+                echo -e "${vertF}[Appimage]${neutre} => Application portable (pas d'installation), à lancer comme ceci : ./nomdulogiciel.AppImage"
                 echo -e "${rouge}[Interv!]${neutre} => Installation pas totalement automatisé : vous devrez intervenir (ex : valider contrat de licence...)"
-                echo -e "${rose}[Xorg only!]${neutre} => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
+                echo -e "${violetC}[Xorg only!]${neutre} => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
                 echo -e "${gris}[à lancer manuellement]${neutre} => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
                 echo -e "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)"
                 echo -e "#########################################################\n"
