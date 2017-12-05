@@ -349,7 +349,7 @@ then
     echo -e "[16] Gufw ${violetC}[Xorg only!]${neutre} (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
     echo "[17] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Nmap)"
     echo -e "[18] Gnome Enfs Manager ${rouge}[Interv!]${neutre} (coffre-fort pour vos fichiers/dossiers)"
-    echo -e "[19] Bleachbit ${rougeF}[potentiellement dangereux !]{neutre} (efface les fichiers inutiles/temporaires du système)"
+    echo -e "[19] Bleachbit ${rougeF}[potentiellement dangereux !]${neutre} (efface les fichiers inutiles/temporaires du système)"
     echo -e "[20] VMWare Workstation Player ${rouge}[Interv!]${neutre}${violetF}[Install depuis Xorg!]${neutre} (version gratuite mais propriétaire de VmWare)"
     echo -e "[21] CoreBird ${bleuC}[Flatpak]${neutre} (Un client de bureau pour le réseau social Twitter)"
     echo "[22] Wireshark (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
