@@ -21,24 +21,28 @@
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 #  MA 02110-1301, USA.
 
-#code couleur
-noir='\e[0;30m'
+#code mise en forme
+noir='\e[1;30m'
 gris='\e[1;30m'
-rougeF='\e[0;31m'
+rougeF='\e[1;31m'
 rouge='\e[1;31m'
-vertF='\e[0;32m'
+vertF='\e[1;32m'
 vertC='\e[1;32m'
-orange='\e[0;33m'
+orange='\e[1;33m'
 jaune='\e[1;33m'
-bleuF='\e[0;34m'
+bleuF='\e[1;34m'
 bleuC='\e[1;34m'
-violetF='\e[0;35m'
+violetF='\e[1;35m'
 violetC='\e[1;35m'
-cyanF='\e[0;36m'
+cyanF='\e[1;36m'
 cyanC='\e[1;36m'
-grisC='\e[0;37m'
+grisC='\e[1;37m'
 blanc='\e[1;37m'
 neutre='\e[0;m'
+gras='\e[1'
+souligne='\e[4'
+clignote='\e[5'
+surligne='\e[7'
 
 # Contrôle de la configuration système (script correctement lancé + version 18.04 + gnome-shell présent)
 . /etc/lsb-release
@@ -349,7 +353,7 @@ then
     echo -e "[16] Gufw ${violetC}[Xorg only!]${neutre} (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
     echo "[17] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Nmap)"
     echo -e "[18] Gnome Enfs Manager ${rouge}[Interv!]${neutre} (coffre-fort pour vos fichiers/dossiers)"
-    echo -e "[19] Bleachbit ${rougeF}[potentiellement dangereux !]${neutre} (efface les fichiers inutiles/temporaires du système)"
+    echo -e "[19] Bleachbit ${clignote}${rougeF}[potentiellement dangereux !]${neutre} (efface les fichiers inutiles/temporaires du système)"
     echo -e "[20] VMWare Workstation Player ${rouge}[Interv!]${neutre}${violetF}[Install depuis Xorg!]${neutre} (version gratuite mais propriétaire de VmWare)"
     echo -e "[21] CoreBird ${bleuC}[Flatpak]${neutre} (Un client de bureau pour le réseau social Twitter)"
     echo "[22] Wireshark (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
