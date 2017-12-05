@@ -125,7 +125,7 @@ then
     echo "[17] NetSurf (basique mais très léger et performant)"
     echo "[18] Dillo (navigateur capable de tourner sur des ordinosaures)"
     echo "[19] Lynx (navigateur 100% en ligne de commande, pratique depuis une console SSH)"
-    echo "[20] Rekonq (Navigateur pour Kde, ${rouge}déconseillé sous Gnome${neutre} car beaucoup de dépendance kde !)"
+    echo -e "[20] Rekonq (Navigateur pour Kde, ${rouge}déconseillé sous Gnome${neutre} car beaucoup de dépendance kde !)"
     echo -e "[21] Eolie ${bleu}[Flatpak]${neutre} (une autre alternative pour Gnome)"
 
     echo "*******************************************************"
@@ -189,7 +189,7 @@ then
     echo "[2] VLC VideoLan (le couteau suisse de la vidéo, très complet !)"
     echo "[3] MPV/Gnome MPV (léger et puissant, capable de lire de nombreux formats)" #(semble instable dans une VM)
     echo "[4] SmPlayer (lecteur basé sur mplayer avec une interface utilisant Qt)"
-    echo "[5] DragonPlayer [${rouge}Déconseillé${neutre} : beaucoup de dépendance KDE !] (lecteur vidéo pour KDE)" 
+    echo -e "[5] DragonPlayer [${rouge}Déconseillé${neutre} : beaucoup de dépendance KDE !] (lecteur vidéo pour KDE)" 
     echo "[6] Banshee (lecteur audio assez complet équivalent à Rhythmbox)"
     echo "[7] Clementine (lecteur audio avec gestion des pochettes, genres musicaux...)"
     echo "[8] QuodLibet (un lecteur audio très puissant avec liste de lecture basé sur les expressions rationnelles)"
@@ -305,19 +305,19 @@ then
     echo "11/ Des logiciels de science ou pour l'éducation ?"
     echo "*******************************************************"
     echo "[1] Pas d'ajout"
-    echo "[2] [GEO] Google Earth (globe terrestre de Google pour explorer la planète)"
+    echo "[2] [GEO] Google Earth Pro (globe terrestre de Google pour explorer la planète)"
     echo "[3] [GEO] Extension OooHg pour LibreOffice (ajoute 1600 cartes de géographie)"
     echo "[4] [SCIENCE] SciLab (Logiciel scientifique pour le calcul numérique pour des applications scientifiques"
     echo "[5] [MATH] GeoGebra (géométrie dynamique pour manipuler des objets avec un ensemble de fonctions algébriques)"
     echo "[6] [MATH] Algobox (Logiciel libre d'aide à l'élaboration/exécution d'algorithmes en mathématique)"
-    echo "[7] [MATH] CaRMetal (logiciel libre de géométrie dynamique, conçu à partir du moteur de C.a.R)"
+    echo -e "[7] [MATH] CaRMetal ${rouge}[Ne semble pas fonctionner !]${neutre}(logiciel libre de géométrie dynamique, conçu à partir du moteur de C.a.R)"
     echo "[8] [ASTRO] Stellarium (Planétarium avec l'affichage du ciel réaliste en 3D avec simulation d'un téléscope)"
     echo "[9] [ASTRO] SkyChart (Cartographie céleste très complet avec un catalogue riche)"
     echo "[10] [ASTRO] Celestia (Simulation spatiale en temps réel qui permet d’explorer l'Univers en trois dimensions)"
     echo "[11] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
     echo "[12] [TECHNO] Scratch 1.4 (langage de prog visuel libre, créé par le MIT, à vocation éducative et ludique)"
-    echo "[13] [TECHNO] mBlock (environnement de programmation par blocs basé sur Scratch 2, permet le pilotage d'Arduino"
-    echo "[14] [TECHNO] Récupérer Algoid [.jar] (Language de programmation éducatif)"
+    echo "[13] [TECHNO] mBlock ${gris}[à lancer manuellement]${neutre} (environnement de programmation par blocs basé sur Scratch 2 pour Arduino"
+    echo "[14] [TECHNO] Algoid ${gris}[Fichier Jar à lancer manuellement]${neutre} (Language de programmation éducatif)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
     clear
 
@@ -333,22 +333,24 @@ then
     echo "[6] Brasero (logiciel de gravure de cd/dvd)" 
     echo "[7] Wine (une sorte d'émulateur pour faire tourner des applis/jeux conçu à la base pour Windows)"
     echo "[8] Oracle Java 8 (plate-forme propriétaire pour le développement/éxécution des logiciels écrits Java)"
-    echo "[9] Oracle Java 9 (nouvelle version majeure de Java, encore peu répendue)"
-    echo "[10] Installer FlashPlayer (via le dépot partenaire)"
-    echo "[11] VirtualBox (virtualisation de système Windows/Mac/Linux/Bsd)"
-    echo "[12] KeePassX2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
-    echo "[13] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
-    echo "[14] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)"
-    echo "[15] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
-    echo -e "[16] Gufw ${violet}[Xorg only!]${neutre} (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
-    echo "[17] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Nmap)"
-    echo -e "[18] Gnome Enfs Manager ${rouge}[Interv!]${neutre} (coffre-fort pour vos fichiers/dossiers)"
-    echo -e "[19] Bleachbit ${rougesouligne}[potentiellement dangereux !]${neutre} (efface les fichiers inutiles/temporaires du système)"
-    echo -e "[20] VMWare Workstation Player ${rouge}[Interv!]${neutre}${violet}[Install depuis Xorg!]${neutre} (version gratuite mais propriétaire de VmWare)"
-    echo -e "[21] CoreBird ${bleu}[Flatpak]${neutre} (Un client de bureau pour le réseau social Twitter)"
-    echo "[22] Wireshark (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
-    echo "[23] Pack d'outils utiles : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone"
-    echo -e "[24] Synaptic ${violet}[Xorg only!]${neutre} (gestionnaire graphique pour les paquets deb)"
+    echo "[9] Oracle Java 9 (nouvelle version de Java)"
+    echo "[10] OpenJDK v9 (JRE) (implémentation libre de Java, a noter que la V8 est installé par défaut)
+    echo "[11] OpenJDK v10 (JRE) (implémentation libre de la prochaine version de Java)
+    echo "[12] Installer FlashPlayer (via le dépot partenaire)"
+    echo "[13] VirtualBox (virtualisation de système Windows/Mac/Linux/Bsd)"
+    echo "[14] KeePassX2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
+    echo "[15] TeamViewer ${violet}[Coté serveur en Xorg only]${neutre}(logiciel propriétaire de télémaintenance avec contrôle de bureau à distance)"
+    echo "[16] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)"
+    echo "[17] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
+    echo -e "[18] Gufw ${violet}[Xorg only!]${neutre} (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
+    echo "[19] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Nmap)"
+    echo -e "[20] Gnome Enfs Manager ${rouge}[Interv!]${neutre} (coffre-fort pour vos fichiers/dossiers)"
+    echo -e "[21] Bleachbit ${rougesouligne}[potentiellement dangereux !]${neutre} (efface les fichiers inutiles/temporaires du système)"
+    echo -e "[22] VMWare Workstation Player ${rouge}[Interv!]${neutre}${violet}[Install depuis Xorg!]${neutre} (version gratuite mais propriétaire de VmWare)"
+    echo -e "[23] CoreBird ${bleu}[Flatpak]${neutre} (Un client de bureau pour le réseau social Twitter)"
+    echo "[24] Wireshark (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
+    echo "[25] Pack d'outils utiles : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone"
+    echo -e "[26] Synaptic ${violet}[Xorg only!]${neutre} (gestionnaire graphique pour les paquets deb)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
     clear
 
@@ -372,7 +374,7 @@ then
     echo "[14] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
     echo -e "[15] Battle for Wesnoth ${bleu}[Flatpak]${neutre} (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
     echo -e "[16] Albion Online ${bleu}[Flatpak]${neutre} (MMORPG avec système de quête et donjons)"
-    echo -e "[17] RunScape ${bleu}[Flatpak]${neutre} (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
+    echo -e "[17] RunScape ${bleu}[Flatpak]${neutre}${rouge}Ne semble plus fonctionner !${neutre} (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
     clear
 fi
@@ -1217,7 +1219,7 @@ do
             ;;
         "14") #AlgoIDE 
             wget http://www.algoid.net/downloads/AlgoIDE-release.jar
-            chmod +x AlgoIDE-release.jar
+            chmod +x AlgoIDE-release.jar && mv AlgoIDE-release.jar /home/$SUDO_USER/
             ;;           
     esac
 done
@@ -1233,7 +1235,7 @@ do
             apt install simplescreenrecorder -y
             ;;
         "4") #OpenBroadcaster Software (dépot bionic pas encore activé donc artful utilisé en attendant)
-            add-apt-repository "deb http://ppa.launchpad.net/obsproject/obs-studio/ubuntu artful main" -y
+            echo "deb http://ppa.launchpad.net/obsproject/obs-studio/ubuntu artful main" >> /etc/apt/sources.list.d/openbroadcast-studio.list
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com BC7345F522079769F5BBE987EFC71127F425E228
             apt update ; apt install ffmpeg obs-studio -y
             ;;
@@ -1257,61 +1259,67 @@ do
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 7B2C3B0889BF5709A105D03AC2518248EEA14886
             apt update
             echo oracle-java9-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections | apt install oracle-java9-installer -y
-            ;;    
-        "10") #FlashPlayer (avec dépot partenaire)
+            ;;   
+        "10") # OpenJDK 9
+            apt install openjdk-9-jre -y
+            ;; 
+        "11") # OpenJDK 10
+            apt install openjdk-10-jre -y
+            ;;             
+        "12") #FlashPlayer (avec dépot partenaire)
             apt install adobe-flashplugin -y
             ;;
-        "11") #VirtualBox
+        "13") #VirtualBox
             apt install virtualbox -y
             ;;            
-        "12") #KeepassX2
+        "14") #KeepassX2
             apt install keepassx -y
             ;; 
-        "13") #Teamviewer
+        "15") #Teamviewer
             wget https://dl.tvcdn.de/download/linux/version_13x/teamviewer_13.0.5494_amd64.deb
             dpkg -i teamviewer_13.0.5494_amd64.deb
             apt install -fy
             ;;   
-        "14") #Cheese
+        "16") #Cheese
             apt install cheese -y
             ;; 
-        "15") #Gnome Recipes
+        "17") #Gnome Recipes
             apt install gnome-recipes -y
             ;;   
-        "16") #Gufw
+        "18") #Gufw
             apt install gufw -y
             ;;  
-        "17") #Pack cyber-sécurité
+        "19") #Pack cyber-sécurité
             apt install aircrack-ng nmap -y
             snap install john-the-ripper
             ;;  
-        "18") #Gnome Encfs Manager (dépot Xenial car Bionic pas encore actif)
+        "20") #Gnome Encfs Manager (dépot Xenial car Bionic pas encore actif)
             add-apt-repository "deb http://ppa.launchpad.net/gencfsm/ppa/ubuntu xenial main" -y
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 6A0344470F68ADCA
             apt update ; apt install gnome-encfs-manager -y
             ;;             
-        "19") #Bleachbit
+        "21") #Bleachbit
             apt install bleachbit -y
             ;;    
-        "20") #VMWare Workstation Player 
+        "22") #VMWare Workstation Player 
             #apt install gcc -y #<= vérifier si nécessaire sur MP
             wget https://download3.vmware.com/software/player/file/VMware-Player-14.0.0-6661328.x86_64.bundle
             chmod +x VMware-Player-14.0.0-6661328.x86_64.bundle
             ./VMware-Player-12.5.7-5813279.x86_64.bundle
             ;;              
-        "21") #Corebird
+        "23") #Corebird
             flatpak install --from https://flathub.org/repo/appstream/org.baedert.corebird.flatpakref -y
             ;; 
-        "22") #Wireshark
+        "24") #Wireshark
             debconf-set-selections <<< "wireshark-common/install-setuid true"
             apt install wireshark -y
             usermod -aG wireshark $SUDO_USER #permet à l'utilisateur principal de faire des captures
             ;;   
-        "23") #pack d'outils : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone
+        "25") #pack d'outils : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone
             apt install vrms screenfetch asciinema ncdu screen rclone -y
             wget http://hoper.dnsalias.net/tdc/public/kclean.deb && dpkg -i kclean.deb ; apt install -fy ; rm kclean.deb
             ;; 
-        "24") #Synaptic
+        "26") #Synaptic
             apt install synaptic -y
             ;;               
     esac
@@ -1604,13 +1612,15 @@ do
             apt install postgresql -y
             ;;
         "6") #Retroportage PHP5 (dépot artful utilisé car bionic pas encore activé)
-            add-apt-repository "deb http://ppa.launchpad.net/ondrej/php/ubuntu artful main" -y
+            echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu artful main" > /etc/apt/sources.list.d/php-backport.list
             apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F4EA0AAE5267A6C
             apt update ; apt install php5.6 -y
             ;;
         "7") #php7.2
-            apt install php7.2 -y
-            ;;
+            echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu artful main" > /etc/apt/sources.list.d/php-backport.list
+            apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 4F4EA0AAE5267A6C
+            apt update ; apt install php7.2 -y
+            ;;         
     esac
 done
 
@@ -1897,7 +1907,8 @@ chmod -R +x ./appimages
 # Finalisation & nettoyage
 chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions
 rm *-extension.zip 
-apt install -fy ; apt autoremove --purge -y ; apt clean ; clear
+apt update ; apt install -fy ; apt autoremove --purge -y ; apt clean ; apt full-upgrade -y
+flatpak update -y ; snap refresh ; clear
 
 echo "Pour prendre en compte tous les changements, il faut maintenant redémarrer !"
 read -p "Voulez-vous redémarrer immédiatement ? [o/n] " reboot
