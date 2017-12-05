@@ -23,26 +23,19 @@
 
 #code mise en forme
 noir='\e[1;30m'
-gris='\e[1;30m'
-rougeF='\e[1;31m'
+gris='\e[1;37m'
 rouge='\e[1;31m'
-vertF='\e[1;32m'
-vertC='\e[1;32m'
+rougecligno='\e[5;31m'
+vert='\e[1;32m'
 orange='\e[1;33m'
 jaune='\e[1;33m'
-bleuF='\e[1;34m'
-bleuC='\e[1;34m'
-violetF='\e[1;35m'
-violetC='\e[1;35m'
-cyanF='\e[1;36m'
-cyanC='\e[1;36m'
-grisC='\e[1;37m'
-blanc='\e[1;37m'
+bleu='\e[1;34m'
+violet='\e[1;35m'
+cyan='\e[1;36m'
 neutre='\e[0;m'
-gras='\e[1'
-souligne='\e[4'
-clignote='\e[5'
-surligne='\e[7'
+#souligne='\e[4'
+#clignote='\e[5'
+#surligne='\e[7'
 
 # Contrôle de la configuration système (script correctement lancé + version 18.04 + gnome-shell présent)
 . /etc/lsb-release
@@ -64,10 +57,10 @@ then
                 echo -e "#########################################################"
                 echo -e "Légende : "
                 echo -e "${jaune}[Snap]${neutre} => Le paquet s'installera avec Snap (snap install...)"
-                echo -e "${bleuC}[Flatpak]${neutre} => S'installera avec Flatpak, une alternative aux snaps (flatpak install --from...)"
-                echo -e "${vertF}[Appimage]${neutre} => Application portable (pas d'installation), à lancer comme ceci : ./nomdulogiciel.AppImage"
+                echo -e "${bleu}[Flatpak]${neutre} => S'installera avec Flatpak, une alternative aux snaps (flatpak install --from...)"
+                echo -e "${vert}[Appimage]${neutre} => Application portable (pas d'installation), à lancer comme ceci : ./nomdulogiciel.AppImage"
                 echo -e "${rouge}[Interv!]${neutre} => Installation pas totalement automatisé : vous devrez intervenir (ex : valider contrat de licence...)"
-                echo -e "${violetC}[Xorg only!]${neutre} => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
+                echo -e "${violet}[Xorg only!]${neutre} => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
                 echo -e "${gris}[à lancer manuellement]${neutre} => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
                 echo -e "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)"
                 echo -e "#########################################################\n"
@@ -116,8 +109,8 @@ then
     echo "[1] Pas de navigateur supplémentaire : rester sur la version classique de Firefox (stable)"
     echo "[2] Firefox Béta (n+1 : 1 version d'avance, remplace la version classique)"
     echo "[3] Firefox ESR (version plutôt orienté entreprise/organisation)"
-    echo -e "[4] Firefox Developer Edition ${bleuC}[Flatpak]${neutre} (n+2 et inclue des outils pour les devs)"
-    echo -e "[5] Firefox Nightly ${bleuC}[Flatpak]${neutre} (toute dernière build construite, parfois n+3, potentiellement instable !)"
+    echo -e "[4] Firefox Developer Edition ${bleu}[Flatpak]${neutre} (n+2 et inclue des outils pour les devs)"
+    echo -e "[5] Firefox Nightly ${bleu}[Flatpak]${neutre} (toute dernière build construite, parfois n+3, potentiellement instable !)"
     echo "[6] Chromium (la version libre/opensource de Chrome)"
     echo "[7] Google Chrome (le célèbre navigateur de Google mais il est propriétaire !)"
     echo "[8] Vivaldi (un navigateur propriétaire avec une interface sobre assez particulière)"
@@ -133,7 +126,7 @@ then
     echo "[18] Dillo (navigateur capable de tourner sur des ordinosaures)"
     echo "[19] Lynx (navigateur 100% en ligne de commande, pratique depuis une console SSH)"
     echo "[20] Rekonq (Navigateur pour Kde, déconseillé sous Gnome car beaucoup de dépendance kde !)"
-    echo -e "[21] Eolie ${bleuC}[Flatpak]${neutre} (une autre alternative pour Gnome)"
+    echo -e "[21] Eolie ${bleu}[Flatpak]${neutre} (une autre alternative pour Gnome)"
 
     echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 11 20) : " choixNavigateur
@@ -159,9 +152,9 @@ then
     echo "[14] Polari (client IRC pour Gnome)"
     echo -e "[15] Discord ${jaune}[Snap]${neutre} (logiciel propriétaire multiplateforme pour communiquer à plusieurs pour les gameurs)"
     echo -e "[16] Telegram ${jaune}[Snap]${neutre} (appli de messagerie basée sur le cloud avec du chiffrage)"
-    echo -e "[17] Viber ${bleuC}[Flatpak]${neutre} (logiciel de communication, surtout connue en application mobile)"
-    echo -e "[18] Slack ${bleuC}[Flatpak]${neutre} (plate-forme de communication collaborative propriétaire avec gestion de projets)"
-    echo -e "[19] Signal ${bleuC}[Flatpak]${neutre} (Messagerie instantannée crypté recommandé par Edward Snowden)"
+    echo -e "[17] Viber ${bleu}[Flatpak]${neutre} (logiciel de communication, surtout connue en application mobile)"
+    echo -e "[18] Slack ${bleu}[Flatpak]${neutre} (plate-forme de communication collaborative propriétaire avec gestion de projets)"
+    echo -e "[19] Signal ${bleu}[Flatpak]${neutre} (Messagerie instantannée crypté recommandé par Edward Snowden)"
     echo -e "[20] TeamSpeak ${rouge}[Interv!]${neutre}${gris}[à lancer manuellemnt]${neutre} (équivalent à Mumble mais propriétaire)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 18) : " choixMessagerie
     clear
@@ -185,7 +178,7 @@ then
     echo "[13] SubDownloader (téléchargement de sous-titre)"
     echo "[14] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
     echo -e "[15] Vuze ${jaune}[Snap]${neutre} (Plate-forme commerciale d'Azureus avec BitTorrent)"
-    echo -e "[16] Gydl ${bleuC}[Flatpak]${neutre} (permet de télécharger des vidéos Youtube ou juste la piste audio)"
+    echo -e "[16] Gydl ${bleu}[Flatpak]${neutre} (permet de télécharger des vidéos Youtube ou juste la piste audio)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15) : " choixTelechargement
     clear
 
@@ -209,11 +202,11 @@ then
     echo "[14] Qmmp (dans le même style de Winamp pour les fans)"
     echo "[15] Xmms2+Gxmms2 (un autre lecteur audio dans le style de Winamp)"
     echo "[16] Gnome Twitch (pour visionner les flux vidéo du site Twitch depuis votre bureau sans utiliser de navigateur)"
-    echo -e "[17] Lollypop ${bleuC}[Flatpak]${neutre} (lecture de musique adapté à Gnome avec des fonctions très avancées)"
-    echo -e "[18] Spotify ${bleuC}[Flatpak]${neutre} (Permet d'accéder gratuitement et légalement à de la musique en ligne)"
-    echo -e "[19] MuseScore ${bleuC}[Flatpak]${neutre} (l'éditeur de partitions de musique le plus utilisé au monde !)"
-    echo -e "[20] GRadio ${bleuC}[Flatpak]${neutre} (Application Gnome pour écouter la radio, plus de 1 000 référencés rien qu'en France !)"
-    echo -e "[21] Molotov.TV ${vertF}[Appimage]${neutre} (Service français de distribution de chaînes de TV)"
+    echo -e "[17] Lollypop ${bleu}[Flatpak]${neutre} (lecture de musique adapté à Gnome avec des fonctions très avancées)"
+    echo -e "[18] Spotify ${bleu}[Flatpak]${neutre} (Permet d'accéder gratuitement et légalement à de la musique en ligne)"
+    echo -e "[19] MuseScore ${bleu}[Flatpak]${neutre} (l'éditeur de partitions de musique le plus utilisé au monde !)"
+    echo -e "[20] GRadio ${bleu}[Flatpak]${neutre} (Application Gnome pour écouter la radio, plus de 1 000 référencés rien qu'en France !)"
+    echo -e "[21] Molotov.TV ${vert}[Appimage]${neutre} (Service français de distribution de chaînes de TV)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixMultimedia
     clear
 
@@ -229,14 +222,14 @@ then
     echo "[6] OpenShot Video Editor (une autre alternative comme éditeur vidéo, libre et écrit en Python)"
     echo "[7] Pitivi (logiciel de montage basique avec une interface simple et intuitive)" 
     echo "[8] Lives (Dispose des fonctionnalités d'éditions vidéo/son classique, des filtres et multipiste"
-    echo -e "[9] Flowblade ${violetC}[Xorg only!]${neutre} (Logiciel de montage video multi-piste performant)"
+    echo -e "[9] Flowblade ${violet}[Xorg only!]${neutre} (Logiciel de montage video multi-piste performant)"
     echo "[10] Cinelerra (montage non-linéaire sophistiqué, équivalent à Adobe première, Final Cut et Sony Vegas"
     echo "[11] Natron (programme de post-prod destiné au compositing et aux effets spéciaux)"
     echo "[12] Mencoder (s'utilise en ligne de commande : encodage de fichier vidéo)"
     echo "[13] MMG : MkvMergeGui (interface graphique pour l'outil mkmerge : création/manipulation fichier mkv)"
     echo "[14] DeVeDe (Création de DVD/CD vidéos lisibles par des lecteurs de salon)"
-    echo -e "[15] Peek ${bleuC}[Flatpak]${neutre} (Outil de création de Gif animé à partir d'une capture vidéo)"
-    echo -e "[16] Avidemux ${vertF}[Appimage]${neutre} (Équivalent de 'VirtualDub' : coupe, filtre et ré-encodage)"
+    echo -e "[15] Peek ${bleu}[Flatpak]${neutre} (Outil de création de Gif animé à partir d'une capture vidéo)"
+    echo -e "[16] Avidemux ${vert}[Appimage]${neutre} (Équivalent de 'VirtualDub' : coupe, filtre et ré-encodage)"
     echo "[17] Shotcut (éditeur de vidéos libre, open source, gratuit et multi-plate-formes)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
     clear
@@ -259,7 +252,7 @@ then
     echo "[12] K-3D (Animation et modélisation polygonale et modélisation par courbes)"
     echo "[13] SweetHome 3D (aménagement d'intérieur pour dessiner le plan d'une maison, placement des meubles...)"
     echo "[14] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
-    echo -e "[15] Shutter ${violetC}[Xorg only!]${neutre} (pour effectuer des captures d'écran + appliquer des modifications diverses)"
+    echo -e "[15] Shutter ${violet}[Xorg only!]${neutre} (pour effectuer des captures d'écran + appliquer des modifications diverses)"
     echo "[16] Frogr (Utile pour ceux qui utilisent le service web 'Flickr')"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixGraphisme
     clear
@@ -283,7 +276,7 @@ then
     echo "[13] Lame (outil d'encodage en CLI pour le format MP3,par ex pour convertir un Wav en Mp3)"
     echo -e "[14] Ardour ${rouge}[Interv!]${neutre} (station de travail audio numérique avec enregistrement multipiste et mixage)"
     echo -e "[15] Flacon ${jaune}[Snap]${neutre} (pour extraire les pistes d'un gros fichier audio)"
-    echo -e "[16] PulseEffects ${bleuC}[Flatpak]${neutre} (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
+    echo -e "[16] PulseEffects ${bleu}[Flatpak]${neutre} (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
 
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixAudio
     clear
@@ -297,14 +290,14 @@ then
     echo "[3] PdfMod (logiciel permettant diverses modifications sur vos PDF)"
     echo "[4] Suite Scenari (scenarichaine + opale : famille d'applications d'édition avancées de chaînes éditoriales)"
     echo "[5] Freeplane (création de cartes heuristiques (Mind Map) avec des diagrammes représentant les connexions sémantiques)"
-    echo -e "[6] FeedReader ${bleuC}[Flatpak]${neutre} (agrégateur RSS moderne pour consulter vos fils d'informations RSS)"
+    echo -e "[6] FeedReader ${bleu}[Flatpak]${neutre} (agrégateur RSS moderne pour consulter vos fils d'informations RSS)"
     echo "[7] Geary (logiciel de messagerie, alternative à Thunderbird et bien intégré à Gnome)"
     echo "[8] Gnome Office (pack contenant Abiword, Gnumeric, Dia, Planner, Glabels, Glom, Tomboy et Gnucash)"
     echo "[9] Wordgrinder (Traitement de texte léger en ligne de commande. Formats OpenDocument, HTML import and export)"
     echo "[10] LaTex + Texworks (langage de description de document avec un éditeur spécialisé LaTex)"
     echo "[11] Gnome Evolution (logiciel de type groupware et courrielleur, facile à utiliser)"
     echo -e "[12] MailSpring ${jaune}[Snap]${neutre} (client de messagerie moderne et multi-plateforme)"
-    echo -e "[13] Notes Up ${bleuC}[Flatpak]${neutre} (éditeur et manager de notes avec markdown, simple mais efficace)"
+    echo -e "[13] Notes Up ${bleu}[Flatpak]${neutre} (éditeur et manager de notes avec markdown, simple mais efficace)"
     echo "[14] Zim (wiki en local avec une collection de pages et des marqueurs)"
     echo "[15] WPSOffice (suite bureautique propriétaire avec une interface proche de Microsoft Office)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
@@ -336,7 +329,7 @@ then
     echo "12/ Quel(s) utilitaire(s) supplémentaire(s) voulez-vous ?"
     echo "*******************************************************"
     echo "[1] Aucun"
-    echo -e "[2] Kazam ${violetC}[Xorg Only!]${neutre} (capture vidéo de votre bureau)"
+    echo -e "[2] Kazam ${violet}[Xorg Only!]${neutre} (capture vidéo de votre bureau)"
     echo "[3] SimpleScreenRecorder (autre alternative pour la capture vidéo)"
     echo "[4] OpenBroadcaster Software (Pour faire du live en streaming, adapté pour les gameurs)"
     echo "[5] Glances (afficher l'état des ressources systèmes en temps réel, comme htop mais plus complet)"
@@ -350,15 +343,15 @@ then
     echo "[13] TeamViewer (logiciel propriétaire de télémaintenance disposant de fonctions de bureau à distance)"
     echo "[14] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)"
     echo "[15] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
-    echo -e "[16] Gufw ${violetC}[Xorg only!]${neutre} (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
+    echo -e "[16] Gufw ${violet}[Xorg only!]${neutre} (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
     echo "[17] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Nmap)"
     echo -e "[18] Gnome Enfs Manager ${rouge}[Interv!]${neutre} (coffre-fort pour vos fichiers/dossiers)"
-    echo -e "[19] Bleachbit ${clignote}${rougeF}[potentiellement dangereux !]${neutre} (efface les fichiers inutiles/temporaires du système)"
-    echo -e "[20] VMWare Workstation Player ${rouge}[Interv!]${neutre}${violetF}[Install depuis Xorg!]${neutre} (version gratuite mais propriétaire de VmWare)"
-    echo -e "[21] CoreBird ${bleuC}[Flatpak]${neutre} (Un client de bureau pour le réseau social Twitter)"
+    echo -e "[19] Bleachbit ${clignote}${rougecligno}[potentiellement dangereux !]${neutre} (efface les fichiers inutiles/temporaires du système)"
+    echo -e "[20] VMWare Workstation Player ${rouge}[Interv!]${neutre}${violet}[Install depuis Xorg!]${neutre} (version gratuite mais propriétaire de VmWare)"
+    echo -e "[21] CoreBird ${bleu}[Flatpak]${neutre} (Un client de bureau pour le réseau social Twitter)"
     echo "[22] Wireshark (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
     echo "[23] Pack d'outils utiles : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone"
-    echo -e "[24] Synaptic ${violetC}[Xorg only!]${neutre} (gestionnaire graphique pour les paquets deb)"
+    echo -e "[24] Synaptic ${violet}[Xorg only!]${neutre} (gestionnaire graphique pour les paquets deb)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
     clear
 
@@ -380,9 +373,9 @@ then
     echo "[12] Gnome Games (Pack d'une dizaine de mini-jeux pour Gnome)"
     echo "[13] Megaglest (RTS 3d dans un monde fantastique avec 2 factions qui s'affrontent : la magie et la technologie)"
     echo "[14] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
-    echo -e "[15] Battle for Wesnoth ${bleuC}[Flatpak]${neutre} (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
-    echo -e "[16] Albion Online ${bleuC}[Flatpak]${neutre} (MMORPG avec système de quête et donjons)"
-    echo -e "[17] RunScape ${bleuC}[Flatpak]${neutre} (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
+    echo -e "[15] Battle for Wesnoth ${bleu}[Flatpak]${neutre} (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
+    echo -e "[16] Albion Online ${bleu}[Flatpak]${neutre} (MMORPG avec système de quête et donjons)"
+    echo -e "[17] RunScape ${bleu}[Flatpak]${neutre} (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
     clear
 fi
@@ -456,7 +449,7 @@ then
     echo "[11] BlueFish (éditeur orienté développement web : HTML/PHP/CSS/...)"
     echo "[12] BlueGriffon (éditeur HTML/CSS avec aperçu du rendu en temps réel)"
     echo "[13] SciTE : Scintilla Text Editor (éditeur web avec une bonne coloration syntaxique)"
-    echo -e "[14] Eclipse ${rouge}[Interv!]${neutre}${violetF}[Install sous Xorg uniquement!]${neutre}(Projet décliné en sous-projets de dev)"
+    echo -e "[14] Eclipse ${rouge}[Interv!]${neutre}${violet}[Install sous Xorg uniquement!]${neutre}(Projet décliné en sous-projets de dev)"
     echo -e "[15] PyCharm ${jaune}[Snap]${neutre} (IDE pour le language Python / à lancer depuis le terminal la 1ère fois)"
     echo -e "[16] Visual Studio Code ${jaune}[Snap]${neutre} (Développé par Microsoft, sous licence libre MIT)"
     echo -e "[17] Atom ${jaune}[Snap]${neutre} (Éditeur sous licence libre qui supporte les plug-ins Node.js et implémente GitControl)"
@@ -526,7 +519,7 @@ then
     echo -e "[13] Electrum ${jaune}[Snap]${neutre}"
     echo -e "[14] NextCloud client ${jaune}[Snap]${neutre}"
     echo -e "[15] Paint suprem 3D ${jaune}[Snap]${neutre}"
-    echo -e "[16] PyCharm édition Professionnelle ${violetC}[Xorg only!]${neutre}${orange}[isolation --classic]${neutre} ${jaune}[Snap]${neutre}"
+    echo -e "[16] PyCharm édition Professionnelle ${violet}[Xorg only!]${neutre}${orange}[isolation --classic]${neutre} ${jaune}[Snap]${neutre}"
     echo -e "[17] Quassel client ${jaune}[Snap]${neutre}"
     echo -e "[18] Rube cube ${jaune}[Snap]${neutre}"
     echo -e "[19] TermiusApp ${jaune}[Snap]${neutre}"
@@ -539,26 +532,26 @@ then
     echo "20/ Mode Extra : supplément paquet Flatpak : "
     echo "*******************************************************"
     echo "[1] Aucun"
-    echo -e "[2] 0ad ${bleuC}[Flatpak]${neutre}"
-    echo -e "[3] Audacity ${bleuC}[Flatpak]${neutre}"
-    echo -e "[4] Battle Tanks ${bleuC}[Flatpak]${neutre}"
-    echo -e "[5] Blender ${bleuC}[Flatpak]${neutre}"
-    echo -e "[6] Dolphin Emulator ${bleuC}[Flatpak]${neutre}"
-    echo -e "[7] Extreme Tuxracer ${bleuC}[Flatpak]${neutre}"
-    echo -e "[8] Frozen Bubble ${bleuC}[Flatpak]${neutre}"
-    echo -e "[9] Gnome MPV ${bleuC}[Flatpak]${neutre}"
-    echo -e "[10] Gimp ${bleuC}[Flatpak]${neutre}"
-    echo -e "[11] Google Play Music Desktop Player ${bleuC}[Flatpak]${neutre}"
-    echo -e "[12] Homebank ${bleuC}[Flatpak]${neutre}"
-    echo -e "[13] LibreOffice ${bleuC}[Flatpak]${neutre}"
-    echo -e "[14] Minetest ${bleuC}[Flatpak]${neutre}"
-    echo -e "[15] Nextcloud cli ${bleuC}[Flatpak]${neutre}"
-    echo -e "[16] Othman Quran Browser ${bleuC}[Flatpak]${neutre}"
-    echo -e "[17] Password Calculator ${bleuC}[Flatpak]${neutre}"
-    echo -e "[18] PPSSPP ${bleuC}[Flatpak]${neutre}"
-    echo -e "[19] Riot ${bleuC}[Flatpak]${neutre}"
-    echo -e "[20] Teeworlds ${bleuC}[Flatpak]${neutre}"
-    echo -e "[21] VLC ${bleuC}[Flatpak]${neutre}"
+    echo -e "[2] 0ad ${bleu}[Flatpak]${neutre}"
+    echo -e "[3] Audacity ${bleu}[Flatpak]${neutre}"
+    echo -e "[4] Battle Tanks ${bleu}[Flatpak]${neutre}"
+    echo -e "[5] Blender ${bleu}[Flatpak]${neutre}"
+    echo -e "[6] Dolphin Emulator ${bleu}[Flatpak]${neutre}"
+    echo -e "[7] Extreme Tuxracer ${bleu}[Flatpak]${neutre}"
+    echo -e "[8] Frozen Bubble ${bleu}[Flatpak]${neutre}"
+    echo -e "[9] Gnome MPV ${bleu}[Flatpak]${neutre}"
+    echo -e "[10] Gimp ${bleu}[Flatpak]${neutre}"
+    echo -e "[11] Google Play Music Desktop Player ${bleu}[Flatpak]${neutre}"
+    echo -e "[12] Homebank ${bleu}[Flatpak]${neutre}"
+    echo -e "[13] LibreOffice ${bleu}[Flatpak]${neutre}"
+    echo -e "[14] Minetest ${bleu}[Flatpak]${neutre}"
+    echo -e "[15] Nextcloud cli ${bleu}[Flatpak]${neutre}"
+    echo -e "[16] Othman Quran Browser ${bleu}[Flatpak]${neutre}"
+    echo -e "[17] Password Calculator ${bleu}[Flatpak]${neutre}"
+    echo -e "[18] PPSSPP ${bleu}[Flatpak]${neutre}"
+    echo -e "[19] Riot ${bleu}[Flatpak]${neutre}"
+    echo -e "[20] Teeworlds ${bleu}[Flatpak]${neutre}"
+    echo -e "[21] VLC ${bleu}[Flatpak]${neutre}"
     read -p "Choix flatpak : " choixFlatpak
     clear
             
@@ -567,26 +560,26 @@ then
     echo "21/ Mode Extra : récupération Appimages: "
     echo "*******************************************************"
     echo "[1] Aucune"
-    echo -e "[2] Digikam ${vertF}[Appimage]${neutre}"
-    echo -e "[3] Freecad ${vertF}[Appimage]${neutre}"
-    echo -e "[4] Aidos Wallet ${vertF}[Appimage]${neutre}"
-    echo -e "[5] Cerebro ${vertF}[Appimage]${neutre}"
-    echo -e "[6] Chronos ${vertF}[Appimage]${neutre}"
-    echo -e "[7] Crypter ${vertF}[Appimage]${neutre}"
-    echo -e "[8] Dedop studio ${vertF}[Appimage]${neutre}"
-    echo -e "[9] Imagine ${vertF}[Appimage]${neutre}"
-    echo -e "[10] Infinite Electron ${vertF}[Appimage]${neutre}"
-    echo -e "[11] Kdenlive ${vertF}[Appimage]${neutre}"
-    echo -e "[12] KDevelop ${vertF}[Appimage]${neutre}"
-    echo -e "[13] MellowPlayer ${vertF}[Appimage]${neutre}"
-    echo -e "[14] Nextcloud Cli ${vertF}[Appimage]${neutre}"
-    echo -e "[15] Openshot ${vertF}[Appimage]${neutre}"
-    echo -e "[16] Owncloud Cli ${vertF}[Appimage]${neutre}"
-    echo -e "[17] Popcorntime ${vertF}[Appimage]${neutre}"
-    echo -e "[18] Skype for Business ${vertF}[Appimage]${neutre}"
-    echo -e "[19] Spotify web client ${vertF}[Appimage]${neutre}"
-    echo -e "[20] Tulip ${vertF}[Appimage]${neutre}"
-    echo -e "[21] Wire ${vertF}[Appimage]${neutre}"
+    echo -e "[2] Digikam ${vert}[Appimage]${neutre}"
+    echo -e "[3] Freecad ${vert}[Appimage]${neutre}"
+    echo -e "[4] Aidos Wallet ${vert}[Appimage]${neutre}"
+    echo -e "[5] Cerebro ${vert}[Appimage]${neutre}"
+    echo -e "[6] Chronos ${vert}[Appimage]${neutre}"
+    echo -e "[7] Crypter ${vert}[Appimage]${neutre}"
+    echo -e "[8] Dedop studio ${vert}[Appimage]${neutre}"
+    echo -e "[9] Imagine ${vert}[Appimage]${neutre}"
+    echo -e "[10] Infinite Electron ${vert}[Appimage]${neutre}"
+    echo -e "[11] Kdenlive ${vert}[Appimage]${neutre}"
+    echo -e "[12] KDevelop ${vert}[Appimage]${neutre}"
+    echo -e "[13] MellowPlayer ${vert}[Appimage]${neutre}"
+    echo -e "[14] Nextcloud Cli ${vert}[Appimage]${neutre}"
+    echo -e "[15] Openshot ${vert}[Appimage]${neutre}"
+    echo -e "[16] Owncloud Cli ${vert}[Appimage]${neutre}"
+    echo -e "[17] Popcorntime ${vert}[Appimage]${neutre}"
+    echo -e "[18] Skype for Business ${vert}[Appimage]${neutre}"
+    echo -e "[19] Spotify web client ${vert}[Appimage]${neutre}"
+    echo -e "[20] Tulip ${vert}[Appimage]${neutre}"
+    echo -e "[21] Wire ${vert}[Appimage]${neutre}"
     read -p "Choix appimage : " choixAppimage
     clear
 fi
