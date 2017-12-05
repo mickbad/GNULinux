@@ -25,7 +25,7 @@
 noir='\e[1;30m'
 gris='\e[1;37m'
 rouge='\e[1;31m'
-rougecligno='\e[5;31m'
+rougesouligne='\e[4;31m'
 vert='\e[1;32m'
 orange='\e[1;33m'
 jaune='\e[1;33m'
@@ -346,7 +346,7 @@ then
     echo -e "[16] Gufw ${violet}[Xorg only!]${neutre} (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
     echo "[17] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Nmap)"
     echo -e "[18] Gnome Enfs Manager ${rouge}[Interv!]${neutre} (coffre-fort pour vos fichiers/dossiers)"
-    echo -e "[19] Bleachbit ${clignote}${rougecligno}[potentiellement dangereux !]${neutre} (efface les fichiers inutiles/temporaires du système)"
+    echo -e "[19] Bleachbit ${rougesouligne}[potentiellement dangereux !]${neutre} (efface les fichiers inutiles/temporaires du système)"
     echo -e "[20] VMWare Workstation Player ${rouge}[Interv!]${neutre}${violet}[Install depuis Xorg!]${neutre} (version gratuite mais propriétaire de VmWare)"
     echo -e "[21] CoreBird ${bleu}[Flatpak]${neutre} (Un client de bureau pour le réseau social Twitter)"
     echo "[22] Wireshark (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
