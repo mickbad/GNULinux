@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.48 (alpha)
+# version 0.0.49 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -334,8 +334,8 @@ then
     echo "[7] Wine (une sorte d'émulateur pour faire tourner des applis/jeux conçu à la base pour Windows)"
     echo "[8] Oracle Java 8 (plate-forme propriétaire pour le développement/éxécution des logiciels écrits Java)"
     echo "[9] Oracle Java 9 (nouvelle version de Java)"
-    echo "[10] OpenJDK v9 (JRE) (implémentation libre de Java, a noter que la V8 est installé par défaut)
-    echo "[11] OpenJDK v10 (JRE) (implémentation libre de la prochaine version de Java)
+    echo "[10] OpenJDK v9 (JRE) (implémentation libre de Java, a noter que la V8 est installé par défaut)"
+    echo "[11] OpenJDK v10 (JRE) (implémentation libre de la prochaine version de Java)"
     echo "[12] Installer FlashPlayer (via le dépot partenaire)"
     echo "[13] VirtualBox (virtualisation de système Windows/Mac/Linux/Bsd)"
     echo "[14] KeePassX2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
