@@ -397,7 +397,7 @@ then
     echo "[9] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
     echo "[10] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
     echo "[11] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
-    echo "[12] Weather (Pour avoir la météo directement sur votre bureau)"
+    echo "[12] Openweather (Pour avoir la météo directement sur votre bureau)"
     echo "[13] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
     echo "[14] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
     echo "[15] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
@@ -427,7 +427,9 @@ then
     echo "[7] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
     echo "[8] Pack d'icone 3 : Human, Moblin, Oxygen, Fuenza, Suede, Yasis"
     echo "[9] Pack de curseur : Breeze + Moblin + Oxygen/Oxygen-extra"
-    echo "[10] Pack de transformation en Mac OS X Sierra (Thème Gnome OS X + wallpaper Sierra + icone MacOS)"
+    echo "[10] Mac OS X High Sierra - vLight+Dark (thème+icone+wallpaper)"
+    echo "[11] Windows 10 Thème"
+    echo "[12] Unity8 Thème"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
     clear
 
@@ -617,7 +619,7 @@ apt install ffmpegthumbnailer -y #permet de charger les minatures vidéos plus r
 sed -i 's/^enabled=1$/enabled=0/' /etc/default/apport
 
 # Création répertoire extension pour l'ajout d'extension supplémentaire pour l'utilisateur principal
-mkdir /home/$SUDO_USER/.local/share/gnome-shell/extensions
+su $SUDO_USER -c "mkdir ~/.local/share/gnome-shell/extensions ; mkdir ~/.themes ; mkdir ~/.icons"
 
 # Pour mode novice :
 if [ "$choixMode" = "0" ]
@@ -1476,10 +1478,9 @@ for custom in $choixCustom
 do
     case $custom in
         "2") #pack theme gtk 1
-            apt install arc-thene numix-blue-gtk-theme numix-gtk-theme silicon-theme -y
+            apt install arc-theme numix-blue-gtk-theme numix-gtk-theme silicon-theme -y
             #Numix Circle
-            git clone https://github.com/numixproject/numix-icon-theme-circle.git && cp -r numix-icon-theme-circle/Numix-Circle /usr/share/icons/ 
-            gtk-update-icon-cache /usr/share/icons/Numix-Circle && rm -r numix-icon-theme-circle
+            git clone https://github.com/numixproject/numix-icon-theme-circle.git ; mv numix-icon-theme-circle/* /usr/share/icons/ ; rm -r numix-icon-theme-circle
             ;;
         "3") #pack theme gtk 2
             apt-add-repository ppa:tista/adapta -y ; apt update ; apt install adapta-gtk-theme -y
@@ -1506,20 +1507,26 @@ do
         "9") #pack curseur
             apt install breeze-cursor-theme moblin-cursor-theme oxygen-cursor-theme -y
             ;;  
-        "10") #Mac OS X transformation
-            #Gnome OS X theme
+        "10") #Mac OS X High Sierra (plusieurs versions)
             apt install gtk2-engines-pixbuf gtk2-engines-murrine -y
-            wget https://dl.opendesktop.org/api/files/download/id/1512334645/Gnome-OSX-V-H.Sierra-1-2-1.tar.xz
-            tar Jxvf Gnome-OSX-V-H.Sierra-1-2-1.tar.xz ; mv Gnome-OSX-V-H.Sierra-1-2-1 /usr/share/themes/ ; rm Gnome-OSX-V-H.Sierra-1-2-1.tar.xz
+            git clone https://github.com/B00merang-Project/macOS-Sierra.git ; git clone https://github.com/B00merang-Project/macOS-Sierra-Dark.git
+            mv -f macOS* /usr/share/themes/
+            wget http://nux87.free.fr/script-postinstall-ubuntu/theme/Gnome-OSX-V-Space-Grey-1-3-1.tar.xz && wget http://nux87.free.fr/script-postinstall-ubuntu/theme/Gnome-OSX-V-Traditional-1-3-1.tar.xz   
+            tar Jxvf Gnome-OSX-V-Space-Grey-1-3-1.tar.xz ; mv -f Gnome-OSX-V-Space-Grey-1-3-1 /usr/share/themes/ ; rm Gnome-OSX-V-Space-Grey-1-3-1.tar.xz
+            tar Jxvf Gnome-OSX-V-Traditional-1-3-1.tar.xz ; mv -f Gnome-OSX-V-Traditional-1-3-1 /usr/share/themes/ ; Gnome-OSX-V-Traditional-1-3-1.tar.xz       
             #Pack d'icone la capitaine + macOS
-            git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git /usr/share/icones/la-capitaine
+            git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git /usr/share/icons/la-capitaine
             wget https://dl.opendesktop.org/api/files/download/id/1510321229/macOS.tar.xz ; tar Jxvf macOS.tar.xz ; mv macOS /usr/share/icons/ ; rm macOS.tar.xz
             #Wallpaper officiel Mac OS X Sierra
             wget http://wallpaperswide.com/download/macos_sierra_2-wallpaper-3554x1999.jpg -P /usr/share/backgrounds/
-            # Pour comportement identique à Mac OS sur gestion des fenêtres :
-            #gsettings set org.gnome.desktop.wm.preferences button-layout "close,minimize,maximize:"
-            #gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
             ;;
+        "11") #Windows 10
+            git clone https://github.com/B00merang-Project/Windows-10.git ; mv -f Windo* /usr/share/themes/
+            ;;
+        "11") #Unity 8
+            git clone https://github.com/B00merang-Project/Unity8.git ; mv -f Unit* /usr/share/themes/
+            ;;            
+            
     esac
 done
 
