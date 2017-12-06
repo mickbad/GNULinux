@@ -476,21 +476,21 @@ then
     echo "18/ Des optimisations supplémentaires à activer ? [mode avancé]"
     echo "*******************************************************"
     echo "[1] Non"
-    echo "[2] Déporter répertoire snappy dans /home pour gagner de l'espace (utile si le /home est séparé et racine limité)"
-    echo "[3] Optimisation Swap : swapiness à 5% (swap utilisé uniquement si + de 95% de ram utilisé)"
-    echo "[4] Désactiver complètement le swap (utile si vous avez un SSD et 8 Go de ram ou +)"
-    echo "[5] Activer TLP avec Powertop (économie d'energie pour pc portable)"
-    echo "[6] Installer le microcode propriétaire Intel (pour cpu intel uniquement !)"
-    echo "[7] Ajouter une commande 'fraude' pour Wayland (pour pouvoir lancer des applis comme Gparted. Exemple : fraude gparted)"
-    echo "[8] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
-    echo "[9] Ajouter le support pour le système de fichier exFat de Microsoft"
-    echo "[10] Ajouter le support pour le système de fichier HFS d'Apple"
-    echo "[11] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
-    echo "[12] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
-    echo -e "[13] Lecture DVD commerciaux protégés par CSS (Content Scrambling System) ${rouge}[Interv!]${neutre}"
-    echo "[14] Support imprimantes HP (hplip + sane + hplip-gui)"
-    echo "[15] Pour DashToDock : Activer la minimisation de fenêtre si on clique sur l'icone dans le dock"
-    #echo "[16] [Ne fonctionn pas] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour technologie Optimus nvidia/intel"
+    echo "[2] Optimisation Swap : swapiness à 5% (swap utilisé uniquement si + de 95% de ram utilisé)"
+    echo "[3] Désactiver complètement le swap (utile si vous avez un SSD et 8 Go de ram ou +)"
+    echo "[4] Activer TLP avec Powertop (économie d'energie pour pc portable)"
+    echo "[5] Installer le microcode propriétaire Intel (pour cpu intel uniquement !)"
+    echo "[6] Ajouter une commande 'fraude' pour Wayland (pour pouvoir lancer des applis comme Gparted. Exemple : fraude gparted)"
+    echo "[7] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
+    echo "[8] Ajouter le support pour le système de fichier exFat de Microsoft"
+    echo "[9] Ajouter le support pour le système de fichier HFS d'Apple"
+    echo "[10] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
+    echo "[11] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
+    echo -e "[12] Lecture DVD commerciaux protégés par CSS (Content Scrambling System) ${rouge}[Interv!]${neutre}"
+    echo "[13] Support imprimantes HP (hplip + sane + hplip-gui)"
+    echo "[14] Pour DashToDock : Activer la minimisation de fenêtre si on clique sur l'icone dans le dock"
+    echo "[15] Augmenter la sécurité de votre compte : empécher l'accès à votre dossier perso aux autres utilisateurs"
+    #echo "[99][Ne fonctionn pas] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour technologie Optimus nvidia/intel"
  
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
     clear
@@ -1628,36 +1628,32 @@ done
 for optimisation in $choixOptimisation
 do
     case $optimisation in
-        "2") #déportage snappy ds Home
-            mv /snap /home/
-            ln -s /home/snap /snap
-            ;;
-        "3") #Swapiness 95% +cache pressure 50
+        "2") #Swapiness 95% +cache pressure 50
             echo vm.swappiness=5 | tee /etc/sysctl.d/99-swappiness.conf
             sysctl -p /etc/sysctl.d/99-swappiness.conf
             ;;
-        "4") #Désactiver swap
+        "3") #Désactiver swap
             swapoff /swapfile #désactive l'utilisation du fichier swap
             rm /swapfile #supprime le fichier swap qui n'est plus utile
             sed -i -e '/.swapfile*/d' /etc/fstab #ligne swap retiré de fstab
             ;;
-        "5") #Activer TLP + install Powertop
+        "4") #Activer TLP + install Powertop
             apt install tlp powertop -y
             systemctl enable tlp
             systemctl emable tlp-sleep
             systemctl disable postfix.service
             ;;
-        "6") #Microcode Intel
+        "5") #Microcode Intel
             apt install intel-microcode -y
             ;;
-        "7") #Mode fraude Wayland (proposé par Christophe C sur Ubuntu-fr.org)  #pas encore testé
+        "6") #Mode fraude Wayland (proposé par Christophe C sur Ubuntu-fr.org)  #pas encore testé
             echo "#FONCTION POUR CONTOURNER WAYLAND
             fraude(){ 
                 xhost + && sudo \$1 && xhost -
                 }" >> /home/$SUDO_USER/.bashrc
             su $SUDO_USER -c "source ~/.bashrc"
             ;;
-        "8") #Désactiver userlist GDM
+        "7") #Désactiver userlist GDM
             echo "user-db:user
             system-db:gdm
             file-db:/usr/share/gdm/greeter-dconf-defaults" > /etc/dconf/profile/gdm
@@ -1667,32 +1663,37 @@ do
             disable-user-list=true" > /etc/dconf/db/gdm.d/00-login-screen
             dconf update
             ;;
-        "9") #Support ExFat
+        "8") #Support ExFat
             apt install exfat-utils exfat-fuse -y    
             ;;
-        "10") #Support HFS
+        "9") #Support HFS
             apt install hfsprogs hfsutils hfsplus -y
             ;;
-        "11") #Nouvelle commande raccourci Maj totale
+        "10") #Nouvelle commande raccourci Maj totale
             echo "alias maj='sudo apt update && sudo apt autoremove --purge -y && sudo apt full-upgrade -y && sudo apt clean && sudo snap refresh && sudo flatpak update -y ; clear'" >> /home/$SUDO_USER/.bashrc
             su $SUDO_USER -c "source ~/.bashrc"
             ;;
-        "12") #Grub réduction temps d'attente + suppression test ram dans grub
+        "11") #Grub réduction temps d'attente + suppression test ram dans grub
             sed -ri 's/GRUB_TIMEOUT=10/GRUB_TIMEOUT=2/g' /etc/default/grub
             mkdir /boot/old ; mv /boot/memtest86* /boot/old/
             update-grub
             ;;
-        "13") #Lecture DVD Commerciaux
+        "12") #Lecture DVD Commerciaux
             apt install libdvdcss2 libdvd-pkg -y
             dpkg-reconfigure libdvd-pkg
             ;;
-        "14") #Support imprimante HP
+        "13") #Support imprimante HP
             apt install hplip hplip-doc hplip-gui sane sane-utils -y
             ;;   
-        "15") #Minimisation fenêtre sur l'icone du dock (pour dashtodock uniquement)
+        "14") #Minimisation fenêtre sur l'icone du dock (pour dashtodock uniquement)
             gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
-            ;;    
-        #"16") #Nvidia Bumblebee pour techno optimus (Ne fonctionne pas)
+            ;;
+        "15") #Interdire l'accès des autres utilisateurs au dossier perso de l'utilisateur principal
+            chmod -R o-rwx /home/$SUDO_USER
+            ;;            
+            
+            
+        #"99") #Nvidia Bumblebee pour techno optimus (Ne fonctionne pas)
             #wget https://raw.githubusercontent.com/BionicBeaver/Divers/master/BumblebeeBionic_install.sh ; chmod +x BumblebeeBionic_install.sh
             #./BumblebeeBionic_install.sh
             #;;   
