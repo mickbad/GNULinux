@@ -310,7 +310,7 @@ then
     echo "[4] [SCIENCE] SciLab (Logiciel scientifique pour le calcul numérique pour des applications scientifiques"
     echo "[5] [MATH] GeoGebra (géométrie dynamique pour manipuler des objets avec un ensemble de fonctions algébriques)"
     echo "[6] [MATH] Algobox (Logiciel libre d'aide à l'élaboration/exécution d'algorithmes en mathématique)"
-    echo -e "[7] [MATH] CaRMetal ${rouge}[Ne semble pas fonctionner !]${neutre}(logiciel libre de géométrie dynamique, conçu à partir du moteur de C.a.R)"
+    echo "[7] [MATH] CaRMetal (logiciel libre de géométrie dynamique, conçu à partir du moteur de C.a.R)"
     echo "[8] [ASTRO] Stellarium (Planétarium avec l'affichage du ciel réaliste en 3D avec simulation d'un téléscope)"
     echo "[9] [ASTRO] SkyChart (Cartographie céleste très complet avec un catalogue riche)"
     echo "[10] [ASTRO] Celestia (Simulation spatiale en temps réel qui permet d’explorer l'Univers en trois dimensions)"
@@ -517,12 +517,11 @@ then
     echo -e "[12] Blender ${orange}[isolation --classic]${neutre} ${jaune}[Snap]${neutre}"
     echo -e "[13] Electrum ${jaune}[Snap]${neutre}"
     echo -e "[14] NextCloud client ${jaune}[Snap]${neutre}"
-    echo -e "[15] Paint suprem 3D ${jaune}[Snap]${neutre}"
-    echo -e "[16] PyCharm édition Professionnelle ${violet}[Xorg only!]${neutre}${orange}[isolation --classic]${neutre} ${jaune}[Snap]${neutre}"
-    echo -e "[17] Quassel client ${jaune}[Snap]${neutre}"
-    echo -e "[18] Rube cube ${jaune}[Snap]${neutre}"
-    echo -e "[19] TermiusApp ${jaune}[Snap]${neutre}"
-    echo -e "[20] TicTacToe ${jaune}[Snap]${neutre}"
+    echo -e "[15] PyCharm édition Professionnelle ${violet}[Xorg only!]${neutre}${orange}[isolation --classic]${neutre} ${jaune}[Snap]${neutre}"
+    echo -e "[16] Quassel client ${jaune}[Snap]${neutre}"
+    echo -e "[17] Rube cube ${jaune}[Snap]${neutre}"
+    echo -e "[18] TermiusApp ${jaune}[Snap]${neutre}"
+    echo -e "[19] TicTacToe ${jaune}[Snap]${neutre}"
     read -p "Choix snappy : " choixSnap
     clear
              
@@ -1742,23 +1741,20 @@ do
             ;; 
         "14") #nextcloud client
             snap install nextcloudclient
-            ;; 
-        "15") #paint suprem 3D
-            snap install paintsupreme-3d
             ;;      
-        "16") #pycharm pro
+        "15") #pycharm pro
             snap install pycharm-professional --classic
             ;;   
-        "17") #Quassel client
+        "16") #Quassel client
             snap install quasselclient-moon127
             ;;   
-        "18") #Rube cube
+        "17") #Rube cube
             snap install rubecube
             ;;            
-        "19") #TermiusApp
+        "18") #TermiusApp
             snap install termius-app
             ;;        
-        "20") #TicTacToe
+        "19") #TicTacToe
             snap install tic-tac-toe
             ;;              
     esac
