@@ -484,7 +484,7 @@ then
     echo "[7] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
     echo "[8] Ajouter le support pour le système de fichier exFat de Microsoft"
     echo "[9] Ajouter le support pour le système de fichier HFS d'Apple"
-    echo "[10] Ajout d'une nouvelle commande magique 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
+    echo "[10] Ajout d'une nouvelle commande 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
     echo "[11] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
     echo -e "[12] Lecture DVD commerciaux protégés par CSS (Content Scrambling System) ${rouge}[Interv!]${neutre}"
     echo "[13] Support imprimantes HP (hplip + sane + hplip-gui)"
@@ -1505,7 +1505,7 @@ do
             apt install human-icon-theme moblin-icon-theme oxygen-icon-theme fuenza-icon-theme gnome-icon-theme-suede gnome-icon-theme-yasis -y
             ;;   
         "9") #pack curseur
-            apt install breeze-cursor-theme moblin-cursor-theme oxygen-cursor-theme oxygen-cursor-theme-extra -y
+            apt install breeze-cursor-theme moblin-cursor-theme oxygen-cursor-theme -y
             ;;  
         "10") #Mac OS X transformation
             #Gnome OS X theme
