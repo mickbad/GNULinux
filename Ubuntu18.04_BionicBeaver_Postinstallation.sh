@@ -339,7 +339,7 @@ then
     echo "[12] Installer FlashPlayer (via le dépot partenaire)"
     echo "[13] VirtualBox (virtualisation de système Windows/Mac/Linux/Bsd)"
     echo "[14] KeePassX2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
-    echo "[15] TeamViewer ${violet}[Coté serveur en Xorg only]${neutre}(logiciel propriétaire de télémaintenance avec contrôle de bureau à distance)"
+    echo "[15] TeamViewer ${violet}[Coté serveur en Xorg only]${neutre} (logiciel propriétaire de télémaintenance avec contrôle de bureau à distance)"
     echo "[16] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)"
     echo "[17] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
     echo -e "[18] Gufw ${violet}[Xorg only!]${neutre} (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
