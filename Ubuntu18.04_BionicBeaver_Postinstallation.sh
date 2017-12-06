@@ -1899,7 +1899,7 @@ do
 done
     
    
-# Suppression des deb téléchargés par le script (plus nécessaire) et rangement des AppImages (a vérifier)
+# Suppression des deb téléchargés par le script (plus nécessaire) et rangement des AppImages
 mkdir ./appimages ; rm *.deb ; mv *.AppImage ./appimages/
 chown -R $SUDO_USER:$SUDO_USER ./appimages
 chmod -R +x ./appimages
