@@ -316,8 +316,8 @@ then
     echo "[10] [ASTRO] Celestia (Simulation spatiale en temps réel qui permet d’explorer l'Univers en trois dimensions)"
     echo "[11] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
     echo "[12] [TECHNO] Scratch 1.4 (langage de prog visuel libre, créé par le MIT, à vocation éducative et ludique)"
-    echo "[13] [TECHNO] mBlock ${gris}[à lancer manuellement]${neutre} (environnement de programmation par blocs basé sur Scratch 2 pour Arduino"
-    echo "[14] [TECHNO] Algoid ${gris}[Fichier Jar à lancer manuellement]${neutre} (Language de programmation éducatif)"
+    echo "[13] [TECHNO] mBlock ${gris}[à lancer manuellement]${neutre}(environnement de programmation par blocs basé sur Scratch 2 pour Arduino"
+    echo "[14] [TECHNO] Algoid ${gris}[Fichier Jar à lancer manuellement]${neutre}(Language de programmation éducatif)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
     clear
 
