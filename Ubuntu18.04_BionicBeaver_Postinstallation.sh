@@ -510,7 +510,7 @@ then
     echo -e "[5] Gimp ${jaune}[Snap]${neutre}"
     echo -e "[6] Instagraph ${jaune}[Snap]${neutre}"
     echo -e "[7] KeepassXC ${jaune}[Snap]${neutre}"
-    echo -e "[8] Ktube media downloader ${jaune}[Snap]${neutre}"
+    echo -e "[8] Ktube media downloader ${jaune}[Snap]${neutre}${rouge}[ne semble pas fonctionner !]${neutre}"
     echo -e "[9] Warzone 2100 ${jaune}[Snap]${neutre}"
     echo -e "[10] Asciinema ${orange}[isolation --classic]${neutre} ${jaune}[Snap]${neutre}"
     echo -e "[11] Bitcoin ${jaune}[Snap]${neutre}"
