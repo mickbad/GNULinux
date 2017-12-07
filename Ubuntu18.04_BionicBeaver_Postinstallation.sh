@@ -417,16 +417,16 @@ then
     echo "[1] Pas d'ajout"
     echo "[2] Pack de thème GTK à succès : Arc + Numix + Silicon"
     echo "[3] Pack2 avec encore d'autres thèmes : Adapta + Greybird/Blackbird/Bluebird"
-    echo "[4] Pack3 de thème : albatross, Yuyo, human, gilouche"
-    echo "[5] Remettre le thème gris pour GDM (par défaut violet) : Attention ! ajoute la session Vanilla en dépendance !"
-    echo "[6] Pack d'icone 1 : Numix et Numix Circle, Breathe, Breeze, Elementary, Brave + supplément extra icone Gnome"
-    echo "[7] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
-    echo "[8] Pack d'icone 3 : Human, Moblin, Oxygen, Fuenza, Suede, Yasis"
-    echo "[9] Pack de curseur : Breeze + Moblin + Oxygen/Oxygen-extra"
-    echo "[10] Mac OS X High Sierra - vLight+Dark (thème+icone+wallpaper)"
-    echo "[11] Windows 10 Thème (thème + icone)"
-    echo "[12] Unity8 Thème"
-    echo "[13] Icon Papirus (différentes variantes : Adapta, Nokto, Dark, Light...)"    
+    echo "[4] Pack3 de thème : albatross, Yuyo, human, gilouche
+    echo "[5] Pack d'icone 1 : Numix et Numix Circle, Breathe, Breeze, Elementary, Brave + supplément extra icone Gnome"
+    echo "[6] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
+    echo "[7] Pack d'icone 3 : Human, Moblin, Oxygen, Suede, Yasis"
+    echo "[8] Pack de curseur : Breeze + Moblin + Oxygen/Oxygen-extra"
+    echo "[9] Mac OS X High Sierra - vLight+Dark (thème+icone+wallpaper)"
+    echo "[10] Windows 10 Thème (thème + icone)"
+    echo "[11] Unity8 Thème"
+    echo "[12] Icon Papirus (différentes variantes : Adapta, Nokto, Dark, Light...)"    
+    echo -e "[13] Remettre GDM avec le thème gris (par défaut violet) : ${rouge}Attention : ajoute la session Vanilla en dépendance !${neutre}"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
     clear
 
@@ -1482,24 +1482,19 @@ do
         "4") #pack theme gtk 3
             apt install albatross-gtk-theme yuyo-gtk-theme human-theme gnome-theme-gilouche -y
             ;;
-        "5") #thème gris GDM (changement effectif seulement si la session vanilla est installé)
-            apt install gnome-session -y # session vanilla nécessaire pour le changement du thème
-            mv /usr/share/gnome-shell/theme/ubuntu.css /usr/share/gnome-shell/theme/ubuntu_old.css
-            mv /usr/share/gnome-shell/theme/gnome-shell.css /usr/share/gnome-shell/theme/ubuntu.css
-            ;;
-        "6") #pack icone 1
+        "5") #pack icone 1
             apt install numix-icon-theme breathe-icon-theme breeze-icon-theme elementary-icon-theme gnome-brave-icon-theme gnome-icon-theme-extras -y
             ;;        
-        "7") #pack icone 2
-            apt install gnome-dust-icon-theme gnome-humility-icon-theme gnome-icon-theme-garton gnome-icon-theme-gperfection2 gnome-icon-theme-nuovo -y
+        "6") #pack icone 2
+            apt install gnome-dust-icon-theme gnome-humility-icon-theme gnome-icon-theme-gartoon gnome-icon-theme-gperfection2 gnome-icon-theme-nuovo -y
             ;;  
-        "8") #pack icone 3
-            apt install human-icon-theme moblin-icon-theme oxygen-icon-theme fuenza-icon-theme gnome-icon-theme-suede gnome-icon-theme-yasis -y
+        "7") #pack icone 3
+            apt install human-icon-theme moblin-icon-theme oxygen-icon-theme gnome-icon-theme-suede gnome-icon-theme-yasis -y
             ;;   
-        "9") #pack curseur
+        "8") #pack curseur
             apt install breeze-cursor-theme moblin-cursor-theme oxygen-cursor-theme -y
             ;;  
-        "10") #Mac OS X High Sierra (plusieurs versions)
+        "9") #Mac OS X High Sierra (plusieurs versions)
             apt install gtk2-engines-pixbuf gtk2-engines-murrine -y
             git clone https://github.com/B00merang-Project/macOS-Sierra.git ; git clone https://github.com/B00merang-Project/macOS-Sierra-Dark.git
             mv -f macOS* /usr/share/themes/
@@ -1507,21 +1502,26 @@ do
             tar Jxvf Gnome-OSX-V-Space-Grey-1-3-1.tar.xz ; mv -f Gnome-OSX-V-Space-Grey-1-3-1 /usr/share/themes/ ; rm Gnome-OSX-V-Space-Grey-1-3-1.tar.xz
             tar Jxvf Gnome-OSX-V-Traditional-1-3-1.tar.xz ; mv -f Gnome-OSX-V-Traditional-1-3-1 /usr/share/themes/ ; Gnome-OSX-V-Traditional-1-3-1.tar.xz       
             #Pack d'icone la capitaine + macOS
-            git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git /usr/share/icons/la-capitaine
+            git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git ; mv -f *capitaine* /usr/share/icons/
             wget https://dl.opendesktop.org/api/files/download/id/1510321229/macOS.tar.xz ; tar Jxvf macOS.tar.xz ; mv macOS /usr/share/icons/ ; rm macOS.tar.xz
             #Wallpaper officiel Mac OS X Sierra
             wget http://wallpaperswide.com/download/macos_sierra_2-wallpaper-3554x1999.jpg -P /usr/share/backgrounds/
             ;;
-        "11") #Windows 10
+        "10") #Windows 10
             git clone https://github.com/B00merang-Project/Windows-10.git ; mv -f Windo* /usr/share/themes/
             wget https://dl.opendesktop.org/api/files/download/id/1485767591/windows10-icons_1.2_all.deb && dpkg -i windows10-icons_1.2_all.deb
             wget https://framapic.org/Nd6hGtEOEJhM/LtmYwl16WjyC.jpg && mv LtmYwl16WjyC.jpg /usr/share/backgrounds/windows10.jpg
             ;;
-        "12") #Unity 8
+        "11") #Unity 8
             git clone https://github.com/B00merang-Project/Unity8.git ; mv -f Unit* /usr/share/themes/
             ;;
-        "13") #Icone Papyrus
+        "12") #Icone Papyrus
             wget http://nux87.free.fr/script-postinstall-ubuntu/theme/papirus-icon-theme-20171124.tar.xz ; tar Jxvf papirus-icon-theme-20171124.tar.xz ; mv ./papirus-icon-theme-20171124/* /usr/share/icons/ ; rm -r papirus-icon-theme-20171124
+            ;;  
+        "13") #thème gris GDM (changement effectif seulement si la session vanilla est installé)
+            apt install gnome-session -y # session vanilla nécessaire pour le changement du thème (sinon ne s'applique pas)
+            mv /usr/share/gnome-shell/theme/ubuntu.css /usr/share/gnome-shell/theme/ubuntu_old.css
+            mv /usr/share/gnome-shell/theme/gnome-shell.css /usr/share/gnome-shell/theme/ubuntu.css
             ;;            
     esac
 done
