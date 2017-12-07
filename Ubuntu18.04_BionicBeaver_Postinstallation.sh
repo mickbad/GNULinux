@@ -418,7 +418,7 @@ then
     echo "[1] Pas d'ajout"
     echo "[2] Pack de thème GTK à succès : Arc + Numix + Silicon"
     echo "[3] Pack2 avec encore d'autres thèmes : Adapta + Greybird/Blackbird/Bluebird"
-    echo "[4] Pack3 de thème : albatross, Yuyo, human, gilouche
+    echo "[4] Pack3 de thème : albatross, Yuyo, human, gilouche"
     echo "[5] Pack d'icone 1 : Numix et Numix Circle, Breathe, Breeze, Elementary, Brave + supplément extra icone Gnome"
     echo "[6] Pack d'icone 2 : Dust, Humility, Garton, Gperfection2, Nuovo"
     echo "[7] Pack d'icone 3 : Human, Moblin, Oxygen, Suede, Yasis"
