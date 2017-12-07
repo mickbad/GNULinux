@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.49 (alpha)
+# version 0.0.50 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -428,8 +428,9 @@ then
     echo "[8] Pack d'icone 3 : Human, Moblin, Oxygen, Fuenza, Suede, Yasis"
     echo "[9] Pack de curseur : Breeze + Moblin + Oxygen/Oxygen-extra"
     echo "[10] Mac OS X High Sierra - vLight+Dark (thème+icone+wallpaper)"
-    echo "[11] Windows 10 Thème"
+    echo "[11] Windows 10 Thème (thème + icone)"
     echo "[12] Unity8 Thème"
+    echo "[13] Icon Papirus (différentes variantes : Adapta, Nokto, Dark, Light...)"    
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
     clear
 
@@ -1522,11 +1523,15 @@ do
             ;;
         "11") #Windows 10
             git clone https://github.com/B00merang-Project/Windows-10.git ; mv -f Windo* /usr/share/themes/
+            wget https://dl.opendesktop.org/api/files/download/id/1485767591/windows10-icons_1.2_all.deb && dpkg -i windows10-icons_1.2_all.deb
+            wget https://framapic.org/Nd6hGtEOEJhM/LtmYwl16WjyC.jpg && mv LtmYwl16WjyC.jpg /usr/share/backgrounds/windows10.jpg
             ;;
-        "11") #Unity 8
+        "12") #Unity 8
             git clone https://github.com/B00merang-Project/Unity8.git ; mv -f Unit* /usr/share/themes/
+            ;;
+        "13") #Icone Papyrus
+            wget http://nux87.free.fr/script-postinstall-ubuntu/theme/papirus-icon-theme-20171124.tar.xz ; tar Jxvf papirus-icon-theme-20171124.tar.xz ; mv ./papirus-icon-theme-20171124/* /usr/share/icons/ ; rm -r papirus-icon-theme-20171124
             ;;            
-            
     esac
 done
 
