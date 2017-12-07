@@ -387,24 +387,24 @@ then
     echo "14/ Des extensions pour navigateur ou gnome-shell à installer ? [mode avancé]"
     echo "*******************************************************"
     echo "[1] Non, ne pas ajouter de nouvelles extensions"
-    echo "[2] Chrome Gnome Shell (extension pour navigateur : permet d'installer une extension Gnome depuis le site web)"
-    echo "[3] AlternateTab (alternative au Alt+Tab issu du mode classique)"
-    echo "[4] Caffeine (permet en 1 clic de désactiver temporairement les mises en veilles)"
-    echo "[5] DashToDock (permet + d'option pour les réglages du dock, celui d'Ubuntu étant basé dessus)"
-    echo "[6] DashToPanel (un dock alternatif conçu pour remplacer le panel de Gnome, se place en bas ou en haut)"
-    echo "[7] Clipboard Indicator (permet de conserver du contenu copier/coller facilement accessible depuis le panel)"
-    echo "[8] Impatience (permet d'augmenter la vitesse d'affichage des animations de Gnome Shell)"
-    echo "[9] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
-    echo "[10] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
-    echo "[11] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
-    echo "[12] Openweather (Pour avoir la météo directement sur votre bureau)"
-    echo "[13] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
-    echo "[14] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
-    echo "[15] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
-    echo "[16] Suspend button (Ajout d'un bouton pour activer l'hibernation)"
-    echo "[17] Taskbar (Permet d'ajouter des raccourcis d'applis directement sur le panel en haut)"
-    echo "[18] Trash (Ajoute un raccourci vers la corbeille dans le panel en haut)"
-    echo "[19] User themes (Pour charger des thèmes pour Gnome Shell à partir du répertoire de l'utilisateur)"
+    echo "[2] Chrome Gnome Shell (Pour votre navigateur : permet d'installer des extensions Gnome directement depuis le site)"
+    echo "[3] User themes (Pour charger des thèmes pour Gnome Shell à partir de votre répertoire perso)"
+    echo "[4] AlternateTab (alternative au Alt+Tab issu du mode classique)"
+    echo "[5] Caffeine (permet en 1 clic de désactiver temporairement les mises en veilles)"
+    echo "[6] DashToDock (permet + d'option pour les réglages du dock, celui d'Ubuntu étant basé dessus)"
+    echo "[7] DashToPanel (un dock alternatif conçu pour remplacer le panel de Gnome, se place en bas ou en haut)"
+    echo "[8] Clipboard Indicator (permet de conserver du contenu copier/coller facilement accessible depuis le panel)"
+    echo "[9] Impatience (permet d'augmenter la vitesse d'affichage des animations de Gnome Shell)"
+    echo "[10] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
+    echo "[11] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
+    echo "[12] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
+    echo "[13] Openweather (Pour avoir la météo directement sur votre bureau)"
+    echo "[14] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
+    echo "[15] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
+    echo "[16] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
+    echo "[17] Suspend button (Ajout d'un bouton pour activer l'hibernation)"
+    echo "[18] Taskbar (Permet d'ajouter des raccourcis d'applis directement sur le panel en haut)"
+    echo "[19] Trash (Ajoute un raccourci vers la corbeille dans le panel en haut)"
     echo "[20] Window list (Affiche la liste des fênêtres en bas du bureau, comme à l'époque sous Gnome 2)"
     echo "[21] Workspace indicator (Affiche dans le panel en haut dans quel espace de travail vous êtes)"
     echo "[22] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
@@ -1391,63 +1391,63 @@ do
         "2") #Chrome Gnome Shell (extension navigateur web)
             apt install chrome-gnome-shell -y
             ;;
-        "3") #AlternateTab
+        "3") #User themes
+            wget https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip
+            unzip user-theme@gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com
+            ;;             
+        "4") #AlternateTab
             wget https://extensions.gnome.org/extension-data/alternate-tab%40gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip
             unzip alternate-tab@gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/alternate-tab@gnome-shell-extensions.gcampax.github.com
             ;;
-        "4") #Caffeine
+        "5") #Caffeine
             apt install gnome-shell-extension-caffeine -y
             ;;
-        "5") #DashToDock
+        "6") #DashToDock
             wget https://extensions.gnome.org/extension-data/dash-to-dock%40micxgx.gmail.com.v61.shell-extension.zip
             unzip dash-to-dock@micxgx.gmail.com.v61.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
             ;;
-        "6") #DashToPanel
+        "7") #DashToPanel
             apt install gnome-shell-extension-dash-to-panel -y
             ;;
-        "7") #Clipboard Indicator
+        "8") #Clipboard Indicator
             wget https://extensions.gnome.org/extension-data/clipboard-indicator%40tudmotu.com.v29.shell-extension.zip
             unzip clipboard-indicator@tudmotu.com.v29.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com
             ;;       
-        "8") #Impatience
+        "9") #Impatience
             apt install gnome-shell-extension-impatience -y
             ;;
-        "9") #Logout button
+        "10") #Logout button
             apt install gnome-shell-extension-log-out-button -y
             ;; 
-        "10") #Media Player Indicator
+        "11") #Media Player Indicator
             apt install gnome-shell-extension-mediaplayer -y
             ;;
-        "11") #Multi monitors
+        "12") #Multi monitors
             apt install gnome-shell-extension-multi-monitors -y
             ;;
-        "12") #Weather
+        "13") #Weather
             apt install gnome-shell-extension-weather -y
             ;;
-        "13") #Places status indicator
+        "14") #Places status indicator
             wget https://extensions.gnome.org/extension-data/places-menu%40gnome-shell-extensions.gcampax.github.com.v38.shell-extension.zip
             unzip places-menu@gnome-shell-extensions.gcampax.github.com.v38.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com
             ;;
-        "14") #Removable drive menu
+        "15") #Removable drive menu
             wget https://extensions.gnome.org/extension-data/drive-menu%40gnome-shell-extensions.gcampax.github.com.v35.shell-extension.zip
             unzip drive-menu@gnome-shell-extensions.gcampax.github.com.v35.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/drive-menu@gnome-shell-extensions.gcampax.github.com
             ;;
-        "15") #Shortcuts
+        "16") #Shortcuts
             apt install gnome-shell-extension-shortcuts -y
             ;;
-        "16") #Suspend button
+        "17") #Suspend button
             apt install gnome-shell-extension-suspend-button -y
             ;;         
-        "17") #Taskbar
+        "18") #Taskbar
             apt install gnome-shell-extension-taskbar -y
             ;;
-        "18") #Trash
+        "19") #Trash
             apt install gnome-shell-extension-trash -y
-            ;;
-        "19") #User themes
-            wget https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip
-            unzip user-theme@gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com
-            ;;   
+            ;;  
         "20") #Window list
             wget https://extensions.gnome.org/extension-data/window-list%40gnome-shell-extensions.gcampax.github.com.v22.shell-extension.zip
             unzip window-list@gnome-shell-extensions.gcampax.github.com.v22.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
