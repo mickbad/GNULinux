@@ -1472,7 +1472,7 @@ do
         "2") #pack theme gtk 1
             apt install arc-theme numix-blue-gtk-theme numix-gtk-theme silicon-theme -y
             #Numix Circle
-            git clone https://github.com/numixproject/numix-icon-theme-circle.git ; mv numix-icon-theme-circle/* /usr/share/icons/ ; rm -r numix-icon-theme-circle
+            git clone https://github.com/numixproject/numix-icon-theme-circle.git ; mv -f numix-icon-theme-circle/* /usr/share/icons/ ; rm -r numix-icon-theme-circle
             ;;
         "3") #pack theme gtk 2
             apt-add-repository ppa:tista/adapta -y ; apt update ; apt install adapta-gtk-theme -y
