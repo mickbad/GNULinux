@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.50 (alpha)
+# version 0.0.51 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -152,7 +152,7 @@ then
     echo -e "[17] Viber ${bleu}[Flatpak]${neutre} (logiciel de communication, surtout connue en application mobile)"
     echo -e "[18] Slack ${bleu}[Flatpak]${neutre} (plate-forme de communication collaborative propriétaire avec gestion de projets)"
     echo -e "[19] Signal ${bleu}[Flatpak]${neutre} (Messagerie instantannée crypté recommandé par Edward Snowden)"
-    echo -e "[20] TeamSpeak ${rouge}[Interv!]${neutre}${cyan}[à lancer manuellemnt]${neutre} (équivalent à Mumble mais propriétaire)"
+    echo -e "[20] TeamSpeak ${cyan}[à installer+lancer manuellement]${neutre} (équivalent à Mumble mais propriétaire)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 18) : " choixMessagerie
     clear
 
@@ -313,8 +313,8 @@ then
     echo "[10] [ASTRO] Celestia (Simulation spatiale en temps réel qui permet d’explorer l'Univers en trois dimensions)"
     echo "[11] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
     echo "[12] [TECHNO] Scratch 1.4 (langage de prog visuel libre, créé par le MIT, à vocation éducative et ludique)"
-    echo "[13] [TECHNO] mBlock ${cyan}[à lancer manuellement]${neutre} (environnement de programmation par blocs basé sur Scratch 2 pour Arduino"
-    echo "[14] [TECHNO] Algoid ${cyan}[Fichier Jar à lancer manuellement]${neutre} (Language de programmation éducatif)"
+    echo -e "[13] [TECHNO] mBlock ${cyan}[à lancer manuellement]${neutre} (environnement de programmation par blocs basé sur Scratch 2 pour Arduino"
+    echo -e "[14] [TECHNO] Algoid ${cyan}[Fichier Jar à lancer manuellement]${neutre} (Language de programmation éducatif)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
     clear
 
@@ -336,12 +336,12 @@ then
     echo "[12] Installer FlashPlayer (via le dépot partenaire)"
     echo "[13] VirtualBox (virtualisation de système Windows/Mac/Linux/Bsd)"
     echo "[14] KeePassX2 (centralise la gestion de vos mots de passe personnels protégé par un master password)"
-    echo "[15] TeamViewer ${violet}[Coté serveur en Xorg only]${neutre} (logiciel propriétaire de télémaintenance avec contrôle de bureau à distance)"
+    echo -e "[15] TeamViewer ${violet}[Coté serveur en Xorg only]${neutre} (logiciel propriétaire de télémaintenance avec contrôle de bureau à distance)"
     echo "[16] Cheese (outil pour prendre des photos/vidéos à partir d'une webcam)"
     echo "[17] Gnome Recipes (pour les gourmets : appli Gnome spécialisé dans les recettes de cuisine)"
     echo -e "[18] Gufw ${violet}[Xorg only!]${neutre} (interface graphique pour le pare-feu installé par défaut dans Ubuntu 'Ufw')"
     echo "[19] Pack d'appli en cyber-sécurité (aircrack-ng + John The Ripper[snap] + Nmap)"
-    echo -e "[20] Gnome Enfs Manager ${rouge}[Interv!]${neutre} (coffre-fort pour vos fichiers/dossiers)"
+    echo "[20] Gnome Enfs Manager (coffre-fort pour vos fichiers/dossiers)"
     echo -e "[21] Bleachbit ${rougesouligne}[potentiellement dangereux !]${neutre} (efface les fichiers inutiles/temporaires du système)"
     echo -e "[22] VMWare Workstation Player ${rouge}[Interv!]${neutre}${violet}[Install depuis Xorg!]${neutre} (version gratuite mais propriétaire de VmWare)"
     echo -e "[23] CoreBird ${bleu}[Flatpak]${neutre} (Un client de bureau pour le réseau social Twitter)"
@@ -384,30 +384,29 @@ then
     echo "14/ Des extensions pour navigateur ou gnome-shell à installer ? [mode avancé]"
     echo "*******************************************************"
     echo "[1] Non, ne pas ajouter de nouvelles extensions"
-    echo "[2] Chrome Gnome Shell (Pour votre navigateur : permet d'installer des extensions Gnome directement depuis le site)"
-    echo "[3] User themes (Pour charger des thèmes pour Gnome Shell à partir de votre répertoire perso)"
-    echo "[4] AlternateTab (alternative au Alt+Tab issu du mode classique)"
-    echo "[5] Caffeine (permet en 1 clic de désactiver temporairement les mises en veilles)"
-    echo "[6] DashToDock (permet + d'option pour les réglages du dock, celui d'Ubuntu étant basé dessus)"
-    echo "[7] DashToPanel (un dock alternatif conçu pour remplacer le panel de Gnome, se place en bas ou en haut)"
-    echo "[8] Clipboard Indicator (permet de conserver du contenu copier/coller facilement accessible depuis le panel)"
-    echo "[9] Impatience (permet d'augmenter la vitesse d'affichage des animations de Gnome Shell)"
-    echo "[10] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
-    echo "[11] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
-    echo "[12] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
-    echo "[13] Openweather (Pour avoir la météo directement sur votre bureau)"
-    echo "[14] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
-    echo "[15] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
-    echo "[16] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
-    echo "[17] Suspend button (Ajout d'un bouton pour activer l'hibernation)"
-    echo "[18] Taskbar (Permet d'ajouter des raccourcis d'applis directement sur le panel en haut)"
-    echo "[19] Trash (Ajoute un raccourci vers la corbeille dans le panel en haut)"
-    echo "[20] Window list (Affiche la liste des fênêtres en bas du bureau, comme à l'époque sous Gnome 2)"
-    echo "[21] Workspace indicator (Affiche dans le panel en haut dans quel espace de travail vous êtes)"
-    echo "[22] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
-    echo "[23] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
-    echo "[24] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
-    echo "[25] AppFolders Management (Permet de classer les applis dans des dossiers)"
+    echo "[2] User themes (Pour charger des thèmes pour Gnome Shell à partir de votre répertoire perso)"
+    echo "[3] AlternateTab (alternative au Alt+Tab issu du mode classique)"
+    echo "[4] Caffeine (permet en 1 clic de désactiver temporairement les mises en veilles)"
+    echo "[5] DashToDock (permet + d'option pour les réglages du dock, celui d'Ubuntu étant basé dessus)"
+    echo "[6] DashToPanel (un dock alternatif conçu pour remplacer le panel de Gnome, se place en bas ou en haut)"
+    echo "[7] Clipboard Indicator (permet de conserver du contenu copier/coller facilement accessible depuis le panel)"
+    echo "[8] Impatience (permet d'augmenter la vitesse d'affichage des animations de Gnome Shell)"
+    echo "[9] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
+    echo "[10] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
+    echo "[11] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
+    echo "[12] Openweather (Pour avoir la météo directement sur votre bureau)"
+    echo "[13] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
+    echo "[14] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
+    echo "[15] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
+    echo "[16] Suspend button (Ajout d'un bouton pour activer l'hibernation)"
+    echo "[17] Taskbar (Permet d'ajouter des raccourcis d'applis directement sur le panel en haut)"
+    echo "[18] Trash (Ajoute un raccourci vers la corbeille dans le panel en haut)"
+    echo "[19] Window list (Affiche la liste des fênêtres en bas du bureau, comme à l'époque sous Gnome 2)"
+    echo "[20] Workspace indicator (Affiche dans le panel en haut dans quel espace de travail vous êtes)"
+    echo "[21] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
+    echo "[22] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
+    echo "[23] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
+    echo "[24] AppFolders Management (Permet de classer les applis dans des dossiers)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixExtension
     clear
 
@@ -490,7 +489,7 @@ then
     echo "[13] Support imprimantes HP (hplip + sane + hplip-gui)"
     echo "[14] Pour DashToDock : Activer la minimisation de fenêtre si on clique sur l'icone dans le dock"
     echo "[15] Augmenter la sécurité de votre compte : empécher l'accès à votre dossier perso aux autres utilisateurs"
-    #echo "[99][Ne fonctionn pas] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour technologie Optimus nvidia/intel"
+    #echo "[99][Ne fonctionne pas] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour technologie Optimus nvidia/intel"
  
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
     clear
@@ -806,10 +805,8 @@ do
         "20") #tox/qtpx
             apt install tox -y
             ;;  
-        "21") #teamspeak (vérifier le fonctionnement, demande peut être intervention pour l'install)
-            wget http://dl.4players.de/ts/releases/3.1.6/TeamSpeak3-Client-linux_amd64-3.1.6.run
-            chmod +x TeamSpeak3-Client-linux_amd64-3.1.6.run
-            ./TeamSpeak3-Client-linux_amd64-3.1.6.run
+        "21") #Récupération du script d'installation de teamspeak (à lancer manuellement par l'utilisateur)
+            su $SUDO_USER -c "wget http://dl.4players.de/ts/releases/3.1.6/TeamSpeak3-Client-linux_amd64-3.1.6.run && chmod +x TeamSpeak*"         
             ;; 
     esac
 done
@@ -1099,7 +1096,7 @@ do
             apt install lame -y
             ;;
         "14") #Ardour
-            apt install ardour ardour-video-timeline -y
+            apt install ardour -y
             ;;                
         "15") #Flacon
             snap install flacon-tabetai
@@ -1386,85 +1383,82 @@ done
 for extension in $choixExtension
 do
     case $extension in
-        "2") #Chrome Gnome Shell (extension navigateur web)
-            apt install chrome-gnome-shell -y
-            ;;
-        "3") #User themes
+        "2") #User themes
             wget https://extensions.gnome.org/extension-data/user-theme%40gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip
             unzip user-theme@gnome-shell-extensions.gcampax.github.com.v32.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/user-theme@gnome-shell-extensions.gcampax.github.com
             ;;             
-        "4") #AlternateTab
+        "3") #AlternateTab
             wget https://extensions.gnome.org/extension-data/alternate-tab%40gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip
             unzip alternate-tab@gnome-shell-extensions.gcampax.github.com.v36.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/alternate-tab@gnome-shell-extensions.gcampax.github.com
             ;;
-        "5") #Caffeine
+        "4") #Caffeine
             apt install gnome-shell-extension-caffeine -y
             ;;
-        "6") #DashToDock
+        "5") #DashToDock
             wget https://extensions.gnome.org/extension-data/dash-to-dock%40micxgx.gmail.com.v61.shell-extension.zip
             unzip dash-to-dock@micxgx.gmail.com.v61.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com
             ;;
-        "7") #DashToPanel
+        "6") #DashToPanel
             apt install gnome-shell-extension-dash-to-panel -y
             ;;
-        "8") #Clipboard Indicator
+        "7") #Clipboard Indicator
             wget https://extensions.gnome.org/extension-data/clipboard-indicator%40tudmotu.com.v29.shell-extension.zip
             unzip clipboard-indicator@tudmotu.com.v29.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/clipboard-indicator@tudmotu.com
             ;;       
-        "9") #Impatience
+        "8") #Impatience
             apt install gnome-shell-extension-impatience -y
             ;;
-        "10") #Logout button
+        "9") #Logout button
             apt install gnome-shell-extension-log-out-button -y
             ;; 
-        "11") #Media Player Indicator
+        "10") #Media Player Indicator
             apt install gnome-shell-extension-mediaplayer -y
             ;;
-        "12") #Multi monitors
+        "11") #Multi monitors
             apt install gnome-shell-extension-multi-monitors -y
             ;;
-        "13") #Weather
+        "12") #Weather
             apt install gnome-shell-extension-weather -y
             ;;
-        "14") #Places status indicator
+        "13") #Places status indicator
             wget https://extensions.gnome.org/extension-data/places-menu%40gnome-shell-extensions.gcampax.github.com.v38.shell-extension.zip
             unzip places-menu@gnome-shell-extensions.gcampax.github.com.v38.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/places-menu@gnome-shell-extensions.gcampax.github.com
             ;;
-        "15") #Removable drive menu
+        "14") #Removable drive menu
             wget https://extensions.gnome.org/extension-data/drive-menu%40gnome-shell-extensions.gcampax.github.com.v35.shell-extension.zip
             unzip drive-menu@gnome-shell-extensions.gcampax.github.com.v35.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/drive-menu@gnome-shell-extensions.gcampax.github.com
             ;;
-        "16") #Shortcuts
+        "15") #Shortcuts
             apt install gnome-shell-extension-shortcuts -y
             ;;
-        "17") #Suspend button
+        "16") #Suspend button
             apt install gnome-shell-extension-suspend-button -y
             ;;         
-        "18") #Taskbar
+        "17") #Taskbar
             apt install gnome-shell-extension-taskbar -y
             ;;
-        "19") #Trash
+        "18") #Trash
             apt install gnome-shell-extension-trash -y
             ;;  
-        "20") #Window list
+        "19") #Window list
             wget https://extensions.gnome.org/extension-data/window-list%40gnome-shell-extensions.gcampax.github.com.v22.shell-extension.zip
             unzip window-list@gnome-shell-extensions.gcampax.github.com.v22.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/window-list@gnome-shell-extensions.gcampax.github.com
             ;;
-        "21") #Workspace indicator
+        "20") #Workspace indicator
             wget https://extensions.gnome.org/extension-data/workspace-indicator%40gnome-shell-extensions.gcampax.github.com.v34.shell-extension.zip
             unzip workspace-indicator@gnome-shell-extensions.gcampax.github.com.v34.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/workspace-indicator@gnome-shell-extensions.gcampax.github.com
             ;;
-        "22") #System-monitor
+        "21") #System-monitor
             apt install gnome-shell-extension-system-monitor -y
             ;;         
-        "23") #Top Icon Plus
+        "22") #Top Icon Plus
             apt install gnome-shell-extension-top-icons-plus -y
             ;;
-        "24") #Unite
+        "23") #Unite
             wget https://extensions.gnome.org/extension-data/unite%40hardpixel.eu.v8.shell-extension.zip
             unzip unite@hardpixel.eu.v8.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/unite@hardpixel.eu
             ;;  
-        "25") #AppFolders Management
+        "24") #AppFolders Management
             wget https://extensions.gnome.org/extension-data/appfolders-manager%40maestroschan.fr.v11.shell-extension.zip
             unzip appfolders-manager@maestroschan.fr.v11.shell-extension.zip -d /home/$SUDO_USER/.local/share/gnome-shell/extensions/appfolders-manager@maestroschan.fr          
             ;;    
