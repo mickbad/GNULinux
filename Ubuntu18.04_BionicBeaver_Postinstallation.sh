@@ -1095,6 +1095,7 @@ do
             apt install hydrogen -y
             ;;            
         "14") #Ardour
+            debconf-set-selections <<< "jackd/tweak_rt_limits false"
             apt install ardour -y
             ;;                
         "15") #Flacon
