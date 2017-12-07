@@ -33,9 +33,6 @@ bleu='\e[1;34m'
 violet='\e[1;35m'
 cyan='\e[1;36m'
 neutre='\e[0;m'
-#souligne='\e[4'
-#clignote='\e[5'
-#surligne='\e[7'
 
 # Contrôle de la configuration système (script correctement lancé + version 18.04 + gnome-shell présent)
 . /etc/lsb-release
@@ -61,7 +58,7 @@ then
                 echo -e "${vert}[Appimage]${neutre} => Application portable (pas d'installation), à lancer comme ceci : ./nomdulogiciel.AppImage"
                 echo -e "${rouge}[Interv!]${neutre} => Installation pas totalement automatisé : vous devrez intervenir (ex : valider contrat de licence...)"
                 echo -e "${violet}[Xorg only!]${neutre} => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
-                echo -e "${gris}[à lancer manuellement]${neutre} => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
+                echo -e "${cyan}[à lancer manuellement]${neutre} => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
                 echo -e "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)"
                 echo -e "#########################################################\n"
 fi
@@ -155,7 +152,7 @@ then
     echo -e "[17] Viber ${bleu}[Flatpak]${neutre} (logiciel de communication, surtout connue en application mobile)"
     echo -e "[18] Slack ${bleu}[Flatpak]${neutre} (plate-forme de communication collaborative propriétaire avec gestion de projets)"
     echo -e "[19] Signal ${bleu}[Flatpak]${neutre} (Messagerie instantannée crypté recommandé par Edward Snowden)"
-    echo -e "[20] TeamSpeak ${rouge}[Interv!]${neutre}${gris}[à lancer manuellemnt]${neutre} (équivalent à Mumble mais propriétaire)"
+    echo -e "[20] TeamSpeak ${rouge}[Interv!]${neutre}${cyan}[à lancer manuellemnt]${neutre} (équivalent à Mumble mais propriétaire)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 18) : " choixMessagerie
     clear
 
@@ -316,8 +313,8 @@ then
     echo "[10] [ASTRO] Celestia (Simulation spatiale en temps réel qui permet d’explorer l'Univers en trois dimensions)"
     echo "[11] [CHIMIE] Avogadro (Éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
     echo "[12] [TECHNO] Scratch 1.4 (langage de prog visuel libre, créé par le MIT, à vocation éducative et ludique)"
-    echo "[13] [TECHNO] mBlock ${gris}[à lancer manuellement]${neutre} (environnement de programmation par blocs basé sur Scratch 2 pour Arduino"
-    echo "[14] [TECHNO] Algoid ${gris}[Fichier Jar à lancer manuellement]${neutre} (Language de programmation éducatif)"
+    echo "[13] [TECHNO] mBlock ${cyan}[à lancer manuellement]${neutre} (environnement de programmation par blocs basé sur Scratch 2 pour Arduino"
+    echo "[14] [TECHNO] Algoid ${cyan}[Fichier Jar à lancer manuellement]${neutre} (Language de programmation éducatif)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
     clear
 
