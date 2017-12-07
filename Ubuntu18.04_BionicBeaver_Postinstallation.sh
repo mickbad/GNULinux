@@ -269,9 +269,10 @@ then
     echo "[10] Rosegarden (création musicale avec édition des partitions et peux s'interfacer avec des instruments)"
     echo "[11] Pavucontrol (outil graphique de contrôle des volumes audio entrée/sortie pour Pulseaudio)"
     echo "[12] Lame (outil d'encodage en CLI pour le format MP3,par ex pour convertir un Wav en Mp3)"
-    echo -e "[13] Ardour ${rouge}[Interv!]${neutre} (station de travail audio numérique avec enregistrement multipiste et mixage)"
-    echo -e "[14] Flacon ${jaune}[Snap]${neutre} (pour extraire les pistes d'un gros fichier audio)"
-    echo -e "[15] PulseEffects ${bleu}[Flatpak]${neutre} (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
+    echo "[13] Hydrogen (Synthétiseur de boite à rythme basée sur les patterns avec connexion possible d'un séquenceur externe)"
+    echo -e "[14] Ardour ${rouge}[Interv!]${neutre} (station de travail audio numérique avec enregistrement multipiste et mixage)"
+    echo -e "[15] Flacon ${jaune}[Snap]${neutre} (pour extraire les pistes d'un gros fichier audio)"
+    echo -e "[16] PulseEffects ${bleu}[Flatpak]${neutre} (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixAudio
     clear
 
@@ -1063,38 +1064,36 @@ do
         "3") #SoundJuicer
             apt install sound-juicer -y
             ;;
-        "4") #SoundKonverter (risque de ne pas marcher sinon retirer)
-            wget http://archive.ubuntu.com/ubuntu/pool/universe/s/soundkonverter/soundkonverter_2.2.2-1_amd64.deb
-            dpkg -i soundkonverter_2.2.2-1_amd64.deb
-            apt install -fy
-            ;;
-        "5") #Gnome Sound Recorder
+        "4") #Gnome Sound Recorder
             apt install gnome-sound-recorder -y
             ;;
-        "6") #Audacity
+        "5") #Audacity
             apt install audacity -y
             ;;
-        "7") #MhWaveEdit
+        "6") #MhWaveEdit
             apt install mhwaveedit -y
             ;;         
-        "8") #RipperX
+        "7") #RipperX
             apt install ripperx -y
             ;;                     
-        "9") #LMMS
+        "8") #LMMS
             apt install lmms -y
             ;;           
-        "10") #MiXX
+        "9") #MiXX
             apt install mixxx -y
             ;;        
-        "11") #Rosegarden
+        "10") #Rosegarden
             apt install rosegarden -y
             ;;           
-        "12") #Pavucontrol
+        "11") #Pavucontrol
             apt install pavucontrol -y
             ;;   
-        "13") #lame
+        "12") #lame
             apt install lame -y
             ;;
+        "13") #Hydrogen
+            apt install hydrogen -y
+            ;;            
         "14") #Ardour
             apt install ardour -y
             ;;                
