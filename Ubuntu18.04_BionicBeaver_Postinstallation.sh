@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.51 (alpha)
+# version 0.0.52 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -61,6 +61,7 @@ then
                 echo -e "${cyan}[à lancer manuellement]${neutre} => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
                 echo -e "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)"
                 echo -e "#########################################################\n"
+                echo -" "${cyan}Info : il est recommandé de mettre votre terminal en plein écran pour un affichage plus agréable${neutre}\n"
 fi
 ### Section interactive avec les questions
 
@@ -86,7 +87,7 @@ done
 if [ "$choixMode" != "0" ] #lancement pour tous sauf mode novice
 then
     echo "======================================================="
-    echo "Précision : si vous validez directement par 'entrée' au clavier sans mettre de choix, le script considèra que vous avez sélectionné le choix par défaut cad 1 et ceci pour toutes les questions à venir"
+    echo "${vert}Astuce : pour toutes les questions, le choix [1] correspond toujours au choix par défaut, si vous faites ce choix vous pouvez aller plus vite en validant directement 'Entrée'${neutre}"
     # Question 2 : Session 
     echo "*******************************************************"
     echo "2/ Quelle(s) session(s) supplémentaire(s) souhaitez-vous installer ? (plusieurs choix possibles)"
@@ -124,7 +125,6 @@ then
     echo "[19] Lynx (navigateur 100% en ligne de commande, pratique depuis une console SSH)"
     echo -e "[20] Rekonq (Navigateur pour Kde, ${rouge}déconseillé sous Gnome${neutre} car beaucoup de dépendance kde !)"
     echo -e "[21] Eolie ${bleu}[Flatpak]${neutre} (une autre alternative pour Gnome)"
-
     echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 11 20) : " choixNavigateur
     clear
@@ -153,6 +153,7 @@ then
     echo -e "[18] Slack ${bleu}[Flatpak]${neutre} (plate-forme de communication collaborative propriétaire avec gestion de projets)"
     echo -e "[19] Signal ${bleu}[Flatpak]${neutre} (Messagerie instantannée crypté recommandé par Edward Snowden)"
     echo -e "[20] TeamSpeak ${cyan}[à installer+lancer manuellement]${neutre} (équivalent à Mumble mais propriétaire)"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 18) : " choixMessagerie
     clear
 
@@ -175,6 +176,7 @@ then
     echo "[13] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
     echo -e "[14] Vuze ${jaune}[Snap]${neutre} (Plate-forme commerciale d'Azureus avec BitTorrent)"
     echo -e "[15] Gydl ${bleu}[Flatpak]${neutre} (permet de télécharger des vidéos Youtube ou juste la piste audio)"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15) : " choixTelechargement
     clear
 
@@ -203,6 +205,7 @@ then
     echo -e "[19] MuseScore ${bleu}[Flatpak]${neutre} (l'éditeur de partitions de musique le plus utilisé au monde !)"
     echo -e "[20] GRadio ${bleu}[Flatpak]${neutre} (Application Gnome pour écouter la radio, plus de 1 000 référencés rien qu'en France !)"
     echo -e "[21] Molotov.TV ${vert}[Appimage]${neutre} (Service français de distribution de chaînes de TV)"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixMultimedia
     clear
 
@@ -227,6 +230,7 @@ then
     echo -e "[15] Peek ${bleu}[Flatpak]${neutre} (Outil de création de Gif animé à partir d'une capture vidéo)"
     echo -e "[16] Avidemux ${vert}[Appimage]${neutre}${rouge}[Ne semble pas fonctionner !]${neutre} (Équivalent de 'VirtualDub' : coupe, filtre et ré-encodage)"
     echo "[17] Shotcut (éditeur de vidéos libre, open source, gratuit et multi-plate-formes)"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixVideo
     clear
 
@@ -250,6 +254,7 @@ then
     echo "[14] LibreCAD (anciennement CADubuntu, DAO 2D pour modéliser des dessins techniques)"
     echo -e "[15] Shutter ${violet}[Xorg only!]${neutre} (pour effectuer des captures d'écran + appliquer des modifications diverses)"
     echo "[16] Frogr (Utile pour ceux qui utilisent le service web 'Flickr')"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixGraphisme
     clear
 
@@ -273,6 +278,7 @@ then
     echo -e "[14] Ardour ${rouge}[Interv!]${neutre} (station de travail audio numérique avec enregistrement multipiste et mixage)"
     echo -e "[15] Flacon ${jaune}[Snap]${neutre} (pour extraire les pistes d'un gros fichier audio)"
     echo -e "[16] PulseEffects ${bleu}[Flatpak]${neutre} (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 4) : " choixAudio
     clear
 
@@ -295,6 +301,7 @@ then
     echo -e "[13] Notes Up ${bleu}[Flatpak]${neutre} (éditeur et manager de notes avec markdown, simple mais efficace)"
     echo "[14] Zim (wiki en local avec une collection de pages et des marqueurs)"
     echo "[15] WPSOffice (suite bureautique propriétaire avec une interface proche de Microsoft Office)"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixBureautique
     clear
 
@@ -316,6 +323,7 @@ then
     echo "[12] [TECHNO] Scratch 1.4 (langage de prog visuel libre, créé par le MIT, à vocation éducative et ludique)"
     echo -e "[13] [TECHNO] mBlock ${cyan}[à lancer manuellement]${neutre} (environnement de programmation par blocs basé sur Scratch 2 pour Arduino"
     echo -e "[14] [TECHNO] Algoid ${cyan}[Fichier Jar à lancer manuellement]${neutre} (Language de programmation éducatif)"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
     clear
 
@@ -349,6 +357,7 @@ then
     echo "[24] Wireshark (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
     echo "[25] Pack d'outils utiles : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone"
     echo -e "[26] Synaptic ${violet}[Xorg only!]${neutre} (gestionnaire graphique pour les paquets deb)"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixUtilitaire
     clear
 
@@ -373,6 +382,7 @@ then
     echo -e "[15] Battle for Wesnoth ${bleu}[Flatpak]${neutre} (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
     echo -e "[16] Albion Online ${bleu}[Flatpak]${neutre} (MMORPG avec système de quête et donjons)"
     echo -e "[17] RunScape ${bleu}[Flatpak]${neutre}${rouge}Ne semble plus fonctionner !${neutre} (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
     clear
 fi
@@ -408,6 +418,7 @@ then
     echo "[22] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
     echo "[23] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
     echo "[24] AppFolders Management (Permet de classer les applis dans des dossiers)"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixExtension
     clear
 
@@ -428,6 +439,7 @@ then
     echo "[11] Unity8 Thème"
     echo "[12] Icon Papirus (différentes variantes : Adapta, Nokto, Dark, Light...)"    
     echo -e "[13] Remettre GDM avec le thème gris (par défaut violet) : ${rouge}Attention : ajoute la session Vanilla en dépendance !${neutre}"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
     clear
 
@@ -454,6 +466,7 @@ then
     echo -e "[17] Atom ${jaune}[Snap]${neutre} (Éditeur sous licence libre qui supporte les plug-ins Node.js et implémente GitControl)"
     echo -e "[18] Brackets ${jaune}[Snap]${neutre} (Éditeur opensource d'Adobe pour le web design et dev web HTML, CSS, JavaScript...)"
     echo -e "[19] IntelliJ Idea ${jaune}[Snap]${neutre} (IDE Java commercial de JetBrains, plutôt conçu pour Java)"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 4 5) : " choixDev
     clear
 
@@ -468,6 +481,7 @@ then
     echo "[5] Serveur BDD PostgreSQL (Pour installer une base de donnée PostgreSQL)"
     echo "[6] PHP5.6 (Rétroportage de l'ancienne version)"
     echo "[7] PHP7.2 (dernière version stable de PHP)"
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixServeur
     clear
 
@@ -491,7 +505,7 @@ then
     echo "[14] Pour DashToDock : Activer la minimisation de fenêtre si on clique sur l'icone dans le dock"
     echo "[15] Augmenter la sécurité de votre compte : empécher l'accès à votre dossier perso aux autres utilisateurs"
     #echo "[99][Ne fonctionne pas] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour technologie Optimus nvidia/intel"
- 
+    echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 7) : " choixOptimisation
     clear
 fi
@@ -522,6 +536,7 @@ then
     echo -e "[17] Rube cube ${jaune}[Snap]${neutre}"
     echo -e "[18] TermiusApp ${jaune}[Snap]${neutre}"
     echo -e "[19] TicTacToe ${jaune}[Snap]${neutre}"
+    echo "*******************************************************"
     read -p "Choix snappy : " choixSnap
     clear
              
@@ -550,6 +565,7 @@ then
     echo -e "[19] Riot ${bleu}[Flatpak]${neutre}"
     echo -e "[20] Teeworlds ${bleu}[Flatpak]${neutre}"
     echo -e "[21] VLC ${bleu}[Flatpak]${neutre}"
+    echo "*******************************************************"
     read -p "Choix flatpak : " choixFlatpak
     clear
             
@@ -578,6 +594,7 @@ then
     echo -e "[19] Spotify web client ${vert}[Appimage]${neutre}"
     echo -e "[20] Tulip ${vert}[Appimage]${neutre}"
     echo -e "[21] Wire ${vert}[Appimage]${neutre}"
+    echo "*******************************************************"
     read -p "Choix appimage : " choixAppimage
     clear
 fi
