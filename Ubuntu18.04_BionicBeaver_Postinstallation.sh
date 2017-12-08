@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.52 (alpha)
+# version 0.0.53 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -70,7 +70,7 @@ fi
 echo "*******************************************************"
 echo -e "${bleu}1/ Mode de lancement du script :${neutre}"
 echo "*******************************************************"
-echo -e "[0] Mode ${griq}novice${neutre} (lancement automatique sans question, le script installera des logiciels intéressants pour les novices)"
+echo -e "[0] Mode ${gris}novice${neutre} (lancement automatique sans question, le script installera des logiciels intéressants pour les novices)"
 echo -e "[1] Mode ${bleu}standard${neutre} (choix par défaut, pose divers questions simples, recommandé pour la plupart des utilisateurs)"
 echo -e "[2] Mode ${jaune}avancé${neutre} (comme standard mais avec des questions supplémentaires : programmation, optimisation, extension...)"
 echo -e "[3] Mode ${vert}extra${neutre} (comme avancé mais avec un supplément snap/flatpak/appimages proposé à la fin)"
