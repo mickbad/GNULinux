@@ -27,7 +27,6 @@ gris='\e[1;37m'
 rouge='\e[1;31m'
 rougesouligne='\e[4;31m'
 vert='\e[1;32m'
-orange='\e[1;33m'
 jaune='\e[1;33m'
 bleu='\e[1;34m'
 violet='\e[1;35m'
@@ -46,14 +45,15 @@ then
         exit
         elif [ "$(which gnome-shell)" != "/usr/bin/gnome-shell" ]
         then
+            clear
             echo -e "${vert}NB : Comme vous utilisez une variante et non la version de base d'Ubuntu, 2 questions spécifiques à Gnome seront ignorés${neutre}"
             echo "*******************************************************"
             echo -e "${bleu}0/Vous utilisez actuellement une variante, merci de préciser laquelle (support 64 bits uniquement!) :${neutre}"
             echo "*******************************************************"
-            echo -e "${orange}[1] Xubuntu 18.04 x64 (Xfce)${neutre}"
+            echo -e "${jaune}[1] Xubuntu 18.04 x64 (Xfce)${neutre}"
             echo -e "${violet}[2] Ubuntu Mate 18.04 x64 (Mate)${neutre}"
             echo -e "${cyan}[3] Lubuntu ou Lubuntu Next 18.04 x64 (Lxde ou LxQt)${neutre}"
-            echo -e "${jaune}[4] Kubuntu 18.04 x64 (Kde/Plasma)${neutre}"            
+            echo -e "${gris}[4] Kubuntu 18.04 x64 (Kde/Plasma)${neutre}"            
             echo -e "${vert}[5] Autres variantes basés sur la 18.04 x64 (ex: Kubuntu 18.04, Ubuntu Budgie 18.04...)${neutre}" 
             read -p "Répondre par le chiffre correspondant (exemple : 1) : " distrib
 fi
@@ -457,7 +457,7 @@ then
     echo "[10] Windows 10 Thème (thème + icone)"
     echo "[11] Unity8 Thème"
     echo "[12] Icones Papirus utilisés notamment dans Solus (différentes variantes : Adapta, Nokto, Dark, Light...)"    
-    echo -e "[13] Remettre GDM avec le thème gris (par défaut violet) ${rouge}=> Attention : ajoute la session Vanilla en dépendance !${neutre}"
+    echo -e "[13] Spécifique Gnome-Shell : Remettre GDM avec thème gris ${rouge}=> Attention : ajoute la session Vanilla en dépendance !${neutre}"
     echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
     clear
