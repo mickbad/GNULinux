@@ -68,12 +68,12 @@ fi
 ## Mode normale
 # Question 1 : sélection du mode de lancement du script
 echo "*******************************************************"
-echo "1/ Mode de lancement du script : "
+echo -e "${bleu}1/ Mode de lancement du script :${neutre}"
 echo "*******************************************************"
 echo "[0] Mode novice (lancement automatique sans question, le script installera des logiciels intéressants pour les novices)"
-echo "[1] Mode standard (choix par défaut, pose divers questions simples, recommandé pour la plupart des utilisateurs)"
-echo "[2] Mode avancé (comme standard mais avec des questions supplémentaires : programmation, optimisation, extension...)"
-echo "[3] Mode extra (comme avancé mais avec un supplément snap/flatpak/appimages proposé à la fin)"
+echo -e "[1] Mode ${bleu}standard${neutre} (choix par défaut, pose divers questions simples, recommandé pour la plupart des utilisateurs)"
+echo -e "[2] Mode ${jaune}avancé${neutre} (comme standard mais avec des questions supplémentaires : programmation, optimisation, extension...)"
+echo -e "[3] Mode ${vert}extra${neutre} (comme avancé mais avec un supplément snap/flatpak/appimages proposé à la fin)"
 echo "*******************************************************"
 read -p "Répondre par le chiffre correspondant (exemple : 1) : " choixMode
 clear
@@ -87,10 +87,10 @@ done
 if [ "$choixMode" != "0" ] #lancement pour tous sauf mode novice
 then
     echo "======================================================="
-    echo "${vert}Astuce : pour toutes les questions, le choix [1] correspond toujours au choix par défaut, si vous faites ce choix vous pouvez aller plus vite en validant directement 'Entrée'${neutre}"
+    echo -e "${vert}Astuce : pour toutes les questions, le choix [1] correspond toujours au choix par défaut, si vous faites ce choix vous pouvez aller plus vite en validant directement 'Entrée'${neutre}"
     # Question 2 : Session 
     echo "*******************************************************"
-    echo "2/ Quelle(s) session(s) supplémentaire(s) souhaitez-vous installer ? (plusieurs choix possibles)"
+    echo -e "${bleu}2/ Quelle(s) session(s) supplémentaire(s) souhaitez-vous installer ? (plusieurs choix possibles)${neutre}"
     echo "*******************************************************"
     echo "[1] Aucune, rester avec la session Ubuntu par défaut (cad Gnome customizé + 2 extensions)"
     echo "[2] Ajouter la session 'Gnome Vanilla' (cad une session Gnome non-customizé et sans extension)"
@@ -102,7 +102,7 @@ then
 
     # Question 3 : Navigateur web 
     echo "*******************************************************"
-    echo "3/ Quel(s) navigateur(s) vous intéresses ? (plusieurs choix possibles)"
+    echo -e "${bleu}3/ Quel(s) navigateur(s) vous intéresses ? (plusieurs choix possibles)${neutre}"
     echo "*******************************************************"
     echo "[1] Pas de navigateur supplémentaire : rester sur la version classique de Firefox (stable)"
     echo "[2] Firefox Béta (n+1 : 1 version d'avance, remplace la version classique)"
@@ -131,7 +131,7 @@ then
 
     # Question 4 : Messagerie instantannée
     echo "*******************************************************"
-    echo "4/ Quel(s) logiciels(s) de messagerie instantannée/tchat/VoIP/visio souhaitez-vous ?"
+    echo -e "${bleu}4/ Quel(s) logiciels(s) de messagerie instantannée/tchat/VoIP/visio souhaitez-vous ?${neutre}"
     echo "*******************************************************"
     echo "[1] Aucun"
     echo "[2] Empathy (messagerie instantanné adapté à Gnome, multi-protocole)"
@@ -159,7 +159,7 @@ then
 
     # Question 5 : Download/Upload
     echo "*******************************************************"
-    echo "5/ Quel(s) logiciels(s) de téléchargement/copie voulez-vous ?"
+    echo -e "${bleu}5/ Quel(s) logiciels(s) de téléchargement/copie voulez-vous ?${neutre}"
     echo "*******************************************************"
     echo "[1] Pas de supplément ('Transmission' installé de base)"
     echo "[2] FileZilla (logiciel très répendu utilisé pour les transferts FTP ou SFTP)"
@@ -182,7 +182,7 @@ then
 
     # Question 6 : Lecture multimédia
     echo "*******************************************************"
-    echo "6/ Quel(s) logiciels(s) de lecture audio/vidéo (ou de stream) voulez-vous ?"
+    echo -e "${bleu}6/ Quel(s) logiciels(s) de lecture audio/vidéo (ou de stream) voulez-vous ?${neutre}"
     echo "*******************************************************"
     echo "[1] Aucun, rester avec les choix par défaut ('Totem' pour la vidéo, 'Rhythmbox' pour la musique)"
     echo "[2] VLC VideoLan (le couteau suisse de la vidéo, très complet !)"
@@ -211,7 +211,7 @@ then
 
     # Question 7 : Traitement/montage video
     echo "*******************************************************"
-    echo "7/ Souhaitez-vous un logiciel de montage/encodage vidéo ?"
+    echo -e "${bleu}7/ Souhaitez-vous un logiciel de montage/encodage vidéo ?${neutre}"
     echo "*******************************************************"
     echo "[1] Non merci (aucun n'est installé par défaut)"
     echo "[2] Handbrake (transcodage de n'importe quel fichier vidéo)"
@@ -236,7 +236,7 @@ then
 
     # Question 8 : Traitement/montage photo & modélisation 3D
     echo "*******************************************************"
-    echo "8/ Quel(s) logiciels(s) de montage photo ou modélisation 3D ?"
+    echo -e "${bleu}8/ Quel(s) logiciels(s) de montage photo ou modélisation 3D ?${neutre}"
     echo "*******************************************************"
     echo "[1] Aucun (pas de logiciel par défaut)"
     echo "[2] Gimp (montage photo avancé, équivalent à 'Adobe Photoshop')"
@@ -260,7 +260,7 @@ then
 
     # Question 9 : Traitement/encodage audio
     echo "*******************************************************"
-    echo "9/ Quel(s) logiciels(s) pour l'encodage/réglage ou traitement audio ?"
+    echo -e "${bleu}9/ Quel(s) logiciels(s) pour l'encodage/réglage ou traitement audio ?${neutre}"
     echo "*******************************************************"
     echo "[1] Aucun"
     echo "[2] Xcfa : X Convert File Audio (extraction cd audio, piste dvd, normalisation, création pochette)"
@@ -284,7 +284,7 @@ then
 
     # Question 10 : Bureautique et Mail
     echo "*******************************************************"
-    echo "10/ Quel(s) logiciel(s) de bureautique/courrier souhaitez-vous ?"
+    echo -e "${bleu}10/ Quel(s) logiciel(s) de bureautique/courrier souhaitez-vous ?${neutre}"
     echo "*******************************************************"
     echo "[1] Aucun supplément (par défaut : Evince pour pdf, LibreOffice en bureautique, Thunderbird pour les mails)"
     echo "[2] Supplément LibreOffice : ajout du module 'Base' + des extensions utiles (templates, modèles de documents, clipboard...)"
@@ -307,7 +307,7 @@ then
 
     # Question 11 : Science et éducation (voir pour Scratch2 + Celestia ?)
     echo "*******************************************************"
-    echo "11/ Des logiciels de science ou pour l'éducation ?"
+    echo -e "${bleu}11/ Des logiciels de science ou pour l'éducation ?${neutre}"
     echo "*******************************************************"
     echo "[1] Pas d'ajout"
     echo "[2] [GEO] Google Earth Pro (globe terrestre de Google pour explorer la planète)"
@@ -329,7 +329,7 @@ then
 
     # Question 12 : Utilitaires 
     echo "*******************************************************"
-    echo "12/ Quel(s) utilitaire(s) supplémentaire(s) voulez-vous ?"
+    echo -e "${bleu}12/ Quel(s) utilitaire(s) supplémentaire(s) voulez-vous ?${neutre}"
     echo "*******************************************************"
     echo "[1] Aucun"
     echo -e "[2] Kazam ${violet}[Xorg Only!]${neutre} (capture vidéo de votre bureau)"
@@ -363,7 +363,7 @@ then
 
     # Question 13 : Gaming
     echo "*******************************************************"
-    echo "13/ Quel(s) jeux-vidéos (ou applis liés aux jeux) installer ?"
+    echo -e "${bleu}13/ Quel(s) jeux-vidéos (ou applis liés aux jeux) installer ?${neutre}"
     echo "*******************************************************"
     echo "[1] Aucun, je ne suis pas un gameur"
     echo "[2] Steam (plateforme de distribution de jeux. Permet notamment d'installer Dota2, TF2, CS, TR...)"
@@ -392,7 +392,7 @@ if [ "$choixMode" = "2" ] || [ "$choixMode" = "3" ]
 then
     # Question 14 : Extension 
     echo "*******************************************************"
-    echo "14/ Des extensions pour navigateur ou gnome-shell à installer ? [mode avancé]"
+    echo -e "${jaune}14/ Des extensions pour navigateur ou gnome-shell à installer ? [mode avancé]${neutre}"
     echo "*******************************************************"
     echo "[1] Non, ne pas ajouter de nouvelles extensions"
     echo "[2] User themes (Pour charger des thèmes pour Gnome Shell à partir de votre répertoire perso)"
@@ -424,7 +424,7 @@ then
 
     # Question 15 : Customization
     echo "*******************************************************"
-    echo "15/ Sélectionnez ce qui vous intéresses en terme de customization [mode avancé]"
+    echo -e "${jaune}15/ Sélectionnez ce qui vous intéresses en terme de customization [mode avancé]${neutre}"
     echo "*******************************************************"
     echo "[1] Pas d'ajout"
     echo "[2] Pack de thème GTK à succès : Arc + Numix + Silicon"
@@ -445,7 +445,7 @@ then
 
     # Question 16 : Prog
     echo "*******************************************************"
-    echo "16/ Quel éditeur de texte ou logiciel de Dev (IDE) voulez-vous ? [mode avancé]"
+    echo -e "${jaune}16/ Quel éditeur de texte ou logiciel de Dev (IDE) voulez-vous ? [mode avancé]${neutre}"
     echo "*******************************************************"
     echo "[1] Aucun (en dehors de Vim et Gedit)"
     echo "[2] Gvim (interface graphique pour Vim)"
@@ -472,7 +472,7 @@ then
 
     # Question 17 : Serveur 
     echo "*******************************************************"
-    echo "17/ Des fonctions serveurs à activer ? [mode avancé]"
+    echo -e "${jaune}17/ Des fonctions serveurs à activer ? [mode avancé]${neutre}"
     echo "*******************************************************"
     echo "[1] Pas de service à activer"
     echo "[2] Serveur SSH (Pour contrôler votre PC à distance via SSH)"
@@ -487,7 +487,7 @@ then
 
     # Question 18 : Optimisation
     echo "*******************************************************"
-    echo "18/ Des optimisations supplémentaires à activer ? [mode avancé]"
+    echo -e "${jaune}18/ Des optimisations supplémentaires à activer ? [mode avancé]${neutre}"
     echo "*******************************************************"
     echo "[1] Non"
     echo "[2] Optimisation Swap : swapiness à 5% (swap utilisé uniquement si + de 95% de ram utilisé)"
@@ -515,7 +515,7 @@ if [ "$choixMode" = "3" ]
 then
     # Question 19 : Snap
     echo "*******************************************************"
-    echo "19/ Mode Extra : supplément paquet Snap : "
+    echo -e "${vert}19/ Mode Extra : supplément paquet Snap :${neutre}"
     echo "*******************************************************"
     echo "[1] Aucun"
     echo -e "[2] VLC ${jaune}[Snap]${neutre}"
@@ -542,7 +542,7 @@ then
              
     # Question 20 : Flatpak
     echo "*******************************************************"
-    echo "20/ Mode Extra : supplément paquet Flatpak : "
+    echo -e "${vert}20/ Mode Extra : supplément paquet Flatpak :${neutre}"
     echo "*******************************************************"
     echo "[1] Aucun"
     echo -e "[2] 0ad ${bleu}[Flatpak]${neutre}"
@@ -571,7 +571,7 @@ then
             
     # Question 21 : Appimages
     echo "*******************************************************"
-    echo "21/ Mode Extra : récupération Appimages: "
+    echo -e "${vert}21/ Mode Extra : récupération Appimages:${neutre}"
     echo "*******************************************************"
     echo "[1] Aucune"
     echo -e "[2] Digikam ${vert}[Appimage]${neutre}"
