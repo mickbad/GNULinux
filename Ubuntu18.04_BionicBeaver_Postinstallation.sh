@@ -87,7 +87,7 @@ done
 if [ "$choixMode" != "0" ] #lancement pour tous sauf mode novice
 then
     echo "======================================================="
-    echo -e "${vert}Astuce2: Pour toutes les questions, le choix [1] correspond toujours au choix par défaut, si vous faites ce choix, vous pouvez aller plus vite en validant directement avec la touche 'Entrée' de votre clavier.${neutre}"
+    echo -e "${vert}Astuce 2: Pour toutes les questions, le choix [1] correspond toujours au choix par défaut, si vous faites ce choix, vous pouvez aller plus vite en validant directement avec la touche 'Entrée' de votre clavier.${neutre}"
     # Question 2 : Session 
     echo "*******************************************************"
     echo -e "${bleu}2/ Quelle(s) session(s) supplémentaire(s) souhaitez-vous installer ? (plusieurs choix possibles)${neutre}"
@@ -101,7 +101,7 @@ then
     clear
 
     # Question 3 : Navigateur web 
-    echo -e "${vert}Astuce3: à partir de cette question, vous pouvez faire plusieurs choix, il suffit d'indiquer chaque chiffre séparé d'un espace, par exemple : 2 4 12 19${neutre}"
+    echo -e "${vert}Astuce 3: à partir de cette question, vous pouvez faire plusieurs choix, il suffit d'indiquer chaque chiffre séparé d'un espace, par exemple : 2 4 12 19${neutre}"
     echo "*******************************************************"
     echo -e "${bleu}3/ Quel(s) navigateur(s) vous intéresses ? (plusieurs choix possibles)${neutre}"
     echo "*******************************************************"
@@ -182,7 +182,7 @@ then
     clear
 
     # Question 6 : Lecture multimédia
-    echo -e "${vert}Astuce4: Il est recommandé de choisir au moins VLC ou MPV car le lecteur de base (Totem) est assez limité !${neutre}"
+    echo -e "${vert}Astuce 4: Il est recommandé de choisir au moins VLC ou MPV car le lecteur de base (Totem) est assez limité !${neutre}"
     echo "*******************************************************"
     echo -e "${bleu}6/ Quel(s) logiciels(s) de lecture audio/vidéo (ou de stream) voulez-vous ?${neutre}"
     echo "*******************************************************"
@@ -277,7 +277,7 @@ then
     echo "[11] Pavucontrol (outil graphique de contrôle des volumes audio entrée/sortie pour Pulseaudio)"
     echo "[12] Lame (outil d'encodage en CLI pour le format MP3,par ex pour convertir un Wav en Mp3)"
     echo "[13] Hydrogen (Synthétiseur de boite à rythme basée sur les patterns avec connexion possible d'un séquenceur externe)"
-    echo -e "[14] Ardour ${rouge}[Interv!]${neutre} (station de travail audio numérique avec enregistrement multipiste et mixage)"
+    echo -e "[14] Ardour (station de travail audio numérique avec enregistrement multipiste et mixage)"
     echo -e "[15] Flacon ${jaune}[Snap]${neutre} (pour extraire les pistes d'un gros fichier audio)"
     echo -e "[16] PulseEffects ${bleu}[Flatpak]${neutre} (interface puissante GTK pour faire pleins de réglage/effet sur le son)"
     echo "*******************************************************"
@@ -336,7 +336,7 @@ then
     echo "[1] Aucun"
     echo -e "[2] Kazam ${violet}[Xorg Only!]${neutre} (capture vidéo de votre bureau)"
     echo "[3] SimpleScreenRecorder (autre alternative pour la capture vidéo)"
-    echo "[4] OpenBroadcaster Software (Pour faire du live en streaming, adapté pour les gameurs)"
+    echo "[4] OBS : OpenBroadcasterSoftware (Pour faire du live en streaming, adapté pour les gameurs)"
     echo "[5] Glances (afficher l'état des ressources systèmes en temps réel, comme htop mais plus complet)"
     echo "[6] Brasero (logiciel de gravure de cd/dvd)" 
     echo "[7] Wine (une sorte d'émulateur pour faire tourner des applis/jeux conçu à la base pour Windows)"
@@ -383,7 +383,7 @@ then
     echo "[14] Pingus (Clone de Lemmings, vous devrez aider des manchots un peu idiots à traverser des obstacles)"
     echo -e "[15] Battle for Wesnoth ${bleu}[Flatpak]${neutre} (stratégie, le joueur doit se battre pour retrouver sa place dans le royaume)"
     echo -e "[16] Albion Online ${bleu}[Flatpak]${neutre} (MMORPG avec système de quête et donjons)"
-    echo -e "[17] RunScape ${bleu}[Flatpak]${neutre}${rouge}Ne semble plus fonctionner !${neutre} (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
+    echo -e "[17] RunScape ${bleu}[Flatpak]${neutre} (Reconnu MMORPG gratuit le plus populaire au monde avec plus de 15 Millions de comptes F2P)"
     echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3) : " choixGaming
     clear
@@ -393,7 +393,7 @@ fi
 if [ "$choixMode" = "2" ] || [ "$choixMode" = "3" ]
 then
     # Question 14 : Extension 
-    echo -e "${vert}Astuce5: Si vous aimez faire de la customization graphique, il est recommandé d'installer 'user themes' (choix2)${neutre}"
+    echo -e "${vert}Astuce 5: Si vous aimez faire de la customization graphique, il est recommandé d'installer 'user themes' (choix2)${neutre}"
     echo "*******************************************************"
     echo -e "${jaune}14/ Des extensions pour gnome-shell à installer ? [mode avancé]${neutre}"
     echo "*******************************************************"
@@ -426,12 +426,12 @@ then
     clear
 
     # Question 15 : Customization
-    echo -e "${vert}Astuce6: Si vous voulez transformer votre bureau avec l'apparence de Mac OS ou Windows 10, il faudra modifier vous-même l'agencement du bureau en + de d'appliquer les thèmes/icones${neutre}"
+    echo -e "${vert}Astuce 6: Si vous voulez transformer l'apparence du bureau, il faudra modifier vous-même l'agencement du bureau en + de d'appliquer les thèmes/icones${neutre}"
     echo "*******************************************************"
     echo -e "${jaune}15/ Sélectionnez ce qui vous intéresses en terme de customization [mode avancé]${neutre}"
     echo "*******************************************************"
     echo "[1] Pas d'ajout"
-    echo "[2] Pack de thème GTK à succès : Arc + Numix + Silicon"
+    echo "[2] Thème GTK : Arc + Numix"
     echo "[3] Pack2 avec encore d'autres thèmes : Adapta + Greybird/Blackbird/Bluebird"
     echo "[4] Pack3 de thème : albatross, Yuyo, human, gilouche"
     echo "[5] Pack d'icone 1 : Numix et Numix Circle, Breathe, Breeze, Elementary, Brave + supplément extra icone Gnome"
@@ -518,7 +518,7 @@ fi
 if [ "$choixMode" = "3" ] 
 then
     # Question 19 : Snap
-    echo -e "${vert}Astuce7: Les paquets Snappy, flatpak et Appimages sont indépendants les uns des autres, ainsi, vous pouvez avoir un même logiciel en plusieurs exemplaires dans des versions différentes${neutre}"
+    echo -e "${vert}Astuce 7: Les paquets Snappy, flatpak et Appimages sont indépendants les uns des autres, ainsi, vous pouvez avoir un même logiciel en plusieurs exemplaires dans des versions différentes${neutre}"
     echo "*******************************************************"
     echo -e "${vert}19/ Mode Extra : supplément paquet Snap :${neutre}"
     echo "*******************************************************"
@@ -575,7 +575,7 @@ then
     clear
             
     # Question 21 : Appimages
-    echo -e "${vert}Astuce8: Vos AppImages seront disponibles dans un dossier 'appimage' dans votre dossier perso, pour lancer une application : ./nomdulogiciel.AppImage (les droits d'éxécutions seront déjà attribués)${neutre}"
+    echo -e "${vert}Astuce 8: Vos AppImages seront disponibles dans un dossier 'appimage' dans votre dossier perso, pour lancer une application : ./nomdulogiciel.AppImage (les droits d'éxécutions seront déjà attribués)${neutre}"
     echo "*******************************************************"
     echo -e "${vert}21/ Mode Extra : récupération Appimages:${neutre}"
     echo "*******************************************************"
@@ -1716,8 +1716,6 @@ do
         "15") #Interdire l'accès des autres utilisateurs au dossier perso de l'utilisateur principal
             chmod -R o-rwx /home/$SUDO_USER
             ;;            
-            
-            
         #"99") #Nvidia Bumblebee pour techno optimus (Ne fonctionne pas)
             #wget https://raw.githubusercontent.com/BionicBeaver/Divers/master/BumblebeeBionic_install.sh ; chmod +x BumblebeeBionic_install.sh
             #./BumblebeeBionic_install.sh
