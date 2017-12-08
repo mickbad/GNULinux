@@ -165,7 +165,7 @@ then
     echo -e "[17] Viber ${bleu}[Flatpak]${neutre} (logiciel de communication, surtout connue en application mobile)"
     echo -e "[18] Slack ${bleu}[Flatpak]${neutre} (plate-forme de communication collaborative propriétaire avec gestion de projets)"
     echo -e "[19] Signal ${bleu}[Flatpak]${neutre} (Messagerie instantannée crypté recommandé par Edward Snowden)"
-    echo -e "[20] TeamSpeak ${cyan}${rouge}[Interv!]${neutre}[à lancer manuellement]${neutre} (équivalent à Mumble mais propriétaire)"
+    echo -e "[20] Récupérer TeamSpeak ${cyan}[script à lancer manuellement]${neutre} (équivalent à Mumble mais propriétaire)"
     echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 18) : " choixMessagerie
     clear
@@ -877,9 +877,8 @@ do
             apt install tox -y
             ;;  
         "21") #Récupération du script d'installation de teamspeak (à lancer manuellement par l'utilisateur)
-            wget http://dl.4players.de/ts/releases/3.1.6/TeamSpeak3-Client-linux_amd64-3.1.6.run && chmod +x TeamSpeak*
+            wget http://dl.4players.de/ts/releases/3.1.6/TeamSpeak3-Client-linux_amd64-3.1.6.run ; chmod +x TeamSpeak* ; chown $SUDO_USER TeamSpeak*
             mv TeamSpeak* /home/$SUDO_USER/
-            ./home/$SUDO_USER/TeamSpeak* 
             ;; 
     esac
 done
