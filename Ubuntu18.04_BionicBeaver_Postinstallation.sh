@@ -70,7 +70,7 @@ fi
 echo "*******************************************************"
 echo -e "${bleu}1/ Mode de lancement du script :${neutre}"
 echo "*******************************************************"
-echo "[0] Mode novice (lancement automatique sans question, le script installera des logiciels intéressants pour les novices)"
+echo -e "[0] Mode ${griq}novice${neutre} (lancement automatique sans question, le script installera des logiciels intéressants pour les novices)"
 echo -e "[1] Mode ${bleu}standard${neutre} (choix par défaut, pose divers questions simples, recommandé pour la plupart des utilisateurs)"
 echo -e "[2] Mode ${jaune}avancé${neutre} (comme standard mais avec des questions supplémentaires : programmation, optimisation, extension...)"
 echo -e "[3] Mode ${vert}extra${neutre} (comme avancé mais avec un supplément snap/flatpak/appimages proposé à la fin)"
