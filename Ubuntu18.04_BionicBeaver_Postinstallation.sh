@@ -60,13 +60,13 @@ then
                 echo -e "${violet}[Xorg only!]${neutre} => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
                 echo -e "${cyan}[à lancer manuellement]${neutre} => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
                 echo -e "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)"
-                echo -e "#########################################################\n"
-                echo -e "${cyan}Info : il est recommandé de mettre votre terminal en plein écran pour un affichage plus agréable${neutre}\n"
+                echo -e "#########################################################\n"    
 fi
 ### Section interactive avec les questions
 
 ## Mode normale
 # Question 1 : sélection du mode de lancement du script
+echo -e "${vert}Astuce 1: Mettez votre terminal en plein écran pour un affichage plus agréable (conseillé)${neutre}"
 echo "*******************************************************"
 echo -e "${bleu}1/ Mode de lancement du script :${neutre}"
 echo "*******************************************************"
@@ -87,7 +87,7 @@ done
 if [ "$choixMode" != "0" ] #lancement pour tous sauf mode novice
 then
     echo "======================================================="
-    echo -e "${vert}Astuce : pour toutes les questions, le choix [1] correspond toujours au choix par défaut, si vous faites ce choix, vous pouvez aller plus vite en validant directement avec la touche 'Entrée' de votre clavier.${neutre}"
+    echo -e "${vert}Astuce2: Pour toutes les questions, le choix [1] correspond toujours au choix par défaut, si vous faites ce choix, vous pouvez aller plus vite en validant directement avec la touche 'Entrée' de votre clavier.${neutre}"
     # Question 2 : Session 
     echo "*******************************************************"
     echo -e "${bleu}2/ Quelle(s) session(s) supplémentaire(s) souhaitez-vous installer ? (plusieurs choix possibles)${neutre}"
@@ -101,6 +101,7 @@ then
     clear
 
     # Question 3 : Navigateur web 
+    echo -e "${vert}Astuce3: à partir de cette question, vous pouvez faire plusieurs choix, il suffit d'indiquer chaque chiffre séparé d'un espace, par exemple : 2 4 12 19${neutre}"
     echo "*******************************************************"
     echo -e "${bleu}3/ Quel(s) navigateur(s) vous intéresses ? (plusieurs choix possibles)${neutre}"
     echo "*******************************************************"
@@ -126,7 +127,7 @@ then
     echo -e "[20] Rekonq (Navigateur pour Kde, ${rouge}déconseillé sous Gnome${neutre} car beaucoup de dépendance kde !)"
     echo -e "[21] Eolie ${bleu}[Flatpak]${neutre} (une autre alternative pour Gnome)"
     echo "*******************************************************"
-    read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 11 20) : " choixNavigateur
+    read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 10 16) : " choixNavigateur
     clear
 
     # Question 4 : Messagerie instantannée
@@ -181,6 +182,7 @@ then
     clear
 
     # Question 6 : Lecture multimédia
+    echo -e "${vert}Astuce4: Il est recommandé de choisir au moins VLC ou MPV car le lecteur de base (Totem) est assez limité !${neutre}"
     echo "*******************************************************"
     echo -e "${bleu}6/ Quel(s) logiciels(s) de lecture audio/vidéo (ou de stream) voulez-vous ?${neutre}"
     echo "*******************************************************"
@@ -270,7 +272,7 @@ then
     echo "[6] MhWaveEdit (application libre d'enregistrement et d'édition audio complète distribuée sous GPL)"
     echo "[7] RipperX (une autre alternative pour extraire les cd de musique)"
     echo "[8] LMMS : Let's Make Music (station audio opensource crée par des musiciens pour les musiciens)"
-    echo "[9] MiXX (logiciel pour Dj pour le mixage de musique)"
+    echo "[9] Mixxx (logiciel pour Dj pour le mixage de musique)"
     echo "[10] Rosegarden (création musicale avec édition des partitions et peux s'interfacer avec des instruments)"
     echo "[11] Pavucontrol (outil graphique de contrôle des volumes audio entrée/sortie pour Pulseaudio)"
     echo "[12] Lame (outil d'encodage en CLI pour le format MP3,par ex pour convertir un Wav en Mp3)"
@@ -391,8 +393,9 @@ fi
 if [ "$choixMode" = "2" ] || [ "$choixMode" = "3" ]
 then
     # Question 14 : Extension 
+    echo -e "${vert}Astuce5: Si vous aimez faire de la customization graphique, il est recommandé d'installer 'user themes' (choix2)${neutre}"
     echo "*******************************************************"
-    echo -e "${jaune}14/ Des extensions pour navigateur ou gnome-shell à installer ? [mode avancé]${neutre}"
+    echo -e "${jaune}14/ Des extensions pour gnome-shell à installer ? [mode avancé]${neutre}"
     echo "*******************************************************"
     echo "[1] Non, ne pas ajouter de nouvelles extensions"
     echo "[2] User themes (Pour charger des thèmes pour Gnome Shell à partir de votre répertoire perso)"
@@ -419,10 +422,11 @@ then
     echo "[23] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
     echo "[24] AppFolders Management (Permet de classer les applis dans des dossiers)"
     echo "*******************************************************"
-    read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixExtension
+    read -p "Répondre par le ou les chiffres correspondants (exemple : 2) : " choixExtension
     clear
 
     # Question 15 : Customization
+    echo -e "${vert}Astuce6: Si vous voulez transformer votre bureau avec l'apparence de Mac OS ou Windows 10, il faudra modifier vous-même l'agencement du bureau en + de d'appliquer les thèmes/icones${neutre}"
     echo "*******************************************************"
     echo -e "${jaune}15/ Sélectionnez ce qui vous intéresses en terme de customization [mode avancé]${neutre}"
     echo "*******************************************************"
@@ -438,14 +442,14 @@ then
     echo "[10] Windows 10 Thème (thème + icone)"
     echo "[11] Unity8 Thème"
     echo "[12] Icon Papirus (différentes variantes : Adapta, Nokto, Dark, Light...)"    
-    echo -e "[13] Remettre GDM avec le thème gris (par défaut violet) : ${rouge}Attention : ajoute la session Vanilla en dépendance !${neutre}"
+    echo -e "[13] Remettre GDM avec le thème gris (par défaut violet) ${rouge}=> Attention : ajoute la session Vanilla en dépendance !${neutre}"
     echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
     clear
 
     # Question 16 : Prog
     echo "*******************************************************"
-    echo -e "${jaune}16/ Quel éditeur de texte ou logiciel de Dev (IDE) voulez-vous ? [mode avancé]${neutre}"
+    echo -e "${jaune}16/ Quel éditeur de texte et logiciel de developpement voulez-vous ? [mode avancé]${neutre}"
     echo "*******************************************************"
     echo "[1] Aucun (en dehors de Vim et Gedit)"
     echo "[2] Gvim (interface graphique pour Vim)"
@@ -514,6 +518,7 @@ fi
 if [ "$choixMode" = "3" ] 
 then
     # Question 19 : Snap
+    echo -e "${vert}Astuce7: Les paquets Snappy, flatpak et Appimages sont indépendants les uns des autres, ainsi, vous pouvez avoir un même logiciel en plusieurs exemplaires dans des versions différentes${neutre}"
     echo "*******************************************************"
     echo -e "${vert}19/ Mode Extra : supplément paquet Snap :${neutre}"
     echo "*******************************************************"
@@ -570,6 +575,7 @@ then
     clear
             
     # Question 21 : Appimages
+    echo -e "${vert}Astuce8: Vos AppImages seront disponibles dans un dossier 'appimage' dans votre dossier perso, pour lancer une application : ./nomdulogiciel.AppImage (les droits d'éxécutions seront déjà attribués)${neutre}"
     echo "*******************************************************"
     echo -e "${vert}21/ Mode Extra : récupération Appimages:${neutre}"
     echo "*******************************************************"
