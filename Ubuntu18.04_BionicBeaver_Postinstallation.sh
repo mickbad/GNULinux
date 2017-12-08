@@ -513,7 +513,7 @@ then
     echo "[3] Désactiver complètement le swap (utile si vous avez un SSD et 8 Go de ram ou +)"
     echo "[4] Activer TLP avec Powertop (économie d'energie pour pc portable)"
     echo "[5] Installer le microcode propriétaire Intel (pour cpu intel uniquement !)"
-    echo "[6] Ajouter une commande 'fraude' pour Wayland (pour pouvoir lancer des applis comme Gparted. Exemple : fraude gparted)"
+    echo "[6] Gnome Shell : Ajouter une commande 'fraude' pour la session Wayland (ex : fraude synaptic)"
     echo "[7] Gnome Shell : Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
     echo "[8] Ajouter le support pour le système de fichier exFat de Microsoft"
     echo "[9] Ajouter le support pour le système de fichier HFS d'Apple"
