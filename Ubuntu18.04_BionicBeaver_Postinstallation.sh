@@ -87,7 +87,7 @@ done
 if [ "$choixMode" != "0" ] #lancement pour tous sauf mode novice
 then
     echo "======================================================="
-    echo -e "${vert}Astuce : pour toutes les questions, le choix [1] correspond toujours au choix par défaut, si vous faites ce choix vous pouvez aller plus vite en validant directement 'Entrée'${neutre}"
+    echo -e "${vert}Astuce : pour toutes les questions, le choix [1] correspond toujours au choix par défaut, si vous faites ce choix, vous pouvez aller plus vite en validant directement avec la touche 'Entrée' de votre clavier.${neutre}"
     # Question 2 : Session 
     echo "*******************************************************"
     echo -e "${bleu}2/ Quelle(s) session(s) supplémentaire(s) souhaitez-vous installer ? (plusieurs choix possibles)${neutre}"
