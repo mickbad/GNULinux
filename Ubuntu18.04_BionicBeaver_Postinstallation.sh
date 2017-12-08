@@ -46,22 +46,31 @@ then
         exit
         elif [ "$(which gnome-shell)" != "/usr/bin/gnome-shell" ]
         then
-            echo -e "${rouge}Bien que vous soyez effectivement sur la 18.04 $SUDO_USER, ce script est conçu uniquement pour la version de base sous Gnome-Shell (pour l'instant) alors que vous utilisez une variante.${blanc}"
-            exit
-            else
-                clear
-                echo "Ok, vous avez correctement lancé le script, vous êtes bien sur Bionic avec Gnome-Shell, passons aux questions..."
-                echo -e "#########################################################"
-                echo -e "Légende : "
-                echo -e "${jaune}[Snap]${neutre} => Le paquet s'installera avec Snap (snap install...)"
-                echo -e "${bleu}[Flatpak]${neutre} => S'installera avec Flatpak, une alternative aux snaps (flatpak install --from...)"
-                echo -e "${vert}[Appimage]${neutre} => Application portable (pas d'installation), à lancer comme ceci : ./nomdulogiciel.AppImage"
-                echo -e "${rouge}[Interv!]${neutre} => Installation pas totalement automatisé : vous devrez intervenir (ex : valider contrat de licence...)"
-                echo -e "${violet}[Xorg only!]${neutre} => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
-                echo -e "${cyan}[à lancer manuellement]${neutre} => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
-                echo -e "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)"
-                echo -e "#########################################################\n"    
+            echo -e "${vert}NB : Comme vous utilisez une variante et non la version de base d'Ubuntu, 2 questions spécifiques à Gnome seront ignorés${neutre}"
+            echo "*******************************************************"
+            echo -e "${bleu}0/Vous utilisez actuellement une variante, merci de préciser laquelle :${neutre}"
+            echo "*******************************************************"
+            echo -e "${orange}[1] Xubuntu 18.04 (Xfce)${neutre}"
+            echo -e "${violet}[2] Ubuntu Mate 18.04 (Mate)${neutre}"
+            echo -e "${cyan}[3] Lubuntu ou Lubuntu Next 18.04 (Lxde ou LxQt)${neutre}"
+            echo -e "${cyan}[4] Kubuntu 18.04 (Kde/Plasma)${neutre}"            
+            echo -e "${vert}[5] Autres variantes basés sur la 18.04 (ex: Kubuntu 18.04, Ubuntu Budgie 18.04...)${neutre}" 
+            read -p "Répondre par le chiffre correspondant (exemple : 1) : " distrib
 fi
+clear
+########################
+echo "Ok, vous avez correctement lancé le script, passons aux questions..."
+echo -e "#########################################################"
+echo -e "Voici la légende pour vous informer de certaines choses :"
+echo -e "${jaune}[Snap]${neutre} => Le paquet s'installera avec Snap (snap install...)"
+echo -e "${bleu}[Flatpak]${neutre} => S'installera avec Flatpak, une alternative aux snaps (flatpak install --from...)"
+echo -e "${vert}[Appimage]${neutre} => Application portable (pas d'installation), à lancer comme ceci : ./nomdulogiciel.AppImage"
+echo -e "${rouge}[Interv!]${neutre} => Installation pas totalement automatisé : vous devrez intervenir (ex : valider contrat de licence...)"
+echo -e "${violet}[Xorg only!]${neutre} => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas en session Wayland"
+echo -e "${cyan}[à lancer manuellement]${neutre} => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
+echo -e "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)"
+echo -e "#########################################################\n"    
+
 ### Section interactive avec les questions
 
 ## Mode normale
@@ -86,19 +95,22 @@ done
 
 if [ "$choixMode" != "0" ] #lancement pour tous sauf mode novice
 then
-    echo "======================================================="
-    echo -e "${vert}Astuce 2: Pour toutes les questions, le choix [1] correspond toujours au choix par défaut, si vous faites ce choix, vous pouvez aller plus vite en validant directement avec la touche 'Entrée' de votre clavier.${neutre}"
-    # Question 2 : Session 
-    echo "*******************************************************"
-    echo -e "${bleu}2/ Quelle(s) session(s) supplémentaire(s) souhaitez-vous installer ? (plusieurs choix possibles)${neutre}"
-    echo "*******************************************************"
-    echo "[1] Aucune, rester avec la session Ubuntu par défaut (cad Gnome customizé + 2 extensions)"
-    echo "[2] Ajouter la session 'Gnome Vanilla' (cad une session Gnome non-customizé et sans extension)"
-    echo "[3] Ajouter la session 'Gnome Classique' (interface plus traditionnelle dans le style de Gnome 2 ou Mate)"
-    echo "[4] Ajouter la session 'Unity' (l'ancienne interface d'Ubuntu utilisé avant la 17.10)"
-    echo "*******************************************************"
-    read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 1) : " choixSession
-    clear
+    if [ "$(which gnome-shell)" = "/usr/bin/gnome-shell" ]
+    then
+        echo "======================================================="
+        echo -e "${vert}Astuce 2: Pour toutes les questions, le choix [1] correspond toujours au choix par défaut, si vous faites ce choix, vous pouvez aller plus vite en validant directement avec la touche 'Entrée' de votre clavier.${neutre}"
+        # Question 2 : Session 
+        echo "*******************************************************"
+        echo -e "${bleu}2/ Quelle(s) session(s) supplémentaire(s) souhaitez-vous installer ? (plusieurs choix possibles)${neutre}"
+        echo "*******************************************************"
+        echo "[1] Aucune, rester avec la session Ubuntu par défaut (cad Gnome customizé + 2 extensions)"
+        echo "[2] Ajouter la session 'Gnome Vanilla' (cad une session Gnome non-customizé et sans extension)"
+        echo "[3] Ajouter la session 'Gnome Classique' (interface plus traditionnelle dans le style de Gnome 2 ou Mate)"
+        echo "[4] Ajouter la session 'Unity' (l'ancienne interface d'Ubuntu utilisé avant la 17.10)"
+        echo "*******************************************************"
+        read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 1) : " choixSession
+        clear
+    fi
 
     # Question 3 : Navigateur web 
     echo -e "${vert}Astuce 3: à partir de cette question, vous pouvez faire plusieurs choix, il suffit d'indiquer chaque chiffre séparé d'un espace, par exemple : 2 4 12 19${neutre}"
@@ -153,7 +165,7 @@ then
     echo -e "[17] Viber ${bleu}[Flatpak]${neutre} (logiciel de communication, surtout connue en application mobile)"
     echo -e "[18] Slack ${bleu}[Flatpak]${neutre} (plate-forme de communication collaborative propriétaire avec gestion de projets)"
     echo -e "[19] Signal ${bleu}[Flatpak]${neutre} (Messagerie instantannée crypté recommandé par Edward Snowden)"
-    echo -e "[20] TeamSpeak ${cyan}[à installer+lancer manuellement]${neutre} (équivalent à Mumble mais propriétaire)"
+    echo -e "[20] TeamSpeak ${cyan}${rouge}[Interv!]${neutre}[à lancer manuellement]${neutre} (équivalent à Mumble mais propriétaire)"
     echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 3 7 13 18) : " choixMessagerie
     clear
@@ -392,38 +404,41 @@ fi
 ## Mode avancé (seulement pour mode avancé et extra)
 if [ "$choixMode" = "2" ] || [ "$choixMode" = "3" ]
 then
-    # Question 14 : Extension 
-    echo -e "${vert}Astuce 5: Si vous aimez faire de la customization graphique, il est recommandé d'installer 'user themes' (choix2)${neutre}"
-    echo "*******************************************************"
-    echo -e "${jaune}14/ Des extensions pour gnome-shell à installer ? [mode avancé]${neutre}"
-    echo "*******************************************************"
-    echo "[1] Non, ne pas ajouter de nouvelles extensions"
-    echo "[2] User themes (Pour charger des thèmes pour Gnome Shell à partir de votre répertoire perso)"
-    echo "[3] AlternateTab (alternative au Alt+Tab issu du mode classique)"
-    echo "[4] Caffeine (permet en 1 clic de désactiver temporairement les mises en veilles)"
-    echo "[5] DashToDock (permet + d'option pour les réglages du dock, celui d'Ubuntu étant basé dessus)"
-    echo "[6] DashToPanel (un dock alternatif conçu pour remplacer le panel de Gnome, se place en bas ou en haut)"
-    echo "[7] Clipboard Indicator (permet de conserver du contenu copier/coller facilement accessible depuis le panel)"
-    echo "[8] Impatience (permet d'augmenter la vitesse d'affichage des animations de Gnome Shell)"
-    echo "[9] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
-    echo "[10] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
-    echo "[11] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
-    echo "[12] Openweather (Pour avoir la météo directement sur votre bureau)"
-    echo "[13] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
-    echo "[14] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
-    echo "[15] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
-    echo "[16] Suspend button (Ajout d'un bouton pour activer l'hibernation)"
-    echo "[17] Taskbar (Permet d'ajouter des raccourcis d'applis directement sur le panel en haut)"
-    echo "[18] Trash (Ajoute un raccourci vers la corbeille dans le panel en haut)"
-    echo "[19] Window list (Affiche la liste des fênêtres en bas du bureau, comme à l'époque sous Gnome 2)"
-    echo "[20] Workspace indicator (Affiche dans le panel en haut dans quel espace de travail vous êtes)"
-    echo "[21] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
-    echo "[22] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
-    echo "[23] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
-    echo "[24] AppFolders Management (Permet de classer les applis dans des dossiers)"
-    echo "*******************************************************"
-    read -p "Répondre par le ou les chiffres correspondants (exemple : 2) : " choixExtension
-    clear
+    if [ "$(which gnome-shell)" = "/usr/bin/gnome-shell" ]
+    then
+        # Question 14 : Extension 
+        echo -e "${vert}Astuce 5: Si vous aimez faire de la customization graphique, il est recommandé d'installer 'user themes' (choix2)${neutre}"
+        echo "*******************************************************"
+        echo -e "${jaune}14/ Des extensions pour gnome-shell à installer ? [mode avancé]${neutre}"
+        echo "*******************************************************"
+        echo "[1] Non, ne pas ajouter de nouvelles extensions"
+        echo "[2] User themes (Pour charger des thèmes pour Gnome Shell à partir de votre répertoire perso)"
+        echo "[3] AlternateTab (alternative au Alt+Tab issu du mode classique)"
+        echo "[4] Caffeine (permet en 1 clic de désactiver temporairement les mises en veilles)"
+        echo "[5] DashToDock (permet + d'option pour les réglages du dock, celui d'Ubuntu étant basé dessus)"
+        echo "[6] DashToPanel (un dock alternatif conçu pour remplacer le panel de Gnome, se place en bas ou en haut)"
+        echo "[7] Clipboard Indicator (permet de conserver du contenu copier/coller facilement accessible depuis le panel)"
+        echo "[8] Impatience (permet d'augmenter la vitesse d'affichage des animations de Gnome Shell)"
+        echo "[9] Log Out Button (ajouter un bouton de déconnexion pour gagner 1 clic en moins pour cette action)"
+        echo "[10] Media Player Indicator (ajouter un indicateur pour le contrôle du lecteur multimédia)"
+        echo "[11] Multi monitors add on (ajoute au panel un icone pour gérer rapidement les écrans)"
+        echo "[12] Openweather (Pour avoir la météo directement sur votre bureau)"
+        echo "[13] Places status indicator (Permet d'ajouter un raccourci vers les dossiers utiles dans le panel)"
+        echo "[14] Removable drive menu (Raccourci pour démonter rapidement les clés usb/support externe)"
+        echo "[15] Shortcuts (Permet d'afficher un popup avec la liste des raccourcis possibles)"
+        echo "[16] Suspend button (Ajout d'un bouton pour activer l'hibernation)"
+        echo "[17] Taskbar (Permet d'ajouter des raccourcis d'applis directement sur le panel en haut)"
+        echo "[18] Trash (Ajoute un raccourci vers la corbeille dans le panel en haut)"
+        echo "[19] Window list (Affiche la liste des fênêtres en bas du bureau, comme à l'époque sous Gnome 2)"
+        echo "[20] Workspace indicator (Affiche dans le panel en haut dans quel espace de travail vous êtes)"
+        echo "[21] System-monitor (Moniteur de ressource visible directement depuis le bureau)"
+        echo "[22] Top Icons Plus (Permet d'afficher un icone de notification pour les applis en haut à droite)"
+        echo "[23] Unite (Retire la décoration des fenêtres pour gagner de l'espace, pour un style proche du shell Unity)"
+        echo "[24] AppFolders Management (Permet de classer les applis dans des dossiers)"
+        echo "*******************************************************"
+        read -p "Répondre par le ou les chiffres correspondants (exemple : 2) : " choixExtension
+        clear
+    fi
 
     # Question 15 : Customization
     echo -e "${vert}Astuce 6: Si vous voulez transformer l'apparence du bureau, il faudra modifier vous-même l'agencement du bureau en + de d'appliquer les thèmes/icones${neutre}"
@@ -441,7 +456,7 @@ then
     echo "[9] Mac OS X High Sierra - vLight+Dark (thème+icone+wallpaper)"
     echo "[10] Windows 10 Thème (thème + icone)"
     echo "[11] Unity8 Thème"
-    echo "[12] Icon Papirus (différentes variantes : Adapta, Nokto, Dark, Light...)"    
+    echo "[12] Icones Papirus utilisés notamment dans Solus (différentes variantes : Adapta, Nokto, Dark, Light...)"    
     echo -e "[13] Remettre GDM avec le thème gris (par défaut violet) ${rouge}=> Attention : ajoute la session Vanilla en dépendance !${neutre}"
     echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 5) : " choixCustom
@@ -499,14 +514,14 @@ then
     echo "[4] Activer TLP avec Powertop (économie d'energie pour pc portable)"
     echo "[5] Installer le microcode propriétaire Intel (pour cpu intel uniquement !)"
     echo "[6] Ajouter une commande 'fraude' pour Wayland (pour pouvoir lancer des applis comme Gparted. Exemple : fraude gparted)"
-    echo "[7] Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
+    echo "[7] Gnome Shell : Désactiver l'userlist de GDM (utile en entreprise intégré à un domaine)"
     echo "[8] Ajouter le support pour le système de fichier exFat de Microsoft"
     echo "[9] Ajouter le support pour le système de fichier HFS d'Apple"
     echo "[10] Ajout d'une nouvelle commande 'maj' qui met tout à jour d'un coup (maj apt + purge + maj snap + maj flatpak)"
     echo "[11] Optimisation Grub : réduire le temps d'attente (si multiboot) de 10 à 2 secondes + retirer le test de RAM dans grub"
     echo -e "[12] Lecture DVD commerciaux protégés par CSS (Content Scrambling System) ${rouge}[Interv!]${neutre}"
     echo "[13] Support imprimantes HP (hplip + sane + hplip-gui)"
-    echo "[14] Pour DashToDock : Activer la minimisation de fenêtre si on clique sur l'icone dans le dock"
+    echo -e "[14] Gnome Shell/DtD : Activer la minimisation de fenêtre ${cyan}(DashToDock doit être installé !)${neutre}"
     echo "[15] Augmenter la sécurité de votre compte : empécher l'accès à votre dossier perso aux autres utilisateurs"
     #echo "[99][Ne fonctionne pas] Installer + Configurer Bumblebee (pilote Nvidia proprio) pour technologie Optimus nvidia/intel"
     echo "*******************************************************"
@@ -607,7 +622,8 @@ fi
                   
 ### Section installation automatisé
 
-## Les choses utiles recommandés pour tous :
+###################################################
+# Communs à tous quelque soit la variante
 
 # Pour automatiser l'instalaliton de certains logiciels qui pose des questions :
 export DEBIAN_FRONTEND="noninteractive"
@@ -618,20 +634,17 @@ sed -i "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
 #Maj du système + nettoyage
 apt update ; apt full-upgrade -y ; apt autoremove --purge -y ; apt clean
 
-# Utile pour Gnome
-apt install dconf-editor gnome-tweak-tool folder-color gedit-plugins nautilus-image-converter gnome-themes-standard gnome-weather gnome-packagekit -y
-
-# Autres outils utiles
-apt install inxi curl net-tools git gdebi vim htop gparted openjdk-8-jre flatpak hardinfo ppa-purge numlockx unace unrar debconf-utils -y
+#Paquet Snappy & Flatpak (snapd est déjà installé sur Ubuntu mais pas forcément sur les dérivés)
+apt install snapd flatpak -y
 
 #Police d'écriture Microsoft
 echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | /usr/bin/debconf-set-selections | apt install ttf-mscorefonts-installer -y
-           
-# Suppression de l'icone Amazon
-apt remove ubuntu-web-launchers -y
+
+# Autres outils utiles
+apt install inxi curl net-tools git gdebi vim htop gparted openjdk-8-jre hardinfo ppa-purge numlockx unace unrar debconf-utils -y
 
 # Codecs utiles
-apt install ubuntu-restricted-extras x264 x265 -y
+apt install  x264 x265 -y
 
 #optimisation
 apt install ffmpegthumbnailer -y #permet de charger les minatures vidéos plus rapidement dans nautilus
@@ -639,10 +652,45 @@ apt install ffmpegthumbnailer -y #permet de charger les minatures vidéos plus r
 # Désactivation de l'affichage des messages d'erreurs à l'écran
 sed -i 's/^enabled=1$/enabled=0/' /etc/default/apport
 
-# Création répertoire extension pour l'ajout d'extension supplémentaire pour l'utilisateur principal
-su $SUDO_USER -c "mkdir ~/.local/share/gnome-shell/extensions ; mkdir ~/.themes ; mkdir ~/.icons"
-
-# Pour mode novice :
+###################################################
+# Pour version de base sous Gnome Shell
+if [ "$(which gnome-shell)" = "/usr/bin/gnome-shell" ]
+then
+    # logiciels utiles pour Gnome
+    apt install dconf-editor gnome-tweak-tool folder-color gedit-plugins nautilus-image-converter gnome-themes-standard gnome-weather gnome-packagekit -y
+    # Suppression de l'icone Amazon (présent uniquement sur la version de base)
+    apt remove ubuntu-web-launchers -y
+    # Autres logiciels utiles
+    apt install ubuntu-restricted-addons ubuntu-restricted-extras -y
+    # Création répertoire extension pour l'ajout d'extension supplémentaire pour l'utilisateur principal
+    su $SUDO_USER -c "mkdir ~/.local/share/gnome-shell/extensions ; mkdir ~/.themes ; mkdir ~/.icons"
+fi
+###################################################
+# Spécifique Xubuntu/Xfce 18.04
+if [ "$distrib" = "1" ]
+then
+    apt install xfce4 gtk3-engines-xfce xfce4-goodies xfwm4-themes xubuntu-restricted-addons xubuntu-restricted-extras -y 
+fi
+###################################################
+# Spécifique Ubuntu Mate/Mate 18.04
+if [ "$distrib" = "2" ]
+then
+    apt install mate-desktop-environment-extras mate-tweak mate-applet-brisk-menu -y 
+fi
+###################################################
+# Spécifique Lubuntu/Lxde/Lxqt 18.04
+if [ "$distrib" = "3" ]
+then
+    apt insstall lubuntu-restricted-addons lubuntu-restricted-extras -y
+fi
+###################################################
+# Spécifique Kubuntu/Kde 18.04
+if [ "$distrib" = "4" ]
+then
+    apt insstall kubuntu-restricted-addons kubuntu-restricted-extras -y
+fi
+###################################################
+# Logiciels automatiques pour mode novice :
 if [ "$choixMode" = "0" ]
 then
     #internet
@@ -714,9 +762,8 @@ do
             apt update ; apt install opera-stable -y
             ;;
         "10") #Palemoon
-            echo "deb http://kovacsoltvideo.hu/moonchildproductions/ ./" >> /etc/apt/sources.list.d/palemoon.list
-            wget -q http://kovacsoltvideo.hu/moonchildproductions/public.gpg -O- | apt-key add -
-            apt update ; apt install palemoon -y
+            wget http://nux87.free.fr/script-postinstall-ubuntu/deb/palemoon27.6.2-amd64.deb
+            dpkg -i palemoon27.6.2-amd64.deb ; apt install -fy ; rm palemoon27.6.2-amd64.deb
             ;; 
         "11") #Waterfox
             echo "deb https://dl.bintray.com/hawkeye116477/waterfox-deb release main" >> /etc/apt/sources.list.d/waterfox.list
@@ -830,7 +877,9 @@ do
             apt install tox -y
             ;;  
         "21") #Récupération du script d'installation de teamspeak (à lancer manuellement par l'utilisateur)
-            su $SUDO_USER -c "wget http://dl.4players.de/ts/releases/3.1.6/TeamSpeak3-Client-linux_amd64-3.1.6.run && chmod +x TeamSpeak*"         
+            wget http://dl.4players.de/ts/releases/3.1.6/TeamSpeak3-Client-linux_amd64-3.1.6.run && chmod +x TeamSpeak*
+            mv TeamSpeak* /home/$SUDO_USER/
+            ./home/$SUDO_USER/TeamSpeak* 
             ;; 
     esac
 done
@@ -1220,10 +1269,8 @@ do
             apt install skychart-data-stars skychart-data-dso skychart-data-pictures -y
             ;;
         "10") #Celestia
-            wget https://raw.githubusercontent.com/BionicBeaver/Divers/master/CelestiaBionic.sh
-            chmod +x CelestiaBionic.sh
-            ./CelestiaBionic.sh
-            rm CelestiaBionic.sh
+            wget https://raw.githubusercontent.com/BionicBeaver/Divers/master/CelestiaBionic.sh && chmod +x CelestiaBionic.sh
+            ./CelestiaBionic.sh ; rm CelestiaBionic.sh
             ;;
         "11") #Avogadro
             apt install avogadro -y
@@ -1526,20 +1573,21 @@ do
             tar Jxvf Gnome-OSX-V-Traditional-1-3-1.tar.xz ; mv -f Gnome-OSX-V-Traditional-1-3-1 /usr/share/themes/ ; Gnome-OSX-V-Traditional-1-3-1.tar.xz       
             #Pack d'icone la capitaine + macOS
             git clone https://github.com/keeferrourke/la-capitaine-icon-theme.git ; mv -f *capitaine* /usr/share/icons/
-            wget https://dl.opendesktop.org/api/files/download/id/1510321229/macOS.tar.xz ; tar Jxvf macOS.tar.xz ; mv macOS /usr/share/icons/ ; rm macOS.tar.xz
+            wget http://nux87.free.fr/script-postinstall-ubuntu/theme/macOS.tar.xz ; tar Jxvf macOS.tar.xz ; mv macOS /usr/share/icons/ ; rm -r macOS*
             #Wallpaper officiel Mac OS X Sierra
             wget http://wallpaperswide.com/download/macos_sierra_2-wallpaper-3554x1999.jpg -P /usr/share/backgrounds/
             ;;
         "10") #Windows 10
             git clone https://github.com/B00merang-Project/Windows-10.git ; mv -f Windo* /usr/share/themes/
-            wget https://dl.opendesktop.org/api/files/download/id/1485767591/windows10-icons_1.2_all.deb && dpkg -i windows10-icons_1.2_all.deb
+            wget http://nux87.free.fr/script-postinstall-ubuntu/theme/windows10-icons_1.2_all.deb && dpkg -i windows10-icons_1.2_all.deb
             wget https://framapic.org/Nd6hGtEOEJhM/LtmYwl16WjyC.jpg && mv LtmYwl16WjyC.jpg /usr/share/backgrounds/windows10.jpg
             ;;
         "11") #Unity 8
             git clone https://github.com/B00merang-Project/Unity8.git ; mv -f Unit* /usr/share/themes/
             ;;
-        "12") #Icone Papyrus
-            wget http://nux87.free.fr/script-postinstall-ubuntu/theme/papirus-icon-theme-20171124.tar.xz ; tar Jxvf papirus-icon-theme-20171124.tar.xz ; mv ./papirus-icon-theme-20171124/* /usr/share/icons/ ; rm -r papirus-icon-theme-20171124
+        "12") #Icone Papirus
+            wget http://nux87.free.fr/script-postinstall-ubuntu/theme/papirus-icon-theme-20171124.tar.xz ; tar Jxvf papirus-icon-theme-20171124.tar.xz
+            mv *Papirus* /usr/share/icons/
             ;;  
         "13") #thème gris GDM (changement effectif seulement si la session vanilla est installé)
             apt install gnome-session -y # session vanilla nécessaire pour le changement du thème (sinon ne s'applique pas)
@@ -1711,7 +1759,7 @@ do
             apt install hplip hplip-doc hplip-gui sane sane-utils -y
             ;;   
         "14") #Minimisation fenêtre sur l'icone du dock (pour dashtodock uniquement)
-            gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+            su $SUDO_USER -c "gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'"
             ;;
         "15") #Interdire l'accès des autres utilisateurs au dossier perso de l'utilisateur principal
             chmod -R o-rwx /home/$SUDO_USER
