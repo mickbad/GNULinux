@@ -50,11 +50,11 @@ then
             echo "*******************************************************"
             echo -e "${bleu}0/Vous utilisez actuellement une variante, merci de préciser laquelle :${neutre}"
             echo "*******************************************************"
-            echo -e "${orange}[1] Xubuntu 18.04 (Xfce)${neutre}"
-            echo -e "${violet}[2] Ubuntu Mate 18.04 (Mate)${neutre}"
-            echo -e "${cyan}[3] Lubuntu ou Lubuntu Next 18.04 (Lxde ou LxQt)${neutre}"
-            echo -e "${cyan}[4] Kubuntu 18.04 (Kde/Plasma)${neutre}"            
-            echo -e "${vert}[5] Autres variantes basés sur la 18.04 (ex: Kubuntu 18.04, Ubuntu Budgie 18.04...)${neutre}" 
+            echo -e "${orange}[1] Xubuntu 18.04 x64 (Xfce)${neutre}"
+            echo -e "${violet}[2] Ubuntu Mate 18.04 x64 (Mate)${neutre}"
+            echo -e "${cyan}[3] Lubuntu ou Lubuntu Next 18.04 x64 (Lxde ou LxQt)${neutre}"
+            echo -e "${cyan}[4] Kubuntu 18.04 x64 (Kde/Plasma)${neutre}"            
+            echo -e "${vert}[5] Autres variantes basés sur la 18.04 x64 (ex: Kubuntu 18.04, Ubuntu Budgie 18.04...)${neutre}" 
             read -p "Répondre par le chiffre correspondant (exemple : 1) : " distrib
 fi
 clear
