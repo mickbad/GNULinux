@@ -61,7 +61,7 @@ then
                 echo -e "${cyan}[à lancer manuellement]${neutre} => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci"
                 echo -e "Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)"
                 echo -e "#########################################################\n"
-                echo -" "${cyan}Info : il est recommandé de mettre votre terminal en plein écran pour un affichage plus agréable${neutre}\n"
+                echo -e " "${cyan}Info : il est recommandé de mettre votre terminal en plein écran pour un affichage plus agréable${neutre}\n"
 fi
 ### Section interactive avec les questions
 
