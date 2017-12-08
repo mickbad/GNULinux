@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.0.53 (alpha)
+# version 0.0.54 (alpha)
 
 # Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
 # Warning : This script is under development, it is not usable for the moment !
@@ -1974,8 +1974,13 @@ chown -R $SUDO_USER:$SUDO_USER ./appimages
 chmod -R +x ./appimages
 
 # Finalisation & nettoyage
-chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions
-rm *-extension.zip 
+if [ "$(which gnome-shell)" = "/usr/bin/gnome-shell" ]
+then
+    chown -R $SUDO_USER /home/$SUDO_USER/.local/share/gnome-shell/extensions
+    rm *-extension.zip 
+fi
+
+# Maj
 apt update ; apt install -fy ; apt autoremove --purge -y ; apt clean ; apt full-upgrade -y
 flatpak update -y ; snap refresh ; clear
 
