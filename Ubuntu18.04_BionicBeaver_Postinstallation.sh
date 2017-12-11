@@ -1,8 +1,5 @@
 #!/bin/bash
-# version 0.0.54 (alpha)
-
-# Important : Ce script est en cours de développement, il n'est pas utilisable/testable pour l'instant !
-# Warning : This script is under development, it is not usable for the moment !
+# version 0.1 (béta)
 
 #  Copyleft 2017 GammaDraconis 
 #  
