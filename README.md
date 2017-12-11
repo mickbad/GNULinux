@@ -54,7 +54,9 @@ Pour avoir des infos sur un paquet snappy, par exemple VLC :
   
 [Interv!] => Signifie que l'installation du logiciel ne peux pas être entièrement automatisé, autrement dit en sélectionant un logiciel avec cet avertissement, le script va s'arréter en plein milieu pour vous demander d'intervenir et ne reprendra qu'une fois avoir compléter l'installation. En générale c'est qu'il y a besoin d'accepter un contrat de licence.
 
-[Xorg only!] => Cet avertissement ne concerne que ceux qui utilisent la version de base (donc avec Gnome Shell), si vous utilisez une variante vous n'avez pas à vous poser de question car vous êtes forcément sous Xorg (donc logiciel compatible). Sous le nouveau Ubuntu avec Gnome Shell, il y a 2 sessions, la session Wayland (choix par défaut) et la session Xorg comme alternative. Certains logiciels ne sont pas compatible avec Wayland mais fonctionneront sous Xorg. C'est le cas par exemple de "Synaptic" ou "Gparted"
+[Xorg only!] => Cet avertissement ne concerne que ceux qui utilisent la version de base (donc avec Gnome Shell), si vous utilisez une variante vous n'avez pas à vous poser de question car vous êtes forcément sous Xorg (donc logiciel compatible). Sous le nouveau Ubuntu avec Gnome Shell, il y a 2 sessions, la session Wayland (choix par défaut) et la session Xorg comme alternative. Certains logiciels ne sont pas compatible avec Wayland mais fonctionneront sous Xorg. C'est le cas par exemple de "Synaptic" ou "Gparted". 
+Cela vient du fait que Wayland est plus sécurisé et interdit de lancer une application graphique avec les droits root. 
+A noté qu'il y a une méthode de contournement sous Wayland (cf mode avancé/extra partie optimisation, choix 6 "mode fraude wayland")
 
 [à lancer manuellement] => Signifie que le logiciel devra être lancé manuellement depuis le dossier présent dans votre dossier perso (pas de raccourci dans le menu des applications).
 
