@@ -15,4 +15,8 @@
 - Il suffit ensuite de mettre les droits d'éxécution : 
 ```bash 
   chmod +x Ubuntu18.04_BionicBeaver_Postinstallation.sh
+```
+- Enfin pour le lancer : 
 ```bash 
+  sudo ./Ubuntu18.04_BionicBeaver_Postinstallation.sh
+```  
