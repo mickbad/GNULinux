@@ -4,6 +4,8 @@
 
 Si vous voulez un aperçu de ce que donne le script avant de le lancer vous même, voici une démo en capture vidéo via asciinema : https://asciinema.org/a/gQ5bofDez8vc1jIVt3P8Es9wX (dans cet exemple, j'ai choisi le mode "avancé").
 
+Astuce : si vous voulez faire le choix par défaut (qui correspond à 1), vous pouvez gagner du temps en faisant directement "entrée" sur votre clavier sans taper le numéro, ça reviendra au même.
+
 ### 2/ Précision
 
 - Le script de post-installation est conçu uniquement pour la nouvelle LTS (18.04 Bionic Beaver) qui sortira en stable en Avril 2018 (mais déjà testable en récupérant l'iso ici : http://cdimage.ubuntu.com/ubuntu/daily-live/current/)
