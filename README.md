@@ -1,12 +1,16 @@
 # Script de post-installation pour Ubuntu 18.04
 
-### 1/ Précision
+### 1/ Aperçu
+
+Si vous voulez un aperçu de ce que donne le script avant de le lancer vous même, voici une démo en capture vidéo via asciinema : https://asciinema.org/a/gQ5bofDez8vc1jIVt3P8Es9wX (dans cet exemple, j'ai choisi le mode "avancé").
+
+### 2/ Précision
 
 - Le script de post-installation est conçu uniquement pour la nouvelle LTS (18.04 Bionic Beaver) qui sortira en stable en Avril 2018 (mais déjà testable en récupérant l'iso ici : http://cdimage.ubuntu.com/ubuntu/daily-live/current/)
 
 - Le script peu être utilisé avec des variantes, par exemple Xubuntu 18.04, Ubuntu Mate 18.04... à condition toutefois d'être en 64 bits (pas de support 32 bits même si la plupart des logiciels fonctionnent aussi en 32 bits).
 
-### 2/ Pour lancer le script
+### 3/ Pour lancer le script
 
 - C'est très simple, il suffit de télécharger le script shell (appuyer sur raw avant sur github) ou directement en faisant :
 ```bash 
@@ -21,7 +25,7 @@
   sudo ./Ubuntu18.04_BionicBeaver_Postinstallation.sh
 ```  
 
-### 3/ Utilisation
+### 4/ Utilisation
 
 - Le script possède différents modes adaptés suivant l'utilisateur :
   #### Novice
@@ -36,7 +40,7 @@
   #### Extra
   Le mode extra ajoute 3 questions supplémentaires à la fin pour ceux qui aiment bien utiliser les Snaps, les paquets Flatpak ou des Appimages (large choix supplémentaire).
   
-### 4/ Légende dans le script
+### 5/ Légende dans le script
 
 - Bien que ça soit indiqué rapidement dans le script, un petit rappel plus complet ici concernant les éléments en couleur :
 
@@ -61,7 +65,7 @@ A noté qu'il y a une méthode de contournement sous Wayland (cf mode avancé/ex
 
 [à lancer manuellement] => Signifie que le logiciel devra être lancé manuellement depuis le dossier présent dans votre dossier perso (pas de raccourci dans le menu des applications).
 
-### 5/ Contribution
+### 6/ Contribution
 
 N'hésitez pas à contribuer, par exemple pour :
 - corriger des fautes
@@ -70,6 +74,6 @@ N'hésitez pas à contribuer, par exemple pour :
 Pour cela il suffit de vous connecter avec votre compte github puis d'éditer le fichier du script (crayon en haut à droite), faire votre ajout/modif puis cliquer sur "Propose file change" et enfin "Pull Request". 
 Une fois validé, votre modif sera visible.
 
-### 6/ Plus tard...
+### 7/ Plus tard...
 
 Pour les utilisateurs de Arch, sachez qu'il y aura une version ArchLinux du script.
