@@ -782,7 +782,7 @@ do
         "15") #Falkon/Qupzilla
             apt install qupzilla -y
             ;;
-        "16") Min
+        "16") #Min
             wget https://github.com/minbrowser/min/releases/download/v1.6.3/Min_1.6.3_amd64.deb
             dpkg -i Min_1.6.3_amd64.deb
             apt install -fy
