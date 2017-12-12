@@ -678,7 +678,7 @@ fi
 # Spécifique Lubuntu/Lxde/Lxqt 18.04
 if [ "$distrib" = "3" ]
 then
-    apt insstall lubuntu-restricted-addons lubuntu-restricted-extras -y
+    apt install lubuntu-restricted-addons lubuntu-restricted-extras -y
 fi
 ###################################################
 # Spécifique Kubuntu/Kde 18.04
