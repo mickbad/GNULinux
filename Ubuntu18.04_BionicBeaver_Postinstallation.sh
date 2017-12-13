@@ -133,7 +133,7 @@ then
     echo "[17] NetSurf (basique mais très léger et performant)"
     echo "[18] Dillo (navigateur capable de tourner sur des ordinosaures)"
     echo "[19] Lynx (navigateur 100% en ligne de commande, pratique depuis une console SSH)"
-    echo -e "[20] Rekonq (navigateur pour Kde, ${rouge}déconseillé sous Gnome${neutre} car beaucoup de dépendances kde !)"
+    echo -e "[20] Rekonq (navigateur web conçu surtout pour KDE)"
     echo -e "[21] Eolie ${bleu}[Flatpak]${neutre} (une autre alternative pour Gnome)"
     echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 10 16) : " choixNavigateur
@@ -200,7 +200,7 @@ then
     echo "[2] VLC VideoLan (le couteau suisse de la vidéo, très complet !)"
     echo "[3] MPV/Gnome MPV (léger et puissant, capable de lire de nombreux formats)" #(semble instable dans une VM)
     echo "[4] SmPlayer (lecteur basé sur mplayer avec une interface utilisant Qt)"
-    echo -e "[5] DragonPlayer [${rouge}Déconseillé${neutre} : beaucoup de dépendances KDE !] (lecteur vidéo pour KDE)" 
+    echo -e "[5] DragonPlayer (lecteur vidéo pour l'environnement Kde)" 
     echo "[6] Banshee (lecteur audio assez complet équivalent à Rhythmbox)"
     echo "[7] Clementine (lecteur audio avec gestion des pochettes, genres musicaux...)"
     echo "[8] QuodLibet (un lecteur audio très puissant avec liste de lecture basée sur les expressions rationnelles)"
@@ -366,7 +366,7 @@ then
     echo "[20] Gnome Enfs Manager (coffre-fort pour vos fichiers/dossiers)"
     echo -e "[21] Bleachbit ${rougesouligne}[potentiellement dangereux !]${neutre} (efface les fichiers inutiles/temporaires du système)"
     echo -e "[22] VMWare Workstation Player ${rouge}[Interv!]${neutre}${violet}[Install depuis Xorg!]${neutre} (version gratuite mais propriétaire de VmWare)"
-    echo -e "[23] CoreBird ${bleu}[Flatpak]${neutre} (un client de bureau pour le réseau social Twitter)"
+    echo -e "[23] CoreBird (un client de bureau pour le réseau social Twitter)"
     echo "[24] Wireshark (analyseur de paquets utilisé dans le dépannage et l'analyse de réseaux )"
     echo "[25] Pack d'outils utiles : vrms + screenfetch + asciinema + ncdu + screen + kclean + rclone"
     echo -e "[26] Synaptic ${violet}[Xorg only!]${neutre} (gestionnaire graphique pour les paquets deb)"
@@ -1385,7 +1385,7 @@ do
             ./VMware-Player-12.5.7-5813279.x86_64.bundle
             ;;              
         "23") #Corebird
-            flatpak install --from https://flathub.org/repo/appstream/org.baedert.corebird.flatpakref -y
+            apt install corebird -y
             ;; 
         "24") #Wireshark
             debconf-set-selections <<< "wireshark-common/install-setuid true"
