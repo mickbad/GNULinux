@@ -44,7 +44,7 @@ except:
 
 # constants
 CONFIG_PATH = "./conf"
-REMOTE_CONFIG_PATH = "http://gitlab.ricochets.it/mickbad/GnuPostInstall/raw/master/conf"
+REMOTE_CONFIG_PATH = "https://raw.githubusercontent.com/mickbad/GNULinux/master/python/GnuPostInstall/conf"
 
 
 # ----------------------------------------------------------------------
@@ -305,7 +305,7 @@ def get_config_name_path():
 	if not os.path.isfile(filename):
 		# not found, try to get online version
 		url = "{}/{}-{}.yml".format(REMOTE_CONFIG_PATH, distribution_info[0].lower(), distribution_info[1].lower())
-		
+
 		try:
 			content = urllib.request.urlopen(url).read()#.decode("utf8")
 
