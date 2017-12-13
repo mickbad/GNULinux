@@ -1,0 +1,488 @@
+#!/usr/bin/env python3
+# encoding: utf-8
+
+# -----------------------------------------------------------------------
+# GnuPostInstall
+#
+# Author: Mickbad (contact@fs-dev.com)
+# version: 1.0
+# -----------------------------------------------------------------------
+#  Copyleft 2017 Mickbad 
+#  
+#  This program is free software; you can redistribute it and/or modify
+#  it under the terms of the GNU General Public License as published by
+#  the Free Software Foundation; either version 2 of the License, or
+#  (at your option) any later version.
+#  
+#  This program is distributed in the hope that it will be useful,
+#  but WITHOUT ANY WARRANTY; without even the implied warranty of
+#  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#  GNU General Public License for more details.
+#  
+#  You should have received a copy of the GNU General Public License
+#  along with this program; if not, write to the Free Software
+#  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#  MA 02110-1301, USA.
+# -----------------------------------------------------------------------
+
+
+# -----------------------------------------------------------------------
+# librairies
+import sys, os, platform, pwd, tempfile
+import yaml
+import subprocess
+import urllib.request
+import signal
+from pprint import pprint
+
+try:
+	import tty
+	import termios
+except:
+	print("** You must be in linux mode")
+	sys.exit(1)
+
+# constants
+CONFIG_PATH = "./conf"
+REMOTE_CONFIG_PATH = "http://gitlab.ricochets.it/mickbad/GnuPostInstall/raw/master/conf"
+
+
+# ----------------------------------------------------------------------
+class bcolors:
+	black = '\033[1;30m'
+	gray = '\033[1;37m'
+	red = '\033[1;31m'
+	redunderline = '\033[4;31m'
+	green = '\033[1;32m'
+	yellow = '\033[1;33m'
+	blue = '\033[1;34m'
+	purple = '\033[1;35m'
+	cyan = '\033[1;36m'
+	normal = '\033[0;m'
+
+	header = '\033[95m'
+	okblue = '\033[94m'
+	okgreen = '\033[92m'
+	warning = '\033[93m'
+	fail = '\033[91m'
+	bold = '\033[1m'
+	underline = '\033[4m'
+
+	# ----------------------------------------------------------------------
+	def colorize(strText):
+		""" 
+			colorize string with tags
+			"[yellow]Hello[/yellow] world!" make Hello in yellow color
+		"""
+		# quick and dirty changes
+		strText = strText.replace("[black]", bcolors.black)
+		strText = strText.replace("[/black]", bcolors.normal)
+
+		strText = strText.replace("[gray]", bcolors.gray)
+		strText = strText.replace("[/gray]", bcolors.normal)
+
+		strText = strText.replace("[red]", bcolors.red)
+		strText = strText.replace("[/red]", bcolors.normal)
+
+		strText = strText.replace("[redunderline]", bcolors.redunderline)
+		strText = strText.replace("[/redunderline]", bcolors.normal)
+
+		strText = strText.replace("[green]", bcolors.green)
+		strText = strText.replace("[/green]", bcolors.normal)
+
+		strText = strText.replace("[yellow]", bcolors.yellow)
+		strText = strText.replace("[/yellow]", bcolors.normal)
+
+		strText = strText.replace("[blue]", bcolors.blue)
+		strText = strText.replace("[/blue]", bcolors.normal)
+
+		strText = strText.replace("[purple]", bcolors.purple)
+		strText = strText.replace("[/purple]", bcolors.normal)
+
+		strText = strText.replace("[cyan]", bcolors.cyan)
+		strText = strText.replace("[/cyan]", bcolors.normal)
+
+		strText = strText.replace("[header]", bcolors.header)
+		strText = strText.replace("[/header]", bcolors.normal)
+
+		strText = strText.replace("[bold]", bcolors.bold)
+		strText = strText.replace("[/bold]", bcolors.normal)
+
+		strText = strText.replace("[underline]", bcolors.underline)
+		strText = strText.replace("[/underline]", bcolors.normal)
+
+		strText = strText.replace("[normal]", bcolors.normal)
+		strText = strText.replace("[/normal]", bcolors.normal)
+
+		return strText
+
+
+# ----------------------------------------------------------------------
+class FastSettings(object):
+	""" Object to get setting from yaml or json file """
+
+	# ----------------------------------------------------------------------
+	""" object de gestion des configuraitons """
+	def __init__(self, config_filename):
+		super(FastSettings, self).__init__()
+		self.config_filename = config_filename
+
+		# vérification d'usage
+		if not os.path.isfile(self.config_filename):
+			# le fichier n'existe pas !
+			raise Exception( "{}: not exists!".format(self.config_filename) )
+
+		# - lecture des données de configuration
+		error_str = ""
+		error_reading_json, error_reading_yaml = False, False
+		try:
+			self.settings = json.loads(open(self.config_filename).read())
+		except Exception as e:
+			error_str = e
+			error_reading_json = True
+
+		if error_reading_json:
+			try:
+				self.settings = yaml.load(open(self.config_filename).read().replace("\t", "  "))
+			except Exception as e:
+				error_str = e
+				error_reading_yaml = True
+
+		if error_reading_json and error_reading_yaml:
+			raise Exception( "{}: json/yaml settings incorrect: {}".format(self.config_filename, error_str) )
+
+	# ----------------------------------------------------------------------
+	# Récupération d'une configuration
+	def get(self, name, default = ""):
+		""" Récupération d'une configuration """
+		# check de la précense de la clef
+		if name not in self.settings.keys():
+			# le hash du magazine n'est pas présent !
+			return default
+
+		# récupération de la valeur
+		value = self.settings[name]
+
+		# trim si value est un str
+		if isinstance(value, str):
+			value = value.strip()
+
+		# retour de la valeur
+		return value
+
+# ----------------------------------------------------------------------
+class FastInstallation(object):
+	""" Object to create a set of program for installation """
+
+	# ----------------------------------------------------------------------
+	def __init__(self, question, installation_mode = 2, env = None):
+		super(FastInstallation, self).__init__()
+		self.question = question
+		self.installation_mode = installation_mode
+		self.environment_running = env
+
+		# extract informations
+		self.enabled = True if "enabled" in question.keys() and str(question["enabled"]).lower() in ["yes", "1", "oui", "true", "o", "y", "t"] else False
+		self.max_level = question["level"] if "level" in question.keys() else 2
+		self.theme = question["theme"]
+		self.description = question["description"]
+		self.programs = question["programs"]
+
+		# list of installations sequences
+		self._programs_sequences = []
+
+		# re init Enable if level if ok or not
+		self.enabled = self.max_level <= self.installation_mode
+
+
+	# ----------------------------------------------------------------------
+	def show_question(self):
+		""" show theme and display all answers """
+		# present
+		print(bcolors.colorize("[header]{}[/header]".format(self.theme)))
+		print()
+		print("*******************************************************")
+		print(bcolors.colorize(self.description))
+		print("*******************************************************")
+
+		# show all possible answers
+		iChoice = 0
+		program_user_choice = []	# list of all program ready to install
+		for answer in self.programs:
+			# get elements
+			program_name = next(iter(answer.keys()))
+			program_sequences = next(iter(answer.values()))
+			program_user_choice.append( {"name": program_name, "seq": program_sequences} )
+
+			# display answer
+			print( "[{}] {}".format(iChoice + 1, bcolors.colorize(program_name)) )
+			iChoice += 1
+
+		# ask the user his choice
+		print()
+		choices = input("Répondre par le ou les chiffres correspondants séparés d'un espace (exemple : 6 10 16) ")
+
+		# interpretation
+		for i in choices.split(" "):
+			try:
+				self._programs_sequences.append( program_user_choice[int(i)-1] )
+			except: 
+				pass
+
+		# check choices
+		print("\nResume")
+		if len(self._programs_sequences) == 0:
+			print( "-> nothing" )
+		for p in self._programs_sequences:
+			print( "-> {}".format(p["name"]) )
+		print()
+
+		# return count installation
+		return len(self._programs_sequences)
+
+
+	# ----------------------------------------------------------------------
+	def execute_installation(self):
+		""" installation of programs choose """
+		for p in self._programs_sequences:
+			print( "-> {}".format(p["name"]) )
+
+			# list of commands
+			for cmd in p["seq"]:
+				system_execute(cmd, env=self.environment_running)
+
+
+# -----------------------------------------------------------------------
+def system_execute(cmd, env):
+	""" Execute a command to shell with environnement and check command error """
+	try:
+		if cmd.strip() != "":
+			return subprocess.check_call(cmd, shell=True, env=env) 
+	except:
+		pass
+	return 1
+
+# -----------------------------------------------------------------------
+def get_key_pressed():
+	orig_settings = termios.tcgetattr(sys.stdin)
+
+	tty.setraw(sys.stdin)
+	x = sys.stdin.read(1)[0]
+	termios.tcsetattr(sys.stdin, termios.TCSADRAIN, orig_settings)
+	return x
+
+
+# -----------------------------------------------------------------------
+def clear_tty():
+	# print(chr(27) + "[2J")
+	sys.stdout.write("\x1b[2J\x1b[H") # only Linux tty
+
+
+# -----------------------------------------------------------------------
+def pause():
+	""" give to client a pause """
+	print("Press any key to continue")
+	get_key_pressed()
+	clear_tty()
+
+# -----------------------------------------------------------------------
+def signal_handler(signal, frame):
+	print('You pressed Ctrl+C!')
+	sys.exit(0)
+
+# -----------------------------------------------------------------------
+def get_config_name_path():
+	""" get adequat configuration file with current distribution name """
+	# get plateform informations
+	distribution_info = platform.linux_distribution()
+
+	# determine if script not executing in linux
+	if distribution_info[0] == "":
+		return False
+
+	# build config pathname
+	filename = "{}/{}-{}.yml".format(CONFIG_PATH, distribution_info[0].lower(), distribution_info[1].lower())
+	if not os.path.isfile(filename):
+		# not found, try to get online version
+		url = "{}/{}-{}.yml".format(REMOTE_CONFIG_PATH, distribution_info[0].lower(), distribution_info[1].lower())
+		
+		try:
+			content = urllib.request.urlopen(url).read()#.decode("utf8")
+
+			# write to temp file
+			f = tempfile.NamedTemporaryFile(delete=False)
+			filename = f.name
+			f.write(content)
+			f.close()
+		except Exception as e:
+			print("** Url: {}\n** Get online configuration failed: {} ".format(url, str(e)))
+			return False
+	
+	# return config name
+	return filename
+
+
+# -----------------------------------------------------------------------
+def main():
+	# check if root
+	if pwd.getpwuid( os.getuid() ).pw_uid > 0:
+		print( bcolors.colorize("[red]** Ce script doit se lancer avec les droits d'administrateur : sudo {}[/red]".format(sys.argv[0])) )
+		# return 1
+
+	# get configuration
+	if len(sys.argv) > 1:
+		configname = sys.argv[1]
+	else:
+		# auto conf
+		configname = get_config_name_path()
+
+	# check config path
+	if configname == False:
+		# no distribution found
+		print( "** Your distribution is not recognized" )
+		print( "** Use GNU/Linux plateform ")
+		print( "** Exiting ")
+		return 1
+
+	# create settings object
+	try:
+		settings = FastSettings(configname)
+	except Exception as e:
+		print("** Error found in configuration: {}".format(configname))
+		print("** {}".format(str(e)))
+		return 1
+
+	# present program
+	clear_tty()
+	print(  bcolors.colorize("[header]Post Installation for {} (v{})[/header]".format( settings.get("info_config"), settings.get("info_version") ) ) )
+	print( "\n{}".format( bcolors.colorize(settings.get("info_description")) ) ) 
+	pause()
+
+	# get terminal environment
+	# Make a copy of the current environment
+	environment_running = dict(os.environ)
+
+	# set new environment
+	# in python >=3.5
+	try:
+		environment_running = { **environment_running, **settings.get("environment") }
+	except:
+		# in python 2 or <= 3.4
+		def merge_two_dicts(x, y):
+			z = x.copy()   # start with x's keys and values
+			z.update(y)    # modifies z with y's keys and values & returns None
+			return z
+
+		environment_running = merge_two_dicts(environment_running, settings.get("environment"))
+
+	# get installation mode
+	installation_mode = 2
+	installation_mode_settings = settings.get("levels-install")
+	if len(installation_mode_settings) > 0:
+		print("*******************************************************")
+		print(bcolors.colorize(installation_mode_settings["description"]))
+		print("*******************************************************")
+		print
+	
+		# show all possible modes
+		iChoice = 0
+		user_choice = []	# list of all program ready to install
+		for mode in installation_mode_settings:
+			try:
+				# get elements
+				mode_number = int( mode )
+				mode_description = installation_mode_settings[mode]
+				user_choice.append(mode_number)
+
+				# display mode
+				print( "[{}] {}".format(mode_number, bcolors.colorize(mode_description)) )
+			except:
+				pass
+
+		# ask the user his choice
+		print()
+		choice = -1
+		while choice not in user_choice:
+			try:
+				choice = int( input("Répondre par le chiffre correspondant (exemple : 1) ") )
+			except:
+				pass
+		installation_mode = choice
+	clear_tty()
+
+	# get all program to install
+	questions = settings.get("install")
+	answers = []
+	count_installation = 0
+	for question in questions:
+		# display question
+		objQuestion = FastInstallation(question, installation_mode=installation_mode, env=environment_running)
+		if objQuestion.enabled:
+			count_installation += objQuestion.show_question()
+
+			# append current question to answers for treatment
+			answers.append(objQuestion)
+			pause()
+
+	# set installation
+	print("Installation...")
+	while True:
+		x = input("continue? [oui, yes, o, y] ")
+		if x != "":
+			break
+
+	if x.lower() in ["oui", "yes", "o", "y"]:
+		# common installation
+		print("-> Common installation")
+		for install in settings.get("common-install"):
+			system_execute(install, env=environment_running)
+
+		# check count installation
+		if count_installation == 0:
+			print("no installation needed!")
+
+		else:
+			# specific installation
+			for answer in answers:
+				answer.execute_installation()
+	else:
+		print("No installation made!")
+
+	# finished
+	print("\nOk, done.")
+
+	# return OK
+	return 0
+
+# -----------------------------------------------------------------------
+if __name__ == '__main__':
+	# check arguments
+	if len(sys.argv) == 2 and sys.argv[1].lower() in ["--help", "-h", "-?"]:
+		# display help
+		print(bcolors.colorize("""[header]Post Installation helper\nUSAGES:[/header]
+[underline]Automatic configuration detection[/underline]
+ [cyan]{prgm}[/cyan] 
+
+[underline]Specific execution with a specific configuration file[/underline]
+ [cyan]{prgm}[/cyan] [bold]/path/to/config.yml[/bold]
+
+All automatical configuration are in path ./conf/ and are yaml format
+Be careful, name of file must be in lower case
+
+Examples:
+	for [yellow]Ubuntu 17.10[/yellow]: [green][bold]ubuntu-17.10.yaml[/bold][/green]
+	for [yellow]Xubuntu 17.04[/yellow]: [green][bold]xubuntu-17.04.yaml[/bold][/green]
+""".format(prgm=sys.argv[0])))
+
+		sys.exit(0)
+
+	# go to bin current directory
+	os.chdir(os.path.dirname(sys.argv[0]))
+
+	# catch CTRL+C
+	signal.signal(signal.SIGINT, signal_handler)
+
+	# start program
+	ret = main()
+	sys.exit(ret)
+	

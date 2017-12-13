@@ -1,0 +1,64 @@
+# Ubuntu 17.10 Post installation configuration
+# Authors: GammaDraconis, mickbad
+
+# Global
+info_config: Ubuntu 17.10 Artful
+info_version: 1.0
+info_description: |
+  Voici la légende pour vous informer de certaines choses :
+
+  [yellow][Snap][/yellow] => Le paquet s'installera avec Snap (snap install...)
+  [blue][Flatpak][/blue] => S'installera avec Flatpak, une alternative aux snaps (flatpak install --from...)
+  [green][Appimage][/green] => Application portable (pas d'installation), à lancer comme ceci : ./nomdulogiciel.AppImage
+  [red][Interv!][/red] => Installation pas totalement automatisé : vous devrez intervenir (ex : valider contrat de licence...)
+  [purple][Xorg only!][/purple] => Le logiciel fonctionnera correctement uniquement en session Xorg mais pas sous Wayland (NB : sur les variantes vous êtes en Xorg)
+  [cyan][à lancer manuellement][/cyan] => Il n'y aura pas de raccourci, il faudra aller manuellement dans le dossier et le lancer via celui-ci
+
+  Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)
+
+# Installation mode (begginer, standard, export, extra, ...)
+levels-install:
+  description: "[blue]1/ Mode de lancement du script :[/blue]"
+  1: "Mode [gray]novice[/gray] (lancement automatique sans question, le script installera des logiciels intéressants pour les novices)"
+  2: "Mode [blue]standard[/blue] (choix par défaut, pose diverses questions simples, recommandé pour la plupart des utilisateurs)"
+  3: "Mode [yellow]avancé[/yellow] (comme standard mais avec des questions supplémentaires : programmation, optimisation, extension...)"
+  4: "Mode [green]extra[/green] (comme avancé mais avec un supplément snap/flatpak/appimages proposé à la fin)"
+
+# environment:
+environment:
+  DEBIAN_FRONTEND: "noninteractive"
+  TEST: coucou c'est moi
+
+# Common installation
+common-install:
+  - echo "mon texte est '$DEBIAN_FRONTEND' et $TEST"
+  - cp /etc/default/apport /tmp/apport
+  - sed -i 's/^enabled=1$/enabled=0/' /tmp/apport
+  - cat /tmp/apport
+
+# Installation configuration
+install:
+  - theme: "Navigateur Web"
+    enabled: true
+    level: 2
+    description: "[blue]3/ Quel(s) navigateur(s) vous intéresse(nt) ? (plusieurs choix possibles)[/blue]"
+    programs:
+      - "Firefox Béta (n+1 : 1 version d'avance, remplace la version classique)":
+        - echo "coucou"
+        - echo "apt install firefox"
+        - echo "mon texte est '$DEBIAN_FRONTEND' et $TEST"
+
+      - "Firefox ESR (version plutôt orientée entreprise/organisation)":
+        - echo "installation de esr"
+        - echo "apt install firefox-esr"
+
+  - theme: "Messagerie instantanée"
+    level: 3
+    enabled: true
+    description: "[blue]4/ Quel(s) logiciel(s) de messagerie instantanée/tchat/VoIP/visio souhaitez-vous ?[/blue]"
+    programs:
+      - "Empathy (messagerie instantanée adaptée à Gnome, multi-protocole)":
+        - echo "coucou 2"
+
+      - "Pidgin (une alternative à Empathy avec l'avantage d'être multiplateforme)":
+        - echo "coucou 3"
