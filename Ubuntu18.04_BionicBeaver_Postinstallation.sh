@@ -333,8 +333,9 @@ then
     echo "[10] [ASTRO] Celestia (simulation spatiale en temps réel qui permet d’explorer l'univers en trois dimensions)"
     echo "[11] [CHIMIE] Avogadro (éditeur/visualiseur avancé de molécules pour le calcul scientifique en chimie)"
     echo "[12] [TECHNO] Scratch 1.4 (langage de programmation visuel libre, créé par le MIT, à vocation éducative et ludique)"
-    echo -e "[13] [TECHNO] mBlock ${cyan}[à lancer manuellement]${neutre} (environnement de programmation par blocs basé sur Scratch 2 pour Arduino"
-    echo -e "[14] [TECHNO] Algoid ${cyan}[Fichier Jar à lancer manuellement]${neutre} (langage de programmation éducatif)"
+    echo -e "[13] [TECHNO] Scratch 2 ${rouge}[Interv!]${neutre} (dernière version stable de Scratch)"
+    echo -e "[14] [TECHNO] mBlock ${rouge}[Semble poser problème!]${neutre}(environnement de programmation basé sur Scratch 2 pour Arduino"
+    echo -e "[15] [TECHNO] Algoid ${cyan}[Fichier Jar à lancer manuellement]${neutre} (langage de programmation éducatif)"
     echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 1) : " choixScience
     clear
@@ -1276,15 +1277,24 @@ do
         "11") #Avogadro
             apt install avogadro -y
             ;;
-        "12") #Scratch
+        "12") #Scratch 1.4
             apt install scratch -y
             ;;   
-        "13") #mBlock (voir plus tard pour un raccourci dans le menu des applications et non dans le dossier de l'utilisateur)
-            wget https://github.com/Makeblock-official/mBlock/releases/download/V4.0.0-Linux/mBlock-4.0.0-linux-4.0.0.tar.gz
-            tar zxvf mBlock-4.0.0-linux-4.0.0.tar.gz -C /opt/
-            ln -s /opt/mBlock/mblock /home/$SUDO_USER/raccourci_mblock
+        "13") #Scratch 2 (intervention nécessaire de la part de l'utilisateur)
+            wget https://scratch.mit.edu/scratchr2/static/sa/Scratch-455.air ; chmod +x Scratch* #nb: il y a la 456 mais elle semble poser problème
+            wget https://raw.githubusercontent.com/dane-lyon/fichier-de-config/master/adobe-air.sh ; chmod +x adobe-air.sh
+            ./adobe-air.sh ; rm adobe-air.sh
+            Adobe\ AIR\ Application\ Installer #choisir manuellement le fichier "Scratch-455.air"
             ;;
-        "14") #AlgoIDE 
+        "14") #mBlock (voir plus tard pour un raccourci dans le menu des applications et non dans le dossier de l'utilisateur)
+            wget https://mblockdev.blob.core.chinacloudapi.cn/mblock-src/mBlock.deb
+            dpkg -i mBlock.deb ; apt install -fy ; rm mBlock.deb
+            # Méthode alternative :
+            #wget https://github.com/Makeblock-official/mBlock/releases/download/V4.0.0-Linux/mBlock-4.0.0-linux-4.0.0.tar.gz
+            #tar zxvf mBlock-4.0.0-linux-4.0.0.tar.gz -C /opt/
+            #ln -s /opt/mBlock/mblock /home/$SUDO_USER/raccourci_mblock
+            ;;
+        "15") #AlgoIDE 
             wget http://www.algoid.net/downloads/AlgoIDE-release.jar
             chmod +x AlgoIDE-release.jar && mv AlgoIDE-release.jar /home/$SUDO_USER/
             ;;           
