@@ -1,5 +1,5 @@
 #!/bin/bash
-# version 0.1 (béta)
+# version 0.1.1 (béta)
 
 #  Copyleft 2017 GammaDraconis 
 #  
@@ -186,6 +186,7 @@ then
     echo "[13] Nicotine+ (client P2P pour le réseau mono-source Soulseek)"
     echo -e "[14] Vuze ${jaune}[Snap]${neutre} (plate-forme commerciale d'Azureus avec BitTorrent)"
     echo -e "[15] Gydl ${bleu}[Flatpak]${neutre} (permet de télécharger des vidéos Youtube ou juste la piste audio)"
+    echo -e "[16] WebTorrent (permet le streamming de flux vidéo décentralisé via le protocole bittorrent)"
     echo "*******************************************************"
     read -p "Répondre par le ou les chiffres correspondants (exemple : 2 3 4 15) : " choixTelechargement
     clear
@@ -927,7 +928,11 @@ do
             ;;  
         "15") #Gydl
             flatpak install --from https://flathub.org/repo/appstream/com.github.JannikHv.Gydl.flatpakref -y
-            ;;   
+            ;;  
+        "16") #Webtorrent
+            wget https://github.com/webtorrent/webtorrent-desktop/releases/download/v0.18.0/webtorrent-desktop_0.18.0-1_amd64.deb
+            dpkg -i webtorrent-desktop_0.18.0-1_amd64.deb ; rm webtorrent-desktop_0.18.0-1_amd64.deb
+            ;;
     esac
 done
 
