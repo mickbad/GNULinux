@@ -931,7 +931,7 @@ do
             ;;  
         "16") #Webtorrent
             wget https://github.com/webtorrent/webtorrent-desktop/releases/download/v0.18.0/webtorrent-desktop_0.18.0-1_amd64.deb
-            dpkg -i webtorrent-desktop_0.18.0-1_amd64.deb ; rm webtorrent-desktop_0.18.0-1_amd64.deb
+            dpkg -i webtorrent-desktop_0.18.0-1_amd64.deb ; apt install -fy ; rm webtorrent-desktop_0.18.0-1_amd64.deb
             ;;
     esac
 done
