@@ -32,8 +32,8 @@ environment:
   DEBIAN_FRONTEND: "noninteractive"
   TEST: coucou c'est moi
 
-# Common installation
-common-install:
+# Pre installation
+pre-install:
   - echo "mon texte est '$DEBIAN_FRONTEND' et $TEST"
   - cp /etc/default/apport /tmp/apport
   - sed -i 's/^enabled=1$/enabled=0/' /tmp/apport

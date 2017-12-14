@@ -32,8 +32,8 @@ environment:
   DEBIAN_FRONTEND: "noninteractive"
   TEST: Hello World !
 
-# Common installation
-common-install:
+# Pre installation
+pre-install:
   - echo "mon texte est '$DEBIAN_FRONTEND' et $TEST"
 
 # Post Installation after modules

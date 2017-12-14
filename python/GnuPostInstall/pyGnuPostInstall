@@ -430,9 +430,9 @@ def main(configname = ""):
 			break
 
 	if x.lower() in ["oui", "yes", "o", "y"]:
-		# common installation
-		print("-> Common installation")
-		for install in settings.get("common-install"):
+		# pre installation
+		print("-> Pre installation")
+		for install in settings.get("pre-install"):
 			system_execute(install, env=environment_running)
 
 		# check count installation
