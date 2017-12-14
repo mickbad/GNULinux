@@ -2,8 +2,8 @@
 # Authors: GammaDraconis, mickbad
 
 # Global
-info_config: Ubuntu 17.10 Artful
-info_version: 1.0
+info_config: Ubuntu Artful
+info_version: "17.10"
 info_description: |
   Voici la légende pour vous informer de certaines choses :
 
@@ -16,6 +16,9 @@ info_description: |
 
   Si rien de précisé en encadré => Installation classique depuis les dépots officiels si c'est possible (sinon PPA ou dépot externe)
 
+info_description_end: |
+  Pour prendre en compte tous les changements, il faut maintenant redémarrer !
+
 # Installation mode (begginer, standard, export, extra, ...)
 levels-install:
   description: "[blue]1/ Mode de lancement du script :[/blue]"
@@ -24,7 +27,7 @@ levels-install:
   3: "Mode [yellow]avancé[/yellow] (comme standard mais avec des questions supplémentaires : programmation, optimisation, extension...)"
   4: "Mode [green]extra[/green] (comme avancé mais avec un supplément snap/flatpak/appimages proposé à la fin)"
 
-# environment:
+# environment variables
 environment:
   DEBIAN_FRONTEND: "noninteractive"
   TEST: coucou c'est moi
@@ -35,6 +38,10 @@ common-install:
   - cp /etc/default/apport /tmp/apport
   - sed -i 's/^enabled=1$/enabled=0/' /tmp/apport
   - cat /tmp/apport
+
+# Post Installation after modules
+post-install:
+  - echo "Finitions de la procédure..."
 
 # Installation configuration
 install:

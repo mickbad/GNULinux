@@ -4,21 +4,21 @@
 # -----------------------------------------------------------------------
 # GnuPostInstall
 #
-# Author: Mickbad (contact@fs-dev.com)
+# Author: Mickbad
 # version: 1.0
 # -----------------------------------------------------------------------
-#  Copyleft 2017 Mickbad 
-#  
+#  Copyleft 2017 Mickbad
+#
 #  This program is free software; you can redistribute it and/or modify
 #  it under the terms of the GNU General Public License as published by
 #  the Free Software Foundation; either version 2 of the License, or
 #  (at your option) any later version.
-#  
+#
 #  This program is distributed in the hope that it will be useful,
 #  but WITHOUT ANY WARRANTY; without even the implied warranty of
 #  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #  GNU General Public License for more details.
-#  
+#
 #  You should have received a copy of the GNU General Public License
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
@@ -70,7 +70,7 @@ class bcolors:
 
 	# ----------------------------------------------------------------------
 	def colorize(strText):
-		""" 
+		"""
 			colorize string with tags
 			"[yellow]Hello[/yellow] world!" make Hello in yellow color
 		"""
@@ -226,7 +226,7 @@ class FastInstallation(object):
 		for i in choices.split(" "):
 			try:
 				self._programs_sequences.append( program_user_choice[int(i)-1] )
-			except: 
+			except:
 				pass
 
 		# check choices
@@ -257,7 +257,7 @@ def system_execute(cmd, env):
 	""" Execute a command to shell with environnement and check command error """
 	try:
 		if cmd.strip() != "":
-			return subprocess.check_call(cmd, shell=True, env=env) 
+			return subprocess.check_call(cmd, shell=True, env=env)
 	except:
 		pass
 	return 1
@@ -305,7 +305,6 @@ def get_config_name_path():
 	if not os.path.isfile(filename):
 		# not found, try to get online version
 		url = "{}/{}-{}.yml".format(REMOTE_CONFIG_PATH, distribution_info[0].lower(), distribution_info[1].lower())
-
 		try:
 			content = urllib.request.urlopen(url).read()#.decode("utf8")
 
@@ -317,22 +316,20 @@ def get_config_name_path():
 		except Exception as e:
 			print("** Url: {}\n** Get online configuration failed: {} ".format(url, str(e)))
 			return False
-	
+
 	# return config name
 	return filename
 
 
 # -----------------------------------------------------------------------
-def main():
+def main(configname = ""):
 	# check if root
 	if pwd.getpwuid( os.getuid() ).pw_uid > 0:
 		print( bcolors.colorize("[red]** Ce script doit se lancer avec les droits d'administrateur : sudo {}[/red]".format(sys.argv[0])) )
-		# return 1
+		return 1
 
 	# get configuration
-	if len(sys.argv) > 1:
-		configname = sys.argv[1]
-	else:
+	if configname == "":
 		# auto conf
 		configname = get_config_name_path()
 
@@ -354,8 +351,8 @@ def main():
 
 	# present program
 	clear_tty()
-	print(  bcolors.colorize("[header]Post Installation for {} (v{})[/header]".format( settings.get("info_config"), settings.get("info_version") ) ) )
-	print( "\n{}".format( bcolors.colorize(settings.get("info_description")) ) ) 
+	print(  bcolors.colorize("[header]Post Installation {} (v{})[/header]".format( settings.get("info_config"), settings.get("info_version") ) ) )
+	print( "\n{}".format( bcolors.colorize(settings.get("info_description")) ) )
 	pause()
 
 	# get terminal environment
@@ -383,9 +380,8 @@ def main():
 		print(bcolors.colorize(installation_mode_settings["description"]))
 		print("*******************************************************")
 		print
-	
+
 		# show all possible modes
-		iChoice = 0
 		user_choice = []	# list of all program ready to install
 		for mode in installation_mode_settings:
 			try:
@@ -418,10 +414,12 @@ def main():
 		# display question
 		objQuestion = FastInstallation(question, installation_mode=installation_mode, env=environment_running)
 		if objQuestion.enabled:
-			count_installation += objQuestion.show_question()
+			count = objQuestion.show_question()
+			count_installation += count
 
-			# append current question to answers for treatment
-			answers.append(objQuestion)
+			# append current question to answers for treatment if count > 0
+			if count > 0:
+				answers.append(objQuestion)
 			pause()
 
 	# set installation
@@ -445,10 +443,19 @@ def main():
 			# specific installation
 			for answer in answers:
 				answer.execute_installation()
+
+		# post installation
+		print("-> Post installation")
+		for install in settings.get("post-install"):
+			system_execute(install, env=environment_running)
+
 	else:
 		print("No installation made!")
 
 	# finished
+	clear_tty()
+	print(  bcolors.colorize("[header]Post Installation {} (v{})[/header]".format( settings.get("info_config"), settings.get("info_version") ) ) )
+	print( "\n{}".format( bcolors.colorize(settings.get("info_description_end")) ) )
 	print("\nOk, done.")
 
 	# return OK
@@ -456,12 +463,15 @@ def main():
 
 # -----------------------------------------------------------------------
 if __name__ == '__main__':
-	# check arguments
-	if len(sys.argv) == 2 and sys.argv[1].lower() in ["--help", "-h", "-?"]:
+	# locals variable
+	configname = ""
+
+	# check arguments : --help
+	if len(sys.argv) > 1 and sys.argv[1].lower() in ["--help", "-h", "-?"]:
 		# display help
 		print(bcolors.colorize("""[header]Post Installation helper\nUSAGES:[/header]
 [underline]Automatic configuration detection[/underline]
- [cyan]{prgm}[/cyan] 
+ [cyan]{prgm}[/cyan]
 
 [underline]Specific execution with a specific configuration file[/underline]
  [cyan]{prgm}[/cyan] [bold]/path/to/config.yml[/bold]
@@ -470,11 +480,15 @@ All automatical configuration are in path ./conf/ and are yaml format
 Be careful, name of file must be in lower case
 
 Examples:
-	for [yellow]Ubuntu 17.10[/yellow]: [green][bold]ubuntu-17.10.yaml[/bold][/green]
-	for [yellow]Xubuntu 17.04[/yellow]: [green][bold]xubuntu-17.04.yaml[/bold][/green]
+	for [yellow]Ubuntu 17.10[/yellow]: [green][bold]ubuntu-17.10.yml[/bold][/green]
+	for [yellow]Ubuntu 17.04[/yellow]: [green][bold]ubuntu-17.04.yml[/bold][/green]
 """.format(prgm=sys.argv[0])))
 
 		sys.exit(0)
+
+	# check arguments: [/path/to/configname]
+	elif len(sys.argv) > 1:
+		configname = sys.argv[1]
 
 	# go to bin current directory
 	os.chdir(os.path.dirname(sys.argv[0]))
@@ -483,6 +497,5 @@ Examples:
 	signal.signal(signal.SIGINT, signal_handler)
 
 	# start program
-	ret = main()
+	ret = main(configname)
 	sys.exit(ret)
-	
